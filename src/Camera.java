@@ -27,9 +27,9 @@ public class Camera {
 		this.vsize = vsize;
 		this.fieldOfView = fieldOfView;
 		
-		Tuple from = new Tuple(0, 0, 0, Tuple.POINT);
-		Tuple to = new Tuple(0, 0, -1, Tuple.POINT);
-		Tuple up = new Tuple(0, 1, 0, Tuple.POINT);
+		Coordinate from = new Coordinate(0, 0, 0, Coordinate.POINT);
+		Coordinate to = new Coordinate(0, 0, -1, Coordinate.POINT);
+		Coordinate up = new Coordinate(0, 1, 0, Coordinate.POINT);
 		
 		this.transform = Matrix.viewTransformation(from, to, up);
 		this.pixelSize = this.getPixelSize();
@@ -110,9 +110,9 @@ public class Camera {
 		//using the camera matrix, transform the canvas point and the origin
 		// and then compute the ray's direction vector
 		//(remember that the canvas is at z = -1)
-		Tuple pixel = this.transform.invert().tupleMultiplication(new Tuple(worldX, worldY, -1, Tuple.POINT));
-		Tuple origin = this.transform.invert().tupleMultiplication(new Tuple(0, 0, 0, Tuple.POINT));
-		Tuple direction = pixel.subtractTuples(origin).normalize();
+		Coordinate pixel = this.transform.invert().coordinateMultiplication(new Coordinate(worldX, worldY, -1, Coordinate.POINT));
+		Coordinate origin = this.transform.invert().coordinateMultiplication(new Coordinate(0, 0, 0, Coordinate.POINT));
+		Coordinate direction = pixel.subtractCoordinate(origin).normalize();
 		
 		return new Ray(origin, direction);
 	}

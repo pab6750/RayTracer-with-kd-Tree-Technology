@@ -26,12 +26,12 @@ public abstract class Pattern {
 		this.transformation = transformation;
 	}
 
-	protected abstract Colour stripeAt(Tuple point);
+	protected abstract Colour stripeAt(Coordinate point);
 	
-	public Colour stripeAtObject(Shape object, Tuple point) {
+	public Colour stripeAtObject(Shape object, Coordinate point) {
 		//Tuple objectPoint = object.getTransformation().invert().tupleMultiplication(point);
-		Tuple objectPoint = object.worldToObject(point);
-		Tuple patternPoint = this.getTransformation().invert().tupleMultiplication(objectPoint);
+		Coordinate objectPoint = object.worldToObject(point);
+		Coordinate patternPoint = this.getTransformation().invert().coordinateMultiplication(objectPoint);
 		
 		return this.stripeAt(patternPoint);
 	}

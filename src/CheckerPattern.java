@@ -10,7 +10,7 @@ public class CheckerPattern extends Pattern {
 	}
 
 	@Override
-	public Colour stripeAt(Tuple point) {
+	public Colour stripeAt(Coordinate point) {
 		Colour result = ((Math.floor(point.getX()) + Math.floor(point.getY()) + Math.floor(point.getZ())) % 2 == 0) ? this.colourA : this.colourB;
 		return result;
 	}

@@ -5,7 +5,7 @@ import java.lang.Math;
  * @author Pablo Scarpati
  *
  */
-public class Tuple {
+public class Coordinate {
 	public static final int VECTOR = 0;
 	public static final int POINT  = 1;
 	
@@ -14,21 +14,21 @@ public class Tuple {
 	protected double z;
 	protected int type;
 	
-	public Tuple(double n) {
+	public Coordinate(double n) {
 		this.x = n;
 		this.y = n;
 		this.z = n;
 		this.type = POINT;
 	}
 	
-	public Tuple(double x, double y, double z) {
+	public Coordinate(double x, double y, double z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
 		this.type = POINT;
 	}
 	
-	public Tuple(double x, double y, double z, int type) {
+	public Coordinate(double x, double y, double z, int type) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -40,7 +40,7 @@ public class Tuple {
 	 * @param t the other tuple.
 	 * @return true if equal.
 	 */
-	public boolean equals(Tuple t){
+	public boolean equals(Coordinate t){
 
         return Computation.compareDouble(this.x, t.x) &&
         	   Computation.compareDouble(this.y, t.y) &&
@@ -54,13 +54,13 @@ public class Tuple {
 	 * @param t the other tuple.
 	 * @return the new tuple.
 	 */
-	public Tuple addTuples(Tuple t) {
+	public Coordinate addCoordinate(Coordinate t) {
 		double newX = this.x + t.x;
 		double newY = this.y + t.y;
 		double newZ = this.z + t.z;
 		int newType = this.type + t.type;
 		
-		return new Tuple(newX, newY, newZ, newType);
+		return new Coordinate(newX, newY, newZ, newType);
 	}
 	
 	/**
@@ -68,25 +68,25 @@ public class Tuple {
 	 * @param t the other tuple.
 	 * @return the new tuple.
 	 */
-	public Tuple subtractTuples(Tuple t) {
+	public Coordinate subtractCoordinate(Coordinate t) {
 		double newX = this.x - t.x;
 		double newY = this.y - t.y;
 		double newZ = this.z - t.z;
 		int newType = this.type - t.type;
 		
-		return new Tuple(newX, newY, newZ, newType);
+		return new Coordinate(newX, newY, newZ, newType);
 	}
 	
 	/**
 	 * negates the tuple.
 	 * @return the negated tuple.
 	 */
-	public Tuple negateTuple() {
+	public Coordinate negateCoordinate() {
 		double newX = this.x * -1;
 		double newY = this.y * -1;
 		double newZ = this.z * -1;
 		
-		return new Tuple(newX, newY, newZ, this.type);
+		return new Coordinate(newX, newY, newZ, this.type);
 	}
 	
 	/**
@@ -94,12 +94,12 @@ public class Tuple {
 	 * @param scalar the scalar.
 	 * @return the new tuple.
 	 */
-	public Tuple scalarMultiplication(double scalar) {
+	public Coordinate scalarMultiplication(double scalar) {
 		double newX = this.x * scalar;
 		double newY = this.y * scalar;
 		double newZ = this.z * scalar;
 		
-		return new Tuple(newX, newY, newZ, this.type);
+		return new Coordinate(newX, newY, newZ, this.type);
 	}
 	
 	/**
@@ -107,14 +107,14 @@ public class Tuple {
 	 * @param scalar the scalar.
 	 * @return the new tuple.
 	 */
-	public Tuple scalarDivision(double scalar) {
+	public Coordinate scalarDivision(double scalar) {
 		double divisionFactor = 1 / scalar;
 		
 		double newX = this.x * divisionFactor;
 		double newY = this.y * divisionFactor;
 		double newZ = this.z * divisionFactor;
 		
-		return new Tuple(newX, newY, newZ, this.type);
+		return new Coordinate(newX, newY, newZ, this.type);
 	}
 	
 	/**
@@ -131,7 +131,7 @@ public class Tuple {
 	 * it converts the current vector into a unit vector.
 	 * @return the unit vector.
 	 */
-	public Tuple normalize() {
+	public Coordinate normalize() {
 		
 		double inverse = 1 / this.magnitude();
 		
@@ -139,7 +139,7 @@ public class Tuple {
 		double ypos = this.y * inverse;
 		double zpos = this.z * inverse;
 		
-		return new Tuple(xpos, ypos, zpos, Tuple.VECTOR);
+		return new Coordinate(xpos, ypos, zpos, Coordinate.VECTOR);
 	}
 	
 	/**
@@ -148,7 +148,7 @@ public class Tuple {
 	 * @param t the other vector.
 	 * @return the scalar value.
 	 */
-	public double dotProduct(Tuple t) {
+	public double dotProduct(Coordinate t) {
 		return this.x * t.x +
 	           this.y * t.y +
 	           this.z * t.z +
@@ -162,8 +162,8 @@ public class Tuple {
 	 * @param t the other vector.
 	 * @return the new vector.
 	 */
-	public Tuple crossProduct(Tuple t) {
-		return new Tuple(this.y * t.z - this.z * t.y,
+	public Coordinate crossProduct(Coordinate t) {
+		return new Coordinate(this.y * t.z - this.z * t.y,
                          this.z * t.x - this.x * t.z,
                          this.x * t.y - this.y * t.x,
                          VECTOR);
@@ -219,9 +219,9 @@ public class Tuple {
 	 * @param normal the normal.
 	 * @return the reflected vector.
 	 */
-	public Tuple reflect(Tuple normal) {
+	public Coordinate reflect(Coordinate normal) {
 		double scalar = 2 * this.dotProduct(normal);
-		return this.subtractTuples(normal.scalarMultiplication(scalar));
+		return this.subtractCoordinate(normal.scalarMultiplication(scalar));
 	}
 	
 	/**
@@ -229,7 +229,7 @@ public class Tuple {
 	 * @param t the other tuple.
 	 * @return true if the tuples are equal.
 	 */
-	public boolean isEqual(Tuple t) {
+	public boolean isEqual(Coordinate t) {
 		return Computation.compareDouble(this.getX(), t.getX()) &&
 			   Computation.compareDouble(this.getY(), t.getY()) &&
 			   Computation.compareDouble(this.getZ(), t.getZ()) &&

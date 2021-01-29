@@ -138,8 +138,8 @@ public class KDTreeTests {
 		boolean notMissed = false;
 		
 		for(int i = 0; i < 80; i++) {
-			Tuple currentOrigin = new Tuple(-6 + (i * step), 0, -2, Tuple.POINT);
-			Tuple currentDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+			Coordinate currentOrigin = new Coordinate(-6 + (i * step), 0, -2, Coordinate.POINT);
+			Coordinate currentDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 			
 			Ray currentRay = new Ray(currentOrigin, currentDirection);
 			
@@ -188,8 +188,8 @@ public class KDTreeTests {
 		boolean notMissed = true;
 		
 		for(int i = 0; i < 80; i++) {
-			Tuple currentOrigin = new Tuple(-6 + (i * step), 0, -2, Tuple.POINT);
-			Tuple currentDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+			Coordinate currentOrigin = new Coordinate(-6 + (i * step), 0, -2, Coordinate.POINT);
+			Coordinate currentDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 			
 			Ray currentRay = new Ray(currentOrigin, currentDirection);
 			

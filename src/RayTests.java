@@ -7,8 +7,8 @@ public class RayTests {
 	//ray configuration test
 	@Test
 	public void rayConfigurationTest() {
-		Tuple origin = new Tuple(1, 2, 3, Tuple.POINT);
-		Tuple direction = new Tuple(4, 5, 6, Tuple.VECTOR);
+		Coordinate origin = new Coordinate(1, 2, 3, Coordinate.POINT);
+		Coordinate direction = new Coordinate(4, 5, 6, Coordinate.VECTOR);
 		
 		Ray ray = new Ray(origin, direction);
 		
@@ -18,22 +18,22 @@ public class RayTests {
 	//position method test
 	@Test
 	public void rayPositionTest() {
-		Tuple origin = new Tuple(2, 3, 4, Tuple.POINT);
-		Tuple direction = new Tuple(1, 0, 0, Tuple.VECTOR);
+		Coordinate origin = new Coordinate(2, 3, 4, Coordinate.POINT);
+		Coordinate direction = new Coordinate(1, 0, 0, Coordinate.VECTOR);
 		
 		Ray ray = new Ray(origin, direction);
 		
 		Assert.assertEquals(true, ray.position(0).isEqual(ray.getOrigin()));
-		Assert.assertEquals(true, ray.position(1).isEqual(new Tuple(3, 3, 4, Tuple.POINT)));
-		Assert.assertEquals(true, ray.position(-1).isEqual(new Tuple(1, 3, 4, Tuple.POINT)));
-		Assert.assertEquals(true, ray.position(2.5).isEqual(new Tuple(4.5, 3, 4, Tuple.POINT)));
+		Assert.assertEquals(true, ray.position(1).isEqual(new Coordinate(3, 3, 4, Coordinate.POINT)));
+		Assert.assertEquals(true, ray.position(-1).isEqual(new Coordinate(1, 3, 4, Coordinate.POINT)));
+		Assert.assertEquals(true, ray.position(2.5).isEqual(new Coordinate(4.5, 3, 4, Coordinate.POINT)));
 	}
 	
 	//ray sphere intersection test
 	@Test
 	public void raySphereIntersectionTest() {
-		Tuple origin = new Tuple(0, 0, -5, Tuple.POINT);
-		Tuple direction = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate origin = new Coordinate(0, 0, -5, Coordinate.POINT);
+		Coordinate direction = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		
 		Ray ray = new Ray(origin, direction);
 		

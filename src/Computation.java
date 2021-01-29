@@ -11,15 +11,15 @@ public class Computation {
 	
 	private double t;
 	private Shape shape;
-	private Tuple point;
+	private Coordinate point;
 	
 	//these two attributes are needed because double variables have trouble with precision here
-	private Tuple overPoint;
-	private Tuple underPoint;
+	private Coordinate overPoint;
+	private Coordinate underPoint;
 	
-	private Tuple eyev;
-	private Tuple normalv;
-	private Tuple reflectv;
+	private Coordinate eyev;
+	private Coordinate normalv;
+	private Coordinate reflectv;
 	private boolean inside;
 	private double n1;
 	private double n2;
@@ -28,12 +28,12 @@ public class Computation {
 		this.t = i.getT();
 		this.shape = i.getObject();
 		this.point = r.position(this.t);
-		this.eyev = r.getDirection().negateTuple();
+		this.eyev = r.getDirection().negateCoordinate();
 		Intersection hit = Intersection.hit(xs);
 		this.normalv = shape.normalAt(this.point, hit);
 		this.inside = this.isInside();
-		this.overPoint = this.point.addTuples(this.normalv.scalarMultiplication(EPSILON));
-		this.underPoint = this.point.subtractTuples(this.normalv.scalarMultiplication(EPSILON));
+		this.overPoint = this.point.addCoordinate(this.normalv.scalarMultiplication(EPSILON));
+		this.underPoint = this.point.subtractCoordinate(this.normalv.scalarMultiplication(EPSILON));
 		this.reflectv = r.getDirection().reflect(this.normalv);
 		
 		//transparency intersections algorithm
@@ -87,7 +87,7 @@ public class Computation {
 		return n2;
 	}
 	
-	public Tuple getUnderPoint() {
+	public Coordinate getUnderPoint() {
 		return this.underPoint;
 	}
 	
@@ -124,7 +124,7 @@ public class Computation {
 		}
 		
 		double cosT = Math.sqrt(1 - sin2T);
-		Tuple direction = this.normalv.scalarMultiplication((nRatio * cosI) - cosT).subtractTuples(this.eyev.scalarMultiplication(nRatio));
+		Coordinate direction = this.normalv.scalarMultiplication((nRatio * cosI) - cosT).subtractCoordinate(this.eyev.scalarMultiplication(nRatio));
 		
 		Ray refractedRay = new Ray(this.underPoint, direction);
 		
@@ -133,19 +133,19 @@ public class Computation {
 		return colour;
 	}
 	
-	public Tuple getReflectv() {
+	public Coordinate getReflectv() {
 		return reflectv;
 	}
 
-	public void setReflectv(Tuple reflectv) {
+	public void setReflectv(Coordinate reflectv) {
 		this.reflectv = reflectv;
 	}
 
-	public Tuple getOverPoint() {
+	public Coordinate getOverPoint() {
 		return overPoint;
 	}
 
-	public void setOverPoint(Tuple overPoint) {
+	public void setOverPoint(Coordinate overPoint) {
 		this.overPoint = overPoint;
 	}
 
@@ -217,7 +217,7 @@ public class Computation {
 		double value = this.eyev.dotProduct(this.normalv);
 		
 		if(value < 0) {
-			this.normalv = this.normalv.negateTuple();
+			this.normalv = this.normalv.negateCoordinate();
 			return true;
 		} else {
 			return false;
@@ -236,15 +236,15 @@ public class Computation {
 		return shape;
 	}
 
-	public Tuple getPoint() {
+	public Coordinate getPoint() {
 		return point;
 	}
 
-	public Tuple getEyev() {
+	public Coordinate getEyev() {
 		return eyev;
 	}
 
-	public Tuple getNormalv() {
+	public Coordinate getNormalv() {
 		return normalv;
 	}
 
@@ -256,15 +256,15 @@ public class Computation {
 		this.shape = shape;
 	}
 
-	public void setPoint(Tuple point) {
+	public void setPoint(Coordinate point) {
 		this.point = point;
 	}
 
-	public void setEyev(Tuple eyev) {
+	public void setEyev(Coordinate eyev) {
 		this.eyev = eyev;
 	}
 
-	public void setNormalv(Tuple normalv) {
+	public void setNormalv(Coordinate normalv) {
 		this.normalv = normalv;
 	}
 }

@@ -112,10 +112,10 @@ public class MatrixTests {
 		Matrix m = new Matrix(4);
 		m.setMatrix(d);
 		
-		Tuple t = new Tuple(1, 2, 3, Tuple.POINT);
+		Coordinate t = new Coordinate(1, 2, 3, Coordinate.POINT);
 		
-		Tuple result = m.tupleMultiplication(t);
-		Tuple expectedResult = new Tuple(18, 24, 33, Tuple.POINT);
+		Coordinate result = m.coordinateMultiplication(t);
+		Coordinate expectedResult = new Coordinate(18, 24, 33, Coordinate.POINT);
 		
 		Assert.assertEquals(result.isEqual(expectedResult), true);
 	}

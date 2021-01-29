@@ -7,27 +7,27 @@ public class World {
 	private Camera camera;
 	
 	public World(int resx, int resy) {
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		
 		this.light = new PointLight(lightOrigin, white);
 		
 		this.camera = new Camera(resx, resy, Math.PI / 3);
-		this.camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -10, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		this.camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
+													       new Coordinate(0, 1, 0, Coordinate.POINT),
+													       new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 	}
 	
 	public World() {
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		
 		this.light = new PointLight(lightOrigin, white);
 		
 		this.camera = new Camera(512, 512, Math.PI / 3);
-		this.camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -10, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		this.camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
+													       new Coordinate(0, 1, 0, Coordinate.POINT),
+													       new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 	}
 	
 	public void renderWorld(String name) {
@@ -94,14 +94,14 @@ public class World {
 	 * @param point The point.
 	 * @return a boolean.
 	 */
-	public boolean isShadowed(Tuple point) {
-		Tuple v = this.light.getPosition().subtractTuples(point);
+	public boolean isShadowed(Coordinate point) {
+		Coordinate v = this.light.getPosition().subtractCoordinate(point);
 		
 		//distance between light and point
 		double distance = v.magnitude();
 		
 		//direction from the point to the light
-		Tuple direction = v.normalize();
+		Coordinate direction = v.normalize();
 		
 		Ray r = new Ray(point, direction);
 		Intersection[] intersections = this.intersect(r);

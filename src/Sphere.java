@@ -5,14 +5,14 @@
  *
  */
 public class Sphere extends Shape{
-	private Tuple origin;
+	private Coordinate origin;
 	
 	public Sphere() {
 		super();
-		this.origin = new Tuple(0, 0, 0, Tuple.POINT);
+		this.origin = new Coordinate(0, 0, 0, Coordinate.POINT);
 	}
 	
-	public Sphere(Tuple origin, double radius) {
+	public Sphere(Coordinate origin, double radius) {
 		super();
 		this.origin = origin;
 	}
@@ -44,8 +44,8 @@ public class Sphere extends Shape{
 	 */
 	@Override
 	public BoundingBox getBounds() {
-		Tuple min = new Tuple(-1, -1, -1, Tuple.POINT);
-		Tuple max = new Tuple(1, 1, 1, Tuple.POINT);
+		Coordinate min = new Coordinate(-1, -1, -1, Coordinate.POINT);
+		Coordinate max = new Coordinate(1, 1, 1, Coordinate.POINT);
 		BoundingBox box = new BoundingBox(min, max, this);
 		
 		return box;
@@ -64,7 +64,7 @@ public class Sphere extends Shape{
 			Intersection[] intersectionPoints;
 			
 			//a vector from the sphere's centre to the ray's origin
-			Tuple sphereToRay = r.getOrigin().subtractTuples(new Tuple(0, 0, 0, Tuple.POINT));
+			Coordinate sphereToRay = r.getOrigin().subtractCoordinate(new Coordinate(0, 0, 0, Coordinate.POINT));
 			double a = r.getDirection().dotProduct(r.getDirection());
 			double b = 2 * r.getDirection().dotProduct(sphereToRay);
 			double c = sphereToRay.dotProduct(sphereToRay) - 1;
@@ -105,9 +105,9 @@ public class Sphere extends Shape{
 	 * @return the normal Tuple.
 	 */
 	@Override
-	public Tuple localNormalAt(Tuple worldPoint, Intersection hit) {
-		Tuple originPoint = new Tuple(0, 0, 0, Tuple.POINT);
-		return worldPoint.subtractTuples(originPoint);
+	public Coordinate localNormalAt(Coordinate worldPoint, Intersection hit) {
+		Coordinate originPoint = new Coordinate(0, 0, 0, Coordinate.POINT);
+		return worldPoint.subtractCoordinate(originPoint);
 	}
 	
 	@Override

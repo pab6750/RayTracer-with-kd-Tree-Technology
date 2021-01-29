@@ -28,19 +28,19 @@ public class Cylinder extends Shape{
 	
 	@Override
 	public BoundingBox getBounds() {
-		Tuple min;
-		Tuple max;
+		Coordinate min;
+		Coordinate max;
 		
 		if(this.maximum == Double.POSITIVE_INFINITY) {
-			max = new Tuple(1, Double.POSITIVE_INFINITY, 1, Tuple.POINT);
+			max = new Coordinate(1, Double.POSITIVE_INFINITY, 1, Coordinate.POINT);
 		} else {
-			max = new Tuple(1, this.maximum, 1, Tuple.POINT);
+			max = new Coordinate(1, this.maximum, 1, Coordinate.POINT);
 		}
 		
 		if(this.minimum == Double.NEGATIVE_INFINITY) {
-			min = new Tuple(-1, Double.NEGATIVE_INFINITY, -1, Tuple.POINT);
+			min = new Coordinate(-1, Double.NEGATIVE_INFINITY, -1, Coordinate.POINT);
 		} else {
-			min = new Tuple(-1, this.minimum, -1, Tuple.POINT);
+			min = new Coordinate(-1, this.minimum, -1, Coordinate.POINT);
 		}
 		
 		BoundingBox box = new BoundingBox(min, max, this);
@@ -137,15 +137,15 @@ public class Cylinder extends Shape{
 	}
 
 	@Override
-	public Tuple localNormalAt(Tuple p, Intersection hit) {
+	public Coordinate localNormalAt(Coordinate p, Intersection hit) {
 		double dist = p.getX() * p.getX() + p.getZ() * p.getZ();
 		
 		if(dist < 1 && p.getY() >= this.maximum - Computation.EPSILON) {
-			return new Tuple(0, 1, 0, Tuple.VECTOR);
+			return new Coordinate(0, 1, 0, Coordinate.VECTOR);
 		} else if(dist < 1 && p.getY() <= this.minimum + Computation.EPSILON) {
-			return new Tuple(0, -1, 0, Tuple.VECTOR);
+			return new Coordinate(0, -1, 0, Coordinate.VECTOR);
 		} else {
-			return new Tuple(p.getX(), 0, p.getZ(), Tuple.POINT);
+			return new Coordinate(p.getX(), 0, p.getZ(), Coordinate.POINT);
 		}
 	}
 	

@@ -43,7 +43,7 @@ public abstract class Shape {
 	 * @param hit The hit.
 	 * @return The normal vector.
 	 */
-	public abstract Tuple localNormalAt(Tuple p, Intersection hit);
+	public abstract Coordinate localNormalAt(Coordinate p, Intersection hit);
 	
 	/**
 	 * This method divides the group into subgroups.
@@ -63,8 +63,8 @@ public abstract class Shape {
 	 * @return the Box bounding this shape.
 	 */
 	public BoundingBox getBounds() {
-		Tuple min = new Tuple(-1, -1, -1, Tuple.POINT);
-		Tuple max = new Tuple(1, 1, 1, Tuple.POINT);
+		Coordinate min = new Coordinate(-1, -1, -1, Coordinate.POINT);
+		Coordinate max = new Coordinate(1, 1, 1, Coordinate.POINT);
 		BoundingBox box = new BoundingBox(min, max, this);
 		
 		return box;
@@ -84,12 +84,12 @@ public abstract class Shape {
 	 * @param point
 	 * @return
 	 */
-	public Tuple worldToObject(Tuple point) {
+	public Coordinate worldToObject(Coordinate point) {
 		if(this.parent != null) {
 			point = this.parent.worldToObject(point);
 		}
 		
-		return this.transformation.invert().tupleMultiplication(point);
+		return this.transformation.invert().coordinateMultiplication(point);
 	}
 	
 	/**
@@ -97,9 +97,9 @@ public abstract class Shape {
 	 * @param normal
 	 * @return
 	 */
-	public Tuple normalToWorld(Tuple normal) {
-		normal = this.transformation.invert().transposition().tupleMultiplication(normal);
-		normal.setType(Tuple.VECTOR);
+	public Coordinate normalToWorld(Coordinate normal) {
+		normal = this.transformation.invert().transposition().coordinateMultiplication(normal);
+		normal.setType(Coordinate.VECTOR);
 		normal = normal.normalize();
 		
 		if(this.parent != null) {
@@ -147,11 +147,11 @@ public abstract class Shape {
 	 * @param hit
 	 * @return
 	 */
-	public Tuple normalAt(Tuple worldPoint, Intersection hit) {
+	public Coordinate normalAt(Coordinate worldPoint, Intersection hit) {
 		
 		//transforms the worldPoint in object space
-		Tuple localPoint = this.worldToObject(worldPoint);
-		Tuple localNormal = this.localNormalAt(localPoint, hit);
+		Coordinate localPoint = this.worldToObject(worldPoint);
+		Coordinate localNormal = this.localNormalAt(localPoint, hit);
 		
 		return this.normalToWorld(localNormal);
 	}
@@ -169,7 +169,7 @@ public abstract class Shape {
 	 * @param inShadow a boolean indicating whether the point is in shadow or not.
 	 * @return the final colour of the point.
 	 */
-	public Colour lighting(PointLight light, Tuple position, Tuple eyev, Tuple normalv, boolean inShadow) {
+	public Colour lighting(PointLight light, Coordinate position, Coordinate eyev, Coordinate normalv, boolean inShadow) {
 		Colour colour;
 		
 		if(this.material.getPattern() != null) {
@@ -181,7 +181,7 @@ public abstract class Shape {
 		//combine the surface colour with the light's colour
 		Colour effectiveColour = colour.hadamardProduct(light.getIntensity());
 		//find the direction to the light source
-		Tuple lightv = light.getPosition().subtractTuples(position).normalize();
+		Coordinate lightv = light.getPosition().subtractCoordinate(position).normalize();
 		//compute the ambient contribution
 		Colour ambient = effectiveColour.scalarMultiplication(this.material.getAmbient());
 		/*
@@ -206,7 +206,7 @@ public abstract class Shape {
 			 * number means the light reflects away from the eye
 			 */
 			
-			Tuple reflectv = lightv.negateTuple().reflect(normalv);
+			Coordinate reflectv = lightv.negateCoordinate().reflect(normalv);
 			double reflectDotEye = reflectv.dotProduct(eyev);
 			
 			if(reflectDotEye <= 0) {

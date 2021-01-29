@@ -808,14 +808,14 @@ public class Main {
 		World world = new World();
 		world.setObjs(shapes);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -10, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -858,14 +858,14 @@ public class Main {
 		World world = new World();
 		world.setObjs(shapes);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(256, 256, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -10, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -896,9 +896,9 @@ public class Main {
 		cube.setTransformation(c);
 		cube.setColour(cc);
 
-		Tuple p1 = new Tuple(2, 1, 0, Tuple.POINT);
-		Tuple p2 = new Tuple(5, 1, 0, Tuple.POINT);
-		Tuple p3 = new Tuple(4, 3, 0, Tuple.POINT);
+		Coordinate p1 = new Coordinate(2, 1, 0, Coordinate.POINT);
+		Coordinate p2 = new Coordinate(5, 1, 0, Coordinate.POINT);
+		Coordinate p3 = new Coordinate(4, 3, 0, Coordinate.POINT);
 
 		Triangle triangle = new Triangle(p1, p2, p3);
 		Colour ct = new Colour(0, 0, 1);
@@ -909,14 +909,14 @@ public class Main {
 		World world = new World();
 		world.setObjs(shapes);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -10, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -990,14 +990,14 @@ public class Main {
 		World world = new World();
 		world.setObjs(shapes);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -20, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -20, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -1066,14 +1066,14 @@ public class Main {
 		World world = new World();
 		world.setObjs(shapes);
 
-		Tuple lightOrigin = new Tuple(-20, 20, -20, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-20, 20, -20, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -20, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -20, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -1126,14 +1126,14 @@ public class Main {
 		Shape[] objs = {floor, leftWall, rightWall, middle, right, left};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 1.5, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -1161,14 +1161,14 @@ public class Main {
 
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -1205,7 +1205,7 @@ public class Main {
 		MedianKDTree kdt = MedianKDTree.createRoot(shapes);
 		kdt.setShapes(shapes);
 
-		Tuple[] t = new Tuple[6];
+		Coordinate[] t = new Coordinate[6];
 		t[0] = box1.getMin();
 		t[1] = box1.getMax();
 		t[2] = box2.getMin();
@@ -1261,14 +1261,14 @@ public class Main {
 
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -1382,12 +1382,12 @@ public class Main {
 			double randomOriginX = Math.random() * (max - min + 1) + min;
 			double randomOriginY = Math.random() * (max - min + 1) + min;
 
-			Tuple rayOrigin = new Tuple(randomOriginX, randomOriginY, -1);
+			Coordinate rayOrigin = new Coordinate(randomOriginX, randomOriginY, -1);
 
 			double randomDirectionX = Math.random() * (max - min + 1) + min;
 			double randomDirectionY = Math.random() * (max - min + 1) + min;
 
-			Tuple rayDirection = new Tuple(randomDirectionX, randomDirectionY, 20);
+			Coordinate rayDirection = new Coordinate(randomDirectionX, randomDirectionY, 20);
 
 			Ray ray = new Ray(rayOrigin, rayDirection);
 
@@ -1438,14 +1438,14 @@ public class Main {
 
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -1488,14 +1488,14 @@ public class Main {
 		Shape[] objs = {floor, rightWall, leftWall, group};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(750, 750, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -1539,12 +1539,12 @@ public class Main {
 	}
 
 	public static void smoothTriangleTest3() {
-		Tuple p1 = new Tuple(0, 1, 0, Tuple.POINT);
-		Tuple p2 = new Tuple(-1, 0, 0, Tuple.POINT);
-		Tuple p3 = new Tuple(1, 0, 0, Tuple.POINT);
-		Tuple n1 = new Tuple(0, 1, 0, Tuple.POINT);
-		Tuple n2 = new Tuple(-1, 0, 0, Tuple.POINT);
-		Tuple n3 = new Tuple(1, 0, 0, Tuple.POINT);
+		Coordinate p1 = new Coordinate(0, 1, 0, Coordinate.POINT);
+		Coordinate p2 = new Coordinate(-1, 0, 0, Coordinate.POINT);
+		Coordinate p3 = new Coordinate(1, 0, 0, Coordinate.POINT);
+		Coordinate n1 = new Coordinate(0, 1, 0, Coordinate.POINT);
+		Coordinate n2 = new Coordinate(-1, 0, 0, Coordinate.POINT);
+		Coordinate n3 = new Coordinate(1, 0, 0, Coordinate.POINT);
 
 		SmoothTriangle tri = new SmoothTriangle(p1, p2, p3, n1, n2, n3);
 
@@ -1552,14 +1552,14 @@ public class Main {
 
 		Intersection[] xs = {i};
 
-		Tuple rayOrigin = new Tuple(-0.2, 0.3, -2, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(-0.2, 0.3, -2, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Computation c = new Computation(i, ray, xs);
 
-		Tuple n = c.getNormalv();
+		Coordinate n = c.getNormalv();
 
 		n.printData();
 	}
@@ -1608,14 +1608,14 @@ public class Main {
 		Shape[] objs = {group};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -1666,14 +1666,14 @@ public class Main {
 		Shape[] objs = {floor, rightWall, leftWall, group};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -1716,14 +1716,14 @@ public class Main {
 		Shape[] objs = {floor, rightWall, leftWall, group};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -1766,14 +1766,14 @@ public class Main {
 		Shape[] objs = {floor, rightWall, leftWall, group};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -1817,8 +1817,8 @@ public class Main {
 	}
 
 	public static void zWideTest() {
-		Tuple min = new Tuple(-1, -2, -3, Tuple.POINT);
-		Tuple max = new Tuple(5, 3, 7, Tuple.POINT);
+		Coordinate min = new Coordinate(-1, -2, -3, Coordinate.POINT);
+		Coordinate max = new Coordinate(5, 3, 7, Coordinate.POINT);
 
 		BoundingBox box = new BoundingBox(min, max, null);
 
@@ -1831,8 +1831,8 @@ public class Main {
 	}
 
 	public static void yWideTest() {
-		Tuple min = new Tuple(-1, -2, -3, Tuple.POINT);
-		Tuple max = new Tuple(5, 8, 3, Tuple.POINT);
+		Coordinate min = new Coordinate(-1, -2, -3, Coordinate.POINT);
+		Coordinate max = new Coordinate(5, 8, 3, Coordinate.POINT);
 
 		BoundingBox box = new BoundingBox(min, max, null);
 
@@ -1845,8 +1845,8 @@ public class Main {
 	}
 
 	public static void xWideTest() {
-		Tuple min = new Tuple(-1, -2, -3, Tuple.POINT);
-		Tuple max = new Tuple(9, 5.5, 3, Tuple.POINT);
+		Coordinate min = new Coordinate(-1, -2, -3, Coordinate.POINT);
+		Coordinate max = new Coordinate(9, 5.5, 3, Coordinate.POINT);
 
 		BoundingBox box = new BoundingBox(min, max, null);
 
@@ -1859,8 +1859,8 @@ public class Main {
 	}
 
 	public static void BVHTest() {
-		Tuple min = new Tuple(-1, -4, -5, Tuple.POINT);
-		Tuple max = new Tuple(9, 6, 5, Tuple.POINT);
+		Coordinate min = new Coordinate(-1, -4, -5, Coordinate.POINT);
+		Coordinate max = new Coordinate(9, 6, 5, Coordinate.POINT);
 
 		BoundingBox box = new BoundingBox(min, max, null);
 
@@ -1873,19 +1873,19 @@ public class Main {
 	}
 
 	public static void boundingVolumesTest6() {
-		Tuple min = new Tuple(5, -2, 0, Tuple.POINT);
-		Tuple max = new Tuple(11, 4, 7, Tuple.POINT);
+		Coordinate min = new Coordinate(5, -2, 0, Coordinate.POINT);
+		Coordinate max = new Coordinate(11, 4, 7, Coordinate.POINT);
 
 		BoundingBox box = new BoundingBox(min, max, null);
 
-		Tuple point;
-		Tuple direction;
+		Coordinate point;
+		Coordinate direction;
 		Ray ray;
 		Intersection[] xs;
 
 		//1
-		point = new Tuple(15, 1, 2, Tuple.POINT);
-		direction = new Tuple(-1, 0, 0, Tuple.VECTOR);
+		point = new Coordinate(15, 1, 2, Coordinate.POINT);
+		direction = new Coordinate(-1, 0, 0, Coordinate.VECTOR);
 		direction = direction.normalize();
 		ray = new Ray(point, direction);
 		xs = box.intersect(ray);
@@ -1897,8 +1897,8 @@ public class Main {
 		}
 
 		//2
-		point = new Tuple(-5, -1, 4, Tuple.POINT);
-		direction = new Tuple(1, 0, 0, Tuple.VECTOR);
+		point = new Coordinate(-5, -1, 4, Coordinate.POINT);
+		direction = new Coordinate(1, 0, 0, Coordinate.VECTOR);
 		direction = direction.normalize();
 		ray = new Ray(point, direction);
 		xs = box.intersect(ray);
@@ -1910,8 +1910,8 @@ public class Main {
 		}
 
 		//3
-		point = new Tuple(7, 6, 5, Tuple.POINT);
-		direction = new Tuple(0, -1, 0, Tuple.VECTOR);
+		point = new Coordinate(7, 6, 5, Coordinate.POINT);
+		direction = new Coordinate(0, -1, 0, Coordinate.VECTOR);
 		direction = direction.normalize();
 		ray = new Ray(point, direction);
 		xs = box.intersect(ray);
@@ -1923,8 +1923,8 @@ public class Main {
 		}
 
 		//4
-		point = new Tuple(9, -5, 6, Tuple.POINT);
-		direction = new Tuple(0, 1, 0, Tuple.VECTOR);
+		point = new Coordinate(9, -5, 6, Coordinate.POINT);
+		direction = new Coordinate(0, 1, 0, Coordinate.VECTOR);
 		direction = direction.normalize();
 		ray = new Ray(point, direction);
 		xs = box.intersect(ray);
@@ -1936,8 +1936,8 @@ public class Main {
 		}
 
 		//5
-		point = new Tuple(8, 2, 12, Tuple.POINT);
-		direction = new Tuple(0, 0, -1, Tuple.VECTOR);
+		point = new Coordinate(8, 2, 12, Coordinate.POINT);
+		direction = new Coordinate(0, 0, -1, Coordinate.VECTOR);
 		direction = direction.normalize();
 		ray = new Ray(point, direction);
 		xs = box.intersect(ray);
@@ -1949,8 +1949,8 @@ public class Main {
 		}
 
 		//6
-		point = new Tuple(6, 0, -5, Tuple.POINT);
-		direction = new Tuple(0, 0, 1, Tuple.VECTOR);
+		point = new Coordinate(6, 0, -5, Coordinate.POINT);
+		direction = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		direction = direction.normalize();
 		ray = new Ray(point, direction);
 		xs = box.intersect(ray);
@@ -1962,8 +1962,8 @@ public class Main {
 		}
 
 		//7
-		point = new Tuple(8, 1, 3.5, Tuple.POINT);
-		direction = new Tuple(0, 0, 1, Tuple.VECTOR);
+		point = new Coordinate(8, 1, 3.5, Coordinate.POINT);
+		direction = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		direction = direction.normalize();
 		ray = new Ray(point, direction);
 		xs = box.intersect(ray);
@@ -1975,8 +1975,8 @@ public class Main {
 		}
 
 		//8
-		point = new Tuple(9, -1, -8, Tuple.POINT);
-		direction = new Tuple(2, 4, 6, Tuple.VECTOR);
+		point = new Coordinate(9, -1, -8, Coordinate.POINT);
+		direction = new Coordinate(2, 4, 6, Coordinate.VECTOR);
 		direction = direction.normalize();
 		ray = new Ray(point, direction);
 		xs = box.intersect(ray);
@@ -1988,8 +1988,8 @@ public class Main {
 		}
 
 		//9
-		point = new Tuple(8, 3, -4, Tuple.POINT);
-		direction = new Tuple(6, 2, 4, Tuple.VECTOR);
+		point = new Coordinate(8, 3, -4, Coordinate.POINT);
+		direction = new Coordinate(6, 2, 4, Coordinate.VECTOR);
 		direction = direction.normalize();
 		ray = new Ray(point, direction);
 		xs = box.intersect(ray);
@@ -2001,8 +2001,8 @@ public class Main {
 		}
 
 		//10
-		point = new Tuple(9, -1, -2, Tuple.POINT);
-		direction = new Tuple(4, 6, 2, Tuple.VECTOR);
+		point = new Coordinate(9, -1, -2, Coordinate.POINT);
+		direction = new Coordinate(4, 6, 2, Coordinate.VECTOR);
 		direction = direction.normalize();
 		ray = new Ray(point, direction);
 		xs = box.intersect(ray);
@@ -2014,8 +2014,8 @@ public class Main {
 		}
 
 		//11
-		point = new Tuple(4, 0, 9, Tuple.POINT);
-		direction = new Tuple(0, 0, -1, Tuple.VECTOR);
+		point = new Coordinate(4, 0, 9, Coordinate.POINT);
+		direction = new Coordinate(0, 0, -1, Coordinate.VECTOR);
 		direction = direction.normalize();
 		ray = new Ray(point, direction);
 		xs = box.intersect(ray);
@@ -2027,8 +2027,8 @@ public class Main {
 		}
 
 		//12
-		point = new Tuple(8, 6, -1, Tuple.POINT);
-		direction = new Tuple(0, -1, 0, Tuple.VECTOR);
+		point = new Coordinate(8, 6, -1, Coordinate.POINT);
+		direction = new Coordinate(0, -1, 0, Coordinate.VECTOR);
 		direction = direction.normalize();
 		ray = new Ray(point, direction);
 		xs = box.intersect(ray);
@@ -2040,8 +2040,8 @@ public class Main {
 		}
 
 		//13
-		point = new Tuple(12, 5, 4, Tuple.POINT);
-		direction = new Tuple(-1, 0, 0, Tuple.VECTOR);
+		point = new Coordinate(12, 5, 4, Coordinate.POINT);
+		direction = new Coordinate(-1, 0, 0, Coordinate.VECTOR);
 		direction = direction.normalize();
 		ray = new Ray(point, direction);
 		xs = box.intersect(ray);
@@ -2088,8 +2088,8 @@ public class Main {
 	}
 
 	public static void boundingVolumesTest3() {
-		Tuple min = new Tuple(-1, -1, -1, Tuple.POINT);
-		Tuple max = new Tuple( 1,  1,  1, Tuple.POINT);
+		Coordinate min = new Coordinate(-1, -1, -1, Coordinate.POINT);
+		Coordinate max = new Coordinate( 1,  1,  1, Coordinate.POINT);
 
 		BoundingBox box = new BoundingBox(min, max, null);
 
@@ -2102,10 +2102,10 @@ public class Main {
 	}
 
 	public static void boundingVolumesTest2() {
-		Tuple min1 = new Tuple(-5, -2, 0, Tuple.POINT);
-		Tuple min2 = new Tuple(8, -7, -2, Tuple.POINT);
-		Tuple max1 = new Tuple(7, 4, 4, Tuple.POINT);
-		Tuple max2 = new Tuple(14, 2, 8, Tuple.POINT);
+		Coordinate min1 = new Coordinate(-5, -2, 0, Coordinate.POINT);
+		Coordinate min2 = new Coordinate(8, -7, -2, Coordinate.POINT);
+		Coordinate max1 = new Coordinate(7, 4, 4, Coordinate.POINT);
+		Coordinate max2 = new Coordinate(14, 2, 8, Coordinate.POINT);
 
 		BoundingBox b1 = new BoundingBox(min1, max1, null);
 		BoundingBox b2 = new BoundingBox(min2, max2, null);
@@ -2119,8 +2119,8 @@ public class Main {
 	public static void boundingVolumesTest() {
 		BoundingBox box = new BoundingBox(null);
 
-		Tuple p1 = new Tuple(-5, 2, 0, Tuple.POINT);
-		Tuple p2 = new Tuple(7, 0, -3, Tuple.POINT);
+		Coordinate p1 = new Coordinate(-5, 2, 0, Coordinate.POINT);
+		Coordinate p2 = new Coordinate(7, 0, -3, Coordinate.POINT);
 
 		box.addPoint(p1);
 		box.addPoint(p2);
@@ -2159,14 +2159,14 @@ public class Main {
 		Shape[] objs = {floor, rightWall, leftWall, group};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -15, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -15, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -2182,7 +2182,7 @@ public class Main {
 		File file = new File("C:\\Users\\pablo\\OneDrive\\Desktop\\uni\\year 3\\Diss\\OBJFiles\\objTest4.obj");
 		OBJParser p = new OBJParser(file);
 
-		Tuple[] normals = p.getNormals();
+		Coordinate[] normals = p.getNormals();
 
 		for(int i = 1; i < normals.length; i++) {
 			normals[i].printData();
@@ -2191,33 +2191,33 @@ public class Main {
 	}
 
 	public static void normalInterpolationTest() {
-		Tuple p1 = new Tuple(0, 1, 0, Tuple.POINT);
-		Tuple p2 = new Tuple(-1, 0, 0, Tuple.POINT);
-		Tuple p3 = new Tuple(1, 0, 0, Tuple.POINT);
-		Tuple n1 = new Tuple(0, 1, 0, Tuple.POINT);
-		Tuple n2 = new Tuple(-1, 0, 0, Tuple.POINT);
-		Tuple n3 = new Tuple(1, 0, 0, Tuple.POINT);
+		Coordinate p1 = new Coordinate(0, 1, 0, Coordinate.POINT);
+		Coordinate p2 = new Coordinate(-1, 0, 0, Coordinate.POINT);
+		Coordinate p3 = new Coordinate(1, 0, 0, Coordinate.POINT);
+		Coordinate n1 = new Coordinate(0, 1, 0, Coordinate.POINT);
+		Coordinate n2 = new Coordinate(-1, 0, 0, Coordinate.POINT);
+		Coordinate n3 = new Coordinate(1, 0, 0, Coordinate.POINT);
 
 		SmoothTriangle tri = new SmoothTriangle(p1, p2, p3, n1, n2, n3);
 
 		Intersection i = new Intersection(1, tri, 0.45, 0.25);
-		Tuple n = tri.normalAt(new Tuple(0, 0, 0, Tuple.POINT), i);
+		Coordinate n = tri.normalAt(new Coordinate(0, 0, 0, Coordinate.POINT), i);
 
 		n.printData();
 	}
 
 	public static void smoothTriangleTest() {
-		Tuple p1 = new Tuple(0, 1, 0, Tuple.POINT);
-		Tuple p2 = new Tuple(-1, 0, 0, Tuple.POINT);
-		Tuple p3 = new Tuple(1, 0, 0, Tuple.POINT);
-		Tuple n1 = new Tuple(0, 1, 0, Tuple.POINT);
-		Tuple n2 = new Tuple(-1, 0, 0, Tuple.POINT);
-		Tuple n3 = new Tuple(1, 0, 0, Tuple.POINT);
+		Coordinate p1 = new Coordinate(0, 1, 0, Coordinate.POINT);
+		Coordinate p2 = new Coordinate(-1, 0, 0, Coordinate.POINT);
+		Coordinate p3 = new Coordinate(1, 0, 0, Coordinate.POINT);
+		Coordinate n1 = new Coordinate(0, 1, 0, Coordinate.POINT);
+		Coordinate n2 = new Coordinate(-1, 0, 0, Coordinate.POINT);
+		Coordinate n3 = new Coordinate(1, 0, 0, Coordinate.POINT);
 
 		SmoothTriangle tri = new SmoothTriangle(p1, p2, p3, n1, n2, n3);
 
-		Tuple rayOrigin = new Tuple(-0.2, 0.3, -2, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(-0.2, 0.3, -2, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Intersection[] xs = tri.localIntersect(ray);
@@ -2255,14 +2255,14 @@ public class Main {
 		Shape[] objs = {floor, rightWall, leftWall, group};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -2303,14 +2303,14 @@ public class Main {
 		Shape[] objs = {floor, rightWall, leftWall, group};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -2323,12 +2323,12 @@ public class Main {
 	}
 
 	public static void triangleVisualTest() {
-		Tuple v1 = new Tuple(0, 0, 0, Tuple.POINT);
-		Tuple v2 = new Tuple(0, 1, 0, Tuple.POINT);
-		Tuple v3 = new Tuple(1, 1, 0, Tuple.POINT);
-		Tuple v4 = new Tuple(0, 1, 1, Tuple.POINT);
-		Tuple v5 = new Tuple(1, 1, 1, Tuple.POINT);
-		Tuple v6 = new Tuple(0, 1, 0, Tuple.POINT);
+		Coordinate v1 = new Coordinate(0, 0, 0, Coordinate.POINT);
+		Coordinate v2 = new Coordinate(0, 1, 0, Coordinate.POINT);
+		Coordinate v3 = new Coordinate(1, 1, 0, Coordinate.POINT);
+		Coordinate v4 = new Coordinate(0, 1, 1, Coordinate.POINT);
+		Coordinate v5 = new Coordinate(1, 1, 1, Coordinate.POINT);
+		Coordinate v6 = new Coordinate(0, 1, 0, Coordinate.POINT);
 
 		Triangle t1 = new Triangle(v1, v2, v3);
 		Triangle t2 = new Triangle(v1, v2, v4);
@@ -2345,14 +2345,14 @@ public class Main {
 		Shape[] objs = {floor, t1, t2, t3, t4, t5, t6, t7, t8};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(0, 10, 0, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(0, 10, 0, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 2, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 2, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -2381,14 +2381,14 @@ public class Main {
 		Shape[] objs = {floor, g};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(0, 10, 0, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(0, 10, 0, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -2478,7 +2478,7 @@ public class Main {
 		File file = new File("C:\\Users\\pablo\\OneDrive\\Desktop\\uni\\year 3\\Diss\\OBJFiles\\objTest.obj");
 		OBJParser p = new OBJParser(file);
 
-		Tuple[] v = p.getVertices();
+		Coordinate[] v = p.getVertices();
 
 		System.out.println("l:" + v.length);
 
@@ -2489,14 +2489,14 @@ public class Main {
 	}
 
 	public static void triangleTest5() {
-		Tuple p1 = new Tuple(0, 1, 0, Tuple.POINT);
-		Tuple p2 = new Tuple(-1, 0, 0, Tuple.POINT);
-		Tuple p3 = new Tuple(1, 0, 0, Tuple.POINT);
+		Coordinate p1 = new Coordinate(0, 1, 0, Coordinate.POINT);
+		Coordinate p2 = new Coordinate(-1, 0, 0, Coordinate.POINT);
+		Coordinate p3 = new Coordinate(1, 0, 0, Coordinate.POINT);
 
 		Triangle t = new Triangle(p1, p2, p3);
 
-		Tuple rayOrigin = new Tuple(0, 0.5, -2, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0.5, -2, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 
 		Ray r = new Ray(rayOrigin, rayDirection);
 
@@ -2506,14 +2506,14 @@ public class Main {
 	}
 
 	public static void triangleTest4() {
-		Tuple p1 = new Tuple(0, 1, 0, Tuple.POINT);
-		Tuple p2 = new Tuple(-1, 0, 0, Tuple.POINT);
-		Tuple p3 = new Tuple(1, 0, 0, Tuple.POINT);
+		Coordinate p1 = new Coordinate(0, 1, 0, Coordinate.POINT);
+		Coordinate p2 = new Coordinate(-1, 0, 0, Coordinate.POINT);
+		Coordinate p3 = new Coordinate(1, 0, 0, Coordinate.POINT);
 
 		Triangle t = new Triangle(p1, p2, p3);
 
-		Tuple rayOrigin = new Tuple(0, -1, -2, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, -1, -2, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 
 		Ray r = new Ray(rayOrigin, rayDirection);
 
@@ -2523,14 +2523,14 @@ public class Main {
 	}
 
 	public static void triangleTest3() {
-		Tuple p1 = new Tuple(0, 1, 0, Tuple.POINT);
-		Tuple p2 = new Tuple(-1, 0, 0, Tuple.POINT);
-		Tuple p3 = new Tuple(1, 0, 0, Tuple.POINT);
+		Coordinate p1 = new Coordinate(0, 1, 0, Coordinate.POINT);
+		Coordinate p2 = new Coordinate(-1, 0, 0, Coordinate.POINT);
+		Coordinate p3 = new Coordinate(1, 0, 0, Coordinate.POINT);
 
 		Triangle t = new Triangle(p1, p2, p3);
 
-		Tuple rayOrigin = new Tuple(-1, 1, -2, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(-1, 1, -2, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 
 		Ray r = new Ray(rayOrigin, rayDirection);
 
@@ -2540,14 +2540,14 @@ public class Main {
 	}
 
 	public static void triangleTest2() {
-		Tuple p1 = new Tuple(0, 1, 0, Tuple.POINT);
-		Tuple p2 = new Tuple(-1, 0, 0, Tuple.POINT);
-		Tuple p3 = new Tuple(1, 0, 0, Tuple.POINT);
+		Coordinate p1 = new Coordinate(0, 1, 0, Coordinate.POINT);
+		Coordinate p2 = new Coordinate(-1, 0, 0, Coordinate.POINT);
+		Coordinate p3 = new Coordinate(1, 0, 0, Coordinate.POINT);
 
 		Triangle t = new Triangle(p1, p2, p3);
 
-		Tuple rayOrigin = new Tuple(1, 1, -2, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(1, 1, -2, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 
 		Ray r = new Ray(rayOrigin, rayDirection);
 
@@ -2557,14 +2557,14 @@ public class Main {
 	}
 
 	public static void triangleTest() {
-		Tuple p1 = new Tuple(0, 1, 0, Tuple.POINT);
-		Tuple p2 = new Tuple(-1, 0, 0, Tuple.POINT);
-		Tuple p3 = new Tuple(1, 0, 0, Tuple.POINT);
+		Coordinate p1 = new Coordinate(0, 1, 0, Coordinate.POINT);
+		Coordinate p2 = new Coordinate(-1, 0, 0, Coordinate.POINT);
+		Coordinate p3 = new Coordinate(1, 0, 0, Coordinate.POINT);
 
 		Triangle t = new Triangle(p1, p2, p3);
 
-		Tuple rayOrigin = new Tuple(0, -1, -2, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 1, 0, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, -1, -2, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 1, 0, Coordinate.VECTOR);
 
 		Ray r = new Ray(rayOrigin, rayDirection);
 
@@ -2597,14 +2597,14 @@ public class Main {
 		Shape[] objs = {floor, rightWall, leftWall, cone};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -2656,14 +2656,14 @@ public class Main {
 		Shape[] objs = {floor, cube, rightWall, leftWall, ball, cone};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -2688,7 +2688,7 @@ public class Main {
 		s.setTransformation(Matrix.translation(5, 0, 0));
 		g2.addChild(s);
 
-		Tuple n = s.normalAt(new Tuple(1.7321, 1.1547, -5.5774, Tuple.POINT), null);
+		Coordinate n = s.normalAt(new Coordinate(1.7321, 1.1547, -5.5774, Coordinate.POINT), null);
 		n.printData();
 	}
 
@@ -2705,8 +2705,8 @@ public class Main {
 		s.setTransformation(Matrix.translation(5, 0, 0));
 		g2.addChild(s);
 
-		Tuple n = new Tuple(Math.sqrt(3) / 3, Math.sqrt(3) / 3, Math.sqrt(3) / 3, Tuple.VECTOR);
-		Tuple normal = s.normalToWorld(n);
+		Coordinate n = new Coordinate(Math.sqrt(3) / 3, Math.sqrt(3) / 3, Math.sqrt(3) / 3, Coordinate.VECTOR);
+		Coordinate normal = s.normalToWorld(n);
 		normal.printData();
 	}
 
@@ -2723,7 +2723,7 @@ public class Main {
 		s.setTransformation(Matrix.translation(5, 0, 0));
 		g2.addChild(s);
 
-		Tuple p = s.worldToObject(new Tuple(-2, 0, -10, Tuple.POINT));
+		Coordinate p = s.worldToObject(new Coordinate(-2, 0, -10, Coordinate.POINT));
 		p.printData();
 	}
 
@@ -2736,8 +2736,8 @@ public class Main {
 
 		group.addChild(s);
 
-		Tuple rayOrigin = new Tuple(10, 0, -10, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(10, 0, -10, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Intersection[] xs = group.intersect(ray);
@@ -2758,8 +2758,8 @@ public class Main {
 		group.addChild(s2);
 		group.addChild(s3);
 
-		Tuple rayOrigin = new Tuple(0, 0, -5, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, -5, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Intersection[] xs = group.localIntersect(ray);
@@ -2778,8 +2778,8 @@ public class Main {
 	public static void groupTest3() {
 		Group group = new Group();
 
-		Tuple rayOrigin = new Tuple(0, 0, 0, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, 0, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Intersection[] xs = group.localIntersect(ray);
@@ -2839,14 +2839,14 @@ public class Main {
 		Shape[] objs = {floor, cube, rightWall, leftWall, ball};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 3, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -2860,18 +2860,18 @@ public class Main {
 
 	public static void coneTest4() {
 		Cone cone = new Cone();
-		Tuple point;
-		Tuple n;
+		Coordinate point;
+		Coordinate n;
 
-		point = new Tuple(0, 0, 0, Tuple.POINT);
+		point = new Coordinate(0, 0, 0, Coordinate.POINT);
 		n = cone.localNormalAt(point, null);
 		n.printData();
 
-		point = new Tuple(1, 1, 1, Tuple.POINT);
+		point = new Coordinate(1, 1, 1, Coordinate.POINT);
 		n = cone.localNormalAt(point, null);
 		n.printData();
 
-		point = new Tuple(-1, -1, 0, Tuple.POINT);
+		point = new Coordinate(-1, -1, 0, Coordinate.POINT);
 		n = cone.localNormalAt(point, null);
 		n.printData();
 	}
@@ -2879,25 +2879,25 @@ public class Main {
 	public static void coneTest3() {
 		Cone cone = new Cone(-0.5, 0.5, true);
 
-		Tuple origin;
-		Tuple direction;
+		Coordinate origin;
+		Coordinate direction;
 		Ray r;
 		Intersection[] xs;
 
-		origin = new Tuple(0, 0, -5, Tuple.POINT);
-		direction = new Tuple(0, 1, 0, Tuple.VECTOR).normalize();
+		origin = new Coordinate(0, 0, -5, Coordinate.POINT);
+		direction = new Coordinate(0, 1, 0, Coordinate.VECTOR).normalize();
 		r = new Ray(origin, direction);
 		xs = cone.localIntersect(r);
 		System.out.println("1: " + xs.length);
 
-		origin = new Tuple(0, 0, -0.25, Tuple.POINT);
-		direction = new Tuple(0, 1, 1, Tuple.VECTOR).normalize();
+		origin = new Coordinate(0, 0, -0.25, Coordinate.POINT);
+		direction = new Coordinate(0, 1, 1, Coordinate.VECTOR).normalize();
 		r = new Ray(origin, direction);
 		xs = cone.localIntersect(r);
 		System.out.println("2: " + xs.length);
 
-		origin = new Tuple(0, 0, -0.25, Tuple.POINT);
-		direction = new Tuple(0, 1, 0, Tuple.VECTOR).normalize();
+		origin = new Coordinate(0, 0, -0.25, Coordinate.POINT);
+		direction = new Coordinate(0, 1, 0, Coordinate.VECTOR).normalize();
 		r = new Ray(origin, direction);
 		xs = cone.localIntersect(r);
 		System.out.println("3: " + xs.length);
@@ -2916,14 +2916,14 @@ public class Main {
 		Shape[] objs = {floor, cone};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 2, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 2, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -2937,34 +2937,34 @@ public class Main {
 
 	public static void coneTest() {
 		Cone cone = new Cone();
-		Tuple origin;
-		Tuple direction;
+		Coordinate origin;
+		Coordinate direction;
 		Ray r;
 		Intersection[] xs;
 
-		origin = new Tuple(0, 0, -5 ,Tuple.POINT);
-		direction = new Tuple(0, 0, 1, Tuple.VECTOR).normalize();
+		origin = new Coordinate(0, 0, -5 ,Coordinate.POINT);
+		direction = new Coordinate(0, 0, 1, Coordinate.VECTOR).normalize();
 		r = new Ray(origin, direction);
 		xs = cone.localIntersect(r);
 		System.out.println("xs[0]: " + xs[0].getT());
 		System.out.println("xs[1]: " + xs[1].getT());
 
-		origin = new Tuple(0, 0, -5 ,Tuple.POINT);
-		direction = new Tuple(1, 1, 1, Tuple.VECTOR).normalize();
+		origin = new Coordinate(0, 0, -5 ,Coordinate.POINT);
+		direction = new Coordinate(1, 1, 1, Coordinate.VECTOR).normalize();
 		r = new Ray(origin, direction);
 		xs = cone.localIntersect(r);
 		System.out.println("xs[0]: " + xs[0].getT());
 		System.out.println("xs[1]: " + xs[1].getT());
 
-		origin = new Tuple(1, 1, -5 ,Tuple.POINT);
-		direction = new Tuple(-0.5, -1, 1, Tuple.VECTOR).normalize();
+		origin = new Coordinate(1, 1, -5 ,Coordinate.POINT);
+		direction = new Coordinate(-0.5, -1, 1, Coordinate.VECTOR).normalize();
 		r = new Ray(origin, direction);
 		xs = cone.localIntersect(r);
 		System.out.println("xs[0]: " + xs[0].getT());
 		System.out.println("xs[1]: " + xs[1].getT());
 
-		origin = new Tuple(0, 0, -1 ,Tuple.POINT);
-		direction = new Tuple(0, 1, 1, Tuple.VECTOR).normalize();
+		origin = new Coordinate(0, 0, -1 ,Coordinate.POINT);
+		direction = new Coordinate(0, 1, 1, Coordinate.VECTOR).normalize();
 		r = new Ray(origin, direction);
 		xs = cone.localIntersect(r);
 		System.out.println("xs[0]: " + xs[0].getT());
@@ -2982,14 +2982,14 @@ public class Main {
 		Shape[] objs = {floor, cyl};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 2, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 2, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -3003,67 +3003,67 @@ public class Main {
 
 	public static void cylinderTest7() {
 		Cylinder cyl = new Cylinder(1, 2, true);
-		Tuple point;
-		Tuple n;
+		Coordinate point;
+		Coordinate n;
 
-		point = new Tuple(0, 1, 0, Tuple.POINT);
+		point = new Coordinate(0, 1, 0, Coordinate.POINT);
 		n = cyl.localNormalAt(point, null);
 		n.printData();
 
-		point = new Tuple(0.5, 1, 0, Tuple.POINT);
+		point = new Coordinate(0.5, 1, 0, Coordinate.POINT);
 		n = cyl.localNormalAt(point, null);
 		n.printData();
 
-		point = new Tuple(0, 1, 0.5, Tuple.POINT);
+		point = new Coordinate(0, 1, 0.5, Coordinate.POINT);
 		n = cyl.localNormalAt(point, null);
 		n.printData();
 
-		point = new Tuple(0, 2, 0, Tuple.POINT);
+		point = new Coordinate(0, 2, 0, Coordinate.POINT);
 		n = cyl.localNormalAt(point, null);
 		n.printData();
 
-		point = new Tuple(0.5, 2, 0, Tuple.POINT);
+		point = new Coordinate(0.5, 2, 0, Coordinate.POINT);
 		n = cyl.localNormalAt(point, null);
 		n.printData();
 
-		point = new Tuple(0, 2, 0.5, Tuple.POINT);
+		point = new Coordinate(0, 2, 0.5, Coordinate.POINT);
 		n = cyl.localNormalAt(point, null);
 		n.printData();
 	}
 
 	public static void cylinderTest6() {
 		Cylinder cyl = new Cylinder(1, 2, true);
-		Tuple direction;
-		Tuple origin;
+		Coordinate direction;
+		Coordinate origin;
 		Ray r;
 		Intersection[] xs;
 
-		origin = new Tuple(0, 3, 0, Tuple.POINT);
-		direction = new Tuple(0, -1, 0, Tuple.VECTOR).normalize();
+		origin = new Coordinate(0, 3, 0, Coordinate.POINT);
+		direction = new Coordinate(0, -1, 0, Coordinate.VECTOR).normalize();
 		r = new Ray(origin, direction);
 		xs = cyl.localIntersect(r);
 		System.out.println("1: " + xs.length);
 
-		origin = new Tuple(0, 3, -2, Tuple.POINT);
-		direction = new Tuple(0, -1, 2, Tuple.VECTOR).normalize();
+		origin = new Coordinate(0, 3, -2, Coordinate.POINT);
+		direction = new Coordinate(0, -1, 2, Coordinate.VECTOR).normalize();
 		r = new Ray(origin, direction);
 		xs = cyl.localIntersect(r);
 		System.out.println("2: " + xs.length);
 
-		origin = new Tuple(0, 4, -2, Tuple.POINT);
-		direction = new Tuple(0, -1, 1, Tuple.VECTOR).normalize();
+		origin = new Coordinate(0, 4, -2, Coordinate.POINT);
+		direction = new Coordinate(0, -1, 1, Coordinate.VECTOR).normalize();
 		r = new Ray(origin, direction);
 		xs = cyl.localIntersect(r);
 		System.out.println("3: " + xs.length);
 
-		origin = new Tuple(0, 0, -2, Tuple.POINT);
-		direction = new Tuple(0, 1, 2, Tuple.VECTOR).normalize();
+		origin = new Coordinate(0, 0, -2, Coordinate.POINT);
+		direction = new Coordinate(0, 1, 2, Coordinate.VECTOR).normalize();
 		r = new Ray(origin, direction);
 		xs = cyl.localIntersect(r);
 		System.out.println("4: " + xs.length);
 
-		origin = new Tuple(0, -1, -2, Tuple.POINT);
-		direction = new Tuple(0, 1, 1, Tuple.VECTOR).normalize();
+		origin = new Coordinate(0, -1, -2, Coordinate.POINT);
+		direction = new Coordinate(0, 1, 1, Coordinate.VECTOR).normalize();
 		r = new Ray(origin, direction);
 		xs = cyl.localIntersect(r);
 		System.out.println("5: " + xs.length);
@@ -3071,48 +3071,48 @@ public class Main {
 
 	public static void cylinderTest5() {
 		Cylinder cyl = new Cylinder(1, 2, false);
-		Tuple direction;
-		Tuple origin;
+		Coordinate direction;
+		Coordinate origin;
 		Ray r;
 		Intersection[] xs;
 
-		direction = new Tuple(0.1, 1, 0, Tuple.VECTOR).normalize();
-		origin = new Tuple(0, 1.5, 0, Tuple.POINT);
+		direction = new Coordinate(0.1, 1, 0, Coordinate.VECTOR).normalize();
+		origin = new Coordinate(0, 1.5, 0, Coordinate.POINT);
 		r = new Ray(origin, direction);
 		xs = cyl.localIntersect(r);
 
 		System.out.println("1: " + xs.length);
 
-		direction = new Tuple(0, 0, 1, Tuple.VECTOR).normalize();
-		origin = new Tuple(0, 3, -5, Tuple.POINT);
+		direction = new Coordinate(0, 0, 1, Coordinate.VECTOR).normalize();
+		origin = new Coordinate(0, 3, -5, Coordinate.POINT);
 		r = new Ray(origin, direction);
 		xs = cyl.localIntersect(r);
 
 		System.out.println("2: " + xs.length);
 
-		direction = new Tuple(0, 0, 1, Tuple.VECTOR).normalize();
-		origin = new Tuple(0, 0, -5, Tuple.POINT);
+		direction = new Coordinate(0, 0, 1, Coordinate.VECTOR).normalize();
+		origin = new Coordinate(0, 0, -5, Coordinate.POINT);
 		r = new Ray(origin, direction);
 		xs = cyl.localIntersect(r);
 
 		System.out.println("3: " + xs.length);
 
-		direction = new Tuple(0, 0, 1, Tuple.VECTOR).normalize();
-		origin = new Tuple(0, 2, -5, Tuple.POINT);
+		direction = new Coordinate(0, 0, 1, Coordinate.VECTOR).normalize();
+		origin = new Coordinate(0, 2, -5, Coordinate.POINT);
 		r = new Ray(origin, direction);
 		xs = cyl.localIntersect(r);
 
 		System.out.println("4: " + xs.length);
 
-		direction = new Tuple(0, 0, 1, Tuple.VECTOR).normalize();
-		origin = new Tuple(0, 1, -5, Tuple.POINT);
+		direction = new Coordinate(0, 0, 1, Coordinate.VECTOR).normalize();
+		origin = new Coordinate(0, 1, -5, Coordinate.POINT);
 		r = new Ray(origin, direction);
 		xs = cyl.localIntersect(r);
 
 		System.out.println("5: " + xs.length);
 
-		direction = new Tuple(0, 0, 1, Tuple.VECTOR).normalize();
-		origin = new Tuple(0, 1.5, -2, Tuple.POINT);
+		direction = new Coordinate(0, 0, 1, Coordinate.VECTOR).normalize();
+		origin = new Coordinate(0, 1.5, -2, Coordinate.POINT);
 		r = new Ray(origin, direction);
 		xs = cyl.localIntersect(r);
 
@@ -3131,14 +3131,14 @@ public class Main {
 		Shape[] objs = {floor, cyl};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 2, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 2, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -3153,35 +3153,35 @@ public class Main {
 	public static void cylinderTest3() {
 		Cylinder cyl = new Cylinder();
 
-		Tuple point;
-		Tuple n;
+		Coordinate point;
+		Coordinate n;
 
-		point = new Tuple(1, 0, 0, Tuple.POINT);
+		point = new Coordinate(1, 0, 0, Coordinate.POINT);
 		n = cyl.localNormalAt(point, null);
 		n.printData();
 
-		point = new Tuple(0, 5, -1, Tuple.POINT);
+		point = new Coordinate(0, 5, -1, Coordinate.POINT);
 		n = cyl.localNormalAt(point, null);
 		n.printData();
 
-		point = new Tuple(0, -2, 1, Tuple.POINT);
+		point = new Coordinate(0, -2, 1, Coordinate.POINT);
 		n = cyl.localNormalAt(point, null);
 		n.printData();
 
-		point = new Tuple(-1, 1, 0, Tuple.POINT);
+		point = new Coordinate(-1, 1, 0, Coordinate.POINT);
 		n = cyl.localNormalAt(point, null);
 		n.printData();
 	}
 
 	public static void cylinderTest2() {
 		Cylinder cyl = new Cylinder();
-		Tuple direction;
-		Tuple origin;
+		Coordinate direction;
+		Coordinate origin;
 		Ray r;
 		Intersection[] xs;
 
-		origin = new Tuple(1, 0, -5, Tuple.POINT);
-		direction = new Tuple(0, 0, 1, Tuple.VECTOR).normalize();
+		origin = new Coordinate(1, 0, -5, Coordinate.POINT);
+		direction = new Coordinate(0, 0, 1, Coordinate.VECTOR).normalize();
 		r = new Ray(origin, direction);
 		xs = cyl.localIntersect(r);
 
@@ -3192,8 +3192,8 @@ public class Main {
 			System.out.println("xs[1]: " + xs[1].getT());
 		}
 
-		origin = new Tuple(0, 0, -5, Tuple.POINT);
-		direction = new Tuple(0, 0, 1, Tuple.VECTOR).normalize();
+		origin = new Coordinate(0, 0, -5, Coordinate.POINT);
+		direction = new Coordinate(0, 0, 1, Coordinate.VECTOR).normalize();
 		r = new Ray(origin, direction);
 		xs = cyl.localIntersect(r);
 
@@ -3204,8 +3204,8 @@ public class Main {
 			System.out.println("xs[1]: " + xs[1].getT());
 		}
 
-		origin = new Tuple(0.5, 0, -5, Tuple.POINT);
-		direction = new Tuple(0.1, 1, 1, Tuple.VECTOR).normalize();
+		origin = new Coordinate(0.5, 0, -5, Coordinate.POINT);
+		direction = new Coordinate(0.1, 1, 1, Coordinate.VECTOR).normalize();
 		r = new Ray(origin, direction);
 		xs = cyl.localIntersect(r);
 
@@ -3220,12 +3220,12 @@ public class Main {
 	public static void cylinderTest() {
 		Cylinder cyl = new Cylinder();
 
-		Tuple direction;
+		Coordinate direction;
 		Ray r;
 		Intersection[] xs;
 
-		direction = new Tuple(0, 1, 0, Tuple.VECTOR).normalize();
-		r = new Ray(new Tuple(1, 0, 0, Tuple.POINT), direction);
+		direction = new Coordinate(0, 1, 0, Coordinate.VECTOR).normalize();
+		r = new Ray(new Coordinate(1, 0, 0, Coordinate.POINT), direction);
 		xs = cyl.localIntersect(r);
 
 		if(xs == null) {
@@ -3235,8 +3235,8 @@ public class Main {
 			xs[0].printData();
 		}
 
-		direction = new Tuple(0, 1, 0, Tuple.VECTOR).normalize();
-		r = new Ray(new Tuple(0, 0, 0, Tuple.POINT), direction);
+		direction = new Coordinate(0, 1, 0, Coordinate.VECTOR).normalize();
+		r = new Ray(new Coordinate(0, 0, 0, Coordinate.POINT), direction);
 		xs = cyl.localIntersect(r);
 
 		if(xs == null) {
@@ -3246,8 +3246,8 @@ public class Main {
 			xs[0].printData();
 		}
 
-		direction = new Tuple(1, 1, 1, Tuple.VECTOR).normalize();
-		r = new Ray(new Tuple(0, 0, -5, Tuple.POINT), direction);
+		direction = new Coordinate(1, 1, 1, Coordinate.VECTOR).normalize();
+		r = new Ray(new Coordinate(0, 0, -5, Coordinate.POINT), direction);
 		xs = cyl.localIntersect(r);
 
 		if(xs == null) {
@@ -3271,14 +3271,14 @@ public class Main {
 		Shape[] objs = {floor, cube};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 2, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 2, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -3292,14 +3292,14 @@ public class Main {
 
 	public static void cubeTest2() {
 		Cube cube = new Cube();
-		Tuple rayOrigin;
-		Tuple rayDirection;
+		Coordinate rayOrigin;
+		Coordinate rayDirection;
 		Ray ray;
 		Intersection[] xs;
 
 		//1
-		rayOrigin = new Tuple(-2, 0, 0, Tuple.POINT);
-		rayDirection = new Tuple(0.2673, 0.5345, 0.8018, Tuple.VECTOR);
+		rayOrigin = new Coordinate(-2, 0, 0, Coordinate.POINT);
+		rayDirection = new Coordinate(0.2673, 0.5345, 0.8018, Coordinate.VECTOR);
 		ray = new Ray(rayOrigin, rayDirection);
 
 		xs = cube.localIntersect(ray);
@@ -3311,8 +3311,8 @@ public class Main {
 		}
 
 		//2
-		rayOrigin = new Tuple(0, -2, 0, Tuple.POINT);
-		rayDirection = new Tuple(0.8018, 0.2673, 0.5345, Tuple.VECTOR);
+		rayOrigin = new Coordinate(0, -2, 0, Coordinate.POINT);
+		rayDirection = new Coordinate(0.8018, 0.2673, 0.5345, Coordinate.VECTOR);
 		ray = new Ray(rayOrigin, rayDirection);
 
 		xs = cube.localIntersect(ray);
@@ -3324,8 +3324,8 @@ public class Main {
 		}
 
 		//3
-		rayOrigin = new Tuple(0, 0, -2, Tuple.POINT);
-		rayDirection = new Tuple(0.5345, 0.8018, 0.2673, Tuple.VECTOR);
+		rayOrigin = new Coordinate(0, 0, -2, Coordinate.POINT);
+		rayDirection = new Coordinate(0.5345, 0.8018, 0.2673, Coordinate.VECTOR);
 		ray = new Ray(rayOrigin, rayDirection);
 
 		xs = cube.localIntersect(ray);
@@ -3337,8 +3337,8 @@ public class Main {
 		}
 
 		//4
-		rayOrigin = new Tuple(2, 0, 2, Tuple.POINT);
-		rayDirection = new Tuple(0, 0, -1, Tuple.VECTOR);
+		rayOrigin = new Coordinate(2, 0, 2, Coordinate.POINT);
+		rayDirection = new Coordinate(0, 0, -1, Coordinate.VECTOR);
 		ray = new Ray(rayOrigin, rayDirection);
 
 		xs = cube.localIntersect(ray);
@@ -3350,8 +3350,8 @@ public class Main {
 		}
 
 		//5
-		rayOrigin = new Tuple(0, 2, 2, Tuple.POINT);
-		rayDirection = new Tuple(0, -1, 0, Tuple.VECTOR);
+		rayOrigin = new Coordinate(0, 2, 2, Coordinate.POINT);
+		rayDirection = new Coordinate(0, -1, 0, Coordinate.VECTOR);
 		ray = new Ray(rayOrigin, rayDirection);
 
 		xs = cube.localIntersect(ray);
@@ -3363,8 +3363,8 @@ public class Main {
 		}
 
 		//6
-		rayOrigin = new Tuple(2, 2, 0, Tuple.POINT);
-		rayDirection = new Tuple(-1, 0, 0, Tuple.VECTOR);
+		rayOrigin = new Coordinate(2, 2, 0, Coordinate.POINT);
+		rayDirection = new Coordinate(-1, 0, 0, Coordinate.VECTOR);
 		ray = new Ray(rayOrigin, rayDirection);
 
 		xs = cube.localIntersect(ray);
@@ -3378,14 +3378,14 @@ public class Main {
 
 	public static void cubeTest() {
 		Cube cube = new Cube();
-		Tuple rayOrigin;
-		Tuple rayDirection;
+		Coordinate rayOrigin;
+		Coordinate rayDirection;
 		Ray ray;
 		Intersection[] xs;
 
 		//+x
-		rayOrigin = new Tuple(5, 0.5, 0, Tuple.POINT);
-		rayDirection = new Tuple(-1, 0, 0, Tuple.VECTOR);
+		rayOrigin = new Coordinate(5, 0.5, 0, Coordinate.POINT);
+		rayDirection = new Coordinate(-1, 0, 0, Coordinate.VECTOR);
 		ray = new Ray(rayOrigin, rayDirection);
 
 		xs = cube.localIntersect(ray);
@@ -3395,8 +3395,8 @@ public class Main {
 		System.out.println("----------------");
 
 		//-x
-		rayOrigin = new Tuple(-5, 0.5, 0, Tuple.POINT);
-		rayDirection = new Tuple(1, 0, 0, Tuple.VECTOR);
+		rayOrigin = new Coordinate(-5, 0.5, 0, Coordinate.POINT);
+		rayDirection = new Coordinate(1, 0, 0, Coordinate.VECTOR);
 		ray = new Ray(rayOrigin, rayDirection);
 
 		xs = cube.localIntersect(ray);
@@ -3406,8 +3406,8 @@ public class Main {
 		System.out.println("----------------");
 
 		//+y
-		rayOrigin = new Tuple(0.5, 5, 0, Tuple.POINT);
-		rayDirection = new Tuple(0, -1, 0, Tuple.VECTOR);
+		rayOrigin = new Coordinate(0.5, 5, 0, Coordinate.POINT);
+		rayDirection = new Coordinate(0, -1, 0, Coordinate.VECTOR);
 		ray = new Ray(rayOrigin, rayDirection);
 
 		xs = cube.localIntersect(ray);
@@ -3417,8 +3417,8 @@ public class Main {
 		System.out.println("----------------");
 
 		//-y
-		rayOrigin = new Tuple(0.5, -5, 0, Tuple.POINT);
-		rayDirection = new Tuple(0, 1, 0, Tuple.VECTOR);
+		rayOrigin = new Coordinate(0.5, -5, 0, Coordinate.POINT);
+		rayDirection = new Coordinate(0, 1, 0, Coordinate.VECTOR);
 		ray = new Ray(rayOrigin, rayDirection);
 
 		xs = cube.localIntersect(ray);
@@ -3428,8 +3428,8 @@ public class Main {
 		System.out.println("----------------");
 
 		//+z
-		rayOrigin = new Tuple(0.5, 0, 5, Tuple.POINT);
-		rayDirection = new Tuple(0, 0, -1, Tuple.VECTOR);
+		rayOrigin = new Coordinate(0.5, 0, 5, Coordinate.POINT);
+		rayDirection = new Coordinate(0, 0, -1, Coordinate.VECTOR);
 		ray = new Ray(rayOrigin, rayDirection);
 
 		xs = cube.localIntersect(ray);
@@ -3439,8 +3439,8 @@ public class Main {
 		System.out.println("----------------");
 
 		//-z
-		rayOrigin = new Tuple(0.5, 0, -5, Tuple.POINT);
-		rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		rayOrigin = new Coordinate(0.5, 0, -5, Coordinate.POINT);
+		rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		ray = new Ray(rayOrigin, rayDirection);
 
 		xs = cube.localIntersect(ray);
@@ -3450,8 +3450,8 @@ public class Main {
 		System.out.println("----------------");
 
 		//inside
-		rayOrigin = new Tuple(0, 0.5, 0, Tuple.POINT);
-		rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		rayOrigin = new Coordinate(0, 0.5, 0, Coordinate.POINT);
+		rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		ray = new Ray(rayOrigin, rayDirection);
 
 		xs = cube.localIntersect(ray);
@@ -3497,14 +3497,14 @@ public class Main {
 
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(2, 10, -5, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(2, 10, -5, Coordinate.POINT);
 		Colour white = new Colour(0.9, 0.9, 0.9);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(300, 300, 0.45);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 0, -5, Tuple.POINT),
-													  new Tuple(0, 0, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 0, -5, Coordinate.POINT),
+													  new Coordinate(0, 0, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -3532,8 +3532,8 @@ public class Main {
 		Shape[] objs = {floor, ball};
 		world.setObjs(objs);
 
-		Tuple rayOrigin = new Tuple(0, 0, -3, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, -3, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Intersection xs1 = new Intersection(Math.sqrt(2), floor);
@@ -3549,8 +3549,8 @@ public class Main {
 	public static void fresnelTest3() {
 		Sphere shape = Sphere.getGlassSphere();
 
-		Tuple rayOrigin = new Tuple(0, 0.99, -2, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0.99, -2, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Intersection xs1 = new Intersection(1.8589, shape);
@@ -3565,8 +3565,8 @@ public class Main {
 	public static void fresnelTest2() {
 		Sphere shape = Sphere.getGlassSphere();
 
-		Tuple rayOrigin = new Tuple(0, 0, 0, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 1, 0, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, 0, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 1, 0, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Intersection xs1 = new Intersection(-1, shape);
@@ -3582,8 +3582,8 @@ public class Main {
 	public static void fresnelTest() {
 		Sphere shape = Sphere.getGlassSphere();
 
-		Tuple rayOrigin = new Tuple(0, 0, Math.sqrt(2) / 2, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 1, 0, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, Math.sqrt(2) / 2, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 1, 0, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Intersection xs1 = new Intersection(-Math.sqrt(2) / 2, shape);
@@ -3611,14 +3611,14 @@ public class Main {
 		Shape[] objs = {floor, ball};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 0, -3, Tuple.POINT),
-													  new Tuple(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 0, -3, Coordinate.POINT),
+													  new Coordinate(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -3645,8 +3645,8 @@ public class Main {
 		Shape[] objs = {floor, ball};
 		world.setObjs(objs);
 
-		Tuple rayOrigin = new Tuple(0, 0, -3, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, -3, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Intersection xs1 = new Intersection(Math.sqrt(2), floor);
@@ -3670,8 +3670,8 @@ public class Main {
 		shape2.getMaterial().setTransparency(1);
 		shape2.getMaterial().setRefractiveIndex(1.5);
 
-		Tuple rayOrigin = new Tuple(0, 0, 0.1, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 1, 0, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, 0.1, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 1, 0, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Intersection xs1 = new Intersection(-0.9899, shape);
@@ -3695,8 +3695,8 @@ public class Main {
 		shape.getMaterial().setTransparency(1);
 		shape.getMaterial().setRefractiveIndex(1.5);
 
-		Tuple rayOrigin = new Tuple(0, 0, Math.sqrt(2) / 2, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 1, 0, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, Math.sqrt(2) / 2, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 1, 0, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Intersection xs1 = new Intersection(-Math.sqrt(2) / 2, shape);
@@ -3718,8 +3718,8 @@ public class Main {
 		shape.getMaterial().setTransparency(1);
 		shape.getMaterial().setRefractiveIndex(1.5);
 
-		Tuple rayOrigin = new Tuple(0, 0, -5, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, -5, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Intersection xs1 = new Intersection(4, shape);
@@ -3738,8 +3738,8 @@ public class Main {
 		Shape[] objs = world.getObjs();
 		Shape shape = objs[0];
 
-		Tuple rayOrigin = new Tuple(0, 0, -5, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, -5, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Intersection xs1 = new Intersection(4, shape);
@@ -3754,8 +3754,8 @@ public class Main {
 	}
 
 	public static void refractionTest2() {
-		Tuple rayOrigin = new Tuple(0, 0, -5, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, -5, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Sphere s = Sphere.getGlassSphere();
@@ -3783,8 +3783,8 @@ public class Main {
 		c.setTransformation(Matrix.translation(0, 0, 0.25));
 		c.getMaterial().setRefractiveIndex(2.5);
 
-		Tuple rayOrigin = new Tuple(0, 0, -4, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, -4, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Intersection xs1 = new Intersection(2, a);
@@ -3853,14 +3853,14 @@ public class Main {
 		Shape[] objs = {floor, leftWall, rightWall, middle, right, left};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 1.5, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -3884,8 +3884,8 @@ public class Main {
 				              shape};
 		world.setObjs(newObjects);
 
-		Tuple rayOrigin = new Tuple(0, 0, -3, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, -3, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Intersection i = new Intersection(Math.sqrt(2), shape);
@@ -3907,8 +3907,8 @@ public class Main {
 				              shape};
 		world.setObjs(newObjects);
 
-		Tuple rayOrigin = new Tuple(0, 0, -3, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, -3, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Intersection i = new Intersection(Math.sqrt(2), shape);
@@ -3921,8 +3921,8 @@ public class Main {
 	public static void nonreflectiveTest() {
 		World world = new World();
 
-		Tuple rayOrigin = new Tuple(0, 0, 0, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, 0, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Shape[] objects = world.getObjs();
@@ -3940,8 +3940,8 @@ public class Main {
 	public static void reflectvTest() {
 		Plane shape = new Plane();
 
-		Tuple rayOrigin = new Tuple(0, 1, -1, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 1, -1, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 		Intersection i = new Intersection(Math.sqrt(2), shape);
 		Computation comps = new Computation(i, ray, null);
@@ -4011,14 +4011,14 @@ public class Main {
 		Shape[] objs = {floor, leftWall, rightWall, middle, right, left};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 1.5, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -4033,15 +4033,15 @@ public class Main {
 	public static void patternTest13() {
 		CheckerPattern pattern = new CheckerPattern(Colour.WHITE, Colour.BLACK);
 
-		Colour c = pattern.stripeAt(new Tuple(0, 0, 0, Tuple.POINT));
+		Colour c = pattern.stripeAt(new Coordinate(0, 0, 0, Coordinate.POINT));
 		c.printData();
 		System.out.println("-----------");
 
-		Colour c2 = pattern.stripeAt(new Tuple(0, 0, 0.99, Tuple.POINT));
+		Colour c2 = pattern.stripeAt(new Coordinate(0, 0, 0.99, Coordinate.POINT));
 		c2.printData();
 		System.out.println("-----------");
 
-		Colour c3 = pattern.stripeAt(new Tuple(0, 0, 1.01, Tuple.POINT));
+		Colour c3 = pattern.stripeAt(new Coordinate(0, 0, 1.01, Coordinate.POINT));
 		c3.printData();
 		System.out.println("-----------");
 	}
@@ -4049,15 +4049,15 @@ public class Main {
 	public static void patternTest12() {
 		CheckerPattern pattern = new CheckerPattern(Colour.WHITE, Colour.BLACK);
 
-		Colour c = pattern.stripeAt(new Tuple(0, 0, 0, Tuple.POINT));
+		Colour c = pattern.stripeAt(new Coordinate(0, 0, 0, Coordinate.POINT));
 		c.printData();
 		System.out.println("-----------");
 
-		Colour c2 = pattern.stripeAt(new Tuple(0, 0.99, 0, Tuple.POINT));
+		Colour c2 = pattern.stripeAt(new Coordinate(0, 0.99, 0, Coordinate.POINT));
 		c2.printData();
 		System.out.println("-----------");
 
-		Colour c3 = pattern.stripeAt(new Tuple(0, 1.01, 0, Tuple.POINT));
+		Colour c3 = pattern.stripeAt(new Coordinate(0, 1.01, 0, Coordinate.POINT));
 		c3.printData();
 		System.out.println("-----------");
 	}
@@ -4065,15 +4065,15 @@ public class Main {
 	public static void patternTest11() {
 		CheckerPattern pattern = new CheckerPattern(Colour.WHITE, Colour.BLACK);
 
-		Colour c = pattern.stripeAt(new Tuple(0, 0, 0, Tuple.POINT));
+		Colour c = pattern.stripeAt(new Coordinate(0, 0, 0, Coordinate.POINT));
 		c.printData();
 		System.out.println("-----------");
 
-		Colour c2 = pattern.stripeAt(new Tuple(0.99, 0, 0, Tuple.POINT));
+		Colour c2 = pattern.stripeAt(new Coordinate(0.99, 0, 0, Coordinate.POINT));
 		c2.printData();
 		System.out.println("-----------");
 
-		Colour c3 = pattern.stripeAt(new Tuple(1.01, 0, 0, Tuple.POINT));
+		Colour c3 = pattern.stripeAt(new Coordinate(1.01, 0, 0, Coordinate.POINT));
 		c3.printData();
 		System.out.println("-----------");
 	}
@@ -4081,19 +4081,19 @@ public class Main {
 	public static void patternTest10() {
 		RingPattern pattern = new RingPattern(Colour.WHITE, Colour.BLACK);
 
-		Colour c = pattern.stripeAt(new Tuple(0, 0, 0, Tuple.POINT));
+		Colour c = pattern.stripeAt(new Coordinate(0, 0, 0, Coordinate.POINT));
 		c.printData();
 		System.out.println("-----------");
 
-		Colour c2 = pattern.stripeAt(new Tuple(1, 0, 0, Tuple.POINT));
+		Colour c2 = pattern.stripeAt(new Coordinate(1, 0, 0, Coordinate.POINT));
 		c2.printData();
 		System.out.println("-----------");
 
-		Colour c3 = pattern.stripeAt(new Tuple(0, 0, 1, Tuple.POINT));
+		Colour c3 = pattern.stripeAt(new Coordinate(0, 0, 1, Coordinate.POINT));
 		c3.printData();
 		System.out.println("-----------");
 
-		Colour c4 = pattern.stripeAt(new Tuple(0.708, 0, 0.708, Tuple.POINT));
+		Colour c4 = pattern.stripeAt(new Coordinate(0.708, 0, 0.708, Coordinate.POINT));
 		c4.printData();
 		System.out.println("-----------");
 	}
@@ -4101,19 +4101,19 @@ public class Main {
 	public static void patternTest9() {
 		GradientPattern pattern = new GradientPattern(Colour.WHITE, Colour.BLACK);
 
-		Colour c = pattern.stripeAt(new Tuple(0, 0, 0, Tuple.POINT));
+		Colour c = pattern.stripeAt(new Coordinate(0, 0, 0, Coordinate.POINT));
 		c.printData();
 		System.out.println("-----------");
 
-		Colour c2 = pattern.stripeAt(new Tuple(0.25, 0, 0, Tuple.POINT));
+		Colour c2 = pattern.stripeAt(new Coordinate(0.25, 0, 0, Coordinate.POINT));
 		c2.printData();
 		System.out.println("-----------");
 
-		Colour c3 = pattern.stripeAt(new Tuple(0.5, 0, 0, Tuple.POINT));
+		Colour c3 = pattern.stripeAt(new Coordinate(0.5, 0, 0, Coordinate.POINT));
 		c3.printData();
 		System.out.println("-----------");
 
-		Colour c4 = pattern.stripeAt(new Tuple(0.75, 0, 0, Tuple.POINT));
+		Colour c4 = pattern.stripeAt(new Coordinate(0.75, 0, 0, Coordinate.POINT));
 		c4.printData();
 		System.out.println("-----------");
 	}
@@ -4123,7 +4123,7 @@ public class Main {
 		shape.setTransformation(Matrix.scaling(2, 2, 2));
 
 		StripePattern pattern = new StripePattern();
-		Colour c = pattern.stripeAtObject(shape, new Tuple(2, 3, 4, Tuple.POINT));
+		Colour c = pattern.stripeAtObject(shape, new Coordinate(2, 3, 4, Coordinate.POINT));
 		c.printData();
 	}
 
@@ -4134,7 +4134,7 @@ public class Main {
 		StripePattern pattern = new StripePattern();
 		pattern.setTransformation(Matrix.scaling(0.5, 1, 1));
 
-		Colour c = pattern.stripeAtObject(s, new Tuple(2.5, 0, 0, Tuple.POINT));
+		Colour c = pattern.stripeAtObject(s, new Coordinate(2.5, 0, 0, Coordinate.POINT));
 		c.printData();
 	}
 
@@ -4144,7 +4144,7 @@ public class Main {
 		StripePattern pattern = new StripePattern();
 		pattern.setTransformation(Matrix.scaling(2, 2, 2));
 
-		Colour c = pattern.stripeAtObject(s, new Tuple(1.5, 0, 0, Tuple.POINT));
+		Colour c = pattern.stripeAtObject(s, new Coordinate(1.5, 0, 0, Coordinate.POINT));
 		c.printData();
 	}
 
@@ -4154,7 +4154,7 @@ public class Main {
 
 		StripePattern pattern = new StripePattern();
 
-		Colour c = pattern.stripeAtObject(s, new Tuple(1.5, 0, 0, Tuple.POINT));
+		Colour c = pattern.stripeAtObject(s, new Coordinate(1.5, 0, 0, Coordinate.POINT));
 		c.printData();
 	}
 
@@ -4201,14 +4201,14 @@ public class Main {
 		Shape[] objs = {floor, middle, right, left};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 1.5, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -4259,14 +4259,14 @@ public class Main {
 		Shape[] objs = {floor, middle, right, left};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 1.5, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -4280,14 +4280,14 @@ public class Main {
 
 	public static void patternTest4() {
 		Material material = new Material(1, 0, 0, 200, 0, 0, 1, Colour.WHITE);
-		Tuple eyev = new Tuple(0, 0, -1, Tuple.VECTOR);
-		Tuple normalv = new Tuple(0, 0, -1, Tuple.VECTOR);
-		PointLight light = new PointLight(new Tuple(0, 0, -10, Tuple.POINT), Colour.WHITE);
+		Coordinate eyev = new Coordinate(0, 0, -1, Coordinate.VECTOR);
+		Coordinate normalv = new Coordinate(0, 0, -1, Coordinate.VECTOR);
+		PointLight light = new PointLight(new Coordinate(0, 0, -10, Coordinate.POINT), Colour.WHITE);
 		Sphere s = new Sphere();
 		s.setMaterial(material);
 
-		Colour a = s.lighting(light, new Tuple(0.9, 0, 0), eyev, normalv, false);
-		Colour b = s.lighting(light, new Tuple(1.1, 0, 0), eyev, normalv, false);
+		Colour a = s.lighting(light, new Coordinate(0.9, 0, 0), eyev, normalv, false);
+		Colour b = s.lighting(light, new Coordinate(1.1, 0, 0), eyev, normalv, false);
 
 		a.printData();
 		System.out.println("----------");
@@ -4297,17 +4297,17 @@ public class Main {
 	public static void patternTest3() {
 		StripePattern pattern = new StripePattern();
 
-		pattern.stripeAt(new Tuple(0, 0, 0)).printData();
+		pattern.stripeAt(new Coordinate(0, 0, 0)).printData();
 		System.out.println("--------------");
-		pattern.stripeAt(new Tuple(0.9, 0, 0)).printData();
+		pattern.stripeAt(new Coordinate(0.9, 0, 0)).printData();
 		System.out.println("--------------");
-		pattern.stripeAt(new Tuple(1, 0, 0)).printData();
+		pattern.stripeAt(new Coordinate(1, 0, 0)).printData();
 		System.out.println("--------------");
-		pattern.stripeAt(new Tuple(-0.1, 0, 0)).printData();
+		pattern.stripeAt(new Coordinate(-0.1, 0, 0)).printData();
 		System.out.println("--------------");
-		pattern.stripeAt(new Tuple(-1, 0, 0)).printData();
+		pattern.stripeAt(new Coordinate(-1, 0, 0)).printData();
 		System.out.println("--------------");
-		pattern.stripeAt(new Tuple(-1.1, 0, 0)).printData();
+		pattern.stripeAt(new Coordinate(-1.1, 0, 0)).printData();
 		System.out.println("--------------");
 
 	}
@@ -4315,11 +4315,11 @@ public class Main {
 	public static void patternTest2() {
 		StripePattern pattern = new StripePattern();
 
-		pattern.stripeAt(new Tuple(0, 0, 0)).printData();
+		pattern.stripeAt(new Coordinate(0, 0, 0)).printData();
 		System.out.println("--------------");
-		pattern.stripeAt(new Tuple(0, 0, 1)).printData();
+		pattern.stripeAt(new Coordinate(0, 0, 1)).printData();
 		System.out.println("--------------");
-		pattern.stripeAt(new Tuple(0, 0, 2)).printData();
+		pattern.stripeAt(new Coordinate(0, 0, 2)).printData();
 		System.out.println("--------------");
 
 	}
@@ -4327,11 +4327,11 @@ public class Main {
 	public static void patternTest() {
 		StripePattern pattern = new StripePattern();
 
-		pattern.stripeAt(new Tuple(0, 0, 0)).printData();
+		pattern.stripeAt(new Coordinate(0, 0, 0)).printData();
 		System.out.println("--------------");
-		pattern.stripeAt(new Tuple(0, 1, 0)).printData();
+		pattern.stripeAt(new Coordinate(0, 1, 0)).printData();
 		System.out.println("--------------");
-		pattern.stripeAt(new Tuple(0, 2, 0)).printData();
+		pattern.stripeAt(new Coordinate(0, 2, 0)).printData();
 		System.out.println("--------------");
 
 	}
@@ -4367,14 +4367,14 @@ public class Main {
 		Shape[] objs = {floor, middle, right, left};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 1.5, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -4401,14 +4401,14 @@ public class Main {
 		Shape[] objs = {floor, s1, s2};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(1, 20, 0, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(1, 20, 0, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 1.5, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -4423,8 +4423,8 @@ public class Main {
 	public static void planeIntersectTest4() {
 		Plane p = new Plane();
 
-		Tuple rayOrigin = new Tuple(0, -1, 0, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 1, 0, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, -1, 0, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 1, 0, Coordinate.VECTOR);
 
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
@@ -4444,8 +4444,8 @@ public class Main {
 	public static void planeIntersectTest3() {
 		Plane p = new Plane();
 
-		Tuple rayOrigin = new Tuple(0, 1, 0, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, -1, 0, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 1, 0, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, -1, 0, Coordinate.VECTOR);
 
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
@@ -4466,8 +4466,8 @@ public class Main {
 		System.out.println("TEST 2");
 		Plane p = new Plane();
 
-		Tuple rayOrigin = new Tuple(0, 0, 0, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, 0, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
@@ -4488,8 +4488,8 @@ public class Main {
 		System.out.println("TEST 1");
 		Plane p = new Plane();
 
-		Tuple rayOrigin = new Tuple(0, 10, 0, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 10, 0, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
@@ -4509,9 +4509,9 @@ public class Main {
 	public static void localNormalAtFunctionPlaneTest() {
 		Plane p = new Plane();
 
-		Tuple n1 = p.localNormalAt(new Tuple(0, 0, 0, Tuple.POINT), null);
-		Tuple n2 = p.localNormalAt(new Tuple(10, 0, -10, Tuple.POINT), null);
-		Tuple n3 = p.localNormalAt(new Tuple(-5, 0, 150, Tuple.POINT), null);
+		Coordinate n1 = p.localNormalAt(new Coordinate(0, 0, 0, Coordinate.POINT), null);
+		Coordinate n2 = p.localNormalAt(new Coordinate(10, 0, -10, Coordinate.POINT), null);
+		Coordinate n3 = p.localNormalAt(new Coordinate(-5, 0, 150, Coordinate.POINT), null);
 
 		n1.printData();
 		System.out.println("--------");
@@ -4525,20 +4525,20 @@ public class Main {
 		Sphere s = new Sphere();
 		Matrix m = Matrix.scaling(1, 0.5, 1).matrixMultiplication(Matrix.rotationZ(Math.PI / 5));
 		s.setTransformation(m);
-		Tuple n = s.normalAt(new Tuple(0, Math.sqrt(2) / 2, -Math.sqrt(2) / 2, Tuple.POINT), null);
+		Coordinate n = s.normalAt(new Coordinate(0, Math.sqrt(2) / 2, -Math.sqrt(2) / 2, Coordinate.POINT), null);
 		n.printData();
 	}
 
 	public static void wtfTest() {
 		Sphere s = new Sphere();
 		s.setTransformation(Matrix.translation(0, 1, 0));
-		Tuple n = s.normalAt(new Tuple(0, 1.70711, -0.70711), null);
+		Coordinate n = s.normalAt(new Coordinate(0, 1.70711, -0.70711), null);
 		n.printData();
 	}
 
 	public static void shadowRenderTest() {
 		World world = new World();
-		Tuple lightOrigin = new Tuple(0, 0, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(0, 0, -10, Coordinate.POINT);
 		Colour lightColour = new Colour(1, 1, 1);
 		PointLight light = new PointLight(lightOrigin, lightColour);
 		world.setLight(light);
@@ -4551,8 +4551,8 @@ public class Main {
 		Sphere[] objs = {s1, s2};
 		world.setObjs(objs);
 
-		Tuple rayOrigin = new Tuple(0, 0, 5, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, 5, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Intersection i = new Intersection(4, s2);
@@ -4563,34 +4563,34 @@ public class Main {
 
 	public static void shadowTest4() {
 		World world = new World();
-		Tuple p = new Tuple(-2, 2, -2, Tuple.POINT);
+		Coordinate p = new Coordinate(-2, 2, -2, Coordinate.POINT);
 		System.out.println(world.isShadowed(p));
 	}
 
 	public static void shadowTest3() {
 		World world = new World();
-		Tuple p = new Tuple(-20, 20, -20, Tuple.POINT);
+		Coordinate p = new Coordinate(-20, 20, -20, Coordinate.POINT);
 		System.out.println(world.isShadowed(p));
 	}
 
 	public static void shadowTest2() {
 		World world = new World();
-		Tuple p = new Tuple(10, -10, 10, Tuple.POINT);
+		Coordinate p = new Coordinate(10, -10, 10, Coordinate.POINT);
 		System.out.println(world.isShadowed(p));
 	}
 
 	public static void shadowTest() {
 		World world = new World();
-		Tuple p = new Tuple(0, 10, 0, Tuple.POINT);
+		Coordinate p = new Coordinate(0, 10, 0, Coordinate.POINT);
 		System.out.println(world.isShadowed(p));
 	}
 
 	public static void pointInShadowTest() {
-		Tuple origin = new Tuple(0, 0, 0, Tuple.POINT);
+		Coordinate origin = new Coordinate(0, 0, 0, Coordinate.POINT);
 		Sphere s = new Sphere();
-		Tuple eyev = new Tuple(0, 0, -1, Tuple.VECTOR);
-		Tuple normalv = new Tuple(0, 0, -1, Tuple.VECTOR);
-		PointLight light = new PointLight(new Tuple(0, 0, -10, Tuple.POINT), new Colour(1, 1, 1));
+		Coordinate eyev = new Coordinate(0, 0, -1, Coordinate.VECTOR);
+		Coordinate normalv = new Coordinate(0, 0, -1, Coordinate.VECTOR);
+		PointLight light = new PointLight(new Coordinate(0, 0, -10, Coordinate.POINT), new Colour(1, 1, 1));
 		boolean inShadow = true;
 
 		Colour result = s.lighting(light, origin, eyev, normalv, inShadow);
@@ -4648,14 +4648,14 @@ public class Main {
 		Sphere[] objs = {floor, rightWall, leftWall, middle, right, left};
 		world.setObjs(objs);
 
-		Tuple lightOrigin = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		world.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Tuple(0, 1.5, -5, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.POINT),
-													  new Tuple(0, 1, 0, Tuple.VECTOR)));
+		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.POINT),
+													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
 		Canvas canvas = camera.render(world);
 		try {
@@ -4671,9 +4671,9 @@ public class Main {
 		World world = new World();
 		Camera camera = new Camera(11, 11, Math.PI / 2);
 
-		Tuple from = new Tuple(0, 0, -5, Tuple.POINT);
-		Tuple to = new Tuple(0, 0, 0, Tuple.POINT);
-		Tuple up = new Tuple(0, 1, 0, Tuple.VECTOR);
+		Coordinate from = new Coordinate(0, 0, -5, Coordinate.POINT);
+		Coordinate to = new Coordinate(0, 0, 0, Coordinate.POINT);
+		Coordinate up = new Coordinate(0, 1, 0, Coordinate.VECTOR);
 
 		camera.setTransform(Matrix.viewTransformation(from, to, up));
 
@@ -4720,9 +4720,9 @@ public class Main {
 	}
 
 	public static void orientationTest4() {
-		Tuple from = new Tuple(1, 3, 2, Tuple.POINT);
-		Tuple to = new Tuple(4, -2, 8, Tuple.POINT);
-		Tuple up = new Tuple(1, 1, 0, Tuple.POINT);
+		Coordinate from = new Coordinate(1, 3, 2, Coordinate.POINT);
+		Coordinate to = new Coordinate(4, -2, 8, Coordinate.POINT);
+		Coordinate up = new Coordinate(1, 1, 0, Coordinate.POINT);
 
 		Matrix v = Matrix.viewTransformation(from, to, up);
 
@@ -4730,9 +4730,9 @@ public class Main {
 	}
 
 	public static void orientationTest3() {
-		Tuple from = new Tuple(0, 0, 8, Tuple.POINT);
-		Tuple to = new Tuple(0, 0, 0, Tuple.POINT);
-		Tuple up = new Tuple(0, 1, 0, Tuple.POINT);
+		Coordinate from = new Coordinate(0, 0, 8, Coordinate.POINT);
+		Coordinate to = new Coordinate(0, 0, 0, Coordinate.POINT);
+		Coordinate up = new Coordinate(0, 1, 0, Coordinate.POINT);
 
 		Matrix v = Matrix.viewTransformation(from, to, up);
 
@@ -4745,9 +4745,9 @@ public class Main {
 	}
 
 	public static void orientationTest2() {
-		Tuple from = new Tuple(0, 0, 0, Tuple.POINT);
-		Tuple to = new Tuple(0, 0, 1, Tuple.POINT);
-		Tuple up = new Tuple(0, 1, 0, Tuple.POINT);
+		Coordinate from = new Coordinate(0, 0, 0, Coordinate.POINT);
+		Coordinate to = new Coordinate(0, 0, 1, Coordinate.POINT);
+		Coordinate up = new Coordinate(0, 1, 0, Coordinate.POINT);
 
 		Matrix v = Matrix.viewTransformation(from, to, up);
 
@@ -4760,9 +4760,9 @@ public class Main {
 	}
 
 	public static void orientationTest() {
-		Tuple from = new Tuple(0, 0, 0, Tuple.POINT);
-		Tuple to = new Tuple(0, 0, -1, Tuple.POINT);
-		Tuple up = new Tuple(0, 1, 0, Tuple.POINT);
+		Coordinate from = new Coordinate(0, 0, 0, Coordinate.POINT);
+		Coordinate to = new Coordinate(0, 0, -1, Coordinate.POINT);
+		Coordinate up = new Coordinate(0, 1, 0, Coordinate.POINT);
 
 		Matrix v = Matrix.viewTransformation(from, to, up);
 
@@ -4776,33 +4776,11 @@ public class Main {
 		i.printData();
 	}
 
-	/*public static void colourAtTest2() {
-		World world = new World();
-
-		Sphere[] spheres = world.getObjs();
-		Sphere outer = spheres[0];
-		outer.getMaterial().setAmbient(1);
-		Sphere inner = spheres[1];
-		inner.getMaterial().setAmbient(1);
-
-		Tuple rayOrigin = new Tuple(0, 0, 0.75, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, -1, Tuple.VECTOR);
-		Ray ray = new Ray(rayOrigin, rayDirection);
-
-		Colour colour = world.colourAt(ray);
-
-		colour.printData();
-
-		System.out.println("-------------");
-
-		inner.getMaterial().getColour().printData();
-	}*/
-
 	public static void colourAtTest() {
 		World world = new World();
 
-		Tuple rayOrigin = new Tuple(0, 0, -5, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, -5, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Colour colour = world.colourAt(ray, Computation.RECURSIVE_CUTOFF);
@@ -4813,8 +4791,8 @@ public class Main {
 	public static void rayMissesTest() {
 		World world = new World();
 
-		Tuple rayOrigin = new Tuple(0, 0, -5, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 1, 0, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, -5, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 1, 0, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
 		Colour colour = world.colourAt(ray, Computation.RECURSIVE_CUTOFF);
@@ -4822,48 +4800,9 @@ public class Main {
 		colour.printData();
 	}
 
-	/*public static void shadingIntersectionTest2() {
-		World world = new World();
-		PointLight light = new PointLight(new Tuple(0, 0.25, 0, Tuple.POINT),
-										  new Colour(1, 1, 1));
-		world.setLight(light);
-
-		Tuple rayOrigin = new Tuple(0, 0, 0, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
-		Ray r = new Ray(rayOrigin, rayDirection);
-
-		Sphere[] spheres = world.getObjs();
-		Sphere shape = spheres[1];
-
-		Intersection i = new Intersection(0.5, shape);
-
-		Computation comps = new Computation(i, r);
-
-		Colour c = comps.shadeHit(world);
-		c.printData();
-	}*/
-
-	/*public static void shadingIntersectionTest() {
-		World world = new World();
-
-		Tuple rayOrigin = new Tuple(0, 0, -5, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
-		Ray r = new Ray(rayOrigin, rayDirection);
-
-		Sphere[] spheres = world.getObjs();
-		Sphere shape = spheres[0];
-
-		Intersection i = new Intersection(4, shape);
-
-		Computation comps = new Computation(i, r);
-
-		Colour c = comps.shadeHit(world);
-		c.printData();
-	}*/
-
 	public static void isInsideTest() {
-		Tuple point = new Tuple(0, 0, -5, Tuple.POINT);
-		Tuple vector = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate point = new Coordinate(0, 0, -5, Coordinate.POINT);
+		Coordinate vector = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 
 		Ray r = new Ray(point, vector);
 
@@ -4877,8 +4816,8 @@ public class Main {
 	}
 
 	public static void isInsideTest2() {
-		Tuple point = new Tuple(0, 0, 0, Tuple.POINT);
-		Tuple vector = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate point = new Coordinate(0, 0, 0, Coordinate.POINT);
+		Coordinate vector = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 
 		Ray r = new Ray(point, vector);
 
@@ -4893,8 +4832,8 @@ public class Main {
 
 	public static void intersectWorldTest() {
 		World world = new World();
-		Tuple rayOrigin = new Tuple(0, 0, -5, Tuple.POINT);
-		Tuple rayDirection = new Tuple(0, 0, 1, Tuple.VECTOR);
+		Coordinate rayOrigin = new Coordinate(0, 0, -5, Coordinate.POINT);
+		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
@@ -4907,7 +4846,7 @@ public class Main {
 	}
 
 	public static void lightingTest2() {
-		Tuple rayOrigin = new Tuple(0, 0, -5, Tuple.POINT);
+		Coordinate rayOrigin = new Coordinate(0, 0, -5, Coordinate.POINT);
 
 		double wallZ = 10;
 		double wallSize = 7;
@@ -4928,7 +4867,7 @@ public class Main {
 		shape.setTransformation(scaling);
 		shape.setColour(new Colour(1, 0.2, 1));
 
-		Tuple lightPosition = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightPosition = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour lightColour = new Colour(1, 1, 1);
 		PointLight light = new PointLight(lightPosition, lightColour);
 
@@ -4938,8 +4877,8 @@ public class Main {
 			for(int x = 0; x < canvasPixels; x++) {
 				double worldX = -half + (pixelSize * x);
 
-				Tuple position = new Tuple(worldX, worldY, wallZ, Tuple.POINT);
-				Tuple newPosition = position.subtractTuples(rayOrigin).normalize();
+				Coordinate position = new Coordinate(worldX, worldY, wallZ, Coordinate.POINT);
+				Coordinate newPosition = position.subtractCoordinate(rayOrigin).normalize();
 
 				Ray r = new Ray(rayOrigin, newPosition);
 				Intersection[] xs = shape.intersect(r);
@@ -4947,9 +4886,9 @@ public class Main {
 				if(xs != null) {
 					Intersection hitPoint = Intersection.hit(xs);
 					if(hitPoint != null) {
-						Tuple point = r.position(hitPoint.getT());
-						Tuple normal = shape.normalAt(point, null);
-						Tuple eye = r.getDirection().negateTuple();
+						Coordinate point = r.position(hitPoint.getT());
+						Coordinate normal = shape.normalAt(point, null);
+						Coordinate eye = r.getDirection().negateCoordinate();
 
 						Colour finalColour = shape.lighting(light, point, eye, normal, true);
 
@@ -4973,13 +4912,13 @@ public class Main {
 	}
 
 	public static void normaliseTest() {
-		Tuple t = new Tuple(2,3,4,Tuple.VECTOR);
+		Coordinate t = new Coordinate(2,3,4,Coordinate.VECTOR);
 		t.normalize();
 		t.printData();
 	}
 
 	public static void lightingTest() {
-		Tuple rayOrigin = new Tuple(0, 0, -5, Tuple.POINT);
+		Coordinate rayOrigin = new Coordinate(0, 0, -5, Coordinate.POINT);
 
 		double wallZ = 10;
 		double wallSize = 7;
@@ -4995,7 +4934,7 @@ public class Main {
 		Sphere shape = new Sphere();
 		shape.setColour(new Colour(1, 0.2, 1));
 
-		Tuple lightPosition = new Tuple(-10, 10, -10, Tuple.POINT);
+		Coordinate lightPosition = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour lightColour = new Colour(1, 1, 1);
 		PointLight light = new PointLight(lightPosition, lightColour);
 
@@ -5005,8 +4944,8 @@ public class Main {
 			for(int x = 0; x < canvasPixels; x++) {
 				double worldX = -half + (pixelSize * x);
 
-				Tuple position = new Tuple(worldX, worldY, wallZ, Tuple.POINT);
-				Tuple newPosition = position.subtractTuples(rayOrigin).normalize();
+				Coordinate position = new Coordinate(worldX, worldY, wallZ, Coordinate.POINT);
+				Coordinate newPosition = position.subtractCoordinate(rayOrigin).normalize();
 
 				Ray r = new Ray(rayOrigin, newPosition);
 				Intersection[] xs = shape.intersect(r);
@@ -5014,9 +4953,9 @@ public class Main {
 				if(xs != null) {
 					Intersection hitPoint = Intersection.hit(xs);
 					if(hitPoint != null) {
-						Tuple point = r.position(hitPoint.getT());
-						Tuple normal = shape.normalAt(point, null);
-						Tuple eye = r.getDirection().negateTuple();
+						Coordinate point = r.position(hitPoint.getT());
+						Coordinate normal = shape.normalAt(point, null);
+						Coordinate eye = r.getDirection().negateCoordinate();
 
 						Colour finalColour = shape.lighting(light, point, eye, normal, true);
 
@@ -5042,11 +4981,11 @@ public class Main {
 	public static void lightingTestEyeBetweenLightAndSurfaces() {
 		System.out.println("Lighting Test - Eye between the light and surface");
 		Sphere s = new Sphere();
-		Tuple position = new Tuple(0, 0, 0, Tuple.POINT);
+		Coordinate position = new Coordinate(0, 0, 0, Coordinate.POINT);
 
-		Tuple eyev = new Tuple(0, 0, -1, Tuple.VECTOR);
-		Tuple normalv = new Tuple(0, 0, -1, Tuple.VECTOR);
-		Tuple lightPosition = new Tuple(0, 0, -10, Tuple.POINT);
+		Coordinate eyev = new Coordinate(0, 0, -1, Coordinate.VECTOR);
+		Coordinate normalv = new Coordinate(0, 0, -1, Coordinate.VECTOR);
+		Coordinate lightPosition = new Coordinate(0, 0, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		PointLight light = new PointLight(lightPosition, white);
 		Colour result = s.lighting(light, position, eyev, normalv, true);
@@ -5056,11 +4995,11 @@ public class Main {
 	public static void lightingTestEye45DegreesOffNormal() {
 		System.out.println("Lighting Test - Eye at 45 degrees off normal");
 		Sphere s = new Sphere();
-		Tuple position = new Tuple(0, 0, 0, Tuple.POINT);
+		Coordinate position = new Coordinate(0, 0, 0, Coordinate.POINT);
 
-		Tuple eyev = new Tuple(0, Math.sqrt(2) / 2, -Math.sqrt(2) / 2, Tuple.VECTOR);
-		Tuple normalv = new Tuple(0, 0, -1, Tuple.VECTOR);
-		Tuple lightPosition = new Tuple(0, 0, -10, Tuple.POINT);
+		Coordinate eyev = new Coordinate(0, Math.sqrt(2) / 2, -Math.sqrt(2) / 2, Coordinate.VECTOR);
+		Coordinate normalv = new Coordinate(0, 0, -1, Coordinate.VECTOR);
+		Coordinate lightPosition = new Coordinate(0, 0, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		PointLight light = new PointLight(lightPosition, white);
 		Colour result = s.lighting(light, position, eyev, normalv, true);
@@ -5070,11 +5009,11 @@ public class Main {
 	public static void lightingTestLight45DegreesOffNormal() {
 		System.out.println("Lighting Test - Light at 45 degrees off normal");
 		Sphere s = new Sphere();
-		Tuple position = new Tuple(0, 0, 0, Tuple.POINT);
+		Coordinate position = new Coordinate(0, 0, 0, Coordinate.POINT);
 
-		Tuple eyev = new Tuple(0, 0, -1, Tuple.VECTOR);
-		Tuple normalv = new Tuple(0, 0, -1, Tuple.VECTOR);
-		Tuple lightPosition = new Tuple(0, 10, -10, Tuple.POINT);
+		Coordinate eyev = new Coordinate(0, 0, -1, Coordinate.VECTOR);
+		Coordinate normalv = new Coordinate(0, 0, -1, Coordinate.VECTOR);
+		Coordinate lightPosition = new Coordinate(0, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		PointLight light = new PointLight(lightPosition, white);
 		Colour result = s.lighting(light, position, eyev, normalv, true);
@@ -5084,11 +5023,11 @@ public class Main {
 	public static void lightingTestEyeInPathOfReflectionVector() {
 		System.out.println("Lighting Test - Eye in path of reflection vector");
 		Sphere s = new Sphere();
-		Tuple position = new Tuple(0, 0, 0, Tuple.POINT);
+		Coordinate position = new Coordinate(0, 0, 0, Coordinate.POINT);
 
-		Tuple eyev = new Tuple(0, -Math.sqrt(2) / 2, -Math.sqrt(2) / 2, Tuple.VECTOR);
-		Tuple normalv = new Tuple(0, 0, -1, Tuple.VECTOR);
-		Tuple lightPosition = new Tuple(0, 10, -10, Tuple.POINT);
+		Coordinate eyev = new Coordinate(0, -Math.sqrt(2) / 2, -Math.sqrt(2) / 2, Coordinate.VECTOR);
+		Coordinate normalv = new Coordinate(0, 0, -1, Coordinate.VECTOR);
+		Coordinate lightPosition = new Coordinate(0, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		PointLight light = new PointLight(lightPosition, white);
 		Colour result = s.lighting(light, position, eyev, normalv, true);
@@ -5098,11 +5037,11 @@ public class Main {
 	public static void lightingTestLightBehindObject() {
 		System.out.println("Lighting Test - Light behind object");
 		Sphere s = new Sphere();
-		Tuple position = new Tuple(0, 0, 0, Tuple.POINT);
+		Coordinate position = new Coordinate(0, 0, 0, Coordinate.POINT);
 
-		Tuple eyev = new Tuple(0, 0, -1, Tuple.VECTOR);
-		Tuple normalv = new Tuple(0, 0, -1, Tuple.VECTOR);
-		Tuple lightPosition = new Tuple(0, 0, 10, Tuple.POINT);
+		Coordinate eyev = new Coordinate(0, 0, -1, Coordinate.VECTOR);
+		Coordinate normalv = new Coordinate(0, 0, -1, Coordinate.VECTOR);
+		Coordinate lightPosition = new Coordinate(0, 0, 10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		PointLight light = new PointLight(lightPosition, white);
 		Colour result = s.lighting(light, position, eyev, normalv, true);
@@ -5113,16 +5052,16 @@ public class Main {
 		Sphere s = new Sphere();
 		Matrix m = Matrix.scaling(1, 0.5, 1).matrixMultiplication(Matrix.rotationZ(Math.PI / 5));
 		s.setTransformation(m);
-		Tuple p = new Tuple(0, Math.sqrt(2) / 2, -Math.sqrt(2) / 2, Tuple.POINT);
-		Tuple n = s.normalAt(p, null);
+		Coordinate p = new Coordinate(0, Math.sqrt(2) / 2, -Math.sqrt(2) / 2, Coordinate.POINT);
+		Coordinate n = s.normalAt(p, null);
 
 		n.printData();
 	}
 
 	public static void normalVectorTest() {
 		Sphere s = new Sphere();
-		Tuple p = new Tuple(Math.sqrt(3) / 3, Math.sqrt(3) / 3, Math.sqrt(3) / 3, Tuple.POINT);
-		Tuple n = s.normalAt(p, null);
+		Coordinate p = new Coordinate(Math.sqrt(3) / 3, Math.sqrt(3) / 3, Math.sqrt(3) / 3, Coordinate.POINT);
+		Coordinate n = s.normalAt(p, null);
 
 		n.printData();
 	}
@@ -5131,14 +5070,14 @@ public class Main {
 		Sphere s = new Sphere();
 		Matrix m = Matrix.translation(0, 1, 0);
 		s.setTransformation(m);
-		Tuple p = new Tuple(0, 1.70711, -0.70711, Tuple.POINT);
-		Tuple n = s.normalAt(p, null);
+		Coordinate p = new Coordinate(0, 1.70711, -0.70711, Coordinate.POINT);
+		Coordinate n = s.normalAt(p, null);
 
 		n.printData();
 	}
 
 	public static void raySphereIntersectionTest() {
-		Tuple rayOrigin = new Tuple(0, 0, -5, Tuple.POINT);
+		Coordinate rayOrigin = new Coordinate(0, 0, -5, Coordinate.POINT);
 
 		double wallZ = 10;
 		double wallSize = 7;
@@ -5159,8 +5098,8 @@ public class Main {
 			for(int x = 0; x < canvasPixels; x++) {
 				double worldX = -half + (pixelSize * x);
 
-				Tuple position = new Tuple(worldX, worldY, wallZ, Tuple.POINT);
-				Tuple newPosition = position.subtractTuples(rayOrigin).normalize();
+				Coordinate position = new Coordinate(worldX, worldY, wallZ, Coordinate.POINT);
+				Coordinate newPosition = position.subtractCoordinate(rayOrigin).normalize();
 
 				Ray r = new Ray(rayOrigin, newPosition);
 				Intersection[] xs = shape.intersect(r);
@@ -5181,7 +5120,7 @@ public class Main {
 	}
 
 	public static void raySphereIntersectionWithScalingTest() {
-		Tuple rayOrigin = new Tuple(0, 0, -5, Tuple.POINT);
+		Coordinate rayOrigin = new Coordinate(0, 0, -5, Coordinate.POINT);
 
 		double wallZ = 10;
 		double wallSize = 7;
@@ -5205,8 +5144,8 @@ public class Main {
 			for(int x = 0; x < canvasPixels; x++) {
 				double worldX = -half + (pixelSize * x);
 
-				Tuple position = new Tuple(worldX, worldY, wallZ, Tuple.POINT);
-				Tuple newPosition = position.subtractTuples(rayOrigin).normalize();
+				Coordinate position = new Coordinate(worldX, worldY, wallZ, Coordinate.POINT);
+				Coordinate newPosition = position.subtractCoordinate(rayOrigin).normalize();
 
 				Ray r = new Ray(rayOrigin, newPosition);
 				Intersection[] xs = shape.intersect(r);

@@ -85,7 +85,7 @@ public class Matrix {
 	 * @param t the Tuple.
 	 * @return the resulting Tuple.
 	 */
-	public Tuple tupleMultiplication(Tuple t) {
+	public Coordinate coordinateMultiplication(Coordinate t) {
 		double results[] = {0, 0, 0, 0};
 		double values[] = {t.getX(), t.getY(), t.getZ(), t.getType()};
 		
@@ -99,9 +99,9 @@ public class Matrix {
 			results[i] = sum;
 		}
 		
-		Tuple newTuple = new Tuple(results[0], results[1], results[2], (int)results[3]);
+		Coordinate newCoordinate = new Coordinate(results[0], results[1], results[2], (int)results[3]);
 		
-		return newTuple;
+		return newCoordinate;
 	}
 	
 	/**
@@ -456,11 +456,11 @@ public class Matrix {
 	 * @param up the up vector of the camera.
 	 * @return the camera transformation matrix.
 	 */
-	public static Matrix viewTransformation(Tuple from, Tuple to, Tuple up) {
-		Tuple forward = to.subtractTuples(from).normalize();
-		Tuple upn = up.normalize();
-		Tuple left = forward.crossProduct(upn);
-		Tuple trueUp = left.crossProduct(forward);
+	public static Matrix viewTransformation(Coordinate cameraPosition, Coordinate cameraDirection, Coordinate up) {
+		Coordinate forward = cameraDirection.subtractCoordinate(cameraPosition).normalize();
+		Coordinate upn = up.normalize();
+		Coordinate left = forward.crossProduct(upn);
+		Coordinate trueUp = left.crossProduct(forward);
 		
 		Matrix orientation = new Matrix(4);
 		
@@ -471,7 +471,9 @@ public class Matrix {
 		
 		orientation.setMatrix(orientationGrid);
 		
-		return orientation.matrixMultiplication(Matrix.translation(-from.getX(), -from.getY(), -from.getZ()));
+		return orientation.matrixMultiplication(Matrix.translation(-cameraPosition.getX(), 
+				                                                   -cameraPosition.getY(), 
+				                                                   -cameraPosition.getZ()));
 	}
 	
 	/**

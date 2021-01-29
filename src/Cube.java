@@ -7,8 +7,8 @@ public class Cube extends Shape{
 	
 	@Override
 	public BoundingBox getBounds() {
-		Tuple min = new Tuple(-1, -1, -1, Tuple.POINT);
-		Tuple max = new Tuple(1, 1, 1, Tuple.POINT);
+		Coordinate min = new Coordinate(-1, -1, -1, Coordinate.POINT);
+		Coordinate max = new Coordinate(1, 1, 1, Coordinate.POINT);
 		BoundingBox box = new BoundingBox(min, max, null);
 		
 		return box;
@@ -49,17 +49,17 @@ public class Cube extends Shape{
 	}
 
 	@Override
-	public Tuple localNormalAt(Tuple p, Intersection hit) {
+	public Coordinate localNormalAt(Coordinate p, Intersection hit) {
 		double temp = Math.max(Math.abs(p.getX()), Math.abs(p.getY()));
 		double maxc = Math.max(temp, Math.abs(p.getZ()));
 		
 		if(maxc == Math.abs(p.getX())) {
-			return new Tuple(p.getX(), 0, 0, Tuple.VECTOR);
+			return new Coordinate(p.getX(), 0, 0, Coordinate.VECTOR);
 		} else if(maxc == Math.abs(p.getY())) {
-			return new Tuple(0, p.getY(), 0, Tuple.VECTOR);
+			return new Coordinate(0, p.getY(), 0, Coordinate.VECTOR);
 		}
 		
-		return new Tuple(0, 0, p.getZ(), Tuple.VECTOR);
+		return new Coordinate(0, 0, p.getZ(), Coordinate.VECTOR);
 	}
 	
 	@Override

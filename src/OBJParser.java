@@ -6,19 +6,19 @@ import java.util.Locale;
 
 public class OBJParser {
 	private File file;
-	private ArrayList<Tuple> vertices;
+	private ArrayList<Coordinate> vertices;
 	private ArrayList<Shape> faces;
 	private ArrayList<Group> groups;
-	private ArrayList<Tuple> normals;
+	private ArrayList<Coordinate> normals;
 	private Group masterGroup;
 	private int type;
 	
 	public OBJParser(File file) {
 		this.file = file;
-		this.vertices = new ArrayList<Tuple>();
+		this.vertices = new ArrayList<Coordinate>();
 		this.faces = new ArrayList<Shape>();
 		this.groups = new ArrayList<Group>();
-		this.normals = new ArrayList<Tuple>();
+		this.normals = new ArrayList<Coordinate>();
 		this.masterGroup = new Group();
 		this.parse();
 		
@@ -31,8 +31,8 @@ public class OBJParser {
 	 * This method turns the normals array list into an array
 	 * @return
 	 */
-	public Tuple[] getNormals() {
-		Tuple[] result = new Tuple[this.normals.size() + 1];
+	public Coordinate[] getNormals() {
+		Coordinate[] result = new Coordinate[this.normals.size() + 1];
 		
 		//first element is null because count in the file starts from 1
 		result[0] = null;
@@ -68,7 +68,7 @@ public class OBJParser {
 				double p2 = in.nextDouble();
 				double p3 = in.nextDouble();
 				
-				Tuple v = new Tuple(p1, p2, p3, Tuple.POINT);
+				Coordinate v = new Coordinate(p1, p2, p3, Coordinate.POINT);
 				
 				//the vertex is added to the vertices list
 				this.vertices.add(v);
@@ -78,8 +78,8 @@ public class OBJParser {
 			//the program has encountered face information (usually a triangle, but it could be another polygon)
 			} else if(current.equals("f")) {
 				
-				ArrayList<Tuple> vList = new ArrayList<Tuple>();
-				ArrayList<Tuple> nList = new ArrayList<Tuple>();
+				ArrayList<Coordinate> vList = new ArrayList<Coordinate>();
+				ArrayList<Coordinate> nList = new ArrayList<Coordinate>();
 				
 				if(this.type == 0) {					
 					while(in.hasNextInt()) {
@@ -102,7 +102,7 @@ public class OBJParser {
 						double temp = Math.max(sx, sy);
 						double maxValue = Math.max(temp, sz) / 2;
 						
-						Tuple currentPoint = this.vertices.get(i);
+						Coordinate currentPoint = this.vertices.get(i);
 						
 						currentPoint.setX((currentPoint.getX() - (finalBox.getMin().getX() + sx / 2)) / maxValue);
 						currentPoint.setY((currentPoint.getY() - (finalBox.getMin().getY() + sx / 2)) / maxValue);
@@ -200,7 +200,7 @@ public class OBJParser {
 		    	double n2 = in.nextDouble();
 		    	double n3 = in.nextDouble();
 		    	
-		    	Tuple n = new Tuple(n1, n2, n3, Tuple.VECTOR);
+		    	Coordinate n = new Coordinate(n1, n2, n3, Coordinate.VECTOR);
 		    	
 		    	this.normals.add(n);
 		    	
@@ -223,8 +223,8 @@ public class OBJParser {
 		}
 	}
 
-	public Tuple[] getVertices() {
-		Tuple[] vl = new Tuple[this.vertices.size() + 1];
+	public Coordinate[] getVertices() {
+		Coordinate[] vl = new Coordinate[this.vertices.size() + 1];
 		vl[0] = null;
 		
 		for(int i = 1; i < this.vertices.size() + 1; i++) {
@@ -276,7 +276,7 @@ public class OBJParser {
 	 * @param vertices the list of vertices of the polygon
 	 * @return a list of triangles forming the polygon
 	 */
-	private ArrayList<Triangle> fanTriangulation(ArrayList<Tuple> vertices){
+	private ArrayList<Triangle> fanTriangulation(ArrayList<Coordinate> vertices){
 		ArrayList<Triangle> result = new ArrayList<Triangle>();
 		
 		for(int i = 1; i < vertices.size() - 1; i++) {
@@ -287,7 +287,7 @@ public class OBJParser {
 		return result;
 	}
 	
-	private ArrayList<SmoothTriangle> fanTriangulation(ArrayList<Tuple> vertices, ArrayList<Tuple> normals){
+	private ArrayList<SmoothTriangle> fanTriangulation(ArrayList<Coordinate> vertices, ArrayList<Coordinate> normals){
 		ArrayList<SmoothTriangle> result = new ArrayList<SmoothTriangle>();
 		
 		for(int i = 1; i < vertices.size() - 1; i++) {

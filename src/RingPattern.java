@@ -10,7 +10,7 @@ public class RingPattern extends Pattern{
 	}
 
 	@Override
-	public Colour stripeAt(Tuple point) {
+	public Colour stripeAt(Coordinate point) {
 		Colour result = (Math.floor(Math.sqrt(Math.pow(point.getX(), 2) + Math.pow(point.getZ(), 2))) % 2 == 0) ? this.colourA : this.colourB;
 		return result;
 	}

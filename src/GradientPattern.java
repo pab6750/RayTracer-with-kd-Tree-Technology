@@ -10,7 +10,7 @@ public class GradientPattern extends Pattern{
 	}
 	
 	@Override
-	public Colour stripeAt(Tuple point) {
+	public Colour stripeAt(Coordinate point) {
 		Colour distance = this.colourB.subtractColours(this.colourA);
 		double fraction = point.getX() - Math.floor(point.getX());
 		Colour dividedDistance = distance.scalarMultiplication(fraction);

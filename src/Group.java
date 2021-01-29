@@ -103,7 +103,7 @@ public class Group extends Shape{
 
 	//never call this function
 	@Override
-	public Tuple localNormalAt(Tuple p, Intersection hit) throws NullPointerException{
+	public Coordinate localNormalAt(Coordinate p, Intersection hit) throws NullPointerException{
 		
 		return null;
 	}

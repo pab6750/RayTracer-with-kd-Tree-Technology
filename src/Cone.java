@@ -31,8 +31,8 @@ public class Cone extends Shape{
 		double b = Math.abs(this.maximum);
 		double limit = Math.max(a, b);
 		
-		Tuple min = new Tuple(-limit, this.minimum, -limit, Tuple.POINT);
-		Tuple max = new Tuple( limit, this.maximum,  limit, Tuple.POINT);
+		Coordinate min = new Coordinate(-limit, this.minimum, -limit, Coordinate.POINT);
+		Coordinate max = new Coordinate( limit, this.maximum,  limit, Coordinate.POINT);
 		
 		BoundingBox box = new BoundingBox(min, max, null);
 		
@@ -131,7 +131,7 @@ public class Cone extends Shape{
 	}
 
 	@Override
-	public Tuple localNormalAt(Tuple p, Intersection hit) {
+	public Coordinate localNormalAt(Coordinate p, Intersection hit) {
 		double dist = p.getX() * p.getX() + p.getZ() * p.getZ();
 		double y = Math.sqrt(dist);
 		
@@ -141,11 +141,11 @@ public class Cone extends Shape{
 		}
 		
 		if(dist < 1 && p.getY() >= this.maximum - Computation.EPSILON) {
-			return new Tuple(0, 1, 0, Tuple.VECTOR);
+			return new Coordinate(0, 1, 0, Coordinate.VECTOR);
 		} else if(dist < 1 && p.getY() <= this.minimum + Computation.EPSILON) {
-			return new Tuple(0, -1, 0, Tuple.VECTOR);
+			return new Coordinate(0, -1, 0, Coordinate.VECTOR);
 		} else {
-			return new Tuple(p.getX(), y, p.getZ(), Tuple.VECTOR);
+			return new Coordinate(p.getX(), y, p.getZ(), Coordinate.VECTOR);
 		}
 	}
 	

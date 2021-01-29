@@ -5,15 +5,15 @@
  *
  */
 public class Ray {
-	private Tuple origin;
-	private Tuple direction;
+	private Coordinate origin;
+	private Coordinate direction;
 	
 	public Ray(double oX, double oY, double oZ, double dX, double dY, double dZ) {
-		this.origin = new Tuple(oX, oY, oZ, Tuple.POINT);
-		this.direction = new Tuple(dX, dY, dZ, Tuple.VECTOR);
+		this.origin = new Coordinate(oX, oY, oZ, Coordinate.POINT);
+		this.direction = new Coordinate(dX, dY, dZ, Coordinate.VECTOR);
 	}
 	
-	public Ray(Tuple origin, Tuple direction) {
+	public Ray(Coordinate origin, Coordinate direction) {
 		this.origin = origin;
 		this.direction = direction;
 	}
@@ -23,8 +23,8 @@ public class Ray {
 	 * @param t the 'time'.
 	 * @return the Tuple position.
 	 */
-	public Tuple position(double t) {
-		Tuple result = this.origin.addTuples(this.direction.scalarMultiplication(t));
+	public Coordinate position(double t) {
+		Coordinate result = this.origin.addCoordinate(this.direction.scalarMultiplication(t));
 		
 		return result;
 	}
@@ -37,19 +37,19 @@ public class Ray {
 	public Ray transform(Matrix m) {
 		Ray temp;
 		
-		Tuple newOrigin = m.tupleMultiplication(this.origin);
-		Tuple newDirection = m.tupleMultiplication(this.direction);
+		Coordinate newOrigin = m.coordinateMultiplication(this.origin);
+		Coordinate newDirection = m.coordinateMultiplication(this.direction);
 		
 		temp = new Ray(newOrigin, newDirection);
 		
 		return temp;
 	}
 	
-	public Tuple getOrigin() {
+	public Coordinate getOrigin() {
 		return this.origin;
 	}
 	
-	public Tuple getDirection() {
+	public Coordinate getDirection() {
 		return this.direction;
 	}
 	

@@ -1,10 +1,10 @@
 
 public class Plane extends Shape{
-	private Tuple origin;
+	private Coordinate origin;
 	
 	public Plane() {
 		super();
-		this.origin = new Tuple(0, 0, 0, Tuple.POINT);
+		this.origin = new Coordinate(0, 0, 0, Coordinate.POINT);
 	}
 	
 	//does nothing
@@ -15,8 +15,8 @@ public class Plane extends Shape{
 	
 	@Override
 	public BoundingBox getBounds() {
-		Tuple min = new Tuple(Double.NEGATIVE_INFINITY, 0, Double.NEGATIVE_INFINITY, Tuple.POINT);
-		Tuple max = new Tuple(Double.POSITIVE_INFINITY, 0, Double.POSITIVE_INFINITY, Tuple.POINT);
+		Coordinate min = new Coordinate(Double.NEGATIVE_INFINITY, 0, Double.NEGATIVE_INFINITY, Coordinate.POINT);
+		Coordinate max = new Coordinate(Double.POSITIVE_INFINITY, 0, Double.POSITIVE_INFINITY, Coordinate.POINT);
 		BoundingBox box = new BoundingBox(min, max, this);
 		
 		return box;
@@ -34,8 +34,8 @@ public class Plane extends Shape{
 	}
 	
 	@Override
-	public Tuple localNormalAt(Tuple p, Intersection hit) {
-		return new Tuple(0, 1, 0, Tuple.POINT);
+	public Coordinate localNormalAt(Coordinate p, Intersection hit) {
+		return new Coordinate(0, 1, 0, Coordinate.POINT);
 	}
 	
 	@Override
@@ -43,11 +43,11 @@ public class Plane extends Shape{
 		this.origin.printData();
 	}
 
-	public Tuple getOrigin() {
+	public Coordinate getOrigin() {
 		return origin;
 	}
 
-	public void setOrigin(Tuple origin) {
+	public void setOrigin(Coordinate origin) {
 		this.origin = origin;
 	}
 }

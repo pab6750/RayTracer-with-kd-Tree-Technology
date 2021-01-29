@@ -1,19 +1,19 @@
 
 public class PointLight {
-	private Tuple position;
+	private Coordinate position;
 	private Colour intensity;
 	
 	public PointLight() {
-		this.position = new Tuple(0, 0, 0, Tuple.POINT);
+		this.position = new Coordinate(0, 0, 0, Coordinate.POINT);
 		this.intensity = new Colour(0, 0, 0);
 	}
 	
-	public PointLight(Tuple position, Colour intensity) {
+	public PointLight(Coordinate position, Colour intensity) {
 		this.position = position;
 		this.intensity = intensity;
 	}
 
-	public Tuple getPosition() {
+	public Coordinate getPosition() {
 		return position;
 	}
 
@@ -21,7 +21,7 @@ public class PointLight {
 		return intensity;
 	}
 
-	public void setPosition(Tuple position) {
+	public void setPosition(Coordinate position) {
 		this.position = position;
 	}
 

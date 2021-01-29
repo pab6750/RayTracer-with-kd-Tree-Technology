@@ -5,11 +5,11 @@ public class Event {
 	public static final int START_EVENT_FLAG = 2;
 	
 	private Shape referencedShape;
-	private Tuple planePosition;
+	private Coordinate planePosition;
 	private int type;
 	private int k;
 	
-	public Event(Shape referencedShape, Tuple planePosition, int type, int k) {
+	public Event(Shape referencedShape, Coordinate planePosition, int type, int k) {
 		this.type = type;
 		this.planePosition = planePosition;
 		this.referencedShape = referencedShape;
@@ -17,25 +17,25 @@ public class Event {
 	}
 	
 	public static Event createStartEvent(Shape referencedShape, int k) {
-		Tuple planePos = referencedShape.getBounds()
-				.transform(referencedShape.getTransformation())
-				.getMin();
+		Coordinate planePos = referencedShape.getBounds()
+				              .transform(referencedShape.getTransformation())
+				              .getMin();
 		
 		return new Event(referencedShape, planePos, START_EVENT_FLAG, k);
 	}
 	
 	public static Event createPlanarEvent(Shape referencedShape, int k) {
-		Tuple planePos = referencedShape.getBounds()
-				.transform(referencedShape.getTransformation())
-				.getMin();
+		Coordinate planePos = referencedShape.getBounds()
+				              .transform(referencedShape.getTransformation())
+				              .getMin();
 		
 		return new Event(referencedShape, planePos, PLANAR_EVENT_FLAG, k);
 	}
 	
 	public static Event createEndEvent(Shape referencedShape, int k) {
-		Tuple planePos = referencedShape.getBounds()
-				.transform(referencedShape.getTransformation())
-				.getMax();
+		Coordinate planePos = referencedShape.getBounds()
+				              .transform(referencedShape.getTransformation())
+				              .getMax();
 		
 		return new Event(referencedShape, planePos, END_EVENT_FLAG, k);
 	}
@@ -73,7 +73,7 @@ public class Event {
 		return type;
 	}
 	
-	public Tuple getPlanePosition() {
+	public Coordinate getPlanePosition() {
 		return planePosition;
 	}
 
@@ -89,7 +89,7 @@ public class Event {
 		this.type = type;
 	}
 	
-	public void setPlanePosition(Tuple planePosition) {
+	public void setPlanePosition(Coordinate planePosition) {
 		this.planePosition = planePosition;
 	}
 

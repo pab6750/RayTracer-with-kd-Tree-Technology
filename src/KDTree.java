@@ -150,7 +150,7 @@ public abstract class KDTree extends Shape{
 	 * This method does nothing.
 	 */
 	@Override
-	public Tuple localNormalAt(Tuple p, Intersection hit) {
+	public Coordinate localNormalAt(Coordinate p, Intersection hit) {
 		// TODO Auto-generated method stub
 		return null;
 	}
