@@ -929,7 +929,7 @@ public class Main {
 	}
 
 	public static void surfaceAreaHeuristicRender2() {
-		BoundingBox sceneBox = new BoundingBox(null);
+		AABB sceneBox = new AABB(null);
 		Cube[] cubes = new Cube[100];
 
 		for(int i = 0; i < cubes.length; i++) {
@@ -1010,7 +1010,7 @@ public class Main {
 	}
 
 	public static void surfaceAreaHeuristicRender() {
-		BoundingBox sceneBox = new BoundingBox(null);
+		AABB sceneBox = new AABB(null);
 		Cube[] cubes = new Cube[100];
 		int[] values = new int[cubes.length];
 
@@ -1195,9 +1195,9 @@ public class Main {
 		sphere2.setTransformation(matrix2);
 		sphere3.setTransformation(matrix3);
 
-		BoundingBox box1 = sphere1.getBounds().transform(sphere1.getTransformation());
-		BoundingBox box2 = sphere2.getBounds().transform(sphere2.getTransformation());
-		BoundingBox box3 = sphere3.getBounds().transform(sphere3.getTransformation());
+		AABB box1 = sphere1.getBounds().transform(sphere1.getTransformation());
+		AABB box2 = sphere2.getBounds().transform(sphere2.getTransformation());
+		AABB box3 = sphere3.getBounds().transform(sphere3.getTransformation());
 
 		Shape[] shapes = {sphere1, sphere2, sphere3};
 		world.setObjs(shapes);
@@ -1302,7 +1302,7 @@ public class Main {
 		Colour red = new Colour(1, 0, 0);
 		s.setColour(red);
 
-		BoundingBox box = s.getBounds();
+		AABB box = s.getBounds();
 		box.setTransformation(sphereMatrix);
 		box.showBox();
 
@@ -1320,7 +1320,7 @@ public class Main {
 	}
 
 	public static void surfaceHeuristicValidationTest() {
-		BoundingBox sceneBox = new BoundingBox(null);
+		AABB sceneBox = new AABB(null);
 		Cube[] cubes = new Cube[100];
 		int[] values = new int[cubes.length];
 
@@ -1820,9 +1820,9 @@ public class Main {
 		Coordinate min = new Coordinate(-1, -2, -3, Coordinate.POINT);
 		Coordinate max = new Coordinate(5, 3, 7, Coordinate.POINT);
 
-		BoundingBox box = new BoundingBox(min, max, null);
+		AABB box = new AABB(min, max, null);
 
-		BoundingBox[] boxes = box.splitBounds();
+		AABB[] boxes = box.splitBounds();
 
 		boxes[0].getMin().printData();
 		boxes[0].getMax().printData();
@@ -1834,9 +1834,9 @@ public class Main {
 		Coordinate min = new Coordinate(-1, -2, -3, Coordinate.POINT);
 		Coordinate max = new Coordinate(5, 8, 3, Coordinate.POINT);
 
-		BoundingBox box = new BoundingBox(min, max, null);
+		AABB box = new AABB(min, max, null);
 
-		BoundingBox[] boxes = box.splitBounds();
+		AABB[] boxes = box.splitBounds();
 
 		boxes[0].getMin().printData();
 		boxes[0].getMax().printData();
@@ -1848,9 +1848,9 @@ public class Main {
 		Coordinate min = new Coordinate(-1, -2, -3, Coordinate.POINT);
 		Coordinate max = new Coordinate(9, 5.5, 3, Coordinate.POINT);
 
-		BoundingBox box = new BoundingBox(min, max, null);
+		AABB box = new AABB(min, max, null);
 
-		BoundingBox[] boxes = box.splitBounds();
+		AABB[] boxes = box.splitBounds();
 
 		boxes[0].getMin().printData();
 		boxes[0].getMax().printData();
@@ -1862,9 +1862,9 @@ public class Main {
 		Coordinate min = new Coordinate(-1, -4, -5, Coordinate.POINT);
 		Coordinate max = new Coordinate(9, 6, 5, Coordinate.POINT);
 
-		BoundingBox box = new BoundingBox(min, max, null);
+		AABB box = new AABB(min, max, null);
 
-		BoundingBox[] boxes = box.splitBounds();
+		AABB[] boxes = box.splitBounds();
 
 		boxes[0].getMin().printData();
 		boxes[0].getMax().printData();
@@ -1876,7 +1876,7 @@ public class Main {
 		Coordinate min = new Coordinate(5, -2, 0, Coordinate.POINT);
 		Coordinate max = new Coordinate(11, 4, 7, Coordinate.POINT);
 
-		BoundingBox box = new BoundingBox(min, max, null);
+		AABB box = new AABB(min, max, null);
 
 		Coordinate point;
 		Coordinate direction;
@@ -2070,7 +2070,7 @@ public class Main {
 		g.addChild(s);
 		g.addChild(c);
 
-		BoundingBox box = g.getBounds();
+		AABB box = g.getBounds();
 
 		box.getMin().printData();
 		box.getMax().printData();
@@ -2081,7 +2081,7 @@ public class Main {
 		Matrix m = Matrix.translation(1, -3, 5).matrixMultiplication(Matrix.scaling(0.5, 2, 4));
 		s.setTransformation(m);
 
-		BoundingBox box = s.parentSpaceBoundsOf();
+		AABB box = s.parentSpaceBoundsOf();
 
 		box.getMin().printData();
 		box.getMax().printData();
@@ -2091,7 +2091,7 @@ public class Main {
 		Coordinate min = new Coordinate(-1, -1, -1, Coordinate.POINT);
 		Coordinate max = new Coordinate( 1,  1,  1, Coordinate.POINT);
 
-		BoundingBox box = new BoundingBox(min, max, null);
+		AABB box = new AABB(min, max, null);
 
 		Matrix matrix = Matrix.rotationX(Math.PI / 4).matrixMultiplication(Matrix.rotationY(Math.PI / 4));
 
@@ -2107,8 +2107,8 @@ public class Main {
 		Coordinate max1 = new Coordinate(7, 4, 4, Coordinate.POINT);
 		Coordinate max2 = new Coordinate(14, 2, 8, Coordinate.POINT);
 
-		BoundingBox b1 = new BoundingBox(min1, max1, null);
-		BoundingBox b2 = new BoundingBox(min2, max2, null);
+		AABB b1 = new AABB(min1, max1, null);
+		AABB b2 = new AABB(min2, max2, null);
 
 		b1.addBox(b2);
 
@@ -2117,7 +2117,7 @@ public class Main {
 	}
 
 	public static void boundingVolumesTest() {
-		BoundingBox box = new BoundingBox(null);
+		AABB box = new AABB(null);
 
 		Coordinate p1 = new Coordinate(-5, 2, 0, Coordinate.POINT);
 		Coordinate p2 = new Coordinate(7, 0, -3, Coordinate.POINT);

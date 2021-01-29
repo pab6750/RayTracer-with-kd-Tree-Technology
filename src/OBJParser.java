@@ -87,7 +87,7 @@ public class OBJParser {
 						vList.add(this.vertices.get(v - 1));
 					}
 					
-					BoundingBox finalBox = new BoundingBox(null);
+					AABB finalBox = new AABB(null);
 					
 					for(int i = 0; i < this.vertices.size(); i++) {
 						finalBox.addPoint(this.vertices.get(i));

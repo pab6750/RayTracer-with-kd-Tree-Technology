@@ -20,7 +20,7 @@ public class MedianKDTree extends KDTree{
 	 * @return the two new bounding boxes.
 	 */
 	@Override
-	public BoundingBox[] findSplit(int k) {
+	public AABB[] findSplit(int k) {
 		//points are sorted and the median is found
 		if(this.k == X_DIMENSION) {
 			double[] sortedList = this.sortBoundingExtentsByX();
@@ -45,7 +45,7 @@ public class MedianKDTree extends KDTree{
 	 */
 	@Override
 	public void split(int k, int level) {
-		BoundingBox[] children = this.findSplit(k);
+		AABB[] children = this.findSplit(k);
 		//this node's children
 		this.leftChild = new MedianKDTree(false, k);
 		this.leftChild.setBox(children[0]);
@@ -59,7 +59,7 @@ public class MedianKDTree extends KDTree{
 		
 		//determine which shape belongs where
 		for(int i = 0; i < this.shapes.length; i++) {
-			BoundingBox currentBox = this.shapes[i].getBounds();
+			AABB currentBox = this.shapes[i].getBounds();
 			currentBox = currentBox.transform(this.shapes[i].getTransformation());
 			
 			if(children[0].containsPoint(currentBox.getMin()) || children[0].containsPoint(currentBox.getMax())) {
@@ -96,7 +96,7 @@ public class MedianKDTree extends KDTree{
 		int current = 0;
 		
 		for(int i = 0; i < this.shapes.length; i++) {
-			BoundingBox box = this.shapes[i].getBounds().transform(this.shapes[i].getTransformation());
+			AABB box = this.shapes[i].getBounds().transform(this.shapes[i].getTransformation());
 			pointList[current] = box.getMin().getX();
 			pointList[current + 1] = box.getMax().getX();
 			current += 2;
@@ -115,7 +115,7 @@ public class MedianKDTree extends KDTree{
 		int current = 0;
 		
 		for(int i = 0; i < this.shapes.length; i++) {
-			BoundingBox box = this.shapes[i].getBounds().transform(this.shapes[i].getTransformation());
+			AABB box = this.shapes[i].getBounds().transform(this.shapes[i].getTransformation());
 			pointList[current] = box.getMin().getY();
 			pointList[current + 1] = box.getMax().getY();
 			current += 2;
@@ -134,7 +134,7 @@ public class MedianKDTree extends KDTree{
 		int current = 0;
 		
 		for(int i = 0; i < this.shapes.length; i++) {
-			BoundingBox box = this.shapes[i].getBounds().transform(this.shapes[i].getTransformation());
+			AABB box = this.shapes[i].getBounds().transform(this.shapes[i].getTransformation());
 			pointList[current] = box.getMin().getZ();
 			pointList[current + 1] = box.getMax().getZ();
 			current += 2;

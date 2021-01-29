@@ -6,10 +6,10 @@ public class Cube extends Shape{
 	}
 	
 	@Override
-	public BoundingBox getBounds() {
+	public AABB getBounds() {
 		Coordinate min = new Coordinate(-1, -1, -1, Coordinate.POINT);
 		Coordinate max = new Coordinate(1, 1, 1, Coordinate.POINT);
-		BoundingBox box = new BoundingBox(min, max, null);
+		AABB box = new AABB(min, max, null);
 		
 		return box;
 	}

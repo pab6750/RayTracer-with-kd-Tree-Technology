@@ -17,7 +17,7 @@ public abstract class KDTree extends Shape{
 	protected boolean isRoot;
 	protected KDTree leftChild;
 	protected KDTree rightChild;
-	protected BoundingBox box;
+	protected AABB box;
 	protected Shape[] shapes;
 	protected int k;
 	protected int level;
@@ -40,7 +40,7 @@ public abstract class KDTree extends Shape{
 		this.level = 0;
 	}
 	
-	public abstract BoundingBox[] findSplit(int k);
+	public abstract AABB[] findSplit(int k);
 	public abstract void split(int k, int level);
 	
 	/**
@@ -63,7 +63,7 @@ public abstract class KDTree extends Shape{
 	 * This method gets the bounding volume of this node.
 	 */
 	@Override
-	public BoundingBox getBounds() {
+	public AABB getBounds() {
 		return this.getBox();
 	}
 
@@ -211,16 +211,16 @@ public abstract class KDTree extends Shape{
 		this.setBox();
 	}
 	
-	public BoundingBox getBox() {
+	public AABB getBox() {
 		return box;
 	}
 
 	public void setBox() {
-		BoundingBox bbox = new BoundingBox(null);
+		AABB bbox = new AABB(null);
 		
 		for(int i = 0; i < this.shapes.length; i++) {
 			if(this.shapes[i] != null) {
-				BoundingBox currentBox = this.shapes[i].getBounds().transform(this.shapes[i].getTransformation());
+				AABB currentBox = this.shapes[i].getBounds().transform(this.shapes[i].getTransformation());
 				bbox.addBox(currentBox);
 			}
 		}
@@ -228,7 +228,7 @@ public abstract class KDTree extends Shape{
 		this.box = bbox;
 	}
 	
-	public void setBox(BoundingBox bbox) {
+	public void setBox(AABB bbox) {
 		this.box = bbox;
 	}
 	

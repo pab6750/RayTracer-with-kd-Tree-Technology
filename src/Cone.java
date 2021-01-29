@@ -26,7 +26,7 @@ public class Cone extends Shape{
 	}
 	
 	@Override
-	public BoundingBox getBounds() {
+	public AABB getBounds() {
 		double a = Math.abs(this.minimum);
 		double b = Math.abs(this.maximum);
 		double limit = Math.max(a, b);
@@ -34,7 +34,7 @@ public class Cone extends Shape{
 		Coordinate min = new Coordinate(-limit, this.minimum, -limit, Coordinate.POINT);
 		Coordinate max = new Coordinate( limit, this.maximum,  limit, Coordinate.POINT);
 		
-		BoundingBox box = new BoundingBox(min, max, null);
+		AABB box = new AABB(min, max, null);
 		
 		return box;
 	}

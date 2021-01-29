@@ -14,10 +14,10 @@ public class Plane extends Shape{
 	}
 	
 	@Override
-	public BoundingBox getBounds() {
+	public AABB getBounds() {
 		Coordinate min = new Coordinate(Double.NEGATIVE_INFINITY, 0, Double.NEGATIVE_INFINITY, Coordinate.POINT);
 		Coordinate max = new Coordinate(Double.POSITIVE_INFINITY, 0, Double.POSITIVE_INFINITY, Coordinate.POINT);
-		BoundingBox box = new BoundingBox(min, max, this);
+		AABB box = new AABB(min, max, this);
 		
 		return box;
 	}

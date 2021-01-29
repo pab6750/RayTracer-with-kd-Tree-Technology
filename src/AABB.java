@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
-public class BoundingBox extends Shape{
+public class AABB extends Shape{
 	private Shape owner;
 	private Coordinate min;
 	private Coordinate max;
 	
-	public BoundingBox(Shape owner) {
+	public AABB(Shape owner) {
 		this.min = new Coordinate(Double.POSITIVE_INFINITY,
 							      Double.POSITIVE_INFINITY,
 							      Double.POSITIVE_INFINITY,
@@ -19,13 +19,13 @@ public class BoundingBox extends Shape{
 		this.owner = owner;
 	}
 	
-	public BoundingBox(Coordinate min, Coordinate max, Shape owner) {
+	public AABB(Coordinate min, Coordinate max, Shape owner) {
 		this.min = min;
 		this.max = max;
 		this.owner = owner;
 	}
 	
-	public BoundingBox(Coordinate v1, Coordinate v2, Coordinate v3, Shape owner) {
+	public AABB(Coordinate v1, Coordinate v2, Coordinate v3, Shape owner) {
 		double temp;
 		
 		temp = Math.min(v1.getX(), v2.getX());
@@ -59,8 +59,8 @@ public class BoundingBox extends Shape{
 		this.material = new Material(0.1, 0, 0.9, 200, 0, 0.8, Material.VACUUM, gray);
 	}
 	
-	public BoundingBox transform(Matrix matrix) {
-		BoundingBox box = new BoundingBox(this.owner);
+	public AABB transform(Matrix matrix) {
+		AABB box = new AABB(this.owner);
 	    
 		Coordinate p1 = new Coordinate(this.min.getX(), this.min.getY(), this.min.getZ(), Coordinate.POINT);
 		Coordinate p2 = new Coordinate(this.min.getX(), this.min.getY(), this.max.getZ(), Coordinate.POINT);
@@ -80,7 +80,7 @@ public class BoundingBox extends Shape{
 		return box;
 	}
 	
-	public boolean containsBox(BoundingBox box) {
+	public boolean containsBox(AABB box) {
 		return this.containsPoint(box.getMin()) && this.containsPoint(box.getMax());
 	}
 	
@@ -90,7 +90,7 @@ public class BoundingBox extends Shape{
 			   point.getZ() >= this.min.getZ() && point.getZ() <= this.max.getZ();
 	}
 	
-	public void addBox(BoundingBox box) {
+	public void addBox(AABB box) {
 		this.addPoint(box.getMin());
 		this.addPoint(box.getMax());
 	}
@@ -133,7 +133,7 @@ public class BoundingBox extends Shape{
 		return this.owner;
 	}
 	
-	public BoundingBox[] splitBounds() {
+	public AABB[] splitBounds() {
 		double sizeX = Math.abs(this.max.getX() - this.min.getX());
 		double sizeY = Math.abs(this.max.getY() - this.min.getY());
 		double sizeZ = Math.abs(this.max.getZ() - this.min.getZ());
@@ -162,10 +162,10 @@ public class BoundingBox extends Shape{
 		Coordinate midMin = new Coordinate(x0, y0, z0, Coordinate.POINT);
 		Coordinate midMax = new Coordinate(x1, y1, z1, Coordinate.POINT);
 		
-		BoundingBox box1 = new BoundingBox(this.min, midMax, null);
-		BoundingBox box2 = new BoundingBox(midMin, this.max, null);
+		AABB box1 = new AABB(this.min, midMax, null);
+		AABB box2 = new AABB(midMin, this.max, null);
 		
-		BoundingBox[] boxes = {box1, box2};
+		AABB[] boxes = {box1, box2};
 		
 		return boxes;
 	}
@@ -218,38 +218,38 @@ public class BoundingBox extends Shape{
 		return new Coordinate(0, 0, p.getZ(), Coordinate.VECTOR);
 	}
 	
-	public BoundingBox[] splitAtX(double x) {
+	public AABB[] splitAtX(double x) {
 		Coordinate newMin = new Coordinate(x, this.min.getY(), this.min.getZ(), Coordinate.POINT);
 		Coordinate newMax = new Coordinate(x, this.max.getY(), this.max.getZ(), Coordinate.POINT);
 		
-		BoundingBox box1 = new BoundingBox(this.min, newMax, null);
-		BoundingBox box2 = new BoundingBox(newMin, this.max, null);
+		AABB box1 = new AABB(this.min, newMax, null);
+		AABB box2 = new AABB(newMin, this.max, null);
 		
-		BoundingBox[] result = {box1, box2};
+		AABB[] result = {box1, box2};
 		
 		return result;
 	}
 	
-	public BoundingBox[] splitAtY(double y) {
+	public AABB[] splitAtY(double y) {
 		Coordinate newMin = new Coordinate(this.min.getX(), y, this.min.getZ(), Coordinate.POINT);
 		Coordinate newMax = new Coordinate(this.max.getX(), y, this.max.getZ(), Coordinate.POINT);
 		
-		BoundingBox box1 = new BoundingBox(this.min, newMax, null);
-		BoundingBox box2 = new BoundingBox(newMin, this.max, null);
+		AABB box1 = new AABB(this.min, newMax, null);
+		AABB box2 = new AABB(newMin, this.max, null);
 		
-		BoundingBox[] result = {box1, box2};
+		AABB[] result = {box1, box2};
 		
 		return result;
 	}
 
-	public BoundingBox[] splitAtZ(double z) {
+	public AABB[] splitAtZ(double z) {
 		Coordinate newMin = new Coordinate(this.min.getX(), this.min.getY(), z, Coordinate.POINT);
 		Coordinate newMax = new Coordinate(this.max.getX(), this.max.getY(), z, Coordinate.POINT);
 		
-		BoundingBox box1 = new BoundingBox(this.min, newMax, null);
-		BoundingBox box2 = new BoundingBox(newMin, this.max, null);
+		AABB box1 = new AABB(this.min, newMax, null);
+		AABB box2 = new AABB(newMin, this.max, null);
 		
-		BoundingBox[] result = {box1, box2};
+		AABB[] result = {box1, box2};
 		
 		return result;
 	}

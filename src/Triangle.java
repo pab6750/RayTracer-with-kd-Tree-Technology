@@ -49,8 +49,8 @@ public class Triangle extends Shape{
 	}
 	
 	@Override
-	public BoundingBox getBounds() {
-		BoundingBox box = new BoundingBox(this);
+	public AABB getBounds() {
+		AABB box = new AABB(this);
 		
 		box.addPoint(this.v1);
 		box.addPoint(this.v2);

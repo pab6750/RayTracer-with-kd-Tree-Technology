@@ -1,18 +1,18 @@
 import org.junit.Test;
 import org.junit.Assert;
 
-public class BoundingBoxTests {
+public class AABBTests {
 	private static final double DELTA = 0.1;
 	
 	//test to check whether median box subdivision works
 	@Test
 	public void medianSubdivisionTest() {
 		Sphere s = new Sphere();
-		BoundingBox box = s.getBounds();
+		AABB box = s.getBounds();
 		
-		BoundingBox[] resultX = box.splitAtX(0.8);
-		BoundingBox[] resultY = box.splitAtY(0.3);
-		BoundingBox[] resultZ = box.splitAtZ(0.5);
+		AABB[] resultX = box.splitAtX(0.8);
+		AABB[] resultY = box.splitAtY(0.3);
+		AABB[] resultZ = box.splitAtZ(0.5);
 		
 		Assert.assertEquals(box.getMin().getX(), resultX[0].getMin().getX(), DELTA);
 		Assert.assertEquals(0.8, resultX[0].getMax().getX(), DELTA);

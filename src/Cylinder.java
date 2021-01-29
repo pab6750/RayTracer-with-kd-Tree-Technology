@@ -27,7 +27,7 @@ public class Cylinder extends Shape{
 	}
 	
 	@Override
-	public BoundingBox getBounds() {
+	public AABB getBounds() {
 		Coordinate min;
 		Coordinate max;
 		
@@ -43,7 +43,7 @@ public class Cylinder extends Shape{
 			min = new Coordinate(-1, this.minimum, -1, Coordinate.POINT);
 		}
 		
-		BoundingBox box = new BoundingBox(min, max, this);
+		AABB box = new AABB(min, max, this);
 		
 		return box;
 	}

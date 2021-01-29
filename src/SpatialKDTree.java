@@ -20,7 +20,7 @@ public class SpatialKDTree extends KDTree{
 	 * @return the two new boxes.
 	 */
 	@Override
-	public BoundingBox[] findSplit(int k) {
+	public AABB[] findSplit(int k) {
 		if(k == 0) {
 			double newX = (this.box.getMin().getX() + this.box.getMax().getX()) / 2;
 			return this.box.splitAtX(newX);
@@ -41,7 +41,7 @@ public class SpatialKDTree extends KDTree{
 	 */
 	@Override
 	public void split(int k, int level) {
-		BoundingBox[] children = this.findSplit(k);
+		AABB[] children = this.findSplit(k);
 		
 		//this node's children
 		this.leftChild = new SpatialKDTree(false, k);
@@ -56,7 +56,7 @@ public class SpatialKDTree extends KDTree{
 		
 		//determine which shape belongs where
 		for(int i = 0; i < this.shapes.length; i++) {
-			BoundingBox currentBox = this.shapes[i].getBounds();
+			AABB currentBox = this.shapes[i].getBounds();
 			currentBox = currentBox.transform(this.shapes[i].getTransformation());
 			
 			if(children[0].containsPoint(currentBox.getMin()) || children[0].containsPoint(currentBox.getMax())) {

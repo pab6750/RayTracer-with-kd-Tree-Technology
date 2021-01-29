@@ -33,11 +33,11 @@ public class Group extends Shape{
 	}
 	
 	@Override
-	public BoundingBox getBounds() {
-		BoundingBox box = new BoundingBox(null);
+	public AABB getBounds() {
+		AABB box = new AABB(null);
 		
 		for(int i = 0; i < this.shapes.length; i++) {
-			BoundingBox cbox = this.shapes[i].parentSpaceBoundsOf();
+			AABB cbox = this.shapes[i].parentSpaceBoundsOf();
 			box.addBox(cbox);
 		}
 		
@@ -160,9 +160,9 @@ public class Group extends Shape{
 		ArrayList<Shape> list1 = new ArrayList<Shape>();
 		ArrayList<Shape> list2 = new ArrayList<Shape>();
 		
-		BoundingBox[] boxes = this.getBounds().splitBounds();
-		BoundingBox box1 = boxes[0];
-		BoundingBox box2 = boxes[1];
+		AABB[] boxes = this.getBounds().splitBounds();
+		AABB box1 = boxes[0];
+		AABB box2 = boxes[1];
 		
 		for(int i = 0; i < this.shapes.length; i++) {
 			if(box1.containsBox(this.shapes[i].parentSpaceBoundsOf())) {
