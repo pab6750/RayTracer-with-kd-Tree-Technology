@@ -7,13 +7,13 @@ import java.io.PrintWriter;
  * @author Pablo Scarpati.
  *
  */
-public class Canvas {
+public class ImageOutput {
 	private int h;
 	private int w;
 	private Colour[][] grid;
 	private String name;
 	
-	public Canvas(int n) {
+	public ImageOutput(int n) {
 		this.h = n;
 		this.w = n;
 		
@@ -28,7 +28,7 @@ public class Canvas {
 		this.name = "render";
 	}
 	
-	public Canvas(int h, int w) {
+	public ImageOutput(int h, int w) {
 		this.h = h;
 		this.w = w;
 		
@@ -43,7 +43,7 @@ public class Canvas {
 		this.name = "render";
 	}
 	
-	public Canvas(int h, int w, String name) {
+	public ImageOutput(int h, int w, String name) {
 		this.h = h;
 		this.w = w;
 		

@@ -817,7 +817,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -867,7 +867,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -918,7 +918,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -999,7 +999,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1075,7 +1075,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1135,7 +1135,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1170,7 +1170,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1270,7 +1270,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1447,7 +1447,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1497,7 +1497,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1617,7 +1617,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1675,7 +1675,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1725,7 +1725,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1775,7 +1775,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2168,7 +2168,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2264,7 +2264,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2312,7 +2312,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2354,7 +2354,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2390,7 +2390,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2606,7 +2606,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2665,7 +2665,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2848,7 +2848,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2925,7 +2925,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2991,7 +2991,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -3140,7 +3140,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -3280,7 +3280,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -3506,7 +3506,7 @@ public class Main {
 													  new Coordinate(0, 0, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -3620,7 +3620,7 @@ public class Main {
 													  new Coordinate(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -3862,7 +3862,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -4020,7 +4020,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -4210,7 +4210,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -4268,7 +4268,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -4376,7 +4376,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -4410,7 +4410,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -4657,7 +4657,7 @@ public class Main {
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		Canvas canvas = camera.render(world);
+		ImageOutput canvas = camera.render(world);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -4677,7 +4677,7 @@ public class Main {
 
 		camera.setTransform(Matrix.viewTransformation(from, to, up));
 
-		Canvas image = camera.render(world);
+		ImageOutput image = camera.render(world);
 		Colour testColour = image.pixelAt(5, 5);
 		testColour.printData();
 		try {
@@ -4853,7 +4853,7 @@ public class Main {
 
 		int canvasPixels = 200;
 
-		Canvas canvas = new Canvas(canvasPixels);
+		ImageOutput canvas = new ImageOutput(canvasPixels);
 		//Colour red = new Colour(1, 0, 0);
 
 		double pixelSize = wallSize / canvasPixels;
@@ -4925,7 +4925,7 @@ public class Main {
 
 		int canvasPixels = 200;
 
-		Canvas canvas = new Canvas(canvasPixels);
+		ImageOutput canvas = new ImageOutput(canvasPixels);
 		//Colour red = new Colour(1, 0, 0);
 
 		double pixelSize = wallSize / canvasPixels;
@@ -5084,7 +5084,7 @@ public class Main {
 
 		int canvasPixels = 100;
 
-		Canvas canvas = new Canvas(canvasPixels);
+		ImageOutput canvas = new ImageOutput(canvasPixels);
 
 		double pixelSize = wallSize / canvasPixels;
 		double half = wallSize / 2;
@@ -5127,7 +5127,7 @@ public class Main {
 
 		int canvasPixels = 100;
 
-		Canvas canvas = new Canvas(canvasPixels);
+		ImageOutput canvas = new ImageOutput(canvasPixels);
 
 		double pixelSize = wallSize / canvasPixels;
 		double half = wallSize / 2;

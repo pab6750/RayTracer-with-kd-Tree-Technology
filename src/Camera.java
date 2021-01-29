@@ -40,9 +40,9 @@ public class Camera {
 	 * @param world The scene that is being rendered.
 	 * @return the Canvas instance.
 	 */
-	public Canvas render(World world) {
+	public ImageOutput render(World world) {
 		Timestamp timestampBeforeRendering = new Timestamp(System.currentTimeMillis());
-		Canvas image = new Canvas((int)this.vsize, (int)this.hsize);
+		ImageOutput image = new ImageOutput((int)this.vsize, (int)this.hsize);
 		
 		for(int y = 0; y < this.vsize; y++) {
 			double progress = (y * this.hsize * 100) / (this.vsize * this.hsize);
@@ -68,9 +68,9 @@ public class Camera {
 	 * @param world The scene that is being rendered.
 	 * @return the Canvas instance.
 	 */
-	public Canvas render(World world, String name) {
+	public ImageOutput render(World world, String name) {
 		Timestamp timestampBeforeRendering = new Timestamp(System.currentTimeMillis());
-		Canvas image = new Canvas((int)this.vsize, (int)this.hsize, name);
+		ImageOutput image = new ImageOutput((int)this.vsize, (int)this.hsize, name);
 		
 		for(int y = 0; y < this.vsize; y++) {
 			double progress = (y * this.hsize * 100) / (this.vsize * this.hsize);

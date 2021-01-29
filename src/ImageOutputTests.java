@@ -1,7 +1,7 @@
 import org.junit.Test;
 import org.junit.Assert;
 
-public class CanvasTests {
+public class ImageOutputTests {
 	private static final double DELTA = 0.1;
 	
 	//this test checks whether colours are set up correctly
@@ -66,7 +66,7 @@ public class CanvasTests {
 	//this test checks whether a canvas is configured correctly
 	@Test
 	public void canvasConfigurationTest() {
-		Canvas c = new Canvas(10, 5);
+		ImageOutput c = new ImageOutput(10, 5);
 		
 	    int height = c.getH();
 	    int width = c.getW();
@@ -78,7 +78,7 @@ public class CanvasTests {
 	//this test checks whether pixels in the canvas can be written correctly
 	@Test
 	public void pixelConfigurationTest() {
-		Canvas c = new Canvas(10, 5);
+		ImageOutput c = new ImageOutput(10, 5);
 		
 		Colour red = new Colour(1, 0, 0);
 		

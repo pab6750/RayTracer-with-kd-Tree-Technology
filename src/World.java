@@ -31,7 +31,7 @@ public class World {
 	}
 	
 	public void renderWorld(String name) {
-		Canvas canvas = this.camera.render(this, name);
+		ImageOutput canvas = this.camera.render(this, name);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
