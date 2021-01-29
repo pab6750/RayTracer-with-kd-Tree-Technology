@@ -19,7 +19,7 @@ public class TupleTests {
 	//this test checks whether points are configured correctly
 	@Test
 	public void pointConfigurationTest() {
-		Point p = new Point(5.4, 3.2, 6.6);
+		Tuple p = new Tuple(5.4, 3.2, 6.6, Tuple.POINT);
 		
 		Assert.assertEquals(5.4, p.getX(), DELTA);
 		Assert.assertEquals(3.2, p.getY(), DELTA);
@@ -30,7 +30,7 @@ public class TupleTests {
 	//this test checks whether vectors are configured correctly
 	@Test
 	public void vectorConfigurationTest() {
-		Vector v = new Vector(5.4, 3.2, 6.6);
+		Tuple v = new Tuple(5.4, 3.2, 6.6, Tuple.VECTOR);
 		
 		Assert.assertEquals(5.4, v.getX(), DELTA);
 		Assert.assertEquals(3.2, v.getY(), DELTA);
@@ -41,8 +41,8 @@ public class TupleTests {
 	//this test checks whether tuple addition works properly
 	@Test
 	public void tupleAdditionTest() {
-		Point p = new Point(3, -2, 5);
-		Vector v = new Vector(-2, 3, 1);
+		Tuple p = new Tuple(3, -2, 5, Tuple.POINT);
+		Tuple v = new Tuple(-2, 3, 1, Tuple.VECTOR);
 		
 		Tuple result = p.addTuples(v);
 		Tuple expectedResult = new Tuple(1, 1, 6, Tuple.POINT);
@@ -53,8 +53,8 @@ public class TupleTests {
 	//this test checks whether tuple subtraction works properly
 	@Test
 	public void tupleSubtractionTest() {
-		Point p1 = new Point(3, 2, 1);
-		Point p2 = new Point(5, 6, 6);
+		Tuple p1 = new Tuple(3, 2, 1, Tuple.POINT);
+		Tuple p2 = new Tuple(5, 6, 6, Tuple.POINT);
 		
 		Tuple result = p1.subtractTuples(p2);
 		Tuple expectedResult = new Tuple(-2, -4, -6, Tuple.VECTOR);
@@ -65,7 +65,7 @@ public class TupleTests {
 	//this test checks whether tuple negation works properly
 	@Test
 	public void tupleNegationTest() {
-		Vector v = new Vector(1, 2, 3);
+		Tuple v = new Tuple(1, 2, 3, Tuple.VECTOR);
 		
 		Tuple result = v.negateTuple();
 		Tuple expectedResult = new Tuple(-1, -2, -3, Tuple.VECTOR);
@@ -76,7 +76,7 @@ public class TupleTests {
 	//this test checks whether tuple scalar multiplication works properly
 	@Test
 	public void tupleScalarMultiplicationTest() {
-		Vector v = new Vector(-1, 2, 10);
+		Tuple v = new Tuple(-1, 2, 10, Tuple.VECTOR);
 		
 		Tuple result = v.scalarMultiplication(3.5);
 		Tuple expectedResult = new Tuple(-3.5, 7, 35, Tuple.VECTOR);
@@ -87,7 +87,7 @@ public class TupleTests {
 	//this test checks whether tuple scalar division works properly
 	@Test
 	public void tupleScalarDivisionTest() {
-		Vector v = new Vector(4, 1, 7);
+		Tuple v = new Tuple(4, 1, 7, Tuple.VECTOR);
 		
 		Tuple result = v.scalarDivision(2);
 		Tuple expectedResult = new Tuple(2, 0.5, 3.5, Tuple.VECTOR);
@@ -98,12 +98,12 @@ public class TupleTests {
 	//this test checks whether tuple magnitude works properly
 	@Test
 	public void tupleMagnitudeTest() {
-		Vector v = new Vector(0, 1, 0);
+		Tuple v = new Tuple(0, 1, 0, Tuple.VECTOR);
 		
 		double result = v.magnitude();
 		double expectedResult = 1;
 		
-		Vector v2 = new Vector(1, 2, 3);
+		Tuple v2 = new Tuple(1, 2, 3, Tuple.VECTOR);
 		
 		double result2 = v2.magnitude();
 		double expectedResult2 = Math.sqrt(14);
@@ -115,14 +115,14 @@ public class TupleTests {
 	//this test checks whether tuple normalization works properly
 	@Test
 	public void tupleNormalizationTest() {
-		Vector v1 = new Vector(0, 1, 0);
-		Vector v2 = new Vector(2, 2, 2);
+		Tuple v1 = new Tuple(0, 1, 0, Tuple.VECTOR);
+		Tuple v2 = new Tuple(2, 2, 2, Tuple.VECTOR);
 		
-		Vector result1 = v1.normalize();
-		Vector result2 = v2.normalize();
+		Tuple result1 = v1.normalize();
+		Tuple result2 = v2.normalize();
 		
-		Vector expectedResult1 = new Vector(0, 1, 0);
-		Vector expectedResult2 = new Vector(1, 1, 1);
+		Tuple expectedResult1 = new Tuple(0, 1, 0, Tuple.VECTOR);
+		Tuple expectedResult2 = new Tuple(1, 1, 1, Tuple.VECTOR);
 		
 		Assert.assertEquals(result1.isEqual(expectedResult1), true);
 		Assert.assertEquals(result2.isEqual(expectedResult2), true);
@@ -131,8 +131,8 @@ public class TupleTests {
 	//this test checks whether the dot product operation works properly
 	@Test
 	public void tupleDotProductTest() {
-		Vector v1 = new Vector(1, 2, 3);
-		Vector v2 = new Vector(2, 3, 4);
+		Tuple v1 = new Tuple(1, 2, 3, Tuple.VECTOR);
+		Tuple v2 = new Tuple(2, 3, 4, Tuple.VECTOR);
 		
 		double result = v1.dotProduct(v2);
 		double expectedResult = 20;
@@ -143,8 +143,8 @@ public class TupleTests {
 	//this test checks whether the cross product operation works properly
 	@Test
 	public void tupleCrossProductTest() {
-		Vector v1 = new Vector(1, 2, 3);
-		Vector v2 = new Vector(2, 3, 4);
+		Tuple v1 = new Tuple(1, 2, 3, Tuple.VECTOR);
+		Tuple v2 = new Tuple(2, 3, 4, Tuple.VECTOR);
 		
 		Tuple result = v1.crossProduct(v2);
 		Tuple expectedResult = new Tuple(-1, 2, -1, Tuple.VECTOR);

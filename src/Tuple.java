@@ -131,7 +131,7 @@ public class Tuple {
 	 * it converts the current vector into a unit vector.
 	 * @return the unit vector.
 	 */
-	public Vector normalize() {
+	public Tuple normalize() {
 		
 		double inverse = 1 / this.magnitude();
 		
@@ -139,7 +139,7 @@ public class Tuple {
 		double ypos = this.y * inverse;
 		double zpos = this.z * inverse;
 		
-		return new Vector(xpos, ypos, zpos);
+		return new Tuple(xpos, ypos, zpos, Tuple.VECTOR);
 	}
 	
 	/**
