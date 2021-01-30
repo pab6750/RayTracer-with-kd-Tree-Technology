@@ -92,7 +92,7 @@ public class SmoothTriangle extends Shape{
 	}
 
 	@Override
-	public Intersection[] localIntersect(Ray r) {
+	public IntersectionPoint[] localIntersect(Ray r) {
 		Coordinate dirCrossE2 = r.getDirection().crossProduct(this.e2);
 		double determinant = this.e1.dotProduct(dirCrossE2);
 		
@@ -118,13 +118,13 @@ public class SmoothTriangle extends Shape{
 		}
 		
 		double t = f * this.e2.dotProduct(originCrossE1);
-		Intersection[] xs = {new Intersection(t, this, u, v)};
+		IntersectionPoint[] xs = {new IntersectionPoint(t, this, u, v)};
 		
 		return xs;
 	}
 
 	@Override
-	public Coordinate localNormalAt(Coordinate p, Intersection hit) {
+	public Coordinate localNormalAt(Coordinate p, IntersectionPoint hit) {
 		return this.n2.scalarMultiplication(hit.getU())
 				      .addCoordinate(this.n3.scalarMultiplication(hit.getV()))
 				      .addCoordinate(this.n1.scalarMultiplication(1 - hit.getU() - hit.getV()));

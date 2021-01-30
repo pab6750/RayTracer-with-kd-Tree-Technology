@@ -64,7 +64,7 @@ public class Cone extends Shape{
 	}
 
 	@Override
-	public Intersection[] localIntersect(Ray r) {
+	public IntersectionPoint[] localIntersect(Ray r) {
 		double a = r.getDirection().getX() * r.getDirection().getX()
 				 - r.getDirection().getY() * r.getDirection().getY()
 				 + r.getDirection().getZ() * r.getDirection().getZ();
@@ -83,9 +83,9 @@ public class Cone extends Shape{
 		}
 		
 		if(Math.abs(a) <= Computation.EPSILON) {
-			Intersection[] xs = new Intersection[1];
+			IntersectionPoint[] xs = new IntersectionPoint[1];
 			
-			xs[0] = new Intersection(-c / (2 * b), this);
+			xs[0] = new IntersectionPoint(-c / (2 * b), this);
 			
 			return xs;
 		}
@@ -105,23 +105,23 @@ public class Cone extends Shape{
 			t1 = temp;
 		}
 		
-		ArrayList<Intersection> xsTemp = new ArrayList<Intersection>();
+		ArrayList<IntersectionPoint> xsTemp = new ArrayList<IntersectionPoint>();
 		
 		double y0 = r.getOrigin().getY() + t0 * r.getDirection().getY();
 		
 		if(this.minimum < y0 && y0 < this.maximum) {
-			xsTemp.add(new Intersection(t0, this));
+			xsTemp.add(new IntersectionPoint(t0, this));
 		}
 		
 		double y1 = r.getOrigin().getY() + t1 * r.getDirection().getY();
 		
 		if(this.minimum < y1 && y1 < this.maximum) {
-			xsTemp.add(new Intersection(t1, this));
+			xsTemp.add(new IntersectionPoint(t1, this));
 		}
 		
 		this.intersectCaps(r, xsTemp);
 		
-		Intersection[] xs = new Intersection[xsTemp.size()];
+		IntersectionPoint[] xs = new IntersectionPoint[xsTemp.size()];
 		
 		for(int i = 0; i < xsTemp.size(); i++) {
 			xs[i] = xsTemp.get(i);
@@ -131,7 +131,7 @@ public class Cone extends Shape{
 	}
 
 	@Override
-	public Coordinate localNormalAt(Coordinate p, Intersection hit) {
+	public Coordinate localNormalAt(Coordinate p, IntersectionPoint hit) {
 		double dist = p.getX() * p.getX() + p.getZ() * p.getZ();
 		double y = Math.sqrt(dist);
 		
@@ -156,7 +156,7 @@ public class Cone extends Shape{
 		System.out.println("maximum: " + this.maximum);
 	}
 	
-	private void intersectCaps(Ray r, ArrayList<Intersection> xs) {
+	private void intersectCaps(Ray r, ArrayList<IntersectionPoint> xs) {
 		if(!this.closed || Math.abs(r.getDirection().getY()) <= Computation.EPSILON) {
 			return;
 		}
@@ -164,13 +164,13 @@ public class Cone extends Shape{
 		double t = (this.minimum - r.getOrigin().getY()) / r.getDirection().getY();
 		
 		if(this.checkCap(r, t, this.minimum)) {
-			xs.add(new Intersection(t, this));
+			xs.add(new IntersectionPoint(t, this));
 		}
 		
 		t = (this.maximum - r.getOrigin().getY()) / r.getDirection().getY();
 		
 		if(this.checkCap(r, t, this.maximum)) {
-			xs.add(new Intersection(t, this));
+			xs.add(new IntersectionPoint(t, this));
 		}
 	}
 	

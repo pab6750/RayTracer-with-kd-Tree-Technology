@@ -35,7 +35,7 @@ public abstract class Shape {
 	 * @param r The intersecting ray.
 	 * @return The list of intersections.
 	 */
-	public abstract Intersection[] localIntersect(Ray r);
+	public abstract IntersectionPoint[] localIntersect(Ray r);
 	
 	/**
 	 * Abstract method that computes the normal at a certain point.
@@ -43,7 +43,7 @@ public abstract class Shape {
 	 * @param hit The hit.
 	 * @return The normal vector.
 	 */
-	public abstract Coordinate localNormalAt(Coordinate p, Intersection hit);
+	public abstract Coordinate localNormalAt(Coordinate p, IntersectionPoint hit);
 	
 	/**
 	 * This method divides the group into subgroups.
@@ -136,7 +136,7 @@ public abstract class Shape {
 	 * @param r the ray.
 	 * @return returns the intersection points
 	 */
-	public Intersection[] intersect(Ray r){
+	public IntersectionPoint[] intersect(Ray r){
 		Ray localRay = r.transform(this.transformation.invert());
 		return this.localIntersect(localRay);
 	}
@@ -147,7 +147,7 @@ public abstract class Shape {
 	 * @param hit
 	 * @return
 	 */
-	public Coordinate normalAt(Coordinate worldPoint, Intersection hit) {
+	public Coordinate normalAt(Coordinate worldPoint, IntersectionPoint hit) {
 		
 		//transforms the worldPoint in object space
 		Coordinate localPoint = this.worldToObject(worldPoint);

@@ -60,7 +60,7 @@ public class Triangle extends Shape{
 	}
 
 	@Override
-	public Intersection[] localIntersect(Ray r) {
+	public IntersectionPoint[] localIntersect(Ray r) {
 		Coordinate dirCrossE2 = r.getDirection().crossProduct(this.e2);
 		double determinant = this.e1.dotProduct(dirCrossE2);
 		
@@ -86,13 +86,13 @@ public class Triangle extends Shape{
 		}
 		
 		double t = f * this.e2.dotProduct(originCrossE1);
-		Intersection[] xs = {new Intersection(t, this)};
+		IntersectionPoint[] xs = {new IntersectionPoint(t, this)};
 		
 		return xs;
 	}
 
 	@Override
-	public Coordinate localNormalAt(Coordinate p, Intersection hit) {
+	public Coordinate localNormalAt(Coordinate p, IntersectionPoint hit) {
 		return this.normal;
 	}
 

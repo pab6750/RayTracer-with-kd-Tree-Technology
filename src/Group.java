@@ -45,18 +45,18 @@ public class Group extends Shape{
 	}
 
 	@Override
-	public Intersection[] localIntersect(Ray r) {
+	public IntersectionPoint[] localIntersect(Ray r) {
 		if(this.getBounds().intersect(r) != null) {
 			if(this.shapes == null || this.shapes.length == 0) {
 				return null;
 			}
 			
-			Intersection[][] total = new Intersection[this.shapes.length][];
+			IntersectionPoint[][] total = new IntersectionPoint[this.shapes.length][];
 			int totalLength = 0;
 			
 			for(int i = 0; i < this.shapes.length; i++) {
 				
-				Intersection[] curr = this.shapes[i].intersect(r);
+				IntersectionPoint[] curr = this.shapes[i].intersect(r);
 				total[i] = curr;
 				
 				if(total[i] != null) {
@@ -64,7 +64,7 @@ public class Group extends Shape{
 				}
 			}
 			
-			Intersection[] result = new Intersection[totalLength];
+			IntersectionPoint[] result = new IntersectionPoint[totalLength];
 			int destPos = 0;
 			
 			for(int i = 0; i < this.shapes.length; i++) {
@@ -74,7 +74,7 @@ public class Group extends Shape{
 				}
 			}
 			
-			result = Intersection.sortIntersections(result);
+			result = IntersectionPoint.sortIntersections(result);
 			
 			return result;
 		} else {
@@ -103,7 +103,7 @@ public class Group extends Shape{
 
 	//never call this function
 	@Override
-	public Coordinate localNormalAt(Coordinate p, Intersection hit) throws NullPointerException{
+	public Coordinate localNormalAt(Coordinate p, IntersectionPoint hit) throws NullPointerException{
 		
 		return null;
 	}

@@ -45,11 +45,11 @@ public class World {
 	 * @param r The ray.
 	 * @return The sorted list of intersections.
 	 */
-	public Intersection[] intersect(Ray r) {
-		ArrayList<Intersection> intersects = new ArrayList<Intersection>();
+	public IntersectionPoint[] intersect(Ray r) {
+		ArrayList<IntersectionPoint> intersects = new ArrayList<IntersectionPoint>();
 		
 		for(int i = 0; i < this.objs.length; i++) {
-			Intersection[] current = this.objs[i].intersect(r);
+			IntersectionPoint[] current = this.objs[i].intersect(r);
 			
 			if(current != null) {
 				for(int j = 0; j < current.length; j++) {
@@ -58,13 +58,13 @@ public class World {
 			}
 		}
 		
-		Intersection[] result = new Intersection[intersects.size()];
+		IntersectionPoint[] result = new IntersectionPoint[intersects.size()];
 		
 		for(int i = 0; i < intersects.size(); i++) {
 			result[i] = intersects.get(i);
 		}
 		
-		result = Intersection.sortIntersections(result);
+		result = IntersectionPoint.sortIntersections(result);
 		
 		return result;
 	}
@@ -76,8 +76,8 @@ public class World {
 	 * @return the colour of the pixel.
 	 */
 	public Colour colourAt(Ray r, int remaining) {
-		Intersection[] intersects = this.intersect(r);
-		Intersection hitPoint = Intersection.hit(intersects);
+		IntersectionPoint[] intersects = this.intersect(r);
+		IntersectionPoint hitPoint = IntersectionPoint.hit(intersects);
 		
 		if(hitPoint != null) {
 			Computation comp = new Computation(hitPoint, r, intersects);
@@ -104,10 +104,10 @@ public class World {
 		Coordinate direction = v.normalize();
 		
 		Ray r = new Ray(point, direction);
-		Intersection[] intersections = this.intersect(r);
+		IntersectionPoint[] intersections = this.intersect(r);
 		
 		//h is the closest intersection to the point
-		Intersection h = Intersection.hit(intersections);
+		IntersectionPoint h = IntersectionPoint.hit(intersections);
 		
 		if(h != null) {
 			if(h.getT() < distance) {

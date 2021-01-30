@@ -23,18 +23,18 @@ public class Plane extends Shape{
 	}
 	
 	@Override
-	public Intersection[] localIntersect(Ray r) {
+	public IntersectionPoint[] localIntersect(Ray r) {
 		if(Math.abs(r.getDirection().getY()) < Computation.EPSILON) {
 			return null;
 		}
 		
 		double t = -r.getOrigin().getY() / r.getDirection().getY();
-		Intersection[] result = {new Intersection(t, this)};
+		IntersectionPoint[] result = {new IntersectionPoint(t, this)};
 		return result;
 	}
 	
 	@Override
-	public Coordinate localNormalAt(Coordinate p, Intersection hit) {
+	public Coordinate localNormalAt(Coordinate p, IntersectionPoint hit) {
 		return new Coordinate(0, 1, 0, Coordinate.POINT);
 	}
 	

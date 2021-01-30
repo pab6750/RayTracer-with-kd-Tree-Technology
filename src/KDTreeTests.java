@@ -193,7 +193,7 @@ public class KDTreeTests {
 			
 			Ray currentRay = new Ray(currentOrigin, currentDirection);
 			
-			Intersection[] intersections = kdt.intersect(currentRay);
+			IntersectionPoint[] intersections = kdt.intersect(currentRay);
 			if(intersections == null) {
 				notMissed = false;
 			} else {

@@ -56,12 +56,12 @@ public class Sphere extends Shape{
 	 * @return the list of intersections.
 	 */
 	@Override
-	public Intersection[] localIntersect(Ray r) {
+	public IntersectionPoint[] localIntersect(Ray r) {
 		AABB bbox = this.getBounds();
-		Intersection[] xs = bbox.intersect(r);
+		IntersectionPoint[] xs = bbox.intersect(r);
 		
 		if(xs != null) {
-			Intersection[] intersectionPoints;
+			IntersectionPoint[] intersectionPoints;
 			
 			//a vector from the sphere's centre to the ray's origin
 			Coordinate sphereToRay = r.getOrigin().subtractCoordinate(new Coordinate(0, 0, 0, Coordinate.POINT));
@@ -79,19 +79,19 @@ public class Sphere extends Shape{
 				//case in which there are 2 intersections (but they are both the same)
 				double p = (b * -1) / (2 * a);
 				
-				Intersection i = new Intersection(p, this);
-				Intersection[] set = {i,i};
-				intersectionPoints = Intersection.sortIntersections(set);
+				IntersectionPoint i = new IntersectionPoint(p, this);
+				IntersectionPoint[] set = {i,i};
+				intersectionPoints = IntersectionPoint.sortIntersections(set);
 			} else {
 				//case where there are 2 intersections (but they are different)
 				double p1 = (-b - Math.sqrt(discriminant)) / (2 * a);
 				double p2 = (-b + Math.sqrt(discriminant)) / (2 * a);
 				
-				Intersection i1 = new Intersection(p1, this);
-				Intersection i2 = new Intersection(p2, this);
-				Intersection[] set = {i1,i2};
+				IntersectionPoint i1 = new IntersectionPoint(p1, this);
+				IntersectionPoint i2 = new IntersectionPoint(p2, this);
+				IntersectionPoint[] set = {i1,i2};
 				
-				intersectionPoints = Intersection.sortIntersections(set);
+				intersectionPoints = IntersectionPoint.sortIntersections(set);
 			}
 			
 			return intersectionPoints;
@@ -105,7 +105,7 @@ public class Sphere extends Shape{
 	 * @return the normal Tuple.
 	 */
 	@Override
-	public Coordinate localNormalAt(Coordinate worldPoint, Intersection hit) {
+	public Coordinate localNormalAt(Coordinate worldPoint, IntersectionPoint hit) {
 		Coordinate originPoint = new Coordinate(0, 0, 0, Coordinate.POINT);
 		return worldPoint.subtractCoordinate(originPoint);
 	}

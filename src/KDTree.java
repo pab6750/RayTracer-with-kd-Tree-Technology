@@ -71,17 +71,17 @@ public abstract class KDTree extends Shape{
 	 * This method intersects a ray with the objects in the tree.
 	 */
 	@Override
-	public Intersection[] localIntersect(Ray r) {
+	public IntersectionPoint[] localIntersect(Ray r) {
 		if(this.shapes == null) {
 			return null;
 		} else if(this.shapes.length == 0) {
 			return null;
 		} else if(this.shapes.length <= SHAPES_LIMIT || this.level == DEPTH_LIMIT - 1) {
 			
-			ArrayList<Intersection> allIntersections = new ArrayList<Intersection>();
+			ArrayList<IntersectionPoint> allIntersections = new ArrayList<IntersectionPoint>();
 			
 			for(int i = 0; i < this.shapes.length; i++) {
-				Intersection[] currentIntersections = this.shapes[i].intersect(r);
+				IntersectionPoint[] currentIntersections = this.shapes[i].intersect(r);
 				
 				if(currentIntersections != null) {
 					for(int j = 0; j < currentIntersections.length; j++) {
@@ -94,18 +94,18 @@ public abstract class KDTree extends Shape{
 				return null;
 			}
 			
-			Intersection[] intersectionList = new Intersection[allIntersections.size()];
+			IntersectionPoint[] intersectionList = new IntersectionPoint[allIntersections.size()];
 			
 			for(int i = 0; i < allIntersections.size(); i++) {
 				intersectionList[i] = allIntersections.get(i);
 			}
 			
-			intersectionList = Intersection.sortIntersections(intersectionList);
+			intersectionList = IntersectionPoint.sortIntersections(intersectionList);
 			
 			return intersectionList;
 		} else {
-			Intersection[] leftIntersections = null;
-			Intersection[] rightIntersections = null;
+			IntersectionPoint[] leftIntersections = null;
+			IntersectionPoint[] rightIntersections = null;
 			
 			if(this.leftChild.getBox().intersect(r) != null) {
 				leftIntersections = this.leftChild.intersect(r);
@@ -126,7 +126,7 @@ public abstract class KDTree extends Shape{
 				rightNumber = rightIntersections.length;
 			}
 			
-			Intersection[] total = new Intersection[leftNumber + rightNumber];
+			IntersectionPoint[] total = new IntersectionPoint[leftNumber + rightNumber];
 			int index = 0;
 			
 			
@@ -140,7 +140,7 @@ public abstract class KDTree extends Shape{
 				index++;
 			}
 			
-			total = Intersection.sortIntersections(total);
+			total = IntersectionPoint.sortIntersections(total);
 			
 			return total;
 		}
@@ -150,7 +150,7 @@ public abstract class KDTree extends Shape{
 	 * This method does nothing.
 	 */
 	@Override
-	public Coordinate localNormalAt(Coordinate p, Intersection hit) {
+	public Coordinate localNormalAt(Coordinate p, IntersectionPoint hit) {
 		// TODO Auto-generated method stub
 		return null;
 	}

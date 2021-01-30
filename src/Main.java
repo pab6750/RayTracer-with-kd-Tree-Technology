@@ -1391,7 +1391,7 @@ public class Main {
 
 			Ray ray = new Ray(rayOrigin, rayDirection);
 
-			Intersection[] xs = g.intersect(ray);
+			IntersectionPoint[] xs = g.intersect(ray);
 
 			/*if(xs != null) {
 				for(int k = 0; k < xs.length; k++) {
@@ -1548,9 +1548,9 @@ public class Main {
 
 		SmoothTriangle tri = new SmoothTriangle(p1, p2, p3, n1, n2, n3);
 
-		Intersection i = new Intersection(1, tri, 0.45, 0.25);
+		IntersectionPoint i = new IntersectionPoint(1, tri, 0.45, 0.25);
 
-		Intersection[] xs = {i};
+		IntersectionPoint[] xs = {i};
 
 		Coordinate rayOrigin = new Coordinate(-0.2, 0.3, -2, Coordinate.POINT);
 		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
@@ -1881,7 +1881,7 @@ public class Main {
 		Coordinate point;
 		Coordinate direction;
 		Ray ray;
-		Intersection[] xs;
+		IntersectionPoint[] xs;
 
 		//1
 		point = new Coordinate(15, 1, 2, Coordinate.POINT);
@@ -2200,7 +2200,7 @@ public class Main {
 
 		SmoothTriangle tri = new SmoothTriangle(p1, p2, p3, n1, n2, n3);
 
-		Intersection i = new Intersection(1, tri, 0.45, 0.25);
+		IntersectionPoint i = new IntersectionPoint(1, tri, 0.45, 0.25);
 		Coordinate n = tri.normalAt(new Coordinate(0, 0, 0, Coordinate.POINT), i);
 
 		n.printData();
@@ -2220,7 +2220,7 @@ public class Main {
 		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection[] xs = tri.localIntersect(ray);
+		IntersectionPoint[] xs = tri.localIntersect(ray);
 
 		System.out.println("u: " + xs[0].getU());
 		System.out.println("v: " + xs[0].getV());
@@ -2500,7 +2500,7 @@ public class Main {
 
 		Ray r = new Ray(rayOrigin, rayDirection);
 
-		Intersection[] xs = t.localIntersect(r);
+		IntersectionPoint[] xs = t.localIntersect(r);
 
 		System.out.println("xs: " + xs[0].getT());
 	}
@@ -2517,7 +2517,7 @@ public class Main {
 
 		Ray r = new Ray(rayOrigin, rayDirection);
 
-		Intersection[] xs = t.localIntersect(r);
+		IntersectionPoint[] xs = t.localIntersect(r);
 
 		System.out.println(xs == null);
 	}
@@ -2534,7 +2534,7 @@ public class Main {
 
 		Ray r = new Ray(rayOrigin, rayDirection);
 
-		Intersection[] xs = t.localIntersect(r);
+		IntersectionPoint[] xs = t.localIntersect(r);
 
 		System.out.println(xs == null);
 	}
@@ -2551,7 +2551,7 @@ public class Main {
 
 		Ray r = new Ray(rayOrigin, rayDirection);
 
-		Intersection[] xs = t.localIntersect(r);
+		IntersectionPoint[] xs = t.localIntersect(r);
 
 		System.out.println(xs == null);
 	}
@@ -2568,7 +2568,7 @@ public class Main {
 
 		Ray r = new Ray(rayOrigin, rayDirection);
 
-		Intersection[] xs = t.localIntersect(r);
+		IntersectionPoint[] xs = t.localIntersect(r);
 
 		System.out.println(xs == null);
 	}
@@ -2740,7 +2740,7 @@ public class Main {
 		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection[] xs = group.intersect(ray);
+		IntersectionPoint[] xs = group.intersect(ray);
 
 		System.out.println(xs.length);
 	}
@@ -2762,7 +2762,7 @@ public class Main {
 		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection[] xs = group.localIntersect(ray);
+		IntersectionPoint[] xs = group.localIntersect(ray);
 
 		System.out.println("s1: " + s1);
 		System.out.println("s2: " + s2);
@@ -2782,7 +2782,7 @@ public class Main {
 		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection[] xs = group.localIntersect(ray);
+		IntersectionPoint[] xs = group.localIntersect(ray);
 
 		if(xs == null) {
 			System.out.println("EMPTY");
@@ -2882,7 +2882,7 @@ public class Main {
 		Coordinate origin;
 		Coordinate direction;
 		Ray r;
-		Intersection[] xs;
+		IntersectionPoint[] xs;
 
 		origin = new Coordinate(0, 0, -5, Coordinate.POINT);
 		direction = new Coordinate(0, 1, 0, Coordinate.VECTOR).normalize();
@@ -2940,7 +2940,7 @@ public class Main {
 		Coordinate origin;
 		Coordinate direction;
 		Ray r;
-		Intersection[] xs;
+		IntersectionPoint[] xs;
 
 		origin = new Coordinate(0, 0, -5 ,Coordinate.POINT);
 		direction = new Coordinate(0, 0, 1, Coordinate.VECTOR).normalize();
@@ -3036,7 +3036,7 @@ public class Main {
 		Coordinate direction;
 		Coordinate origin;
 		Ray r;
-		Intersection[] xs;
+		IntersectionPoint[] xs;
 
 		origin = new Coordinate(0, 3, 0, Coordinate.POINT);
 		direction = new Coordinate(0, -1, 0, Coordinate.VECTOR).normalize();
@@ -3074,7 +3074,7 @@ public class Main {
 		Coordinate direction;
 		Coordinate origin;
 		Ray r;
-		Intersection[] xs;
+		IntersectionPoint[] xs;
 
 		direction = new Coordinate(0.1, 1, 0, Coordinate.VECTOR).normalize();
 		origin = new Coordinate(0, 1.5, 0, Coordinate.POINT);
@@ -3178,7 +3178,7 @@ public class Main {
 		Coordinate direction;
 		Coordinate origin;
 		Ray r;
-		Intersection[] xs;
+		IntersectionPoint[] xs;
 
 		origin = new Coordinate(1, 0, -5, Coordinate.POINT);
 		direction = new Coordinate(0, 0, 1, Coordinate.VECTOR).normalize();
@@ -3222,7 +3222,7 @@ public class Main {
 
 		Coordinate direction;
 		Ray r;
-		Intersection[] xs;
+		IntersectionPoint[] xs;
 
 		direction = new Coordinate(0, 1, 0, Coordinate.VECTOR).normalize();
 		r = new Ray(new Coordinate(1, 0, 0, Coordinate.POINT), direction);
@@ -3295,7 +3295,7 @@ public class Main {
 		Coordinate rayOrigin;
 		Coordinate rayDirection;
 		Ray ray;
-		Intersection[] xs;
+		IntersectionPoint[] xs;
 
 		//1
 		rayOrigin = new Coordinate(-2, 0, 0, Coordinate.POINT);
@@ -3381,7 +3381,7 @@ public class Main {
 		Coordinate rayOrigin;
 		Coordinate rayDirection;
 		Ray ray;
-		Intersection[] xs;
+		IntersectionPoint[] xs;
 
 		//+x
 		rayOrigin = new Coordinate(5, 0.5, 0, Coordinate.POINT);
@@ -3536,9 +3536,9 @@ public class Main {
 		Coordinate rayDirection = new Coordinate(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection xs1 = new Intersection(Math.sqrt(2), floor);
+		IntersectionPoint xs1 = new IntersectionPoint(Math.sqrt(2), floor);
 
-		Intersection[] xs = {xs1};
+		IntersectionPoint[] xs = {xs1};
 
 		Computation comps = new Computation(xs[0], ray, xs);
 
@@ -3553,9 +3553,9 @@ public class Main {
 		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection xs1 = new Intersection(1.8589, shape);
+		IntersectionPoint xs1 = new IntersectionPoint(1.8589, shape);
 
-		Intersection[] xs = {xs1};
+		IntersectionPoint[] xs = {xs1};
 
 		Computation comps = new Computation(xs[0], ray, xs);
 
@@ -3569,10 +3569,10 @@ public class Main {
 		Coordinate rayDirection = new Coordinate(0, 1, 0, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection xs1 = new Intersection(-1, shape);
-		Intersection xs2 = new Intersection(1, shape);
+		IntersectionPoint xs1 = new IntersectionPoint(-1, shape);
+		IntersectionPoint xs2 = new IntersectionPoint(1, shape);
 
-		Intersection[] xs = {xs1, xs2};
+		IntersectionPoint[] xs = {xs1, xs2};
 
 		Computation comps = new Computation(xs[1], ray, xs);
 
@@ -3586,10 +3586,10 @@ public class Main {
 		Coordinate rayDirection = new Coordinate(0, 1, 0, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection xs1 = new Intersection(-Math.sqrt(2) / 2, shape);
-		Intersection xs2 = new Intersection(Math.sqrt(2) / 2, shape);
+		IntersectionPoint xs1 = new IntersectionPoint(-Math.sqrt(2) / 2, shape);
+		IntersectionPoint xs2 = new IntersectionPoint(Math.sqrt(2) / 2, shape);
 
-		Intersection[] xs = {xs1, xs2};
+		IntersectionPoint[] xs = {xs1, xs2};
 
 		Computation comps = new Computation(xs[1], ray, xs);
 
@@ -3649,9 +3649,9 @@ public class Main {
 		Coordinate rayDirection = new Coordinate(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection xs1 = new Intersection(Math.sqrt(2), floor);
+		IntersectionPoint xs1 = new IntersectionPoint(Math.sqrt(2), floor);
 
-		Intersection[] xs = {xs1};
+		IntersectionPoint[] xs = {xs1};
 
 		Computation comps = new Computation(xs[0], ray, xs);
 
@@ -3674,12 +3674,12 @@ public class Main {
 		Coordinate rayDirection = new Coordinate(0, 1, 0, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection xs1 = new Intersection(-0.9899, shape);
-		Intersection xs2 = new Intersection(-0.4899, shape2);
-		Intersection xs3 = new Intersection(0.4899, shape2);
-		Intersection xs4 = new Intersection(0.9899, shape);
+		IntersectionPoint xs1 = new IntersectionPoint(-0.9899, shape);
+		IntersectionPoint xs2 = new IntersectionPoint(-0.4899, shape2);
+		IntersectionPoint xs3 = new IntersectionPoint(0.4899, shape2);
+		IntersectionPoint xs4 = new IntersectionPoint(0.9899, shape);
 
-		Intersection[] xs = {xs1, xs2, xs3, xs4};
+		IntersectionPoint[] xs = {xs1, xs2, xs3, xs4};
 
 		Computation comps = new Computation(xs[2], ray, xs);
 
@@ -3699,10 +3699,10 @@ public class Main {
 		Coordinate rayDirection = new Coordinate(0, 1, 0, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection xs1 = new Intersection(-Math.sqrt(2) / 2, shape);
-		Intersection xs2 = new Intersection(Math.sqrt(2) / 2, shape);
+		IntersectionPoint xs1 = new IntersectionPoint(-Math.sqrt(2) / 2, shape);
+		IntersectionPoint xs2 = new IntersectionPoint(Math.sqrt(2) / 2, shape);
 
-		Intersection[] xs = {xs1, xs2};
+		IntersectionPoint[] xs = {xs1, xs2};
 
 		Computation comps = new Computation(xs[1], ray, xs);
 
@@ -3722,10 +3722,10 @@ public class Main {
 		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection xs1 = new Intersection(4, shape);
-		Intersection xs2 = new Intersection(6, shape);
+		IntersectionPoint xs1 = new IntersectionPoint(4, shape);
+		IntersectionPoint xs2 = new IntersectionPoint(6, shape);
 
-		Intersection[] xs = {xs1, xs2};
+		IntersectionPoint[] xs = {xs1, xs2};
 
 		Computation comps = new Computation(xs[0], ray, xs);
 
@@ -3742,10 +3742,10 @@ public class Main {
 		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection xs1 = new Intersection(4, shape);
-		Intersection xs2 = new Intersection(6, shape);
+		IntersectionPoint xs1 = new IntersectionPoint(4, shape);
+		IntersectionPoint xs2 = new IntersectionPoint(6, shape);
 
-		Intersection[] xs = {xs1, xs2};
+		IntersectionPoint[] xs = {xs1, xs2};
 
 		Computation comps = new Computation(xs[0], ray, xs);
 
@@ -3761,8 +3761,8 @@ public class Main {
 		Sphere s = Sphere.getGlassSphere();
 		s.setTransformation(Matrix.translation(0, 0, 1));
 
-		Intersection i = new Intersection(5, s);
-		Intersection[] xs = {i};
+		IntersectionPoint i = new IntersectionPoint(5, s);
+		IntersectionPoint[] xs = {i};
 
 		Computation comps = new Computation(i, ray, xs);
 
@@ -3787,14 +3787,14 @@ public class Main {
 		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection xs1 = new Intersection(2, a);
-		Intersection xs2 = new Intersection(2.75, b);
-		Intersection xs3 = new Intersection(3.25, c);
-		Intersection xs4 = new Intersection(4.75, b);
-		Intersection xs5 = new Intersection(5.25, c);
-		Intersection xs6 = new Intersection(6, a);
+		IntersectionPoint xs1 = new IntersectionPoint(2, a);
+		IntersectionPoint xs2 = new IntersectionPoint(2.75, b);
+		IntersectionPoint xs3 = new IntersectionPoint(3.25, c);
+		IntersectionPoint xs4 = new IntersectionPoint(4.75, b);
+		IntersectionPoint xs5 = new IntersectionPoint(5.25, c);
+		IntersectionPoint xs6 = new IntersectionPoint(6, a);
 
-		Intersection[] xs = {xs1, xs2, xs3, xs4, xs5, xs6};
+		IntersectionPoint[] xs = {xs1, xs2, xs3, xs4, xs5, xs6};
 
 		System.out.println("| index | n1 | n2 |");
 
@@ -3888,7 +3888,7 @@ public class Main {
 		Coordinate rayDirection = new Coordinate(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection i = new Intersection(Math.sqrt(2), shape);
+		IntersectionPoint i = new IntersectionPoint(Math.sqrt(2), shape);
 		Computation comps = new Computation(i, ray, null);
 
 		Colour colour = comps.shadeHit(world, Computation.RECURSIVE_CUTOFF);
@@ -3911,7 +3911,7 @@ public class Main {
 		Coordinate rayDirection = new Coordinate(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection i = new Intersection(Math.sqrt(2), shape);
+		IntersectionPoint i = new IntersectionPoint(Math.sqrt(2), shape);
 		Computation comps = new Computation(i, ray, null);
 
 		Colour colour = comps.reflectedColour(world, Computation.RECURSIVE_CUTOFF);
@@ -3930,7 +3930,7 @@ public class Main {
 		Shape shape = objects[1];
 		shape.getMaterial().setAmbient(1);
 
-		Intersection i = new Intersection(1, shape);
+		IntersectionPoint i = new IntersectionPoint(1, shape);
 		Computation comps = new Computation(i, ray, null);
 
 		Colour result = comps.reflectedColour(world, Computation.RECURSIVE_CUTOFF);
@@ -3943,7 +3943,7 @@ public class Main {
 		Coordinate rayOrigin = new Coordinate(0, 1, -1, Coordinate.POINT);
 		Coordinate rayDirection = new Coordinate(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
-		Intersection i = new Intersection(Math.sqrt(2), shape);
+		IntersectionPoint i = new IntersectionPoint(Math.sqrt(2), shape);
 		Computation comps = new Computation(i, ray, null);
 
 		comps.getReflectv().printData();
@@ -4428,7 +4428,7 @@ public class Main {
 
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection[] xs = p.localIntersect(ray);
+		IntersectionPoint[] xs = p.localIntersect(ray);
 
 		if(xs != null) {
 			if(xs.length == 0) {
@@ -4449,7 +4449,7 @@ public class Main {
 
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection[] xs = p.localIntersect(ray);
+		IntersectionPoint[] xs = p.localIntersect(ray);
 
 		if(xs != null) {
 			if(xs.length == 0) {
@@ -4471,7 +4471,7 @@ public class Main {
 
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection[] xs = p.localIntersect(ray);
+		IntersectionPoint[] xs = p.localIntersect(ray);
 
 		if(xs != null) {
 			if(xs.length == 0) {
@@ -4493,7 +4493,7 @@ public class Main {
 
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection[] xs = p.localIntersect(ray);
+		IntersectionPoint[] xs = p.localIntersect(ray);
 
 		if(xs != null) {
 			if(xs.length == 0) {
@@ -4555,7 +4555,7 @@ public class Main {
 		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection i = new Intersection(4, s2);
+		IntersectionPoint i = new IntersectionPoint(4, s2);
 		Computation comps = new Computation(i, ray, null);
 		Colour colour = comps.shadeHit(world, Computation.RECURSIVE_CUTOFF);
 		colour.printData();
@@ -4808,7 +4808,7 @@ public class Main {
 
 		Sphere s = new Sphere();
 
-		Intersection i = new Intersection(4, s);
+		IntersectionPoint i = new IntersectionPoint(4, s);
 
 		Computation c = new Computation(i, r, null);
 
@@ -4823,7 +4823,7 @@ public class Main {
 
 		Sphere s = new Sphere();
 
-		Intersection i = new Intersection(1, s);
+		IntersectionPoint i = new IntersectionPoint(1, s);
 
 		Computation c = new Computation(i, r, null);
 
@@ -4837,7 +4837,7 @@ public class Main {
 
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Intersection[] xs = world.intersect(ray);
+		IntersectionPoint[] xs = world.intersect(ray);
 
 		for(int i = 0; i < xs.length; i++) {
 			xs[i].printData();
@@ -4881,10 +4881,10 @@ public class Main {
 				Coordinate newPosition = position.subtractCoordinate(rayOrigin).normalize();
 
 				Ray r = new Ray(rayOrigin, newPosition);
-				Intersection[] xs = shape.intersect(r);
+				IntersectionPoint[] xs = shape.intersect(r);
 
 				if(xs != null) {
-					Intersection hitPoint = Intersection.hit(xs);
+					IntersectionPoint hitPoint = IntersectionPoint.hit(xs);
 					if(hitPoint != null) {
 						Coordinate point = r.position(hitPoint.getT());
 						Coordinate normal = shape.normalAt(point, null);
@@ -4948,10 +4948,10 @@ public class Main {
 				Coordinate newPosition = position.subtractCoordinate(rayOrigin).normalize();
 
 				Ray r = new Ray(rayOrigin, newPosition);
-				Intersection[] xs = shape.intersect(r);
+				IntersectionPoint[] xs = shape.intersect(r);
 
 				if(xs != null) {
-					Intersection hitPoint = Intersection.hit(xs);
+					IntersectionPoint hitPoint = IntersectionPoint.hit(xs);
 					if(hitPoint != null) {
 						Coordinate point = r.position(hitPoint.getT());
 						Coordinate normal = shape.normalAt(point, null);
@@ -5102,10 +5102,10 @@ public class Main {
 				Coordinate newPosition = position.subtractCoordinate(rayOrigin).normalize();
 
 				Ray r = new Ray(rayOrigin, newPosition);
-				Intersection[] xs = shape.intersect(r);
+				IntersectionPoint[] xs = shape.intersect(r);
 
 				if(xs != null) {
-					if(Intersection.hit(xs) != null) {
+					if(IntersectionPoint.hit(xs) != null) {
 						canvas.writePixel(x, y, red);
 					}
 				}
@@ -5148,10 +5148,10 @@ public class Main {
 				Coordinate newPosition = position.subtractCoordinate(rayOrigin).normalize();
 
 				Ray r = new Ray(rayOrigin, newPosition);
-				Intersection[] xs = shape.intersect(r);
+				IntersectionPoint[] xs = shape.intersect(r);
 
 				if(xs != null) {
-					if(Intersection.hit(xs) != null) {
+					if(IntersectionPoint.hit(xs) != null) {
 						canvas.writePixel(x, y, red);
 					}
 				}

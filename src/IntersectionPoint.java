@@ -1,6 +1,6 @@
 
 
-public class Intersection {
+public class IntersectionPoint {
 	private double t;
 	private Shape object;
 	
@@ -9,12 +9,12 @@ public class Intersection {
 	private double u;
 	private double v;
 	
-	public Intersection(double t, Shape object) {
+	public IntersectionPoint(double t, Shape object) {
 		this.t = t;
 		this.object = object;
 	}
 	
-	public Intersection(double t, Shape object, double u, double v) {
+	public IntersectionPoint(double t, Shape object, double u, double v) {
 		this.t = t;
 		this.object = object;
 		this.u = u;
@@ -49,7 +49,7 @@ public class Intersection {
 		System.out.println("t: " + this.t);
 	}
 	
-	public static Intersection hit(Intersection[] intersectionArray) {
+	public static IntersectionPoint hit(IntersectionPoint[] intersectionArray) {
 		if(intersectionArray.length != 0) {
 			double current = intersectionArray[0].getT();
 			int index = 0;
@@ -77,14 +77,14 @@ public class Intersection {
 		}
 	}
 	
-	public static Intersection[] sortIntersections(Intersection[] intersectionsList) {
+	public static IntersectionPoint[] sortIntersections(IntersectionPoint[] intersectionsList) {
 		boolean sorted = false;
 		
 		while(!sorted) {
 			sorted = true;
 			for(int i = 0; i < intersectionsList.length - 1; i++) {
 				if(intersectionsList[i].getT() > intersectionsList[i + 1].getT()) {
-					Intersection temp = intersectionsList[i];
+					IntersectionPoint temp = intersectionsList[i];
 					intersectionsList[i] = intersectionsList[i + 1];
 					intersectionsList[i + 1] = temp;
 					sorted = false;

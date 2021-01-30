@@ -39,7 +39,7 @@ public class RayTests {
 		
 		Sphere s = new Sphere();
 		
-		Intersection[] xs = s.intersect(ray);
+		IntersectionPoint[] xs = s.intersect(ray);
 		
 		Assert.assertEquals(true, xs.length == 2);
 		Assert.assertEquals(true, xs[0].getT() == 4);

@@ -177,7 +177,7 @@ public class AABB extends Shape{
 	}
 
 	@Override
-	public Intersection[] localIntersect(Ray r) {
+	public IntersectionPoint[] localIntersect(Ray r) {
 		double[] xvalues = this.checkAxis(r.getOrigin().getX(), r.getDirection().getX(), this.min.getX(), this.max.getX());
 		double[] yvalues = this.checkAxis(r.getOrigin().getY(), r.getDirection().getY(), this.min.getY(), this.max.getY());
 		double[] zvalues = this.checkAxis(r.getOrigin().getZ(), r.getDirection().getZ(), this.min.getZ(), this.max.getZ());
@@ -199,13 +199,13 @@ public class AABB extends Shape{
 			return null;
 		}
 		
-		Intersection[] xs = {new Intersection(tmin, this), new Intersection(tmax, this)};
+		IntersectionPoint[] xs = {new IntersectionPoint(tmin, this), new IntersectionPoint(tmax, this)};
 		
 		return xs;
 	}
 
 	@Override
-	public Coordinate localNormalAt(Coordinate p, Intersection hit) {
+	public Coordinate localNormalAt(Coordinate p, IntersectionPoint hit) {
 		double temp = Math.max(Math.abs(p.getX()), Math.abs(p.getY()));
 		double maxc = Math.max(temp, Math.abs(p.getZ()));
 		

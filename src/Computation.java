@@ -24,12 +24,12 @@ public class Computation {
 	private double n1;
 	private double n2;
 	
-	public Computation(Intersection i, Ray r, Intersection[] xs) {
+	public Computation(IntersectionPoint i, Ray r, IntersectionPoint[] xs) {
 		this.t = i.getT();
 		this.shape = i.getObject();
 		this.point = r.position(this.t);
 		this.eyev = r.getDirection().negateCoordinate();
-		Intersection hit = Intersection.hit(xs);
+		IntersectionPoint hit = IntersectionPoint.hit(xs);
 		this.normalv = shape.normalAt(this.point, hit);
 		this.inside = this.isInside();
 		this.overPoint = this.point.addCoordinate(this.normalv.scalarMultiplication(EPSILON));

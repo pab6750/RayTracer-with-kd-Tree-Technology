@@ -73,15 +73,15 @@ public class Cylinder extends Shape{
 	}
 
 	@Override
-	public Intersection[] localIntersect(Ray r) {
+	public IntersectionPoint[] localIntersect(Ray r) {
 		
 		double a = r.getDirection().getX() * r.getDirection().getX()
 				 + r.getDirection().getZ() * r.getDirection().getZ();
 		
 		if(Math.abs(a) <= Computation.EPSILON) {
-			ArrayList<Intersection> temp = new ArrayList<Intersection>();
+			ArrayList<IntersectionPoint> temp = new ArrayList<IntersectionPoint>();
 			this.intersectCaps(r, temp);
-			Intersection[] xsCaps = new Intersection[temp.size()];
+			IntersectionPoint[] xsCaps = new IntersectionPoint[temp.size()];
 			
 			for(int i = 0; i < temp.size(); i++) {
 				xsCaps[i] = temp.get(i);
@@ -111,23 +111,23 @@ public class Cylinder extends Shape{
 			t1 = temp;
 		}
 		
-		ArrayList<Intersection> xsTemp = new ArrayList<Intersection>();
+		ArrayList<IntersectionPoint> xsTemp = new ArrayList<IntersectionPoint>();
 		
 		double y0 = r.getOrigin().getY() + t0 * r.getDirection().getY();
 		
 		if(this.minimum < y0 && y0 < this.maximum) {
-			xsTemp.add(new Intersection(t0, this));
+			xsTemp.add(new IntersectionPoint(t0, this));
 		}
 		
 		double y1 = r.getOrigin().getY() + t1 * r.getDirection().getY();
 		
 		if(this.minimum < y1 && y1 < this.maximum) {
-			xsTemp.add(new Intersection(t1, this));
+			xsTemp.add(new IntersectionPoint(t1, this));
 		}
 		
 		this.intersectCaps(r, xsTemp);
 		
-		Intersection[] xs = new Intersection[xsTemp.size()];
+		IntersectionPoint[] xs = new IntersectionPoint[xsTemp.size()];
 		
 		for(int i = 0; i < xsTemp.size(); i++) {
 			xs[i] = xsTemp.get(i);
@@ -137,7 +137,7 @@ public class Cylinder extends Shape{
 	}
 
 	@Override
-	public Coordinate localNormalAt(Coordinate p, Intersection hit) {
+	public Coordinate localNormalAt(Coordinate p, IntersectionPoint hit) {
 		double dist = p.getX() * p.getX() + p.getZ() * p.getZ();
 		
 		if(dist < 1 && p.getY() >= this.maximum - Computation.EPSILON) {
@@ -156,7 +156,7 @@ public class Cylinder extends Shape{
 		System.out.println("maximum: " + this.maximum);
 	}
 	
-	private void intersectCaps(Ray r, ArrayList<Intersection> xs) {
+	private void intersectCaps(Ray r, ArrayList<IntersectionPoint> xs) {
 		if(this.closed == false || Math.abs(r.getDirection().getY()) <= Computation.EPSILON) {
 			return;
 		}
@@ -164,13 +164,13 @@ public class Cylinder extends Shape{
 		double t = (this.minimum - r.getOrigin().getY()) / r.getDirection().getY();
 		
 		if(this.checkCap(r, t)) {
-			xs.add(new Intersection(t, this));
+			xs.add(new IntersectionPoint(t, this));
 		}
 		
 		t = (this.maximum - r.getOrigin().getY()) / r.getDirection().getY();
 		
 		if(this.checkCap(r, t)) {
-			xs.add(new Intersection(t, this));
+			xs.add(new IntersectionPoint(t, this));
 		}
 	}
 	
