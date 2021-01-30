@@ -91,7 +91,7 @@ public class Computation {
 		return this.underPoint;
 	}
 	
-	public Colour reflectedColour(World world, int remaining) {
+	public Colour reflectedColour(Scene scene, int remaining) {
 		if(remaining <= 0) {
 			return Colour.BLACK;
 		}
@@ -101,12 +101,12 @@ public class Computation {
 		}
 		
 		Ray reflectedRay = new Ray(this.overPoint, this.reflectv);
-		Colour colour = world.colourAt(reflectedRay, remaining - 1);
+		Colour colour = scene.colourAt(reflectedRay, remaining - 1);
 		
 		return colour.scalarMultiplication(this.shape.getMaterial().getReflective());
 	}
 	
-	public Colour refractedColour(World world, int remaining) {
+	public Colour refractedColour(Scene scene, int remaining) {
 		if(remaining <= 0) {
 			return Colour.BLACK;
 		}
@@ -128,7 +128,7 @@ public class Computation {
 		
 		Ray refractedRay = new Ray(this.underPoint, direction);
 		
-		Colour colour = world.colourAt(refractedRay, remaining - 1).scalarMultiplication(this.shape.getMaterial().getTransparency());
+		Colour colour = scene.colourAt(refractedRay, remaining - 1).scalarMultiplication(this.shape.getMaterial().getTransparency());
 		
 		return colour;
 	}
@@ -151,24 +151,24 @@ public class Computation {
 
 	/**
 	 * 
-	 * @param world
+	 * @param scene
 	 * @param remaining
 	 * @return
 	 */
-	public Colour shadeHit(World world, int remaining) {
+	public Colour shadeHit(Scene scene, int remaining) {
 		//is the point in shadows
-		boolean shadowed = world.isShadowed(this.overPoint);
+		boolean shadowed = scene.isShadowed(this.overPoint);
 		
 		//the lighting of the point
-		Colour surface = this.shape.lighting(world.getLight(), 
+		Colour surface = this.shape.lighting(scene.getLight(), 
 											 this.overPoint, 
 											 this.eyev, 
 											 this.normalv,
 											 shadowed);
 		
 		//reflected and refracted colours
-		Colour reflected = this.reflectedColour(world, remaining);
-		Colour refracted = this.refractedColour(world, remaining);
+		Colour reflected = this.reflectedColour(scene, remaining);
+		Colour refracted = this.refractedColour(scene, remaining);
 		
 		Material m = this.shape.getMaterial();
 		

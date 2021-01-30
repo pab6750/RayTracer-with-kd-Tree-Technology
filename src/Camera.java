@@ -37,10 +37,10 @@ public class Camera {
 	
 	/**
 	 * Creates a canvas instance containing the final image.
-	 * @param world The scene that is being rendered.
+	 * @param scene The scene that is being rendered.
 	 * @return the Canvas instance.
 	 */
-	public ImageOutput render(World world) {
+	public ImageOutput render(Scene scene) {
 		Timestamp timestampBeforeRendering = new Timestamp(System.currentTimeMillis());
 		ImageOutput image = new ImageOutput((int)this.vsize, (int)this.hsize);
 		
@@ -50,7 +50,7 @@ public class Camera {
 			
 			for(int x = 0; x < this.hsize; x++) {
 				Ray ray = this.rayForPixel(x, y);
-				Colour colour = world.colourAt(ray, Computation.RECURSIVE_CUTOFF);
+				Colour colour = scene.colourAt(ray, Computation.RECURSIVE_CUTOFF);
 				image.writePixel(x, y, colour);
 			}
 		}
@@ -65,10 +65,10 @@ public class Camera {
 	
 	/**
 	 * Creates a canvas instance containing the final image.
-	 * @param world The scene that is being rendered.
+	 * @param scene The scene that is being rendered.
 	 * @return the Canvas instance.
 	 */
-	public ImageOutput render(World world, String name) {
+	public ImageOutput render(Scene scene, String name) {
 		Timestamp timestampBeforeRendering = new Timestamp(System.currentTimeMillis());
 		ImageOutput image = new ImageOutput((int)this.vsize, (int)this.hsize, name);
 		
@@ -78,7 +78,7 @@ public class Camera {
 			
 			for(int x = 0; x < this.hsize; x++) {
 				Ray ray = this.rayForPixel(x, y);
-				Colour colour = world.colourAt(ray, Computation.RECURSIVE_CUTOFF);
+				Colour colour = scene.colourAt(ray, Computation.RECURSIVE_CUTOFF);
 				image.writePixel(x, y, colour);
 			}
 		}
@@ -102,15 +102,15 @@ public class Camera {
 		double xoffset = (x + 0.5) * this.pixelSize;
 		double yoffset = (y + 0.5) * this.pixelSize;
 		
-		//the untransformed coordinates of the pixel in world space
+		//the untransformed coordinates of the pixel in scene space
 		//(remember that the camera looks toward -z, so +x is to the left)
-		double worldX = this.halfWidth - xoffset;
-		double worldY = this.halfHeight - yoffset;
+		double sceneX = this.halfWidth - xoffset;
+		double sceneY = this.halfHeight - yoffset;
 		
 		//using the camera matrix, transform the canvas point and the origin
 		// and then compute the ray's direction vector
 		//(remember that the canvas is at z = -1)
-		Coordinate pixel = this.transform.invert().coordinateMultiplication(new Coordinate(worldX, worldY, -1, Coordinate.POINT));
+		Coordinate pixel = this.transform.invert().coordinateMultiplication(new Coordinate(sceneX, sceneY, -1, Coordinate.POINT));
 		Coordinate origin = this.transform.invert().coordinateMultiplication(new Coordinate(0, 0, 0, Coordinate.POINT));
 		Coordinate direction = pixel.subtractCoordinate(origin).normalize();
 		

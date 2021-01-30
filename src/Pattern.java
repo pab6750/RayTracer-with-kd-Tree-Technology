@@ -30,7 +30,7 @@ public abstract class Pattern {
 	
 	public Colour stripeAtObject(Shape object, Coordinate point) {
 		//Tuple objectPoint = object.getTransformation().invert().tupleMultiplication(point);
-		Coordinate objectPoint = object.worldToObject(point);
+		Coordinate objectPoint = object.sceneToObject(point);
 		Coordinate patternPoint = this.getTransformation().invert().coordinateMultiplication(objectPoint);
 		
 		return this.stripeAt(patternPoint);

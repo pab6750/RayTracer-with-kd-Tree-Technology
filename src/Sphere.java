@@ -105,9 +105,9 @@ public class Sphere extends Shape{
 	 * @return the normal Tuple.
 	 */
 	@Override
-	public Coordinate localNormalAt(Coordinate worldPoint, IntersectionPoint hit) {
+	public Coordinate localNormalAt(Coordinate scenePoint, IntersectionPoint hit) {
 		Coordinate originPoint = new Coordinate(0, 0, 0, Coordinate.POINT);
-		return worldPoint.subtractCoordinate(originPoint);
+		return scenePoint.subtractCoordinate(originPoint);
 	}
 	
 	@Override

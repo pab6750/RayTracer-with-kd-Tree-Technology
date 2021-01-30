@@ -1,12 +1,12 @@
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class World {
+public class Scene {
 	private PointLight light;
 	private Shape[] objs;
 	private Camera camera;
 	
-	public World(int resx, int resy) {
+	public Scene(int resx, int resy) {
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		
@@ -18,7 +18,7 @@ public class World {
 													       new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 	}
 	
-	public World() {
+	public Scene() {
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
 		
@@ -30,7 +30,7 @@ public class World {
 													       new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 	}
 	
-	public void renderWorld(String name) {
+	public void renderScene(String name) {
 		ImageOutput canvas = this.camera.render(this, name);
 		try {
 			canvas.saveFile();

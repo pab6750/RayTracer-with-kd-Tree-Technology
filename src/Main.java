@@ -516,11 +516,11 @@ public class Main {
 		MedianKDTree kdt = new MedianKDTree(true, shapes, 0);
 		kdt.build();
 
-		Shape[] worldList = {kdt};
+		Shape[] sceneList = {kdt};
 
-		World world = new World(200, 200);
-		world.setObjs(worldList);
-		world.renderWorld("medianResult4");
+		Scene scene = new Scene(200, 200);
+		scene.setObjs(sceneList);
+		scene.renderScene("medianResult4");
 	}
 
 	public static void lakeSimulation() {
@@ -541,9 +541,9 @@ public class Main {
 
 		Shape[] shapes = {water, seaFloor, cube};
 
-		World world = new World(128, 128);
-		world.setObjs(shapes);
-		world.renderWorld("lakeSimulation");
+		Scene scene = new Scene(128, 128);
+		scene.setObjs(shapes);
+		scene.renderScene("lakeSimulation");
 	}
 
 	public static void kdTreeTest3() {
@@ -608,11 +608,11 @@ public class Main {
 		MedianKDTree kdt = new MedianKDTree(true, shapes, 0);
 		kdt.build();
 
-		Shape[] worldList = {kdt};
+		Shape[] sceneList = {kdt};
 
-		World world = new World(200, 200);
-		world.setObjs(worldList);
-		world.renderWorld("medianResult3");
+		Scene scene = new Scene(200, 200);
+		scene.setObjs(sceneList);
+		scene.renderScene("medianResult3");
 	}
 
 	public static void bunnyTest() {
@@ -634,10 +634,10 @@ public class Main {
 		Shape[] objs = {mkdt};
 		System.out.println("Building Process Ended");*/
 
-		World world = new World(512, 512);
-		world.setObjs(shapesMinusNull);
+		Scene scene = new Scene(512, 512);
+		scene.setObjs(shapesMinusNull);
 
-		world.renderWorld("bunny");
+		scene.renderScene("bunny");
 	}
 
 	public static void trumpetTest() {
@@ -651,10 +651,10 @@ public class Main {
 		//kdt.buildWithMedian();
 		//Shape[] objs = {kdt};
 
-		World world = new World(200, 200);
-		world.setObjs(shapesMinusNull);
+		Scene scene = new Scene(200, 200);
+		scene.setObjs(shapesMinusNull);
 
-		world.renderWorld("trumpet");
+		scene.renderScene("trumpet");
 	}
 
 	public static void spatialTest() {
@@ -707,11 +707,11 @@ public class Main {
 		SpatialKDTree kdt = new SpatialKDTree(true, shapes, 0);
 		kdt.build();
 
-		Shape[] worldList = {kdt};
+		Shape[] sceneList = {kdt};
 
-		World world = new World(200, 200);
-		world.setObjs(worldList);
-		world.renderWorld("spatialResult1");
+		Scene scene = new Scene(200, 200);
+		scene.setObjs(sceneList);
+		scene.renderScene("spatialResult1");
 	}
 
 	public static void kdTreeTest() {
@@ -738,11 +738,11 @@ public class Main {
 		MedianKDTree kdt = new MedianKDTree(true, shapes, 0);
 		kdt.build();
 
-		Shape[] worldList = {kdt};
+		Shape[] sceneList = {kdt};
 
-		World world = new World(512, 512);
-		world.setObjs(worldList);
-		world.renderWorld("medianResult1");
+		Scene scene = new Scene(512, 512);
+		scene.setObjs(sceneList);
+		scene.renderScene("medianResult1");
 	}
 
 	public static void kdTreeTest2() {
@@ -769,11 +769,11 @@ public class Main {
 		MedianKDTree kdt = new MedianKDTree(true, shapes, 0);
 		kdt.build();
 
-		Shape[] worldList = {kdt};
+		Shape[] sceneList = {kdt};
 
-		World world = new World(512, 512);
-		world.setObjs(shapes);
-		world.renderWorld("medianResult2");
+		Scene scene = new Scene(512, 512);
+		scene.setObjs(shapes);
+		scene.renderScene("medianResult2");
 	}
 
 	public static void appendixImage3() {
@@ -805,19 +805,19 @@ public class Main {
 
 		Shape[] shapes = {plane, sphere1, sphere2, cube};
 
-		World world = new World();
-		world.setObjs(shapes);
+		Scene scene = new Scene();
+		scene.setObjs(shapes);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -855,19 +855,19 @@ public class Main {
 
 		Shape[] shapes = {plane, sphere1, sphere2, cube};
 
-		World world = new World();
-		world.setObjs(shapes);
+		Scene scene = new Scene();
+		scene.setObjs(shapes);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(256, 256, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -906,19 +906,19 @@ public class Main {
 
 		Shape[] shapes = {plane, sphere, cube, triangle};
 
-		World world = new World();
-		world.setObjs(shapes);
+		Scene scene = new Scene();
+		scene.setObjs(shapes);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -987,19 +987,19 @@ public class Main {
 
 		Shape[] shapes = {g/*, plane*/};
 
-		World world = new World();
-		world.setObjs(shapes);
+		Scene scene = new Scene();
+		scene.setObjs(shapes);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -20, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1063,19 +1063,19 @@ public class Main {
 
 		Shape[] shapes = {g};
 
-		World world = new World();
-		world.setObjs(shapes);
+		Scene scene = new Scene();
+		scene.setObjs(shapes);
 
 		Coordinate lightOrigin = new Coordinate(-20, 20, -20, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -20, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1086,8 +1086,8 @@ public class Main {
 
 	}
 
-	public static void reflectionWorld() {
-		World world = new World();
+	public static void reflectionScene() {
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.getMaterial().setReflective(0.5);
 
@@ -1124,18 +1124,18 @@ public class Main {
 		left.setDefaultReflectiveMaterial();
 
 		Shape[] objs = {floor, leftWall, rightWall, middle, right, left};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1146,7 +1146,7 @@ public class Main {
 	}
 
 	public static void phongModelPicture() {
-		World world = new World();
+		Scene scene = new Scene();
 
 		Sphere sphere = new Sphere();
 		sphere.setColour(new Colour(0, 1, 0));
@@ -1159,18 +1159,18 @@ public class Main {
 
 		Shape[] objs = {sphere};
 
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1181,7 +1181,7 @@ public class Main {
 	}
 
 	public static void medianKDTreeConfigurationTest() {
-		World world = new World();
+		Scene scene = new Scene();
 
 		Sphere sphere1 = new Sphere();
 		Sphere sphere2 = new Sphere();
@@ -1200,7 +1200,7 @@ public class Main {
 		AABB box3 = sphere3.getBounds().transform(sphere3.getTransformation());
 
 		Shape[] shapes = {sphere1, sphere2, sphere3};
-		world.setObjs(shapes);
+		scene.setObjs(shapes);
 
 		MedianKDTree kdt = MedianKDTree.createRoot(shapes);
 		kdt.setShapes(shapes);
@@ -1220,7 +1220,7 @@ public class Main {
 	}
 
 	public static void matricesChapterPic() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.getMaterial().setPattern(new CheckerPattern());
 
@@ -1259,18 +1259,18 @@ public class Main {
 
 		Shape[] objs = {floor, leftWall, rightWall, cube1, cube2, cube3};
 
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1308,9 +1308,9 @@ public class Main {
 
 		Shape[] objs = {floor, leftWall, rightWall, s, box};
 
-		World world = new World(512, 512);
-		world.setObjs(objs);
-		world.renderWorld("boxVisualization");
+		Scene scene = new Scene(512, 512);
+		scene.setObjs(objs);
+		scene.renderScene("boxVisualization");
 	}
 
 	public static void classTest() {
@@ -1412,7 +1412,7 @@ public class Main {
 	}
 
 	public static void manySpheres() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.getMaterial().setPattern(new CheckerPattern());
 
@@ -1436,18 +1436,18 @@ public class Main {
 
 		Shape[] objs = {floor, masterGroup};
 
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1466,7 +1466,7 @@ public class Main {
 
 		group.divide(5);
 
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.getMaterial().setPattern(new CheckerPattern());
 
@@ -1486,18 +1486,18 @@ public class Main {
 		rightWall.setTransformation(transformRightWall);
 
 		Shape[] objs = {floor, rightWall, leftWall, group};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(750, 750, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1565,7 +1565,7 @@ public class Main {
 	}
 
 	public static void superReflectionTest() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.setDefaultReflectiveMaterial();
 
@@ -1606,18 +1606,18 @@ public class Main {
 
 
 		Shape[] objs = {group};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1628,7 +1628,7 @@ public class Main {
 	}
 
 	public static void generalTest() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.getMaterial().setPattern(new CheckerPattern());
 
@@ -1664,18 +1664,18 @@ public class Main {
 
 
 		Shape[] objs = {floor, rightWall, leftWall, group};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1694,7 +1694,7 @@ public class Main {
 
 		group.divide(5);
 
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.getMaterial().setPattern(new CheckerPattern());
 
@@ -1714,18 +1714,18 @@ public class Main {
 		rightWall.setTransformation(transformRightWall);
 
 		Shape[] objs = {floor, rightWall, leftWall, group};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -1744,7 +1744,7 @@ public class Main {
 
 		group.divide(5);
 
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.getMaterial().setPattern(new CheckerPattern());
 
@@ -1764,18 +1764,18 @@ public class Main {
 		rightWall.setTransformation(transformRightWall);
 
 		Shape[] objs = {floor, rightWall, leftWall, group};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2136,7 +2136,7 @@ public class Main {
 		group.setColour(new Colour(1, 1, 1));
 		group.setTransformation(Matrix.translation(0, 1, 0).matrixMultiplication(Matrix.rotationX(-Math.PI / 2)));
 
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.setTransformation(Matrix.translation(0, -6, 0));
 		floor.getMaterial().setPattern(new CheckerPattern());
@@ -2157,18 +2157,18 @@ public class Main {
 		rightWall.setTransformation(transformRightWall);
 
 		Shape[] objs = {floor, rightWall, leftWall, group};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -15, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2233,7 +2233,7 @@ public class Main {
 		group.setColour(new Colour(1, 0, 0));
 		group.setTransformation(Matrix.translation(0, 1, 0));
 
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.getMaterial().setPattern(new CheckerPattern());
 
@@ -2253,18 +2253,18 @@ public class Main {
 		rightWall.setTransformation(transformRightWall);
 
 		Shape[] objs = {floor, rightWall, leftWall, group};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2281,7 +2281,7 @@ public class Main {
 		group.setColour(new Colour(1, 0, 0));
 		group.setTransformation(Matrix.translation(0, 1, 0));
 
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.getMaterial().setPattern(new CheckerPattern());
 
@@ -2301,18 +2301,18 @@ public class Main {
 		rightWall.setTransformation(transformRightWall);
 
 		Shape[] objs = {floor, rightWall, leftWall, group};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2339,22 +2339,22 @@ public class Main {
 		Triangle t7 = new Triangle(v4, v5, v6);
 		Triangle t8 = new Triangle(v3, v5, v6);
 
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 
 		Shape[] objs = {floor, t1, t2, t3, t4, t5, t6, t7, t8};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(0, 10, 0, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 2, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2365,7 +2365,7 @@ public class Main {
 	}
 
 	public static void groupVisualTest() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 
 		Group g = new Group();
@@ -2379,18 +2379,18 @@ public class Main {
 		g.addChild(s2);
 
 		Shape[] objs = {floor, g};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(0, 10, 0, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2574,7 +2574,7 @@ public class Main {
 	}
 
 	public static void coneNormalTest() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 
 		Plane leftWall = new Plane();
@@ -2595,18 +2595,18 @@ public class Main {
 
 
 		Shape[] objs = {floor, rightWall, leftWall, cone};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2617,7 +2617,7 @@ public class Main {
 	}
 
 	public static void showcase() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.getMaterial().setPattern(new CheckerPattern());
 		//floor.getMaterial().setReflective(0.5);
@@ -2654,18 +2654,18 @@ public class Main {
 
 
 		Shape[] objs = {floor, cube, rightWall, leftWall, ball, cone};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2706,7 +2706,7 @@ public class Main {
 		g2.addChild(s);
 
 		Coordinate n = new Coordinate(Math.sqrt(3) / 3, Math.sqrt(3) / 3, Math.sqrt(3) / 3, Coordinate.VECTOR);
-		Coordinate normal = s.normalToWorld(n);
+		Coordinate normal = s.normalToScene(n);
 		normal.printData();
 	}
 
@@ -2723,7 +2723,7 @@ public class Main {
 		s.setTransformation(Matrix.translation(5, 0, 0));
 		g2.addChild(s);
 
-		Coordinate p = s.worldToObject(new Coordinate(-2, 0, -10, Coordinate.POINT));
+		Coordinate p = s.sceneToObject(new Coordinate(-2, 0, -10, Coordinate.POINT));
 		p.printData();
 	}
 
@@ -2808,7 +2808,7 @@ public class Main {
 	}
 
 	public static void iceCream() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.getMaterial().setPattern(new CheckerPattern());
 		//floor.getMaterial().setReflective(0.5);
@@ -2837,18 +2837,18 @@ public class Main {
 
 
 		Shape[] objs = {floor, cube, rightWall, leftWall, ball};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2904,7 +2904,7 @@ public class Main {
 	}
 
 	public static void coneTest2() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.getMaterial().setPattern(new CheckerPattern());
 		floor.getMaterial().setReflective(0.5);
@@ -2914,18 +2914,18 @@ public class Main {
 		cone.setTransformation(Matrix.translation(0, 2, 0));
 
 		Shape[] objs = {floor, cone};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 2, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -2971,7 +2971,7 @@ public class Main {
 	}
 
 	public static void cylinderTest8() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.getMaterial().setPattern(new CheckerPattern());
 		floor.getMaterial().setReflective(0.5);
@@ -2980,18 +2980,18 @@ public class Main {
 		cyl.setColour(new Colour(1, 0, 0));
 
 		Shape[] objs = {floor, cyl};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 2, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -3120,7 +3120,7 @@ public class Main {
 	}
 
 	public static void cylinderTest4() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.getMaterial().setPattern(new CheckerPattern());
 		floor.getMaterial().setReflective(0.5);
@@ -3129,18 +3129,18 @@ public class Main {
 		cyl.setColour(new Colour(1, 0, 0));
 
 		Shape[] objs = {floor, cyl};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 2, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -3259,7 +3259,7 @@ public class Main {
 	}
 
 	public static void sceneTest9() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.getMaterial().setPattern(new CheckerPattern());
 		floor.getMaterial().setReflective(0.5);
@@ -3269,18 +3269,18 @@ public class Main {
 		cube.setTransformation(Matrix.translation(-0.5, 1, 0.5).matrixMultiplication(Matrix.rotationY(Math.PI / 4)));
 
 		Shape[] objs = {floor, cube};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 2, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -3463,7 +3463,7 @@ public class Main {
 
 	public static void sceneTest8() {
 
-		World world = new World();
+		Scene scene = new Scene();
 		Plane wall = new Plane();
 		wall.setTransformation(Matrix.rotationX(1.5708).matrixMultiplication(Matrix.translation(0, 0, 10)));
 		CheckerPattern pattern = new CheckerPattern(new Colour(0.15, 0.15, 0.15), new Colour(0.85, 0.85, 0.85));
@@ -3495,18 +3495,18 @@ public class Main {
 
 		Shape[] objs = {wall, ball};
 
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(2, 10, -5, Coordinate.POINT);
 		Colour white = new Colour(0.9, 0.9, 0.9);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(300, 300, 0.45);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 0, -5, Coordinate.POINT),
 													  new Coordinate(0, 0, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -3517,7 +3517,7 @@ public class Main {
 	}
 
 	public static void fresnelTest4() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.setTransformation(Matrix.translation(0, -1, 0));
 		floor.getMaterial().setReflective(0.5);
@@ -3530,7 +3530,7 @@ public class Main {
 		ball.getMaterial().setAmbient(0.5);
 
 		Shape[] objs = {floor, ball};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate rayOrigin = new Coordinate(0, 0, -3, Coordinate.POINT);
 		Coordinate rayDirection = new Coordinate(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Coordinate.VECTOR);
@@ -3542,7 +3542,7 @@ public class Main {
 
 		Computation comps = new Computation(xs[0], ray, xs);
 
-		Colour colour = comps.shadeHit(world, Computation.RECURSIVE_CUTOFF);
+		Colour colour = comps.shadeHit(scene, Computation.RECURSIVE_CUTOFF);
 		colour.printData();
 	}
 
@@ -3597,7 +3597,7 @@ public class Main {
 	}
 
 	public static void visualTest() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.setTransformation(Matrix.translation(0, -1, 0));
 		floor.getMaterial().setTransparency(0.5);
@@ -3609,18 +3609,18 @@ public class Main {
 		ball.getMaterial().setAmbient(0.5);
 
 		Shape[] objs = {floor, ball};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 0, -3, Coordinate.POINT),
 													  new Coordinate(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -3631,7 +3631,7 @@ public class Main {
 	}
 
 	public static void refractionTest7() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.setTransformation(Matrix.translation(0, -1, 0));
 		floor.getMaterial().setTransparency(0.5);
@@ -3643,7 +3643,7 @@ public class Main {
 		ball.getMaterial().setAmbient(0.5);
 
 		Shape[] objs = {floor, ball};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate rayOrigin = new Coordinate(0, 0, -3, Coordinate.POINT);
 		Coordinate rayDirection = new Coordinate(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Coordinate.VECTOR);
@@ -3655,13 +3655,13 @@ public class Main {
 
 		Computation comps = new Computation(xs[0], ray, xs);
 
-		Colour colour = comps.shadeHit(world, Computation.RECURSIVE_CUTOFF);
+		Colour colour = comps.shadeHit(scene, Computation.RECURSIVE_CUTOFF);
 		colour.printData();
 	}
 
 	public static void refractionTest6() {
-		World world = new World();
-		Shape[] objs = world.getObjs();
+		Scene scene = new Scene();
+		Shape[] objs = scene.getObjs();
 		Shape shape = objs[0];
 
 		shape.getMaterial().setAmbient(1);
@@ -3683,13 +3683,13 @@ public class Main {
 
 		Computation comps = new Computation(xs[2], ray, xs);
 
-		Colour colour = comps.refractedColour(world, Computation.RECURSIVE_CUTOFF);
+		Colour colour = comps.refractedColour(scene, Computation.RECURSIVE_CUTOFF);
 		colour.printData();
 	}
 
 	public static void refractionTest5() {
-		World world = new World();
-		Shape[] objs = world.getObjs();
+		Scene scene = new Scene();
+		Shape[] objs = scene.getObjs();
 		Shape shape = objs[0];
 
 		shape.getMaterial().setTransparency(1);
@@ -3706,13 +3706,13 @@ public class Main {
 
 		Computation comps = new Computation(xs[1], ray, xs);
 
-		Colour colour = comps.refractedColour(world, Computation.RECURSIVE_CUTOFF);
+		Colour colour = comps.refractedColour(scene, Computation.RECURSIVE_CUTOFF);
 		colour.printData();
 	}
 
 	public static void refractionTest4() {
-		World world = new World();
-		Shape[] objs = world.getObjs();
+		Scene scene = new Scene();
+		Shape[] objs = scene.getObjs();
 		Shape shape = objs[0];
 
 		shape.getMaterial().setTransparency(1);
@@ -3729,13 +3729,13 @@ public class Main {
 
 		Computation comps = new Computation(xs[0], ray, xs);
 
-		Colour colour = comps.refractedColour(world, 0);
+		Colour colour = comps.refractedColour(scene, 0);
 		colour.printData();
 	}
 
 	public static void refractionTest3() {
-		World world = new World();
-		Shape[] objs = world.getObjs();
+		Scene scene = new Scene();
+		Shape[] objs = scene.getObjs();
 		Shape shape = objs[0];
 
 		Coordinate rayOrigin = new Coordinate(0, 0, -5, Coordinate.POINT);
@@ -3749,7 +3749,7 @@ public class Main {
 
 		Computation comps = new Computation(xs[0], ray, xs);
 
-		Colour colour = comps.refractedColour(world, Computation.RECURSIVE_CUTOFF);
+		Colour colour = comps.refractedColour(scene, Computation.RECURSIVE_CUTOFF);
 		colour.printData();
 	}
 
@@ -3806,7 +3806,7 @@ public class Main {
 	}
 
 	public static void sceneTest7() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.getMaterial().setPattern(new CheckerPattern());
 		floor.getMaterial().setReflective(0.5);
@@ -3851,18 +3851,18 @@ public class Main {
 		left.getMaterial().setPattern(leftSpherePattern);
 
 		Shape[] objs = {floor, leftWall, rightWall, middle, right, left};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -3873,16 +3873,16 @@ public class Main {
 	}
 
 	public static void reflectiveTest2() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane shape = new Plane();
 		shape.getMaterial().setReflective(0.5);
 		shape.setTransformation(Matrix.translation(0, -1, 0));
 
-		Shape[] originalObjects = world.getObjs();
+		Shape[] originalObjects = scene.getObjs();
 		Shape[] newObjects = {originalObjects[0],
 				              originalObjects[1],
 				              shape};
-		world.setObjs(newObjects);
+		scene.setObjs(newObjects);
 
 		Coordinate rayOrigin = new Coordinate(0, 0, -3, Coordinate.POINT);
 		Coordinate rayDirection = new Coordinate(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Coordinate.VECTOR);
@@ -3891,21 +3891,21 @@ public class Main {
 		IntersectionPoint i = new IntersectionPoint(Math.sqrt(2), shape);
 		Computation comps = new Computation(i, ray, null);
 
-		Colour colour = comps.shadeHit(world, Computation.RECURSIVE_CUTOFF);
+		Colour colour = comps.shadeHit(scene, Computation.RECURSIVE_CUTOFF);
 		colour.printData();
 	}
 
 	public static void reflectiveTest() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane shape = new Plane();
 		shape.getMaterial().setReflective(0.5);
 		shape.setTransformation(Matrix.translation(0, -1, 0));
 
-		Shape[] originalObjects = world.getObjs();
+		Shape[] originalObjects = scene.getObjs();
 		Shape[] newObjects = {originalObjects[0],
 				              originalObjects[1],
 				              shape};
-		world.setObjs(newObjects);
+		scene.setObjs(newObjects);
 
 		Coordinate rayOrigin = new Coordinate(0, 0, -3, Coordinate.POINT);
 		Coordinate rayDirection = new Coordinate(0, -Math.sqrt(2) / 2, Math.sqrt(2) / 2, Coordinate.VECTOR);
@@ -3914,18 +3914,18 @@ public class Main {
 		IntersectionPoint i = new IntersectionPoint(Math.sqrt(2), shape);
 		Computation comps = new Computation(i, ray, null);
 
-		Colour colour = comps.reflectedColour(world, Computation.RECURSIVE_CUTOFF);
+		Colour colour = comps.reflectedColour(scene, Computation.RECURSIVE_CUTOFF);
 		colour.printData();
 	}
 
 	public static void nonreflectiveTest() {
-		World world = new World();
+		Scene scene = new Scene();
 
 		Coordinate rayOrigin = new Coordinate(0, 0, 0, Coordinate.POINT);
 		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Shape[] objects = world.getObjs();
+		Shape[] objects = scene.getObjs();
 
 		Shape shape = objects[1];
 		shape.getMaterial().setAmbient(1);
@@ -3933,7 +3933,7 @@ public class Main {
 		IntersectionPoint i = new IntersectionPoint(1, shape);
 		Computation comps = new Computation(i, ray, null);
 
-		Colour result = comps.reflectedColour(world, Computation.RECURSIVE_CUTOFF);
+		Colour result = comps.reflectedColour(scene, Computation.RECURSIVE_CUTOFF);
 		result.printData();
 	}
 
@@ -3964,7 +3964,7 @@ public class Main {
 	}
 
 	public static void sceneTest6() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.getMaterial().setPattern(new CheckerPattern());
 
@@ -4009,18 +4009,18 @@ public class Main {
 		left.getMaterial().setPattern(leftSpherePattern);
 
 		Shape[] objs = {floor, leftWall, rightWall, middle, right, left};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -4159,7 +4159,7 @@ public class Main {
 	}
 
 	public static void sceneTest5() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 
 		Material defaultMaterial = new Material();
@@ -4199,18 +4199,18 @@ public class Main {
 		left.getMaterial().setSpecular(0.3);
 
 		Shape[] objs = {floor, middle, right, left};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -4221,7 +4221,7 @@ public class Main {
 	}
 
 	public static void sceneTest4() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 
 		Material defaultMaterial = new Material();
@@ -4257,18 +4257,18 @@ public class Main {
 		left.getMaterial().setSpecular(0.3);
 
 		Shape[] objs = {floor, middle, right, left};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -4337,7 +4337,7 @@ public class Main {
 	}
 
 	public static void sceneTest3() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.setColour(new Colour(1, 0.9, 0.9));
 		floor.getMaterial().setSpecular(0);
@@ -4365,18 +4365,18 @@ public class Main {
 		left.getMaterial().setSpecular(0.3);
 
 		Shape[] objs = {floor, middle, right, left};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -4387,7 +4387,7 @@ public class Main {
 	}
 
 	public static void sceneTest2() {
-		World world = new World();
+		Scene scene = new Scene();
 		Plane floor = new Plane();
 		floor.setColour(new Colour(1, 0.9, 0.9));
 		floor.getMaterial().setSpecular(0);
@@ -4399,18 +4399,18 @@ public class Main {
 		s2.setTransformation(Matrix.translation(1, 0.5, 0));
 
 		Shape[] objs = {floor, s1, s2};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(1, 20, 0, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -4537,11 +4537,11 @@ public class Main {
 	}
 
 	public static void shadowRenderTest() {
-		World world = new World();
+		Scene scene = new Scene();
 		Coordinate lightOrigin = new Coordinate(0, 0, -10, Coordinate.POINT);
 		Colour lightColour = new Colour(1, 1, 1);
 		PointLight light = new PointLight(lightOrigin, lightColour);
-		world.setLight(light);
+		scene.setLight(light);
 
 		Sphere s1 = new Sphere();
 		Sphere s2 = new Sphere();
@@ -4549,7 +4549,7 @@ public class Main {
 		s2.setTransformation(transform);
 
 		Sphere[] objs = {s1, s2};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate rayOrigin = new Coordinate(0, 0, 5, Coordinate.POINT);
 		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
@@ -4557,32 +4557,32 @@ public class Main {
 
 		IntersectionPoint i = new IntersectionPoint(4, s2);
 		Computation comps = new Computation(i, ray, null);
-		Colour colour = comps.shadeHit(world, Computation.RECURSIVE_CUTOFF);
+		Colour colour = comps.shadeHit(scene, Computation.RECURSIVE_CUTOFF);
 		colour.printData();
 	}
 
 	public static void shadowTest4() {
-		World world = new World();
+		Scene scene = new Scene();
 		Coordinate p = new Coordinate(-2, 2, -2, Coordinate.POINT);
-		System.out.println(world.isShadowed(p));
+		System.out.println(scene.isShadowed(p));
 	}
 
 	public static void shadowTest3() {
-		World world = new World();
+		Scene scene = new Scene();
 		Coordinate p = new Coordinate(-20, 20, -20, Coordinate.POINT);
-		System.out.println(world.isShadowed(p));
+		System.out.println(scene.isShadowed(p));
 	}
 
 	public static void shadowTest2() {
-		World world = new World();
+		Scene scene = new Scene();
 		Coordinate p = new Coordinate(10, -10, 10, Coordinate.POINT);
-		System.out.println(world.isShadowed(p));
+		System.out.println(scene.isShadowed(p));
 	}
 
 	public static void shadowTest() {
-		World world = new World();
+		Scene scene = new Scene();
 		Coordinate p = new Coordinate(0, 10, 0, Coordinate.POINT);
-		System.out.println(world.isShadowed(p));
+		System.out.println(scene.isShadowed(p));
 	}
 
 	public static void pointInShadowTest() {
@@ -4598,7 +4598,7 @@ public class Main {
 	}
 
 	public static void sceneTest() {
-		World world = new World();
+		Scene scene = new Scene();
 		Sphere floor = new Sphere();
 		Matrix transform = Matrix.scaling(10, 0.01, 10);
 		floor.setTransformation(transform);
@@ -4646,18 +4646,18 @@ public class Main {
 		left.getMaterial().setSpecular(0.3);
 
 		Sphere[] objs = {floor, rightWall, leftWall, middle, right, left};
-		world.setObjs(objs);
+		scene.setObjs(objs);
 
 		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
 		Colour white = new Colour(1, 1, 1);
-		world.setLight(new PointLight(lightOrigin, white));
+		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
 		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
-		ImageOutput canvas = camera.render(world);
+		ImageOutput canvas = camera.render(scene);
 		try {
 			canvas.saveFile();
 		} catch (IOException e) {
@@ -4668,7 +4668,7 @@ public class Main {
 	}
 
 	public static void renderTest() {
-		World world = new World();
+		Scene scene = new Scene();
 		Camera camera = new Camera(11, 11, Math.PI / 2);
 
 		Coordinate from = new Coordinate(0, 0, -5, Coordinate.POINT);
@@ -4677,7 +4677,7 @@ public class Main {
 
 		camera.setTransform(Matrix.viewTransformation(from, to, up));
 
-		ImageOutput image = camera.render(world);
+		ImageOutput image = camera.render(scene);
 		Colour testColour = image.pixelAt(5, 5);
 		testColour.printData();
 		try {
@@ -4777,25 +4777,25 @@ public class Main {
 	}
 
 	public static void colourAtTest() {
-		World world = new World();
+		Scene scene = new Scene();
 
 		Coordinate rayOrigin = new Coordinate(0, 0, -5, Coordinate.POINT);
 		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Colour colour = world.colourAt(ray, Computation.RECURSIVE_CUTOFF);
+		Colour colour = scene.colourAt(ray, Computation.RECURSIVE_CUTOFF);
 
 		colour.printData();
 	}
 
 	public static void rayMissesTest() {
-		World world = new World();
+		Scene scene = new Scene();
 
 		Coordinate rayOrigin = new Coordinate(0, 0, -5, Coordinate.POINT);
 		Coordinate rayDirection = new Coordinate(0, 1, 0, Coordinate.VECTOR);
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		Colour colour = world.colourAt(ray, Computation.RECURSIVE_CUTOFF);
+		Colour colour = scene.colourAt(ray, Computation.RECURSIVE_CUTOFF);
 
 		colour.printData();
 	}
@@ -4830,14 +4830,14 @@ public class Main {
 		System.out.println("is Inside: " + c.getInside());
 	}
 
-	public static void intersectWorldTest() {
-		World world = new World();
+	public static void intersectSceneTest() {
+		Scene scene = new Scene();
 		Coordinate rayOrigin = new Coordinate(0, 0, -5, Coordinate.POINT);
 		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
 
 		Ray ray = new Ray(rayOrigin, rayDirection);
 
-		IntersectionPoint[] xs = world.intersect(ray);
+		IntersectionPoint[] xs = scene.intersect(ray);
 
 		for(int i = 0; i < xs.length; i++) {
 			xs[i].printData();
@@ -4872,12 +4872,12 @@ public class Main {
 		PointLight light = new PointLight(lightPosition, lightColour);
 
 		for(int y = 0; y < canvasPixels; y++) {
-			double worldY = half - (pixelSize * y);
+			double sceneY = half - (pixelSize * y);
 
 			for(int x = 0; x < canvasPixels; x++) {
-				double worldX = -half + (pixelSize * x);
+				double sceneX = -half + (pixelSize * x);
 
-				Coordinate position = new Coordinate(worldX, worldY, wallZ, Coordinate.POINT);
+				Coordinate position = new Coordinate(sceneX, sceneY, wallZ, Coordinate.POINT);
 				Coordinate newPosition = position.subtractCoordinate(rayOrigin).normalize();
 
 				Ray r = new Ray(rayOrigin, newPosition);
@@ -4939,12 +4939,12 @@ public class Main {
 		PointLight light = new PointLight(lightPosition, lightColour);
 
 		for(int y = 0; y < canvasPixels; y++) {
-			double worldY = half - (pixelSize * y);
+			double sceneY = half - (pixelSize * y);
 
 			for(int x = 0; x < canvasPixels; x++) {
-				double worldX = -half + (pixelSize * x);
+				double sceneX = -half + (pixelSize * x);
 
-				Coordinate position = new Coordinate(worldX, worldY, wallZ, Coordinate.POINT);
+				Coordinate position = new Coordinate(sceneX, sceneY, wallZ, Coordinate.POINT);
 				Coordinate newPosition = position.subtractCoordinate(rayOrigin).normalize();
 
 				Ray r = new Ray(rayOrigin, newPosition);
@@ -5093,12 +5093,12 @@ public class Main {
 		Sphere shape = new Sphere();
 
 		for(int y = 0; y < canvasPixels; y++) {
-			double worldY = half - (pixelSize * y);
+			double sceneY = half - (pixelSize * y);
 
 			for(int x = 0; x < canvasPixels; x++) {
-				double worldX = -half + (pixelSize * x);
+				double sceneX = -half + (pixelSize * x);
 
-				Coordinate position = new Coordinate(worldX, worldY, wallZ, Coordinate.POINT);
+				Coordinate position = new Coordinate(sceneX, sceneY, wallZ, Coordinate.POINT);
 				Coordinate newPosition = position.subtractCoordinate(rayOrigin).normalize();
 
 				Ray r = new Ray(rayOrigin, newPosition);
@@ -5139,12 +5139,12 @@ public class Main {
 		shape.setTransformation(scalingMatrix);
 
 		for(int y = 0; y < canvasPixels; y++) {
-			double worldY = half - (pixelSize * y);
+			double sceneY = half - (pixelSize * y);
 
 			for(int x = 0; x < canvasPixels; x++) {
-				double worldX = -half + (pixelSize * x);
+				double sceneX = -half + (pixelSize * x);
 
-				Coordinate position = new Coordinate(worldX, worldY, wallZ, Coordinate.POINT);
+				Coordinate position = new Coordinate(sceneX, sceneY, wallZ, Coordinate.POINT);
 				Coordinate newPosition = position.subtractCoordinate(rayOrigin).normalize();
 
 				Ray r = new Ray(rayOrigin, newPosition);

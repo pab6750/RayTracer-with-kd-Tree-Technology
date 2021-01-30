@@ -80,30 +80,30 @@ public abstract class Shape {
 	}
 	
 	/**
-	 * Turns a point in world space to object space
+	 * Turns a point in scene space to object space
 	 * @param point
 	 * @return
 	 */
-	public Coordinate worldToObject(Coordinate point) {
+	public Coordinate sceneToObject(Coordinate point) {
 		if(this.parent != null) {
-			point = this.parent.worldToObject(point);
+			point = this.parent.sceneToObject(point);
 		}
 		
 		return this.transformation.invert().coordinateMultiplication(point);
 	}
 	
 	/**
-	 * Turns the normal to world space.
+	 * Turns the normal to scene space.
 	 * @param normal
 	 * @return
 	 */
-	public Coordinate normalToWorld(Coordinate normal) {
+	public Coordinate normalToScene(Coordinate normal) {
 		normal = this.transformation.invert().transposition().coordinateMultiplication(normal);
 		normal.setType(Coordinate.VECTOR);
 		normal = normal.normalize();
 		
 		if(this.parent != null) {
-			normal = this.parent.normalToWorld(normal);
+			normal = this.parent.normalToScene(normal);
 		}
 		
 		return normal;
@@ -143,17 +143,17 @@ public abstract class Shape {
 	
 	/**
 	 * Finds the normal at the given point.
-	 * @param worldPoint
+	 * @param scenePoint
 	 * @param hit
 	 * @return
 	 */
-	public Coordinate normalAt(Coordinate worldPoint, IntersectionPoint hit) {
+	public Coordinate normalAt(Coordinate scenePoint, IntersectionPoint hit) {
 		
-		//transforms the worldPoint in object space
-		Coordinate localPoint = this.worldToObject(worldPoint);
+		//transforms the scenePoint in object space
+		Coordinate localPoint = this.sceneToObject(scenePoint);
 		Coordinate localNormal = this.localNormalAt(localPoint, hit);
 		
-		return this.normalToWorld(localNormal);
+		return this.normalToScene(localNormal);
 	}
 	
 	public void setColour(Colour colour) {
