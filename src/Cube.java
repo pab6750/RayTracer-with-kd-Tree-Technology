@@ -74,7 +74,7 @@ public class Cube extends Shape{
 		double tmin;
 		double tmax;
 		
-		if(Math.abs(direction) >= Computation.EPSILON) {
+		if(Math.abs(direction) >= EPSILON) {
 			tmin = tminNumerator / direction;
 			tmax = tmaxNumerator / direction;
 		} else {

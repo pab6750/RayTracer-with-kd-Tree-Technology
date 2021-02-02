@@ -102,8 +102,8 @@ public class Colour {
     }
     
     public boolean isEqual(Colour c) {
-    	return Computation.compareDouble(this.getR(), c.getR()) &&
-    		   Computation.compareDouble(this.getG(), c.getG()) &&
-    		   Computation.compareDouble(this.getB(), c.getB());
+    	return Effect.compareDouble(this.getR(), c.getR()) &&
+    		   Effect.compareDouble(this.getG(), c.getG()) &&
+    		   Effect.compareDouble(this.getB(), c.getB());
     }
 }

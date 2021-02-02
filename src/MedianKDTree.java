@@ -54,6 +54,13 @@ public class MedianKDTree extends KDTree{
 		this.rightChild.setBox(children[1]);
 		this.rightChild.setLevel(level);
 		
+		/*
+		 * For each level, there are at least 4 arrays to deal with (leftShapes, rightShapes, leftArrat and rightArray).
+		 * Mark has advised to use the original array as the left array (because some of them are gonna stay there), and
+		 * count the number of triangles that will go to the right, and put them there. this should decrease the memory footprint.
+		 * he did not advise to pursue the link list alternative.
+		 */
+		
 		ArrayList<Shape> leftShapes = new ArrayList<Shape>();
 		ArrayList<Shape> rightShapes = new ArrayList<Shape>();
 		

@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * @author Pablo Scarpati
  *
  */
-public class Computation {
+public class Effect {
 	public static final double EPSILON = 0.00001;
 	public static final int RECURSIVE_CUTOFF = 5;
 	
@@ -17,24 +17,24 @@ public class Computation {
 	private Coordinate overPoint;
 	private Coordinate underPoint;
 	
-	private Coordinate eyev;
-	private Coordinate normalv;
-	private Coordinate reflectv;
-	private boolean inside;
+	private Coordinate eyeVector;
+	private Coordinate normalVector;
+	private Coordinate reflectVector;
+	private boolean insideShape;
 	private double n1;
 	private double n2;
 	
-	public Computation(IntersectionPoint i, Ray r, IntersectionPoint[] xs) {
+	public Effect(IntersectionPoint i, Ray r, IntersectionPoint[] xs) {
 		this.t = i.getT();
 		this.shape = i.getObject();
 		this.point = r.position(this.t);
-		this.eyev = r.getDirection().negateCoordinate();
+		this.eyeVector = r.getDirection().negateCoordinate();
 		IntersectionPoint hit = IntersectionPoint.hit(xs);
-		this.normalv = shape.normalAt(this.point, hit);
-		this.inside = this.isInside();
-		this.overPoint = this.point.addCoordinate(this.normalv.scalarMultiplication(EPSILON));
-		this.underPoint = this.point.subtractCoordinate(this.normalv.scalarMultiplication(EPSILON));
-		this.reflectv = r.getDirection().reflect(this.normalv);
+		this.normalVector = shape.normalAt(this.point, hit);
+		this.insideShape = this.isInsideShape();
+		this.overPoint = this.point.addCoordinate(this.normalVector.scalarMultiplication(EPSILON));
+		this.underPoint = this.point.subtractCoordinate(this.normalVector.scalarMultiplication(EPSILON));
+		this.reflectVector = r.getDirection().reflect(this.normalVector);
 		
 		//transparency intersections algorithm
 		if(xs != null) {
@@ -100,7 +100,7 @@ public class Computation {
 			return Colour.BLACK;
 		}
 		
-		Ray reflectedRay = new Ray(this.overPoint, this.reflectv);
+		Ray reflectedRay = new Ray(this.overPoint, this.reflectVector);
 		Colour colour = scene.colourAt(reflectedRay, remaining - 1);
 		
 		return colour.scalarMultiplication(this.shape.getMaterial().getReflective());
@@ -116,7 +116,7 @@ public class Computation {
 		}
 		
 		double nRatio = this.n1 / this.n2;
-		double cosI = this.eyev.dotProduct(this.normalv);
+		double cosI = this.eyeVector.dotProduct(this.normalVector);
 		double sin2T = nRatio * nRatio * (1 - Math.pow(cosI, 2));
 		
 		if(sin2T > 1) {
@@ -124,7 +124,7 @@ public class Computation {
 		}
 		
 		double cosT = Math.sqrt(1 - sin2T);
-		Coordinate direction = this.normalv.scalarMultiplication((nRatio * cosI) - cosT).subtractCoordinate(this.eyev.scalarMultiplication(nRatio));
+		Coordinate direction = this.normalVector.scalarMultiplication((nRatio * cosI) - cosT).subtractCoordinate(this.eyeVector.scalarMultiplication(nRatio));
 		
 		Ray refractedRay = new Ray(this.underPoint, direction);
 		
@@ -133,12 +133,12 @@ public class Computation {
 		return colour;
 	}
 	
-	public Coordinate getReflectv() {
-		return reflectv;
+	public Coordinate getReflectVector() {
+		return reflectVector;
 	}
 
-	public void setReflectv(Coordinate reflectv) {
-		this.reflectv = reflectv;
+	public void setReflectVector(Coordinate reflectVector) {
+		this.reflectVector = reflectVector;
 	}
 
 	public Coordinate getOverPoint() {
@@ -162,8 +162,8 @@ public class Computation {
 		//the lighting of the point
 		Colour surface = this.shape.lighting(scene.getLight(), 
 											 this.overPoint, 
-											 this.eyev, 
-											 this.normalv,
+											 this.eyeVector, 
+											 this.normalVector,
 											 shadowed);
 		
 		//reflected and refracted colours
@@ -190,7 +190,7 @@ public class Computation {
 	 * @return the reflectance
 	 */
 	public double schlick() {
-		double cos = this.eyev.dotProduct(this.normalv);
+		double cos = this.eyeVector.dotProduct(this.normalVector);
 		
 		if(this.n1 > this.n2) {
 			double n = this.n1 / this.n2;
@@ -213,19 +213,19 @@ public class Computation {
 	 * This methods determines whether the point is inside a shape (?).
 	 * @return Returns true if the point is inside (?).
 	 */
-	public boolean isInside() {
-		double value = this.eyev.dotProduct(this.normalv);
+	public boolean isInsideShape() {
+		double value = this.eyeVector.dotProduct(this.normalVector);
 		
 		if(value < 0) {
-			this.normalv = this.normalv.negateCoordinate();
+			this.normalVector = this.normalVector.negateCoordinate();
 			return true;
 		} else {
 			return false;
 		}
 	}
 	
-	public boolean getInside() {
-		return this.inside;
+	public boolean getInsideShape() {
+		return this.insideShape;
 	}
 
 	public double getT() {
@@ -240,12 +240,12 @@ public class Computation {
 		return point;
 	}
 
-	public Coordinate getEyev() {
-		return eyev;
+	public Coordinate getEyeVector() {
+		return eyeVector;
 	}
 
-	public Coordinate getNormalv() {
-		return normalv;
+	public Coordinate getNormalVector() {
+		return normalVector;
 	}
 
 	public void setT(double t) {
@@ -260,11 +260,11 @@ public class Computation {
 		this.point = point;
 	}
 
-	public void setEyev(Coordinate eyev) {
-		this.eyev = eyev;
+	public void setEyevVector(Coordinate eyev) {
+		this.eyeVector = eyev;
 	}
 
-	public void setNormalv(Coordinate normalv) {
-		this.normalv = normalv;
+	public void setNormalVector(Coordinate normalv) {
+		this.normalVector = normalv;
 	}
 }

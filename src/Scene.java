@@ -80,9 +80,9 @@ public class Scene {
 		IntersectionPoint hitPoint = IntersectionPoint.hit(intersects);
 		
 		if(hitPoint != null) {
-			Computation comp = new Computation(hitPoint, r, intersects);
+			Effect effect = new Effect(hitPoint, r, intersects);
 			
-			return comp.shadeHit(this, remaining);
+			return effect.shadeHit(this, remaining);
 		} else {
 			return new Colour(0, 0, 0);
 		}

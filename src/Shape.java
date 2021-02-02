@@ -4,6 +4,8 @@
  *
  */
 public abstract class Shape {
+	public static final double EPSILON = 0.00001;
+	
 	private static int id = 0;
 	private static int coneId = 0;
 	private static int cubeId = 0;

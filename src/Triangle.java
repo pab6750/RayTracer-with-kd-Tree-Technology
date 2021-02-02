@@ -64,7 +64,7 @@ public class Triangle extends Shape{
 		Coordinate dirCrossE2 = r.getDirection().crossProduct(this.e2);
 		double determinant = this.e1.dotProduct(dirCrossE2);
 		
-		if(Math.abs(determinant) < Computation.EPSILON) {
+		if(Math.abs(determinant) < EPSILON) {
 			return null;
 		}
 		

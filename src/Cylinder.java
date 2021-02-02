@@ -78,7 +78,7 @@ public class Cylinder extends Shape{
 		double a = r.getDirection().getX() * r.getDirection().getX()
 				 + r.getDirection().getZ() * r.getDirection().getZ();
 		
-		if(Math.abs(a) <= Computation.EPSILON) {
+		if(Math.abs(a) <= EPSILON) {
 			ArrayList<IntersectionPoint> temp = new ArrayList<IntersectionPoint>();
 			this.intersectCaps(r, temp);
 			IntersectionPoint[] xsCaps = new IntersectionPoint[temp.size()];
@@ -140,9 +140,9 @@ public class Cylinder extends Shape{
 	public Coordinate localNormalAt(Coordinate p, IntersectionPoint hit) {
 		double dist = p.getX() * p.getX() + p.getZ() * p.getZ();
 		
-		if(dist < 1 && p.getY() >= this.maximum - Computation.EPSILON) {
+		if(dist < 1 && p.getY() >= this.maximum - EPSILON) {
 			return new Coordinate(0, 1, 0, Coordinate.VECTOR);
-		} else if(dist < 1 && p.getY() <= this.minimum + Computation.EPSILON) {
+		} else if(dist < 1 && p.getY() <= this.minimum + EPSILON) {
 			return new Coordinate(0, -1, 0, Coordinate.VECTOR);
 		} else {
 			return new Coordinate(p.getX(), 0, p.getZ(), Coordinate.POINT);
@@ -157,7 +157,7 @@ public class Cylinder extends Shape{
 	}
 	
 	private void intersectCaps(Ray r, ArrayList<IntersectionPoint> xs) {
-		if(this.closed == false || Math.abs(r.getDirection().getY()) <= Computation.EPSILON) {
+		if(this.closed == false || Math.abs(r.getDirection().getY()) <= EPSILON) {
 			return;
 		}
 		

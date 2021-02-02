@@ -42,9 +42,9 @@ public class Coordinate {
 	 */
 	public boolean equals(Coordinate t){
 
-        return Computation.compareDouble(this.x, t.x) &&
-        	   Computation.compareDouble(this.y, t.y) &&
-        	   Computation.compareDouble(this.z, t.z) &&
+        return Effect.compareDouble(this.x, t.x) &&
+        	   Effect.compareDouble(this.y, t.y) &&
+        	   Effect.compareDouble(this.z, t.z) &&
                this.type == t.type;
     }
 	
@@ -230,9 +230,9 @@ public class Coordinate {
 	 * @return true if the tuples are equal.
 	 */
 	public boolean isEqual(Coordinate t) {
-		return Computation.compareDouble(this.getX(), t.getX()) &&
-			   Computation.compareDouble(this.getY(), t.getY()) &&
-			   Computation.compareDouble(this.getZ(), t.getZ()) &&
+		return Effect.compareDouble(this.getX(), t.getX()) &&
+			   Effect.compareDouble(this.getY(), t.getY()) &&
+			   Effect.compareDouble(this.getZ(), t.getZ()) &&
 			   this.getType() == t.getType();
 	}
 }

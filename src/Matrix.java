@@ -488,7 +488,7 @@ public class Matrix {
 		
 		for(int i = 0; i < this.getHeight(); i++) {
 			for(int j = 0; j < this.getWidth(); j++) {
-				if(!Computation.compareDouble(this.matrix[i][j], m.getMatrix()[i][j])) {
+				if(!Effect.compareDouble(this.matrix[i][j], m.getMatrix()[i][j])) {
 					return false;
 				}
 			}

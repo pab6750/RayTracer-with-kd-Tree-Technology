@@ -78,11 +78,11 @@ public class Cone extends Shape{
 				 - r.getOrigin().getY() * r.getOrigin().getY()
 				 + r.getOrigin().getZ() * r.getOrigin().getZ();
 		
-		if(Math.abs(a) <= Computation.EPSILON && Math.abs(b) <= Computation.EPSILON) {
+		if(Math.abs(a) <= EPSILON && Math.abs(b) <= EPSILON) {
 			return null;
 		}
 		
-		if(Math.abs(a) <= Computation.EPSILON) {
+		if(Math.abs(a) <= EPSILON) {
 			IntersectionPoint[] xs = new IntersectionPoint[1];
 			
 			xs[0] = new IntersectionPoint(-c / (2 * b), this);
@@ -140,9 +140,9 @@ public class Cone extends Shape{
 			y *= -1;
 		}
 		
-		if(dist < 1 && p.getY() >= this.maximum - Computation.EPSILON) {
+		if(dist < 1 && p.getY() >= this.maximum - EPSILON) {
 			return new Coordinate(0, 1, 0, Coordinate.VECTOR);
-		} else if(dist < 1 && p.getY() <= this.minimum + Computation.EPSILON) {
+		} else if(dist < 1 && p.getY() <= this.minimum + EPSILON) {
 			return new Coordinate(0, -1, 0, Coordinate.VECTOR);
 		} else {
 			return new Coordinate(p.getX(), y, p.getZ(), Coordinate.VECTOR);
@@ -157,7 +157,7 @@ public class Cone extends Shape{
 	}
 	
 	private void intersectCaps(Ray r, ArrayList<IntersectionPoint> xs) {
-		if(!this.closed || Math.abs(r.getDirection().getY()) <= Computation.EPSILON) {
+		if(!this.closed || Math.abs(r.getDirection().getY()) <= EPSILON) {
 			return;
 		}
 		

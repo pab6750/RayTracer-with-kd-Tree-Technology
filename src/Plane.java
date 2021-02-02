@@ -24,7 +24,7 @@ public class Plane extends Shape{
 	
 	@Override
 	public IntersectionPoint[] localIntersect(Ray r) {
-		if(Math.abs(r.getDirection().getY()) < Computation.EPSILON) {
+		if(Math.abs(r.getDirection().getY()) < Effect.EPSILON) {
 			return null;
 		}
 		
