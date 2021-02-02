@@ -1,8 +1,11 @@
 import java.lang.Math;
 
 /**
- * this class represents Points and Vectors in the scene.
- * @author Pablo Scarpati
+ * This class represents Points and Vectors in the scene. These coordinates are represented
+ * in homogeneous space.
+ * 
+ * More information at: https://en.wikipedia.org/wiki/Homogeneous_coordinates
+ * @author Pablo Scarpati (981009).
  *
  */
 public class Coordinate {
@@ -49,10 +52,13 @@ public class Coordinate {
     }
 	
 	/**
-	 * performs the addition operation on a tuple.
+	 * performs the addition operation on a coordinate.
 	 * if you add a point and a vector, it's like to follow that vector from that point.
-	 * @param t the other tuple.
-	 * @return the new tuple.
+	 * 
+	 * More information at: https://www.intmath.com/vectors/7-vectors-in-3d-space.php
+	 * 
+	 * @param t the other coordinate.
+	 * @return the new coordinate.
 	 */
 	public Coordinate addCoordinate(Coordinate t) {
 		double newX = this.x + t.x;
@@ -64,9 +70,12 @@ public class Coordinate {
 	}
 	
 	/**
-	 * performs the subtraction operation on a tuple.
-	 * @param t the other tuple.
-	 * @return the new tuple.
+	 * performs the subtraction operation on a coordinate.
+	 * 
+	 * More information at: https://www.intmath.com/vectors/7-vectors-in-3d-space.php
+	 * 
+	 * @param t the other coordinate.
+	 * @return the new coordinate.
 	 */
 	public Coordinate subtractCoordinate(Coordinate t) {
 		double newX = this.x - t.x;
@@ -91,8 +100,11 @@ public class Coordinate {
 	
 	/**
 	 * Multiplies all components of the tuple by a scalar.
+	 * 
+	 * More information at: https://en.wikipedia.org/wiki/Scalar_multiplication
+	 * 
 	 * @param scalar the scalar.
-	 * @return the new tuple.
+	 * @return the new coordinate.
 	 */
 	public Coordinate scalarMultiplication(double scalar) {
 		double newX = this.x * scalar;
@@ -104,6 +116,9 @@ public class Coordinate {
 	
 	/**
 	 * Divides all components of the tuple by a scalar.
+	 * 
+	 * More information at: https://en.wikipedia.org/wiki/Scalar_multiplication
+	 * 
 	 * @param scalar the scalar.
 	 * @return the new tuple.
 	 */
@@ -119,6 +134,9 @@ public class Coordinate {
 	
 	/**
 	 * The magnitude is the length of a vector.
+	 * 
+	 * More information at: https://www.intmath.com/vectors/7-vectors-in-3d-space.php
+	 * 
 	 * @return the magnitude.
 	 */
 	double magnitude() {
@@ -129,6 +147,9 @@ public class Coordinate {
 	
 	/**
 	 * it converts the current vector into a unit vector.
+	 * 
+	 * More information at: https://it.khanacademy.org/computing/computer-programming/programming-natural-simulations/programming-vectors/a/vector-magnitude-normalization#:~:text=To%20normalize%20a%20vector%2C%20therefore,the%20unit%20vector%20readily%20accessible.
+	 * 
 	 * @return the unit vector.
 	 */
 	public Coordinate normalize() {
@@ -145,6 +166,9 @@ public class Coordinate {
 	/**
 	 * it takes two vectors and returns a scalar value.
 	 * the smaller the angle between the vectors, the larger the dot product.
+	 * 
+	 * More information at: https://en.wikipedia.org/wiki/Homogeneous_coordinates
+	 * 
 	 * @param t the other vector.
 	 * @return the scalar value.
 	 */
@@ -159,6 +183,9 @@ public class Coordinate {
 	 * it takes two vectors and produces a vector.
 	 * the result is a vector perpendicular to both input vectors.
 	 * order matters in this function.
+	 * 
+	 * More information at: https://en.wikipedia.org/wiki/Homogeneous_coordinates
+	 * 
 	 * @param t the other vector.
 	 * @return the new vector.
 	 */

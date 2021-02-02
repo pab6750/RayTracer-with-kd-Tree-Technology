@@ -14,6 +14,10 @@ public class Cube extends Shape{
 		return box;
 	}
 
+	/**
+	 * This method is used to intersect the cube with a ray in local space.
+	 * More information at: https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-box-intersection
+	 */
 	@Override
 	public IntersectionPoint[] localIntersect(Ray r) {
 		double[] xvalues = this.checkAxis(r.getOrigin().getX(), r.getDirection().getX());

@@ -144,7 +144,7 @@ public class Main {
 		//teddybearTest();
 		//manySpheres();
 		//surfaceHeuristicValidationTest();
-		BBOXMaterialTest();
+		//BBOXMaterialTest();
 		//matricesChapterPic();
 		//medianKDTreeConfigurationTest();
 		//phongModelPicture();
@@ -162,7 +162,7 @@ public class Main {
 		//trumpetTest();
 		//kdTreeTest3();
 		//spatialTest2();
-		//lakeSimulation();
+		lakeSimulation();
 		//kdTreeTest4();
 		//bunnyTest();
         //appendixImage2();
@@ -1310,127 +1310,6 @@ public class Main {
 		n.printData();
 	}
 
-	public static void superReflectionTest() {
-		Scene scene = new Scene();
-		Plane floor = new Plane();
-		floor.setDefaultReflectiveMaterial();
-
-		Plane leftWall = new Plane();
-		leftWall.setDefaultReflectiveMaterial();
-		Matrix m1 = Matrix.rotationY(-Math.PI / 4);
-		Matrix m2 = Matrix.rotationX(Math.PI / 2);
-		Matrix transformLeftWall = Matrix.translation(0, 0, 5).matrixMultiplication(m1).matrixMultiplication(m2);
-		leftWall.setTransformation(transformLeftWall);
-
-		Plane rightWall = new Plane();
-		rightWall.setDefaultReflectiveMaterial();
-		Matrix r1 = Matrix.translation(0, 0, 5);
-		Matrix r2 = Matrix.rotationY(Math.PI / 4);
-		Matrix r3 = Matrix.rotationX(Math.PI / 2);
-		Matrix transformRightWall = r1.matrixMultiplication(r2).matrixMultiplication(r3);
-		rightWall.setTransformation(transformRightWall);
-
-		Cube cube = new Cube();
-		cube.setTransformation(Matrix.translation(-3, 1, 0));
-		cube.setColour(new Colour(0.7, 0.1, 0.4));
-		cube.setDefaultReflectiveMaterial();
-
-		Sphere ball = new Sphere();
-		ball.setTransformation(Matrix.translation(3, 1, 0));
-		ball.setDefaultReflectiveMaterial();
-
-		Cone cone = new Cone(0, 1, true);
-		cone.setDefaultReflectiveMaterial();
-
-		Group group = new Group();
-		group.addChild(cone);
-		group.addChild(ball);
-		group.addChild(cube);
-		group.addChild(rightWall);
-		group.addChild(leftWall);
-		group.addChild(floor);
-
-
-		Shape[] objs = {group};
-		scene.setObjs(objs);
-
-		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
-		Colour white = new Colour(1, 1, 1);
-		scene.setLight(new PointLight(lightOrigin, white));
-
-		Camera camera = new Camera(400, 400, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
-													  new Coordinate(0, 1, 0, Coordinate.POINT),
-													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
-
-		ImageOutput canvas = camera.render(scene);
-		try {
-			canvas.saveFile();
-		} catch (IOException e) {
-			System.out.println("File Error");
-		}
-
-		System.out.println("Computation Finished");
-	}
-
-	public static void generalTest() {
-		Scene scene = new Scene();
-		Plane floor = new Plane();
-		floor.getMaterial().setPattern(new CheckerPattern());
-
-		Plane leftWall = new Plane();
-		leftWall.getMaterial().setPattern(new RingPattern(new Colour(0, 0, 1), new Colour(0.5, 0.5, 1)));
-		Matrix m1 = Matrix.rotationY(-Math.PI / 4);
-		Matrix m2 = Matrix.rotationX(Math.PI / 2);
-		Matrix transformLeftWall = Matrix.translation(0, 0, 5).matrixMultiplication(m1).matrixMultiplication(m2);
-		leftWall.setTransformation(transformLeftWall);
-
-		Plane rightWall = new Plane();
-		rightWall.getMaterial().setPattern(new RingPattern(new Colour(0, 0, 1), new Colour(0.5, 0.5, 1)));
-		Matrix r1 = Matrix.translation(0, 0, 5);
-		Matrix r2 = Matrix.rotationY(Math.PI / 4);
-		Matrix r3 = Matrix.rotationX(Math.PI / 2);
-		Matrix transformRightWall = r1.matrixMultiplication(r2).matrixMultiplication(r3);
-		rightWall.setTransformation(transformRightWall);
-
-		Cube cube = new Cube();
-		cube.setTransformation(Matrix.translation(-3, 1, 0));
-		cube.setColour(new Colour(0.7, 0.1, 0.4));
-
-		Sphere ball = new Sphere();
-		ball.setTransformation(Matrix.translation(3, 1, 0));
-
-		Cone cone = new Cone(0, 1, true);
-		cone.setDefaultRefractiveMaterial();
-
-		Group group = new Group();
-		group.addChild(cone);
-		group.addChild(ball);
-		group.addChild(cube);
-
-
-		Shape[] objs = {floor, rightWall, leftWall, group};
-		scene.setObjs(objs);
-
-		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
-		Colour white = new Colour(1, 1, 1);
-		scene.setLight(new PointLight(lightOrigin, white));
-
-		Camera camera = new Camera(400, 400, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
-													  new Coordinate(0, 1, 0, Coordinate.POINT),
-													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
-
-		ImageOutput canvas = camera.render(scene);
-		try {
-			canvas.saveFile();
-		} catch (IOException e) {
-			System.out.println("File Error");
-		}
-
-		System.out.println("Computation Finished");
-	}
-
 	public static void trumpetTest0() {
 		File file = new File("C:\\Users\\pablo\\OneDrive\\Desktop\\uni\\year 3\\Diss\\OBJFiles\\Trumpet.obj");
 		OBJParser p = new OBJParser(file);
@@ -1797,29 +1676,6 @@ public class Main {
 		} else {
 			System.out.println("EMPTY");
 		}
-	}
-
-	public static void boundingVolumesTest5() {
-		Sphere s = new Sphere();
-		Matrix m = Matrix.translation(2, 5, -3).matrixMultiplication(Matrix.scaling(2, 2, 2));
-		s.setTransformation(m);
-
-		Cylinder c = new Cylinder();
-
-		c.setMinimum(-2);
-		c.setMaximum(2);
-		Matrix m2 = Matrix.translation(-4, -1, 4).matrixMultiplication(Matrix.scaling(0.5, 1, 0.5));
-		c.setTransformation(m2);
-
-		Group g = new Group();
-
-		g.addChild(s);
-		g.addChild(c);
-
-		AABB box = g.getBounds();
-
-		box.getMin().printData();
-		box.getMax().printData();
 	}
 
 	public static void boundingVolumesTest4() {
