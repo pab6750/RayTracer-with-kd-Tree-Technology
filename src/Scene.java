@@ -75,14 +75,14 @@ public class Scene {
 	 * @param remaining a recursive cutoff for the computation.
 	 * @return the colour of the pixel.
 	 */
-	public Colour colourAt(Ray r, int remaining) {
+	public Colour colourAtPixel(Ray r, int remaining) {
 		IntersectionPoint[] intersects = this.intersect(r);
 		IntersectionPoint hitPoint = IntersectionPoint.hit(intersects);
 		
 		if(hitPoint != null) {
 			Effect effect = new Effect(hitPoint, r, intersects);
 			
-			return effect.shadeHit(this, remaining);
+			return effect.finalColour(this, remaining);
 		} else {
 			return new Colour(0, 0, 0);
 		}

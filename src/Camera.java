@@ -50,7 +50,7 @@ public class Camera {
 			
 			for(int x = 0; x < this.hsize; x++) {
 				Ray ray = this.rayForPixel(x, y);
-				Colour colour = scene.colourAt(ray, Effect.RECURSIVE_CUTOFF);
+				Colour colour = scene.colourAtPixel(ray, Effect.RECURSIVE_CUTOFF);
 				image.writePixel(x, y, colour);
 			}
 		}
@@ -78,7 +78,7 @@ public class Camera {
 			
 			for(int x = 0; x < this.hsize; x++) {
 				Ray ray = this.rayForPixel(x, y);
-				Colour colour = scene.colourAt(ray, Effect.RECURSIVE_CUTOFF);
+				Colour colour = scene.colourAtPixel(ray, Effect.RECURSIVE_CUTOFF);
 				image.writePixel(x, y, colour);
 			}
 		}

@@ -162,14 +162,14 @@ public class Main {
 		//trumpetTest();
 		//kdTreeTest3();
 		//spatialTest2();
-		//lakeSimulation();
+		lakeSimulation();
 		//kdTreeTest4();
 		//bunnyTest();
         //appendixImage2();
-		halfTimeTest3();
+		//halfTimeTest3();
 	}
 	
-	//this took
+	//this took 77 seconds
 	public static void halfTimeTest3() {
 		Sphere left = new Sphere();
 		Sphere middle = new Sphere();

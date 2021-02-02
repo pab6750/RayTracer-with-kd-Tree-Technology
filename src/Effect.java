@@ -101,7 +101,7 @@ public class Effect {
 		}
 		
 		Ray reflectedRay = new Ray(this.overPoint, this.reflectVector);
-		Colour colour = scene.colourAt(reflectedRay, remaining - 1);
+		Colour colour = scene.colourAtPixel(reflectedRay, remaining - 1);
 		
 		return colour.scalarMultiplication(this.shape.getMaterial().getReflective());
 	}
@@ -128,7 +128,7 @@ public class Effect {
 		
 		Ray refractedRay = new Ray(this.underPoint, direction);
 		
-		Colour colour = scene.colourAt(refractedRay, remaining - 1).scalarMultiplication(this.shape.getMaterial().getTransparency());
+		Colour colour = scene.colourAtPixel(refractedRay, remaining - 1).scalarMultiplication(this.shape.getMaterial().getTransparency());
 		
 		return colour;
 	}
@@ -155,7 +155,7 @@ public class Effect {
 	 * @param remaining
 	 * @return
 	 */
-	public Colour shadeHit(Scene scene, int remaining) {
+	public Colour finalColour(Scene scene, int remaining) {
 		//is the point in shadows
 		boolean shadowed = scene.isShadowed(this.overPoint);
 		
