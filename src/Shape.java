@@ -7,10 +7,7 @@ public abstract class Shape {
 	public static final double EPSILON = 0.00001;
 	
 	private static int id = 0;
-	private static int coneId = 0;
 	private static int cubeId = 0;
-	private static int cylinderId = 0;
-	private static int finitePlaneId = 0;
 	private static int groupId = 0;
 	private static int planeId = 0;
 	private static int smoothTriangleId = 0;
@@ -247,10 +244,7 @@ public abstract class Shape {
 	
 	public static void refreshIds() {
 		id = 0;
-		coneId = 0;
 		cubeId = 0;
-		cylinderId = 0;
-		finitePlaneId = 0;
 		groupId = 0;
 		planeId = 0;
 		smoothTriangleId = 0;
@@ -266,18 +260,9 @@ public abstract class Shape {
 		if(name.equals("BoundingBox")) {
 			this.currentId = "BB" + boundingBoxId;
 			boundingBoxId++;
-		} else if(name.equals("Cone")) {
-			this.currentId = "CO" + coneId;
-			coneId++;
 		} else if(name.equals("Cube")) {
 			this.currentId = "CU" + cubeId;
 			cubeId++;
-		} else if(name.equals("Cylinder")) {
-			this.currentId = "CY" + cylinderId;
-			cylinderId++;
-		} else if(name.equals("FinitePlane")) {
-			this.currentId = "FP" + finitePlaneId;
-			finitePlaneId++;
 		} else if(name.equals("Group")) {
 			this.currentId = "GR" + groupId;
 			groupId++;
