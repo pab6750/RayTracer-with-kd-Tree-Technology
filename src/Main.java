@@ -144,7 +144,7 @@ public class Main {
 		//teddybearTest();
 		//manySpheres();
 		//surfaceHeuristicValidationTest();
-		//BBOXMaterialTest();
+		BBOXMaterialTest();
 		//matricesChapterPic();
 		//medianKDTreeConfigurationTest();
 		//phongModelPicture();
@@ -162,7 +162,7 @@ public class Main {
 		//trumpetTest();
 		//kdTreeTest3();
 		//spatialTest2();
-		lakeSimulation();
+		//lakeSimulation();
 		//kdTreeTest4();
 		//bunnyTest();
         //appendixImage2();

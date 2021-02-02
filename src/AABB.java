@@ -177,19 +177,108 @@ public class AABB extends Shape{
 	public void divide(int threshold) {
 		
 	}
+	
+	/*
+	private double[] checkAxis1(double origin, double direction, double min, double max) {
+		double tminNumerator = (min - origin);
+		double tmaxNumerator = (max - origin);
+		
+		double tmin;
+		double tmax;
+		
+		if(Math.abs(direction) >= EPSILON) {
+			tmin = tminNumerator / direction;
+			tmax = tmaxNumerator / direction;
+		} else {
+			tmin = tminNumerator * Double.POSITIVE_INFINITY;
+			tmax = tmaxNumerator * Double.POSITIVE_INFINITY;
+		}
+		
+		if(tmin > tmax) {
+			double temp = tmin;
+			tmin = tmax;
+			tmax = temp;
+		}
+		double[] result = {tmin, tmax};
+		
+		return result;
+	}
+}
+	 */
 
 	@Override
 	public IntersectionPoint[] localIntersect(Ray r) {
-		double[] xvalues = this.checkAxis(r.getOrigin().getX(), r.getDirection().getX(), this.min.getX(), this.max.getX());
-		double[] yvalues = this.checkAxis(r.getOrigin().getY(), r.getDirection().getY(), this.min.getY(), this.max.getY());
-		double[] zvalues = this.checkAxis(r.getOrigin().getZ(), r.getDirection().getZ(), this.min.getZ(), this.max.getZ());
+		//x values
+		double xnMin = this.min.getX() - r.getOrigin().getX();
+		double xnMax = this.max.getX() - r.getOrigin().getX();
 		
-		double xtmin = xvalues[0];
-		double xtmax = xvalues[1];
-		double ytmin = yvalues[0];
-		double ytmax = yvalues[1];
-		double ztmin = zvalues[0];
-		double ztmax = zvalues[1];
+		double xMin;
+		double xMax;
+		
+		if(Math.abs(r.getDirection().getX()) >= EPSILON) {
+			xMin = xnMin / r.getDirection().getX();
+			xMax = xnMax / r.getDirection().getX();
+		} else {
+			xMin = xnMin * Double.POSITIVE_INFINITY;
+			xMax = xnMax * Double.POSITIVE_INFINITY;
+		}
+		
+		if(xMax < xMin) {
+			double temp = xMin;
+			xMin = xMax;
+			xMax = temp;
+		}
+		
+		double xtmin = xMin;
+		double xtmax = xMax;
+		
+		//y values
+		double ynMin = this.min.getY() - r.getOrigin().getY();
+		double ynMax = this.max.getY() - r.getOrigin().getY();
+		
+		double yMin;
+		double yMax;
+		
+		if(Math.abs(r.getDirection().getY()) >= EPSILON) {
+			yMin = ynMin / r.getDirection().getY();
+			yMax = ynMax / r.getDirection().getY();
+		} else {
+			yMin = ynMin * Double.POSITIVE_INFINITY;
+			yMax = ynMax * Double.POSITIVE_INFINITY;
+		}
+		
+		if(yMax < yMin) {
+			double temp = yMin;
+			yMin = yMax;
+			yMax = temp;
+		}
+		
+		double ytmin = yMin;
+		double ytmax = yMax;
+		
+		//z values
+		double znMin = this.min.getZ() - r.getOrigin().getZ();
+		double znMax = this.max.getZ() - r.getOrigin().getZ();
+		
+		double zMin;
+		double zMax;
+		
+		if(Math.abs(r.getDirection().getZ()) >= EPSILON) {
+			zMin = znMin / r.getDirection().getZ();
+			zMax = znMax / r.getDirection().getZ();
+		} else {
+			zMin = znMin * Double.POSITIVE_INFINITY;
+			zMax = znMax * Double.POSITIVE_INFINITY;
+		}
+		
+		if(zMax < zMin) {
+			double temp = zMin;
+			zMin = zMax;
+			zMax = temp;
+		}
+		
+		double ztmin = zMin;
+		double ztmax = zMax;
 		
 		double tempMin = Math.max(xtmin, ytmin);
 		double tmin = Math.max(tempMin, ztmin);
@@ -263,30 +352,5 @@ public class AABB extends Shape{
 		this.getMin().printData();
 		System.out.println("Max:");
 		this.getMax().printData();
-	}
-	
-	private double[] checkAxis(double origin, double direction, double min, double max) {
-		double tminNumerator = (min - origin);
-		double tmaxNumerator = (max - origin);
-		
-		double tmin;
-		double tmax;
-		
-		if(Math.abs(direction) >= EPSILON) {
-			tmin = tminNumerator / direction;
-			tmax = tmaxNumerator / direction;
-		} else {
-			tmin = tminNumerator * Double.POSITIVE_INFINITY;
-			tmax = tmaxNumerator * Double.POSITIVE_INFINITY;
-		}
-		
-		if(tmin > tmax) {
-			double temp = tmin;
-			tmin = tmax;
-			tmax = temp;
-		}
-		double[] result = {tmin, tmax};
-		
-		return result;
 	}
 }
