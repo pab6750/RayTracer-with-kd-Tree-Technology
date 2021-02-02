@@ -29,7 +29,7 @@ public class Effect {
 		this.shape = i.getObject();
 		this.point = r.position(this.t);
 		this.eyeVector = r.getDirection().negateCoordinate();
-		IntersectionPoint hit = IntersectionPoint.hit(xs);
+		IntersectionPoint hit = IntersectionPoint.closestIntersection(xs);
 		this.normalVector = shape.normalAt(this.point, hit);
 		this.insideShape = this.isInsideShape();
 		this.overPoint = this.point.addCoordinate(this.normalVector.scalarMultiplication(EPSILON));

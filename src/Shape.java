@@ -178,7 +178,7 @@ public abstract class Shape {
 		}
 		
 		//combine the surface colour with the light's colour
-		Colour effectiveColour = colour.hadamardProduct(light.getIntensity());
+		Colour effectiveColour = colour.colourProduct(light.getIntensity());
 		//find the direction to the light source
 		Coordinate lightv = light.getPosition().subtractCoordinate(position).normalize();
 		//compute the ambient contribution

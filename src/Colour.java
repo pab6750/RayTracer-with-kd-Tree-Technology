@@ -57,7 +57,7 @@ public class Colour {
         return new Colour(newR, newG, newB);
     }
 
-    public Colour hadamardProduct(Colour c){
+    public Colour colourProduct(Colour c){
     	double newR = r * c.r;
     	double newG = g * c.g;
     	double newB = b * c.b;

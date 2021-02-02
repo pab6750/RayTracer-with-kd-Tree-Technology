@@ -57,7 +57,7 @@ public class ImageOutputTests {
 		Colour c1 = new Colour(0.2, 0.3, 0.4);
 		Colour c2 = new Colour(0.1, 0.2, 0.3);
 		
-		Colour result = c1.hadamardProduct(c2);
+		Colour result = c1.colourProduct(c2);
 		Colour expectedResult = new Colour(0.02, 0.06, 0.12);
 		
 		Assert.assertEquals(result.isEqual(expectedResult), true);

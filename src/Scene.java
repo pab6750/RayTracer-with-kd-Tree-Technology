@@ -77,7 +77,7 @@ public class Scene {
 	 */
 	public Colour colourAtPixel(Ray r, int remaining) {
 		IntersectionPoint[] intersects = this.intersect(r);
-		IntersectionPoint hitPoint = IntersectionPoint.hit(intersects);
+		IntersectionPoint hitPoint = IntersectionPoint.closestIntersection(intersects);
 		
 		if(hitPoint != null) {
 			Effect effect = new Effect(hitPoint, r, intersects);
@@ -107,7 +107,7 @@ public class Scene {
 		IntersectionPoint[] intersections = this.intersect(r);
 		
 		//h is the closest intersection to the point
-		IntersectionPoint h = IntersectionPoint.hit(intersections);
+		IntersectionPoint h = IntersectionPoint.closestIntersection(intersections);
 		
 		if(h != null) {
 			if(h.getT() < distance) {

@@ -49,7 +49,7 @@ public class IntersectionPoint {
 		System.out.println("t: " + this.t);
 	}
 	
-	public static IntersectionPoint hit(IntersectionPoint[] intersectionArray) {
+	public static IntersectionPoint closestIntersection(IntersectionPoint[] intersectionArray) {
 		if(intersectionArray.length != 0) {
 			double current = intersectionArray[0].getT();
 			int index = 0;

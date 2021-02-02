@@ -262,4 +262,12 @@ public class Coordinate {
 			   Effect.compareDouble(this.getZ(), t.getZ()) &&
 			   this.getType() == t.getType();
 	}
+	
+	public static Coordinate createPoint(double x, double y, double z) {
+		return new Coordinate(x, y, z, Coordinate.POINT);
+	}
+	
+	public static Coordinate createVector(double x, double y, double z) {
+		return new Coordinate(x, y, z, Coordinate.VECTOR);
+	}
 }
