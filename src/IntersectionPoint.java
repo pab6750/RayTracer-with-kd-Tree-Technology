@@ -49,6 +49,11 @@ public class IntersectionPoint {
 		System.out.println("t: " + this.t);
 	}
 	
+	public boolean isEqual(IntersectionPoint i) {
+		return Effect.compareDouble(this.t, i.getT()) &&
+			   this.object.getId().equals(i.getObject().getId());
+	}
+	
 	public static IntersectionPoint closestIntersection(IntersectionPoint[] intersectionArray) {
 		if(intersectionArray.length != 0) {
 			double current = intersectionArray[0].getT();
