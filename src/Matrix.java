@@ -456,7 +456,7 @@ public class Matrix {
 	 * @param up the up vector of the camera.
 	 * @return the camera transformation matrix.
 	 */
-	public static Matrix viewTransformation(Coordinate cameraPosition, Coordinate cameraDirection, Coordinate up) {
+	public static Matrix cameraTransformation(Coordinate cameraPosition, Coordinate cameraDirection, Coordinate up) {
 		Coordinate forward = cameraDirection.subtractCoordinate(cameraPosition).normalize();
 		Coordinate upn = up.normalize();
 		Coordinate left = forward.crossProduct(upn);

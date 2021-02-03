@@ -13,7 +13,7 @@ public class Scene {
 		this.light = new PointLight(lightOrigin, white);
 		
 		this.camera = new Camera(resx, resy, Math.PI / 3);
-		this.camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
+		this.camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
 													       new Coordinate(0, 1, 0, Coordinate.POINT),
 													       new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 	}
@@ -25,7 +25,7 @@ public class Scene {
 		this.light = new PointLight(lightOrigin, white);
 		
 		this.camera = new Camera(512, 512, Math.PI / 3);
-		this.camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
+		this.camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
 													       new Coordinate(0, 1, 0, Coordinate.POINT),
 													       new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 	}

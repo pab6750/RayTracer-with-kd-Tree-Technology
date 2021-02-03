@@ -31,7 +31,7 @@ public class Camera {
 		Coordinate cameraDirection = new Coordinate(0, 0, -1, Coordinate.POINT);
 		Coordinate up = new Coordinate(0, 1, 0, Coordinate.POINT);
 		
-		this.transform = Matrix.viewTransformation(cameraPosition, cameraDirection, up);
+		this.transform = Matrix.cameraTransformation(cameraPosition, cameraDirection, up);
 		this.pixelSize = this.getPixelSize();
 	}
 	

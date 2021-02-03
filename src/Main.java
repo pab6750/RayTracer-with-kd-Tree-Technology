@@ -559,7 +559,7 @@ public class Main {
 		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
+		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
@@ -609,7 +609,7 @@ public class Main {
 		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(256, 256, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
+		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
@@ -660,7 +660,7 @@ public class Main {
 		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
+		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
@@ -741,7 +741,7 @@ public class Main {
 		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -20, Coordinate.POINT),
+		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -20, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
@@ -817,7 +817,7 @@ public class Main {
 		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -20, Coordinate.POINT),
+		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -20, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
@@ -877,7 +877,7 @@ public class Main {
 		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
+		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 1.5, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
@@ -912,7 +912,7 @@ public class Main {
 		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
@@ -1012,7 +1012,7 @@ public class Main {
 		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(512, 512, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
@@ -1189,7 +1189,7 @@ public class Main {
 		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
@@ -1239,7 +1239,7 @@ public class Main {
 		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(750, 750, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
@@ -1346,7 +1346,7 @@ public class Main {
 		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
@@ -1396,7 +1396,7 @@ public class Main {
 		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
@@ -1766,7 +1766,7 @@ public class Main {
 		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -15, Coordinate.POINT),
+		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -15, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
@@ -1862,7 +1862,7 @@ public class Main {
 		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
@@ -1910,7 +1910,7 @@ public class Main {
 		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(400, 400, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
+		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
@@ -1952,7 +1952,7 @@ public class Main {
 		scene.setLight(new PointLight(lightOrigin, white));
 
 		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.viewTransformation(new Coordinate(0, 2, -5, Coordinate.POINT),
+		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 2, -5, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.POINT),
 													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
 
