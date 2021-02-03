@@ -169,13 +169,7 @@ public abstract class Shape {
 	 * @return the final colour of the point.
 	 */
 	public Colour lighting(PointLight light, Coordinate position, Coordinate eyev, Coordinate normalv, boolean inShadow) {
-		Colour colour;
-		
-		if(this.material.getPattern() != null) {
-			colour = this.material.getPattern().stripeAtObject(this, position);
-		} else {
-			colour = this.material.getColour();
-		}
+		Colour colour = this.material.getColour();
 		
 		//combine the surface colour with the light's colour
 		Colour effectiveColour = colour.colourProduct(light.getIntensity());

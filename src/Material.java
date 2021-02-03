@@ -11,7 +11,6 @@ public class Material {
 	private double specular;
 	private double shininess;
 	private Colour colour;
-	private Pattern pattern;
 	private double reflective;
 	private double transparency;
 	private double refractiveIndex;
@@ -23,7 +22,6 @@ public class Material {
 		this.setShininess(200);
 		this.setColour(new Colour(1, 1, 1));
 		this.setReflective(0);
-		this.pattern = null;
 		this.transparency = 0;
 		this.refractiveIndex = VACUUM;
 	}
@@ -44,7 +42,6 @@ public class Material {
 		this.setShininess(shininess);
 		this.setColour(colour);
 		this.setReflective(reflective);
-		this.pattern = null;
 		this.setRefractiveIndex(refractiveIndex);
 		this.setTransparency(transparency);
 	}
@@ -89,14 +86,6 @@ public class Material {
 		this.setReflective(0.5);
 		this.setTransparency(0.9);
 		this.setRefractiveIndex(Material.WATER);
-	}
-
-	public Pattern getPattern() {
-		return pattern;
-	}
-
-	public void setPattern(Pattern pattern) {
-		this.pattern = pattern;
 	}
 
 	public double getAmbient() {
