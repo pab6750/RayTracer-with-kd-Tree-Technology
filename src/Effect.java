@@ -186,7 +186,8 @@ public class Effect {
 	}
 	
 	/**
-	 * This method produces the reflectance in the case of Total Internal Reflection
+	 * This method produces the reflectance in the case of Total Internal Reflection.
+	 * Reference at: de Greve, B. (2006) 'Reflections and Refractions in Ray Tracing', p.6.
 	 * @return the reflectance
 	 */
 	public double schlick() {
