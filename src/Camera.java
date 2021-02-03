@@ -27,11 +27,11 @@ public class Camera {
 		this.vsize = vsize;
 		this.fieldOfView = fieldOfView;
 		
-		Coordinate from = new Coordinate(0, 0, 0, Coordinate.POINT);
-		Coordinate to = new Coordinate(0, 0, -1, Coordinate.POINT);
+		Coordinate cameraPosition = new Coordinate(0, 0, 0, Coordinate.POINT);
+		Coordinate cameraDirection = new Coordinate(0, 0, -1, Coordinate.POINT);
 		Coordinate up = new Coordinate(0, 1, 0, Coordinate.POINT);
 		
-		this.transform = Matrix.viewTransformation(from, to, up);
+		this.transform = Matrix.viewTransformation(cameraPosition, cameraDirection, up);
 		this.pixelSize = this.getPixelSize();
 	}
 	
