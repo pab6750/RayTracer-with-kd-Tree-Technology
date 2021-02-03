@@ -61,7 +61,7 @@ public abstract class Shape {
 	 * returns the Bounding Box for this shape.
 	 * @return the Box bounding this shape.
 	 */
-	public AABB getBounds() {
+	public AABB getAABB() {
 		Coordinate min = new Coordinate(-1, -1, -1, Coordinate.POINT);
 		Coordinate max = new Coordinate(1, 1, 1, Coordinate.POINT);
 		AABB box = new AABB(min, max, this);
@@ -75,7 +75,7 @@ public abstract class Shape {
 	 */
 	public AABB parentSpaceBoundsOf() {
 		
-		return this.getBounds().applyMatrix(this.transformation);
+		return this.getAABB().applyMatrix(this.transformation);
 	}
 	
 	/**

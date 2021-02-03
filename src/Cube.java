@@ -6,7 +6,7 @@ public class Cube extends Shape{
 	}
 	
 	@Override
-	public AABB getBounds() {
+	public AABB getAABB() {
 		Coordinate min = new Coordinate(-1, -1, -1, Coordinate.POINT);
 		Coordinate max = new Coordinate(1, 1, 1, Coordinate.POINT);
 		AABB box = new AABB(min, max, null);

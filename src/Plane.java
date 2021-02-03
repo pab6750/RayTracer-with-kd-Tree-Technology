@@ -14,7 +14,7 @@ public class Plane extends Shape{
 	}
 	
 	@Override
-	public AABB getBounds() {
+	public AABB getAABB() {
 		Coordinate min = new Coordinate(Double.NEGATIVE_INFINITY, 0, Double.NEGATIVE_INFINITY, Coordinate.POINT);
 		Coordinate max = new Coordinate(Double.POSITIVE_INFINITY, 0, Double.POSITIVE_INFINITY, Coordinate.POINT);
 		AABB box = new AABB(min, max, this);

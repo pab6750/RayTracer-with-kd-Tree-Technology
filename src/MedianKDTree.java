@@ -66,7 +66,7 @@ public class MedianKDTree extends KDTree{
 		
 		//determine which shape belongs where
 		for(int i = 0; i < this.shapes.length; i++) {
-			AABB currentBox = this.shapes[i].getBounds();
+			AABB currentBox = this.shapes[i].getAABB();
 			currentBox = currentBox.applyMatrix(this.shapes[i].getTransformation());
 			
 			if(children[0].containsPoint(currentBox.getMin()) || children[0].containsPoint(currentBox.getMax())) {
@@ -103,7 +103,7 @@ public class MedianKDTree extends KDTree{
 		int current = 0;
 		
 		for(int i = 0; i < this.shapes.length; i++) {
-			AABB box = this.shapes[i].getBounds().applyMatrix(this.shapes[i].getTransformation());
+			AABB box = this.shapes[i].getAABB().applyMatrix(this.shapes[i].getTransformation());
 			pointList[current] = box.getMin().getX();
 			pointList[current + 1] = box.getMax().getX();
 			current += 2;
@@ -122,7 +122,7 @@ public class MedianKDTree extends KDTree{
 		int current = 0;
 		
 		for(int i = 0; i < this.shapes.length; i++) {
-			AABB box = this.shapes[i].getBounds().applyMatrix(this.shapes[i].getTransformation());
+			AABB box = this.shapes[i].getAABB().applyMatrix(this.shapes[i].getTransformation());
 			pointList[current] = box.getMin().getY();
 			pointList[current + 1] = box.getMax().getY();
 			current += 2;
@@ -141,7 +141,7 @@ public class MedianKDTree extends KDTree{
 		int current = 0;
 		
 		for(int i = 0; i < this.shapes.length; i++) {
-			AABB box = this.shapes[i].getBounds().applyMatrix(this.shapes[i].getTransformation());
+			AABB box = this.shapes[i].getAABB().applyMatrix(this.shapes[i].getTransformation());
 			pointList[current] = box.getMin().getZ();
 			pointList[current + 1] = box.getMax().getZ();
 			current += 2;

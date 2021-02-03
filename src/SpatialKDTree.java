@@ -56,7 +56,7 @@ public class SpatialKDTree extends KDTree{
 		
 		//determine which shape belongs where
 		for(int i = 0; i < this.shapes.length; i++) {
-			AABB currentBox = this.shapes[i].getBounds();
+			AABB currentBox = this.shapes[i].getAABB();
 			currentBox = currentBox.applyMatrix(this.shapes[i].getTransformation());
 			
 			if(children[0].containsPoint(currentBox.getMin()) || children[0].containsPoint(currentBox.getMax())) {

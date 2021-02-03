@@ -8,7 +8,7 @@ public class AABBTests {
 	@Test
 	public void medianSubdivisionTest() {
 		Sphere s = new Sphere();
-		AABB box = s.getBounds();
+		AABB box = s.getAABB();
 		
 		AABB[] resultX = box.splitAtX(0.8);
 		AABB[] resultY = box.splitAtY(0.3);

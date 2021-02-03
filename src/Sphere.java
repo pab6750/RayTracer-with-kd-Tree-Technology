@@ -43,7 +43,7 @@ public class Sphere extends Shape{
 	 * @return The bounding box.
 	 */
 	@Override
-	public AABB getBounds() {
+	public AABB getAABB() {
 		Coordinate min = new Coordinate(-1, -1, -1, Coordinate.POINT);
 		Coordinate max = new Coordinate(1, 1, 1, Coordinate.POINT);
 		AABB box = new AABB(min, max, this);
@@ -57,7 +57,7 @@ public class Sphere extends Shape{
 	 */
 	@Override
 	public IntersectionPoint[] localIntersect(Ray r) {
-		AABB bbox = this.getBounds();
+		AABB bbox = this.getAABB();
 		IntersectionPoint[] xs = bbox.intersect(r);
 		
 		if(xs != null) {

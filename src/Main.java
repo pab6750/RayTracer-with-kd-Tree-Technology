@@ -724,7 +724,7 @@ public class Main {
 		g.divide(2);
 
 		for(int i = 0; i < cubes.length; i++) {
-			sceneBox.addAABB(cubes[i].getBounds());
+			sceneBox.addAABB(cubes[i].getAABB());
 		}
 
 		//Plane plane = new Plane();
@@ -804,7 +804,7 @@ public class Main {
 		g.divide(2);
 
 		for(int i = 0; i < cubes.length; i++) {
-			sceneBox.addAABB(cubes[i].getBounds());
+			sceneBox.addAABB(cubes[i].getAABB());
 		}
 
 		Shape[] shapes = {g};
@@ -941,9 +941,9 @@ public class Main {
 		sphere2.setTransformation(matrix2);
 		sphere3.setTransformation(matrix3);
 
-		AABB box1 = sphere1.getBounds().applyMatrix(sphere1.getTransformation());
-		AABB box2 = sphere2.getBounds().applyMatrix(sphere2.getTransformation());
-		AABB box3 = sphere3.getBounds().applyMatrix(sphere3.getTransformation());
+		AABB box1 = sphere1.getAABB().applyMatrix(sphere1.getTransformation());
+		AABB box2 = sphere2.getAABB().applyMatrix(sphere2.getTransformation());
+		AABB box3 = sphere3.getAABB().applyMatrix(sphere3.getTransformation());
 
 		Shape[] shapes = {sphere1, sphere2, sphere3};
 		scene.setObjs(shapes);
@@ -1048,7 +1048,7 @@ public class Main {
 		Colour red = new Colour(1, 0, 0);
 		s.setColour(red);
 
-		AABB box = s.getBounds();
+		AABB box = s.getAABB();
 		box.setTransformation(sphereMatrix);
 		box.showBox();
 
@@ -1114,7 +1114,7 @@ public class Main {
 		g.divide(2);
 
 		for(int i = 0; i < cubes.length; i++) {
-			sceneBox.addAABB(cubes[i].getBounds());
+			sceneBox.addAABB(cubes[i].getAABB());
 		}
 
 		int missedCount = 0;

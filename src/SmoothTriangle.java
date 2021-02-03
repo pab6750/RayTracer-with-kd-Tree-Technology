@@ -81,7 +81,7 @@ public class SmoothTriangle extends Shape{
 	}
 	
 	@Override
-	public AABB getBounds() {
+	public AABB getAABB() {
 		AABB box = new AABB(this);
 		
 		box.addPoint(this.v1);

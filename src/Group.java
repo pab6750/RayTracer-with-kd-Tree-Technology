@@ -33,7 +33,7 @@ public class Group extends Shape{
 	}
 	
 	@Override
-	public AABB getBounds() {
+	public AABB getAABB() {
 		AABB box = new AABB(null);
 		
 		for(int i = 0; i < this.shapes.length; i++) {
@@ -46,7 +46,7 @@ public class Group extends Shape{
 
 	@Override
 	public IntersectionPoint[] localIntersect(Ray r) {
-		if(this.getBounds().intersect(r) != null) {
+		if(this.getAABB().intersect(r) != null) {
 			if(this.shapes == null || this.shapes.length == 0) {
 				return null;
 			}
@@ -160,7 +160,7 @@ public class Group extends Shape{
 		ArrayList<Shape> list1 = new ArrayList<Shape>();
 		ArrayList<Shape> list2 = new ArrayList<Shape>();
 		
-		AABB[] boxes = this.getBounds().split();
+		AABB[] boxes = this.getAABB().split();
 		AABB box1 = boxes[0];
 		AABB box2 = boxes[1];
 		

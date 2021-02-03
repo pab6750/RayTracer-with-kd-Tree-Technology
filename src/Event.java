@@ -17,7 +17,7 @@ public class Event {
 	}
 	
 	public static Event createStartEvent(Shape referencedShape, int k) {
-		Coordinate planePos = referencedShape.getBounds()
+		Coordinate planePos = referencedShape.getAABB()
 				              .applyMatrix(referencedShape.getTransformation())
 				              .getMin();
 		
@@ -25,7 +25,7 @@ public class Event {
 	}
 	
 	public static Event createPlanarEvent(Shape referencedShape, int k) {
-		Coordinate planePos = referencedShape.getBounds()
+		Coordinate planePos = referencedShape.getAABB()
 				              .applyMatrix(referencedShape.getTransformation())
 				              .getMin();
 		
@@ -33,7 +33,7 @@ public class Event {
 	}
 	
 	public static Event createEndEvent(Shape referencedShape, int k) {
-		Coordinate planePos = referencedShape.getBounds()
+		Coordinate planePos = referencedShape.getAABB()
 				              .applyMatrix(referencedShape.getTransformation())
 				              .getMax();
 		

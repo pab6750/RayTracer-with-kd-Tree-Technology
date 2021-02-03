@@ -63,7 +63,7 @@ public abstract class KDTree extends Shape{
 	 * This method gets the bounding volume of this node.
 	 */
 	@Override
-	public AABB getBounds() {
+	public AABB getAABB() {
 		return this.getBox();
 	}
 
@@ -220,7 +220,7 @@ public abstract class KDTree extends Shape{
 		
 		for(int i = 0; i < this.shapes.length; i++) {
 			if(this.shapes[i] != null) {
-				AABB currentBox = this.shapes[i].getBounds().applyMatrix(this.shapes[i].getTransformation());
+				AABB currentBox = this.shapes[i].getAABB().applyMatrix(this.shapes[i].getTransformation());
 				bbox.addAABB(currentBox);
 			}
 		}
