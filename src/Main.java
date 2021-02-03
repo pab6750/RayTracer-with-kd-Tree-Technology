@@ -1,3 +1,5 @@
+/* The overall structure of this Ray Tracer was taken by the book 'The Ray Tracer Challenge' by Jamis Buck*/
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
