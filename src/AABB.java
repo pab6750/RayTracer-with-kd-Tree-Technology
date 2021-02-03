@@ -61,7 +61,7 @@ public class AABB extends Shape{
 		this.material = new Material(0.1, 0, 0.9, 200, 0, 0.8, Material.VACUUM, gray);
 	}
 	
-	public AABB transform(Matrix matrix) {
+	public AABB applyMatrix(Matrix matrix) {
 		AABB box = new AABB(this.owner);
 	    
 		Coordinate p1 = new Coordinate(this.min.getX(), this.min.getY(), this.min.getZ(), Coordinate.POINT);
@@ -92,7 +92,7 @@ public class AABB extends Shape{
 			   point.getZ() >= this.min.getZ() && point.getZ() <= this.max.getZ();
 	}
 	
-	public void addBox(AABB box) {
+	public void addAABB(AABB box) {
 		this.addPoint(box.getMin());
 		this.addPoint(box.getMax());
 	}
@@ -135,7 +135,7 @@ public class AABB extends Shape{
 		return this.owner;
 	}
 	
-	public AABB[] splitBounds() {
+	public AABB[] split() {
 		double sizeX = Math.abs(this.max.getX() - this.min.getX());
 		double sizeY = Math.abs(this.max.getY() - this.min.getY());
 		double sizeZ = Math.abs(this.max.getZ() - this.min.getZ());
@@ -177,34 +177,6 @@ public class AABB extends Shape{
 	public void divide(int threshold) {
 		
 	}
-	
-	/*
-	private double[] checkAxis1(double origin, double direction, double min, double max) {
-		double tminNumerator = (min - origin);
-		double tmaxNumerator = (max - origin);
-		
-		double tmin;
-		double tmax;
-		
-		if(Math.abs(direction) >= EPSILON) {
-			tmin = tminNumerator / direction;
-			tmax = tmaxNumerator / direction;
-		} else {
-			tmin = tminNumerator * Double.POSITIVE_INFINITY;
-			tmax = tmaxNumerator * Double.POSITIVE_INFINITY;
-		}
-		
-		if(tmin > tmax) {
-			double temp = tmin;
-			tmin = tmax;
-			tmax = temp;
-		}
-		double[] result = {tmin, tmax};
-		
-		return result;
-	}
-}
-	 */
 
 	@Override
 	public IntersectionPoint[] localIntersect(Ray r) {

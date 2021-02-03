@@ -220,8 +220,8 @@ public abstract class KDTree extends Shape{
 		
 		for(int i = 0; i < this.shapes.length; i++) {
 			if(this.shapes[i] != null) {
-				AABB currentBox = this.shapes[i].getBounds().transform(this.shapes[i].getTransformation());
-				bbox.addBox(currentBox);
+				AABB currentBox = this.shapes[i].getBounds().applyMatrix(this.shapes[i].getTransformation());
+				bbox.addAABB(currentBox);
 			}
 		}
 		

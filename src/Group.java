@@ -38,7 +38,7 @@ public class Group extends Shape{
 		
 		for(int i = 0; i < this.shapes.length; i++) {
 			AABB cbox = this.shapes[i].parentSpaceBoundsOf();
-			box.addBox(cbox);
+			box.addAABB(cbox);
 		}
 		
 		return box;
@@ -160,7 +160,7 @@ public class Group extends Shape{
 		ArrayList<Shape> list1 = new ArrayList<Shape>();
 		ArrayList<Shape> list2 = new ArrayList<Shape>();
 		
-		AABB[] boxes = this.getBounds().splitBounds();
+		AABB[] boxes = this.getBounds().split();
 		AABB box1 = boxes[0];
 		AABB box2 = boxes[1];
 		

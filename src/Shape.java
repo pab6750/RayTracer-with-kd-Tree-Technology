@@ -75,7 +75,7 @@ public abstract class Shape {
 	 */
 	public AABB parentSpaceBoundsOf() {
 		
-		return this.getBounds().transform(this.transformation);
+		return this.getBounds().applyMatrix(this.transformation);
 	}
 	
 	/**

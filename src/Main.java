@@ -724,7 +724,7 @@ public class Main {
 		g.divide(2);
 
 		for(int i = 0; i < cubes.length; i++) {
-			sceneBox.addBox(cubes[i].getBounds());
+			sceneBox.addAABB(cubes[i].getBounds());
 		}
 
 		//Plane plane = new Plane();
@@ -804,7 +804,7 @@ public class Main {
 		g.divide(2);
 
 		for(int i = 0; i < cubes.length; i++) {
-			sceneBox.addBox(cubes[i].getBounds());
+			sceneBox.addAABB(cubes[i].getBounds());
 		}
 
 		Shape[] shapes = {g};
@@ -941,9 +941,9 @@ public class Main {
 		sphere2.setTransformation(matrix2);
 		sphere3.setTransformation(matrix3);
 
-		AABB box1 = sphere1.getBounds().transform(sphere1.getTransformation());
-		AABB box2 = sphere2.getBounds().transform(sphere2.getTransformation());
-		AABB box3 = sphere3.getBounds().transform(sphere3.getTransformation());
+		AABB box1 = sphere1.getBounds().applyMatrix(sphere1.getTransformation());
+		AABB box2 = sphere2.getBounds().applyMatrix(sphere2.getTransformation());
+		AABB box3 = sphere3.getBounds().applyMatrix(sphere3.getTransformation());
 
 		Shape[] shapes = {sphere1, sphere2, sphere3};
 		scene.setObjs(shapes);
@@ -1114,7 +1114,7 @@ public class Main {
 		g.divide(2);
 
 		for(int i = 0; i < cubes.length; i++) {
-			sceneBox.addBox(cubes[i].getBounds());
+			sceneBox.addAABB(cubes[i].getBounds());
 		}
 
 		int missedCount = 0;
@@ -1447,7 +1447,7 @@ public class Main {
 
 		AABB box = new AABB(min, max, null);
 
-		AABB[] boxes = box.splitBounds();
+		AABB[] boxes = box.split();
 
 		boxes[0].getMin().printData();
 		boxes[0].getMax().printData();
@@ -1461,7 +1461,7 @@ public class Main {
 
 		AABB box = new AABB(min, max, null);
 
-		AABB[] boxes = box.splitBounds();
+		AABB[] boxes = box.split();
 
 		boxes[0].getMin().printData();
 		boxes[0].getMax().printData();
@@ -1475,7 +1475,7 @@ public class Main {
 
 		AABB box = new AABB(min, max, null);
 
-		AABB[] boxes = box.splitBounds();
+		AABB[] boxes = box.split();
 
 		boxes[0].getMin().printData();
 		boxes[0].getMax().printData();
@@ -1489,7 +1489,7 @@ public class Main {
 
 		AABB box = new AABB(min, max, null);
 
-		AABB[] boxes = box.splitBounds();
+		AABB[] boxes = box.split();
 
 		boxes[0].getMin().printData();
 		boxes[0].getMax().printData();
@@ -1697,7 +1697,7 @@ public class Main {
 
 		Matrix matrix = Matrix.rotationX(Math.PI / 4).matrixMultiplication(Matrix.rotationY(Math.PI / 4));
 
-		box.transform(matrix);
+		box.applyMatrix(matrix);
 
 		box.getMin().printData();
 		box.getMax().printData();
@@ -1712,7 +1712,7 @@ public class Main {
 		AABB b1 = new AABB(min1, max1, null);
 		AABB b2 = new AABB(min2, max2, null);
 
-		b1.addBox(b2);
+		b1.addAABB(b2);
 
 		b1.getMin().printData();
 		b1.getMax().printData();
