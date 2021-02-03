@@ -59,6 +59,10 @@ public class Triangle extends Shape{
 		return box;
 	}
 
+	/**
+	 * This algorithm is used to determine ray-triangle intersections.
+	 * Reference at: Möller, T. and Trumbore, B. (1997) 'Fast, minimum storage ray-triangle intersection', Journal of Graphics Tools, 2(1), pp. 21–28. doi: 10.1080/10867651.1997.10487468.
+	 */
 	@Override
 	public IntersectionPoint[] localIntersect(Ray r) {
 		Coordinate dirCrossE2 = r.getDirection().crossProduct(this.e2);
