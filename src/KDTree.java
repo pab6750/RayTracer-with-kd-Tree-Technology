@@ -12,7 +12,7 @@ public abstract class KDTree extends Shape{
 	public static final int Z_DIMENSION = 2;
 	
 	public static final int SHAPES_LIMIT = 5;
-	public static final int DEPTH_LIMIT = 24;
+	public static final int DEPTH_LIMIT = 10;
 	
 	protected boolean isRoot;
 	protected KDTree leftChild;
@@ -76,7 +76,8 @@ public abstract class KDTree extends Shape{
 			return null;
 		} else if(this.shapes.length == 0) {
 			return null;
-		} else if(this.shapes.length <= SHAPES_LIMIT || this.level == DEPTH_LIMIT - 1) {
+		//end condition
+		} else if(this.shapes.length <= SHAPES_LIMIT || this.level == DEPTH_LIMIT) {
 			
 			ArrayList<IntersectionPoint> allIntersections = new ArrayList<IntersectionPoint>();
 			
@@ -101,6 +102,14 @@ public abstract class KDTree extends Shape{
 			}
 			
 			intersectionList = IntersectionPoint.sortIntersections(intersectionList);
+			
+			/*if(intersectionList.length != 2) {
+				for(int i = 0; i < intersectionList.length; i++) {
+					System.out.println("intersectionList[" + i + "]: " + intersectionList[i].getObject().getId());
+				}
+				
+				System.out.println("---------------------------");
+			}*/
 			
 			return intersectionList;
 		} else {

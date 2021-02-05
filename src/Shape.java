@@ -15,6 +15,8 @@ public abstract class Shape {
 	private static int triangleId = 0;
 	private static int boundingBoxId = 0;
 	private static int kdTreeId = 0;
+	private static int spatialKdTreeId = 0;
+	private static int medianKdTreeId = 0;
 	
 	protected String currentId;
 	protected Matrix transformation;
@@ -275,6 +277,12 @@ public abstract class Shape {
 		} else if(name.equals("Triangle")) {
 			this.currentId = "TR" + triangleId;
 			triangleId++;
+		} else if(name.equals("SpatialKDTree")) {
+			this.currentId = "ST" + spatialKdTreeId;
+			spatialKdTreeId++;
+		} else if(name.equals("MedianKDTree")) {
+			this.currentId = "MT" + medianKdTreeId;
+			medianKdTreeId++;
 		} else {
 			this.currentId = "SH" + id;
 			id++;

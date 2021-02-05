@@ -58,6 +58,14 @@ public class Scene {
 			}
 		}
 		
+		/*if(intersects.size() != 0) {
+			for(int i = 0; i < intersects.size(); i++) {
+				System.out.println("intersects[" + i + "]: " + intersects.get(i).getObject().getId());
+			}
+			
+			System.out.println("--------------------------------");
+		}*/
+		
 		IntersectionPoint[] result = new IntersectionPoint[intersects.size()];
 		
 		for(int i = 0; i < intersects.size(); i++) {

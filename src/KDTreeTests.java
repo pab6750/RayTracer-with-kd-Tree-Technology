@@ -200,7 +200,7 @@ public class KDTreeTests {
 				System.out.println("Shape: " + intersections[0].getObject().getId());
 			}
 			
-			Assert.assertEquals(false, notMissed);
+			Assert.assertEquals(true, notMissed);
 		}
 	}
 }

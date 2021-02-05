@@ -61,34 +61,50 @@ public class MedianKDTree extends KDTree{
 		 * he did not advise to pursue the link list alternative.
 		 */
 		
-		ArrayList<Shape> leftShapes = new ArrayList<Shape>();
-		ArrayList<Shape> rightShapes = new ArrayList<Shape>();
+		int totalLength = this.shapes.length;
 		
-		//determine which shape belongs where
-		for(int i = 0; i < this.shapes.length; i++) {
+		int rightArrayLength = 0;
+		int leftArrayLength = 0;
+		Shape[] rightArray;
+		Shape[] leftArray;
+		
+		//determines how long each array will need to be
+		for(int i = 0; i < totalLength; i++) {
 			AABB currentBox = this.shapes[i].getAABB();
 			currentBox = currentBox.applyMatrix(this.shapes[i].getTransformation());
 			
 			if(children[0].containsPoint(currentBox.getMin()) || children[0].containsPoint(currentBox.getMax())) {
-				leftShapes.add(this.shapes[i]);
+				leftArrayLength++;
 			}
 			
 			if(children[1].containsPoint(currentBox.getMin()) || children[1].containsPoint(currentBox.getMax())) {
-				rightShapes.add(this.shapes[i]);
+				rightArrayLength++;
 			}
 		}
 		
-		Shape[] leftArray = new Shape[leftShapes.size()];
-		Shape[] rightArray = new Shape[rightShapes.size()];
+		rightArray = new Shape[rightArrayLength];
+		leftArray = new Shape[leftArrayLength];
 		
-		for(int i = 0; i < leftArray.length; i++) {
-			leftArray[i] = leftShapes.get(i);
+		int rightCounter = 0;
+		int leftCounter = 0;
+		
+		//allocates each shape to its appropriate array
+		for(int i = 0; i < totalLength; i++) {
+			AABB currentBox = this.shapes[i].getAABB();
+			currentBox = currentBox.applyMatrix(this.shapes[i].getTransformation());
+			
+			if(children[0].containsPoint(currentBox.getMin()) || children[0].containsPoint(currentBox.getMax())) {
+				leftArray[leftCounter] = this.shapes[i];
+				leftCounter++;
+			}
+			
+			if(children[1].containsPoint(currentBox.getMin()) || children[1].containsPoint(currentBox.getMax())) {
+				rightArray[rightCounter] = this.shapes[i];
+				rightCounter++;
+			}
 		}
 		
-		for(int i = 0; i < rightArray.length; i++) {
-			rightArray[i] = rightShapes.get(i);
-		}
-		
+		//this.shapes = null;
 		this.leftChild.setShapes(leftArray);
 		this.rightChild.setShapes(rightArray);
 	}

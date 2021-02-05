@@ -164,11 +164,11 @@ public class Main {
 		//trumpetTest();
 		//kdTreeTest3();
 		//spatialTest2();
-		lakeSimulation();
+		//lakeSimulation();
 		//kdTreeTest4();
-		//bunnyTest();
+		bunnyTest();
         //appendixImage2();
-		//halfTimeTest3();
+		//halfTimeTest();
 	}
 	
 	//this took 77 seconds
@@ -216,27 +216,84 @@ public class Main {
 		
 		Shape[] kdtList = {kdt};
 		
-		Scene scene = new Scene(512, 512);
+		Scene scene = new Scene(128, 128);
 		scene.setObjs(kdtList);
 		scene.renderScene("HalfTimeSimulation2");
 	}
 	
-	//this took 69 seconds
+	/*
+	 * Rendering started on 2021-02-05 12:01:17.95
+     * Rendering finished on 2021-02-05 12:06:29.212
+     *  = 5 mins 12 secs
+     * 
+     * 
+	 */
 	public static void halfTimeTest() {
-		Sphere left = new Sphere();
-		Sphere middle = new Sphere();
-		Sphere right = new Sphere();
+		Sphere s1 = new Sphere();
+		Sphere s2 = new Sphere();
+		Sphere s3 = new Sphere();
+		Sphere s4 = new Sphere();
+		Sphere s5 = new Sphere();
+		Sphere s6 = new Sphere();
+		Sphere s7 = new Sphere();
+		Sphere s8 = new Sphere();
+		Sphere s9 = new Sphere();
+		Sphere sa = new Sphere();
+		Sphere sb = new Sphere();
+		Sphere sc = new Sphere();
+		Sphere sd = new Sphere();
+		Sphere se = new Sphere();
+		Sphere sf = new Sphere();
+		Sphere sg = new Sphere();
+		Sphere sh = new Sphere();
 		
-		Matrix leftMatrix = Matrix.translation(-5, 0, 0);
-		Matrix rightMatrix = Matrix.translation(5, 0, 0);
+		Matrix m1 = Matrix.translation(-20, 0, 0);
+		Matrix m2 = Matrix.translation(-18, 0, 0);
+		Matrix m3 = Matrix.translation(-16, 0, 0);
+		Matrix m4 = Matrix.translation(-14, 0, 0);
+		Matrix m5 = Matrix.translation(-12, 0, 0);
+		Matrix m6 = Matrix.translation(-10, 0, 0);
+		Matrix m7 = Matrix.translation(-8, 0, 0);
+		Matrix m8 = Matrix.translation(-6, 0, 0);
+		Matrix m9 = Matrix.translation(-4, 0, 0);
+		Matrix ma = Matrix.translation(-2, 0, 0);
+		Matrix mb = Matrix.translation(0, 0, 0);
+		Matrix mc = Matrix.translation(2, 0, 0);
+		Matrix md = Matrix.translation(4, 0, 0);
+		Matrix me = Matrix.translation(6, 0, 0);
+		Matrix mf = Matrix.translation(8, 0, 0);
+		Matrix mg = Matrix.translation(10, 0, 0);
+		Matrix mh = Matrix.translation(12, 0, 0);
 		
-		left.setTransformation(leftMatrix);
-		right.setTransformation(rightMatrix);
+		s1.setTransformation(m1);
+		s2.setTransformation(m2);
+		s3.setTransformation(m3);
+		s4.setTransformation(m4);
+		s5.setTransformation(m5);
+		s6.setTransformation(m6);
+		s7.setTransformation(m7);
+		s8.setTransformation(m8);
+		s9.setTransformation(m9);
+		sa.setTransformation(ma);
+		sb.setTransformation(mb);
+		sc.setTransformation(mc);
+		sd.setTransformation(md);
+		se.setTransformation(me);
+		sf.setTransformation(mf);
+		sg.setTransformation(mg);
+		sh.setTransformation(mh);
 		
-		Shape[] objects = {left, middle, right};
+		Shape[] objects = {s1, s2, s3, s4, s5, s6, s7, s8, s9, sa, sb, sc, sd, se, sf, sg, sh};
+		
+		SpatialKDTree kdt = SpatialKDTree.createRoot(objects);
+		kdt.split(0, 1);
+		//kdt.build();
+		kdt.printTreeWithData();
+		
+		Shape[] kdts = {kdt};
 		
 		Scene scene = new Scene(512, 512);
-		scene.setObjs(objects);
+		scene.setObjs(kdts);
 		scene.renderScene("HalfTimeSimulation");
 	}
 
@@ -381,9 +438,15 @@ public class Main {
 		mkdt.build();
 		Shape[] objs = {mkdt};
 		System.out.println("Building Process Ended");*/
+		
+		System.out.println("Building Process Started");
+		SpatialKDTree skdt = SpatialKDTree.createRoot(shapesMinusNull);
+		skdt.build();
+		Shape[] objs = {skdt};
+		System.out.println("Building Process Ended");
 
-		Scene scene = new Scene(512, 512);
-		scene.setObjs(shapesMinusNull);
+		Scene scene = new Scene(128, 128);
+		scene.setObjs(objs);
 
 		scene.renderScene("bunny");
 	}
