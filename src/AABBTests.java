@@ -29,4 +29,29 @@ public class AABBTests {
 		Assert.assertEquals(0.5, resultZ[1].getMin().getZ(), DELTA);
 		Assert.assertEquals(box.getMax().getZ(), resultZ[1].getMax().getZ(), DELTA);
 	}
+	
+	@Test
+	public void surfaceAreaTest() {
+		Sphere s1 = new Sphere();
+		Sphere s2 = new Sphere();
+		Sphere s3 = new Sphere();
+		
+		Matrix m2 = Matrix.translation(-5, -5, -5);
+		Matrix m3 = Matrix.scaling(2, 2, 2);
+		
+		s2.setTransformation(m2);
+		s3.setTransformation(m3);
+		
+		double result1 = s1.getAABB().getSurfaceArea();
+		double result2 = s2.getAABB().getSurfaceArea();
+		double result3 = s3.getAABB().getSurfaceArea();
+		
+		double expected1 = 24;
+		double expected2 = 24;
+		double expected3 = 96;
+		
+		Assert.assertEquals(expected1, result1, DELTA);
+		Assert.assertEquals(expected2, result2, DELTA);
+		Assert.assertEquals(expected3, result3, DELTA);
+	}
 }

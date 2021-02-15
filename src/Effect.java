@@ -76,7 +76,7 @@ public class Effect {
 	 * @return returns true if d1 and d2 are equal.
 	 */
 	public static boolean compareDouble(double d1, double d2) {
-		return (Math.abs(d1) - Math.abs(d2) < EPSILON);
+		return (Math.abs(d1 - d2) < EPSILON);
 	}
 	
 	public double getN1() {

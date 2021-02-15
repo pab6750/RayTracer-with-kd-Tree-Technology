@@ -103,14 +103,6 @@ public abstract class KDTree extends Shape{
 			
 			intersectionList = IntersectionPoint.sortIntersections(intersectionList);
 			
-			/*if(intersectionList.length != 2) {
-				for(int i = 0; i < intersectionList.length; i++) {
-					System.out.println("intersectionList[" + i + "]: " + intersectionList[i].getObject().getId());
-				}
-				
-				System.out.println("---------------------------");
-			}*/
-			
 			return intersectionList;
 		} else {
 			IntersectionPoint[] leftIntersections = null;

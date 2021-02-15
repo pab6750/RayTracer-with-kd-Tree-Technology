@@ -166,9 +166,18 @@ public class Main {
 		//spatialTest2();
 		//lakeSimulation();
 		//kdTreeTest4();
-		bunnyTest();
+		//bunnyTest();
         //appendixImage2();
 		//halfTimeTest();
+		boxCheck();
+	}
+	
+	public static void boxCheck() {
+		Sphere s = new Sphere();
+		
+		AABB b = s.getAABB();
+		
+		b.printData();
 	}
 	
 	//this took 77 seconds
@@ -432,12 +441,6 @@ public class Main {
 		for(int i = 0; i < shapesMinusNull.length; i++) {
 			shapesMinusNull[i].setTransformation(m);
 		}
-
-		/*System.out.println("Building Process Started");
-		MedianKDTree mkdt = MedianKDTree.createRoot(shapesMinusNull);
-		mkdt.build();
-		Shape[] objs = {mkdt};
-		System.out.println("Building Process Ended");*/
 		
 		System.out.println("Building Process Started");
 		SpatialKDTree skdt = SpatialKDTree.createRoot(shapesMinusNull);

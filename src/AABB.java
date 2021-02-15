@@ -122,6 +122,28 @@ public class AABB extends Shape{
 			this.min.setZ(point.getZ());
 		}
 	}
+	
+	public double getSurfaceArea() {
+		AABB actualBox = this.owner.getAABB().applyMatrix(this.owner.getTransformation());
+		
+		Coordinate min = actualBox.getMin();
+		Coordinate max = actualBox.getMax();
+		
+		//length of horizontal side of frontal and back faces
+		double a = Math.abs(max.getX() - min.getX());
+		
+		//length of vertical side
+		double b = Math.abs(max.getY() - min.getY());
+		
+		//length of horizontal side of side face
+		double c = Math.abs(max.getZ() - min.getZ());
+		
+		double SA = (a * b) * 2 +
+				    (c * b) * 2 +
+				    (c * a) * 2;
+		
+		return SA;
+	}
 
 	public Coordinate getMin() {
 		return min;
