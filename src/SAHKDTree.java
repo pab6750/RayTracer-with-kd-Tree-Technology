@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class SAHKDTree extends KDTree{
 	public static final double KT = 1;
@@ -15,15 +16,158 @@ public class SAHKDTree extends KDTree{
 		return new SAHKDTree(true, shapes, 0);
 	}
 
+	//Naive O(N^2) algorithm described by Havran and Wald
 	@Override
 	public AABB[] findSplit(int k) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		int numCandidates = this.shapes.length * 2;
+		Coordinate[] allCandidates = new Coordinate[numCandidates];
+		
+		//collect all candidates
+		for(int i = 0; i < numCandidates; i++) {
+			AABB currBox = this.shapes[i / 2].getAABB();
+			currBox = currBox.applyMatrix(this.shapes[i / 2].getTransformation());
+			
+			if(i % 2 == 0) {
+				allCandidates[i] = currBox.getMin();
+			} else {
+				allCandidates[i] = currBox.getMax();
+			}
+		}
+		
+		ArrayList<Shape> leftShapes = new ArrayList<Shape>();
+		ArrayList<Shape> rightShapes = new ArrayList<Shape>();
+		
+		double maxSAH = 0;
+		Coordinate bestCandidate = null;
+		
+		for(int i = 0; i < numCandidates; i++) {
+			
+			Coordinate currCandidate = allCandidates[i];
+			
+			for(int j = 0; j < numCandidates; j++) {
+				
+				AABB currBox = this.shapes[i / 2].getAABB();
+				currBox = currBox.applyMatrix(this.shapes[i / 2].getTransformation());
+				
+				if(k == KDTree.X_DIMENSION) {
+					if(currBox.getMin().getX() <= currCandidate.getX() || currBox.getMax().getX() <= currCandidate.getX()) {
+						leftShapes.add(this.shapes[i / 2]);
+					} else {
+						rightShapes.add(this.shapes[i / 2]);
+					}
+				} else if(k == KDTree.Y_DIMENSION) {
+					if(currBox.getMin().getY() <= currCandidate.getY() || currBox.getMax().getY() <= currCandidate.getY()) {
+						leftShapes.add(this.shapes[i / 2]);
+					} else {
+						rightShapes.add(this.shapes[i / 2]);
+					}
+				} else if(k == KDTree.Z_DIMENSION) {
+					if(currBox.getMin().getZ() <= currCandidate.getZ() || currBox.getMax().getZ() <= currCandidate.getZ()) {
+						leftShapes.add(this.shapes[i / 2]);
+					} else {
+						rightShapes.add(this.shapes[i / 2]);
+					}
+				}
+			}
+			
+			int numLeft = leftShapes.size();
+			int numRight = rightShapes.size();
+			
+			Shape[] leftArray = new Shape[numLeft];
+			Shape[] rightArray = new Shape[numRight];
+			
+			for(int j = 0; j < numLeft; j++) {
+				leftArray[j] = leftShapes.get(j);
+			}
+			
+			for(int j = 0; j < numRight; j++) {
+				rightArray[j] = rightShapes.get(j);
+			}
+			
+			double newSAH = this.SurfaceAreaHeuristic(leftArray, rightArray);
+			//System.out.println("i newSAH: " + i + " " + newSAH);
+			if(maxSAH < newSAH) {
+				maxSAH = newSAH;
+				bestCandidate = currCandidate;
+			}
+		}
+		
+		AABB[] childBoxes = null;
+		
+		if(k == KDTree.X_DIMENSION) {
+			childBoxes = this.getBox().splitAtX(bestCandidate.getX());
+		} else if(k == KDTree.Y_DIMENSION) {
+			//best candidate is null
+			childBoxes = this.getBox().splitAtY(bestCandidate.getY());
+		} else if(k == KDTree.Z_DIMENSION) {
+			childBoxes = this.getBox().splitAtZ(bestCandidate.getZ());
+		}
+		
+		return childBoxes;
 	}
 
+	/**
+	 * Splits the node according to the SAH and the k value.
+	 * @param k the current k value.
+	 */
 	@Override
 	public void split(int k, int level) {
-		// TODO Auto-generated method stub
+		AABB[] children = this.findSplit(k);
+		//this node's children
+		this.leftChild = new SAHKDTree(false, k);
+		this.leftChild.setBox(children[0]);
+		this.leftChild.setLevel(level);
+		this.rightChild = new SAHKDTree(false, k);
+		this.rightChild.setBox(children[1]);
+		this.rightChild.setLevel(level);
+		
+		int totalLength = this.shapes.length;
+		
+		int rightArrayLength = 0;
+		int leftArrayLength = 0;
+		Shape[] rightArray;
+		Shape[] leftArray;
+		
+		//determines how long each array will need to be
+		for(int i = 0; i < totalLength; i++) {
+			AABB currentBox = this.shapes[i].getAABB();
+			currentBox = currentBox.applyMatrix(this.shapes[i].getTransformation());
+			
+			if(children[0].containsPoint(currentBox.getMin()) || children[0].containsPoint(currentBox.getMax())) {
+				leftArrayLength++;
+			}
+			
+			if(children[1].containsPoint(currentBox.getMin()) || children[1].containsPoint(currentBox.getMax())) {
+				rightArrayLength++;
+			}
+		}
+		
+		rightArray = new Shape[rightArrayLength];
+		leftArray = new Shape[leftArrayLength];
+		
+		int rightCounter = 0;
+		int leftCounter = 0;
+		
+		//allocates each shape to its appropriate array
+		for(int i = 0; i < totalLength; i++) {
+			AABB currentBox = this.shapes[i].getAABB();
+			currentBox = currentBox.applyMatrix(this.shapes[i].getTransformation());
+			
+			if(children[0].containsPoint(currentBox.getMin()) || children[0].containsPoint(currentBox.getMax())) {
+				leftArray[leftCounter] = this.shapes[i];
+				leftCounter++;
+			}
+			
+			if(children[1].containsPoint(currentBox.getMin()) || children[1].containsPoint(currentBox.getMax())) {
+				rightArray[rightCounter] = this.shapes[i];
+				rightCounter++;
+			}
+		}
+		
+		//this.shapes = null;
+		this.leftChild.setShapes(leftArray);
+		this.rightChild.setShapes(rightArray);
 		
 	}
 	
@@ -34,6 +178,51 @@ public class SAHKDTree extends KDTree{
 		
 		double leftSideCost = (leftSA / currentSA) * this.getLeftChild().getShapes().length;
 		double rightSideCost = (rightSA / currentSA) * this.getRightChild().getShapes().length;
+		
+		double finalCost = KT + KI * (leftSideCost + rightSideCost);
+		
+		return finalCost;
+	}
+	
+	public double SurfaceAreaHeuristic(Shape[] leftShapes, Shape[] rightShapes) {
+		double currentSA = this.getAABB().getSurfaceArea();
+		
+		AABB leftAABB = new AABB(null);
+		AABB rightAABB = new AABB(null);
+		
+		int numLeftShapes = leftShapes.length;
+		int numRightShapes = rightShapes.length;
+		
+		for(int i = 0; i < numLeftShapes; i++) {
+			AABB currBox = leftShapes[i].getAABB();
+			currBox = currBox.applyMatrix(leftShapes[i].getTransformation());
+			leftAABB.addAABB(currBox);
+		}
+		
+		for(int i = 0; i < numRightShapes; i++) {
+			AABB currBox = rightShapes[i].getAABB();
+			currBox = currBox.applyMatrix(rightShapes[i].getTransformation());
+			leftAABB.addAABB(currBox);
+		}
+		
+		//double leftSA = leftAABB.getSurfaceArea();
+		//double rightSA = rightAABB.getSurfaceArea();
+		
+		//should it be 0?
+		double leftSA = (numLeftShapes == 0) ? 0 : leftAABB.getSurfaceArea();
+		double rightSA = (numRightShapes == 0) ? 0 : rightAABB.getSurfaceArea();
+		
+		double leftSideCost = (leftSA / currentSA) * numLeftShapes;
+		double rightSideCost = (rightSA / currentSA) * numRightShapes;
+		
+		/*System.out.println("KT: " + KT);
+		System.out.println("KI: " + KI);
+		System.out.println("leftSideCost: " + leftSideCost);
+		System.out.println("rightSideCost: " + rightSideCost);
+		System.out.println("currentSA: " + currentSA);
+		System.out.println("numRightShapes: " + numRightShapes);
+		System.out.println("leftSA: " + leftSA);
+		System.out.println("rightSA: " + rightSA);*/
 		
 		double finalCost = KT + KI * (leftSideCost + rightSideCost);
 		

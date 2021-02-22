@@ -36,13 +36,12 @@ public class SpatialKDTree extends KDTree{
 	}
 	
 	/**
-	 * Splits this node using the spatial method.
-	 * @param k the current k.
+	 * Splits the node according to the the spatial middle and the k value.
+	 * @param k the current k value.
 	 */
 	@Override
 	public void split(int k, int level) {
 		AABB[] children = this.findSplit(k);
-		
 		//this node's children
 		this.leftChild = new SpatialKDTree(false, k);
 		this.leftChild.setBox(children[0]);
@@ -51,34 +50,50 @@ public class SpatialKDTree extends KDTree{
 		this.rightChild.setBox(children[1]);
 		this.rightChild.setLevel(level);
 		
-		ArrayList<Shape> leftShapes = new ArrayList<Shape>();
-		ArrayList<Shape> rightShapes = new ArrayList<Shape>();
+		int totalLength = this.shapes.length;
 		
-		//determine which shape belongs where
-		for(int i = 0; i < this.shapes.length; i++) {
+		int rightArrayLength = 0;
+		int leftArrayLength = 0;
+		Shape[] rightArray;
+		Shape[] leftArray;
+		
+		//determines how long each array will need to be
+		for(int i = 0; i < totalLength; i++) {
 			AABB currentBox = this.shapes[i].getAABB();
 			currentBox = currentBox.applyMatrix(this.shapes[i].getTransformation());
 			
 			if(children[0].containsPoint(currentBox.getMin()) || children[0].containsPoint(currentBox.getMax())) {
-				leftShapes.add(this.shapes[i]);
+				leftArrayLength++;
 			}
 			
 			if(children[1].containsPoint(currentBox.getMin()) || children[1].containsPoint(currentBox.getMax())) {
-				rightShapes.add(this.shapes[i]);
+				rightArrayLength++;
 			}
 		}
 		
-		Shape[] leftArray = new Shape[leftShapes.size()];
-		Shape[] rightArray = new Shape[rightShapes.size()];
+		rightArray = new Shape[rightArrayLength];
+		leftArray = new Shape[leftArrayLength];
 		
-		for(int i = 0; i < leftArray.length; i++) {
-			leftArray[i] = leftShapes.get(i);
+		int rightCounter = 0;
+		int leftCounter = 0;
+		
+		//allocates each shape to its appropriate array
+		for(int i = 0; i < totalLength; i++) {
+			AABB currentBox = this.shapes[i].getAABB();
+			currentBox = currentBox.applyMatrix(this.shapes[i].getTransformation());
+			
+			if(children[0].containsPoint(currentBox.getMin()) || children[0].containsPoint(currentBox.getMax())) {
+				leftArray[leftCounter] = this.shapes[i];
+				leftCounter++;
+			}
+			
+			if(children[1].containsPoint(currentBox.getMin()) || children[1].containsPoint(currentBox.getMax())) {
+				rightArray[rightCounter] = this.shapes[i];
+				rightCounter++;
+			}
 		}
 		
-		for(int i = 0; i < rightArray.length; i++) {
-			rightArray[i] = rightShapes.get(i);
-		}
-		
+		//this.shapes = null;
 		this.leftChild.setShapes(leftArray);
 		this.rightChild.setShapes(rightArray);
 	}

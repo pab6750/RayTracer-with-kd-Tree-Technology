@@ -107,7 +107,7 @@ public class KDTreeTests {
 		Shape[] shapes = {s0, s1, s2, s3, s4, s5, s6, s7, s8, s9};
 		
 		MedianKDTree kdt = new MedianKDTree(true, shapes, 0);
-		kdt.build();
+		kdt.buildTree();
 	}
 	
 	//intersection test without kdtree
@@ -182,7 +182,7 @@ public class KDTreeTests {
 		Shape[] shapes = {s0, s1, s2, s3, s4};
 		
 		MedianKDTree kdt = new MedianKDTree(true, shapes, 0);
-		kdt.build();
+		kdt.buildTree();
 		
 		double step = 0.1;
 		boolean notMissed = true;

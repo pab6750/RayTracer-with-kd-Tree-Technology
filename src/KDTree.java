@@ -1,3 +1,4 @@
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 
@@ -43,20 +44,14 @@ public abstract class KDTree extends Shape{
 	public abstract AABB[] findSplit(int k);
 	public abstract void split(int k, int level);
 	
-	/**
-	 * Builds the entire tree.
-	 */
-	public void build() {
-		if(!this.terminate()) {
-			int newK = (this.k + 1) % 3;
-			int newL = this.level + 1;
-			this.split(newK, newL);
-			this.leftChild.build();
-			this.rightChild.build();
-		} else {
-			this.rightChild = null;
-			this.leftChild = null;
-		}
+	public void buildTree() {
+		System.out.println("KD tree is being built");
+		Timestamp timestampBeforeBuilding = new Timestamp(System.currentTimeMillis());
+		this.build();
+		Timestamp timestampAfterBuilding = new Timestamp(System.currentTimeMillis());
+		System.out.println("Building process completed.");
+		System.out.println("Building Start Time: " + timestampBeforeBuilding);
+		System.out.println("Building End Time: " + timestampAfterBuilding);
 	}
 	
 	/**
@@ -394,6 +389,22 @@ public abstract class KDTree extends Shape{
 		
 		if(this.rightChild != null) {
 			this.rightChild.printDataRecursive(l + 1);
+		}
+	}
+	
+	/**
+	 * Builds the entire tree.
+	 */
+	private void build() {
+		if(!this.terminate()) {
+			int newK = (this.k + 1) % 3;
+			int newL = this.level + 1;
+			this.split(newK, newL);
+			this.leftChild.build();
+			this.rightChild.build();
+		} else {
+			this.rightChild = null;
+			this.leftChild = null;
 		}
 	}
 	
