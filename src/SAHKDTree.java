@@ -35,38 +35,53 @@ public class SAHKDTree extends KDTree{
 			}
 		}
 		
-		ArrayList<Shape> leftShapes = new ArrayList<Shape>();
-		ArrayList<Shape> rightShapes = new ArrayList<Shape>();
+		//separate into left & right
+		ArrayList<Shape> leftShapes = null;
+		ArrayList<Shape> rightShapes = null;
 		
-		double maxSAH = 0;
-		Coordinate bestCandidate = null;
+		double maxSAH = Double.POSITIVE_INFINITY;
+		Coordinate bestCandidate = allCandidates[0];
 		
 		for(int i = 0; i < numCandidates; i++) {
 			
 			Coordinate currCandidate = allCandidates[i];
+			leftShapes = new ArrayList<Shape>();
+			rightShapes = new ArrayList<Shape>();
 			
 			for(int j = 0; j < numCandidates; j++) {
 				
-				AABB currBox = this.shapes[i / 2].getAABB();
-				currBox = currBox.applyMatrix(this.shapes[i / 2].getTransformation());
+				AABB currBox = this.shapes[j / 2].getAABB();
+				currBox = currBox.applyMatrix(this.shapes[j / 2].getTransformation());
 				
 				if(k == KDTree.X_DIMENSION) {
 					if(currBox.getMin().getX() <= currCandidate.getX() || currBox.getMax().getX() <= currCandidate.getX()) {
-						leftShapes.add(this.shapes[i / 2]);
+						if(!(leftShapes.contains(this.shapes[j / 2]))) {
+							leftShapes.add(this.shapes[j / 2]);
+						}
 					} else {
-						rightShapes.add(this.shapes[i / 2]);
+						if(!(rightShapes.contains(this.shapes[j / 2]))) {
+							rightShapes.add(this.shapes[j / 2]);
+						}
 					}
 				} else if(k == KDTree.Y_DIMENSION) {
 					if(currBox.getMin().getY() <= currCandidate.getY() || currBox.getMax().getY() <= currCandidate.getY()) {
-						leftShapes.add(this.shapes[i / 2]);
+						if(!(leftShapes.contains(this.shapes[j / 2]))) {
+							leftShapes.add(this.shapes[j / 2]);
+						}
 					} else {
-						rightShapes.add(this.shapes[i / 2]);
+						if(!(rightShapes.contains(this.shapes[j / 2]))) {
+							rightShapes.add(this.shapes[j / 2]);
+						}
 					}
 				} else if(k == KDTree.Z_DIMENSION) {
 					if(currBox.getMin().getZ() <= currCandidate.getZ() || currBox.getMax().getZ() <= currCandidate.getZ()) {
-						leftShapes.add(this.shapes[i / 2]);
+						if(!(leftShapes.contains(this.shapes[j / 2]))) {
+							leftShapes.add(this.shapes[j / 2]);
+						}
 					} else {
-						rightShapes.add(this.shapes[i / 2]);
+						if(!(rightShapes.contains(this.shapes[j / 2]))) {
+							rightShapes.add(this.shapes[j / 2]);
+						}
 					}
 				}
 			}
@@ -86,8 +101,8 @@ public class SAHKDTree extends KDTree{
 			}
 			
 			double newSAH = this.SurfaceAreaHeuristic(leftArray, rightArray);
-			//System.out.println("i newSAH: " + i + " " + newSAH);
-			if(maxSAH < newSAH) {
+			
+			if(maxSAH > newSAH) {
 				maxSAH = newSAH;
 				bestCandidate = currCandidate;
 			}
@@ -202,7 +217,7 @@ public class SAHKDTree extends KDTree{
 		for(int i = 0; i < numRightShapes; i++) {
 			AABB currBox = rightShapes[i].getAABB();
 			currBox = currBox.applyMatrix(rightShapes[i].getTransformation());
-			leftAABB.addAABB(currBox);
+			rightAABB.addAABB(currBox);
 		}
 		
 		//double leftSA = leftAABB.getSurfaceArea();
@@ -215,16 +230,18 @@ public class SAHKDTree extends KDTree{
 		double leftSideCost = (leftSA / currentSA) * numLeftShapes;
 		double rightSideCost = (rightSA / currentSA) * numRightShapes;
 		
-		/*System.out.println("KT: " + KT);
-		System.out.println("KI: " + KI);
+		double finalCost = KT + KI * (leftSideCost + rightSideCost);
+		
+		/*System.out.println("leftShapes.length: " + leftShapes.length);
+		System.out.println("rightShapes.length: " + rightShapes.length);
 		System.out.println("leftSideCost: " + leftSideCost);
 		System.out.println("rightSideCost: " + rightSideCost);
 		System.out.println("currentSA: " + currentSA);
 		System.out.println("numRightShapes: " + numRightShapes);
 		System.out.println("leftSA: " + leftSA);
-		System.out.println("rightSA: " + rightSA);*/
-		
-		double finalCost = KT + KI * (leftSideCost + rightSideCost);
+		System.out.println("rightSA: " + rightSA);
+		System.out.println("finalCost: " + finalCost);
+		System.out.println("-------------------");*/
 		
 		return finalCost;
 	}

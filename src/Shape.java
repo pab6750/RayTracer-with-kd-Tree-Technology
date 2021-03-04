@@ -117,6 +117,10 @@ public abstract class Shape {
 		this.material.setDefaultReflective();
 	}
 	
+	public boolean isEqual(Shape s) {
+		return this.getId().equals(s.getId());
+	}
+	
 	/**
 	 * Set the material to a default refractive material.
 	 */

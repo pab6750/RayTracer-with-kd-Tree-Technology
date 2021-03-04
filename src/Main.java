@@ -170,10 +170,15 @@ public class Main {
         //appendixImage2();
 		//halfTimeTest();
 		//boxCheck();
-		SAHNaiveTest();
+		//SAHNaiveTest();
+		SAHInterceptionTimeTest();
 	}
 	
-	public static void SAHNaiveTest() {
+	/*
+	 * Without SAH = 6 mins 30 secs
+	 * With SAH    =
+	 */
+	public static void SAHInterceptionTimeTest() {
 		Sphere s1 = new Sphere();
 		Sphere s2 = new Sphere();
 		Sphere s3 = new Sphere();
@@ -183,56 +188,83 @@ public class Main {
 		Sphere s7 = new Sphere();
 		Sphere s8 = new Sphere();
 		Sphere s9 = new Sphere();
-		Sphere s10 = new Sphere();
-		Sphere s11 = new Sphere();
-		Sphere s12 = new Sphere();
-		Sphere s13 = new Sphere();
-		Sphere s14 = new Sphere();
-		Sphere s15 = new Sphere();
-		Sphere s16 = new Sphere();
-		Sphere s17 = new Sphere();
-		Sphere s18 = new Sphere();
-		Sphere s19 = new Sphere();
-		Sphere s20 = new Sphere();
-		Sphere s21 = new Sphere();
-		Sphere s22 = new Sphere();
-		Sphere s23 = new Sphere();
-		Sphere s24 = new Sphere();
-		Sphere s25 = new Sphere();
-
-		s1.setTransformation(Matrix.translation(-5, 5, 0));
-		s2.setTransformation(Matrix.translation(-3, 5, 0));
-		s3.setTransformation(Matrix.translation(-1, 5, 0));
-		s4.setTransformation(Matrix.translation(1, 5, 0));
-		s5.setTransformation(Matrix.translation(3, 5, 0));
-		s6.setTransformation(Matrix.translation(-5, 3, 0));
-		s7.setTransformation(Matrix.translation(-3, 3, 0));
-		s8.setTransformation(Matrix.translation(-1, 3, 0));
-		s9.setTransformation(Matrix.translation(1, 3, 0));
-		s10.setTransformation(Matrix.translation(3, 3, 0));
-		s11.setTransformation(Matrix.translation(-5, 1, 0));
-		s12.setTransformation(Matrix.translation(-3, 1, 0));
-		s13.setTransformation(Matrix.translation(-1, 1, 0));
-		s14.setTransformation(Matrix.translation(1, 1, 0));
-		s15.setTransformation(Matrix.translation(3, 1, 0));
-		s16.setTransformation(Matrix.translation(-5, -1, 0));
-		s17.setTransformation(Matrix.translation(-3, -1, 0));
-		s18.setTransformation(Matrix.translation(-1, -1, 0));
-		s19.setTransformation(Matrix.translation(1, -1, 0));
-		s20.setTransformation(Matrix.translation(3, -1, 0));
-		s21.setTransformation(Matrix.translation(-5, -3, 0));
-		s22.setTransformation(Matrix.translation(-3, -3, 0));
-		s23.setTransformation(Matrix.translation(-1, -3, 0));
-		s24.setTransformation(Matrix.translation(1, -3, 0));
-		s25.setTransformation(Matrix.translation(3, -3, 0));
-
-		Shape[] shapes = {s1, s2, s3, s4, s5,
-						  s6, s7, s8, s9, s10,
-						  s11, s12, s13, s14, s15,
-						  s16, s17, s18, s19, s20,
-						  s21, s22, s23, s24, s25};
+		Sphere sa = new Sphere();
+		Sphere sb = new Sphere();
+		Sphere sc = new Sphere();
+		Sphere sd = new Sphere();
+		Sphere se = new Sphere();
+		Sphere sf = new Sphere();
+		Sphere sg = new Sphere();
+		Sphere sh = new Sphere();
 		
-		SAHKDTree sakdt = SAHKDTree.createRoot(shapes);
+		Matrix m1 = Matrix.translation(-20, 0, 0);
+		Matrix m2 = Matrix.translation(-18, 0, 0);
+		Matrix m3 = Matrix.translation(-16, 0, 0);
+		Matrix m4 = Matrix.translation(-14, 0, 0);
+		Matrix m5 = Matrix.translation(-12, 0, 0);
+		Matrix m6 = Matrix.translation(-10, 0, 0);
+		Matrix m7 = Matrix.translation(-8, 0, 0);
+		Matrix m8 = Matrix.translation(-6, 0, 0);
+		Matrix m9 = Matrix.translation(-4, 0, 0);
+		Matrix ma = Matrix.translation(-2, 0, 0);
+		Matrix mb = Matrix.translation(0, 0, 0);
+		Matrix mc = Matrix.translation(2, 0, 0);
+		Matrix md = Matrix.translation(4, 0, 0);
+		Matrix me = Matrix.translation(6, 0, 0);
+		Matrix mf = Matrix.translation(8, 0, 0);
+		Matrix mg = Matrix.translation(10, 0, 0);
+		Matrix mh = Matrix.translation(12, 0, 0);
+		
+		s1.setTransformation(m1);
+		s2.setTransformation(m2);
+		s3.setTransformation(m3);
+		s4.setTransformation(m4);
+		s5.setTransformation(m5);
+		s6.setTransformation(m6);
+		s7.setTransformation(m7);
+		s8.setTransformation(m8);
+		s9.setTransformation(m9);
+		sa.setTransformation(ma);
+		sb.setTransformation(mb);
+		sc.setTransformation(mc);
+		sd.setTransformation(md);
+		se.setTransformation(me);
+		sf.setTransformation(mf);
+		sg.setTransformation(mg);
+		sh.setTransformation(mh);
+		
+		Shape[] objects = {s1, s2, s3, s4, s5, s6, s7, s8, s9, sa, sb, sc, sd, se, sf, sg, sh};
+		
+		SAHKDTree kdt = SAHKDTree.createRoot(objects);
+		//kdt.split(0, 1);
+		kdt.buildTree();
+		kdt.printTreeWithData();
+		
+		Shape[] kdts = {kdt};
+		
+		Scene scene = new Scene(512, 512);
+		//scene.setObjs(objects);
+		scene.setObjs(kdts);
+		scene.renderScene("HalfTimeSimulation");
+	}
+	
+	//SAH with 200 spheres : built in 41s rendering time 1h KI = 1 and KT = 1
+	//SAH with 200 spheres : built in 41s rendering time 50mins KI = 0.5 and KT = 0.5
+	//SAH with 200 spheres : built in 41s rendering time 54mins KI = 2.0 and KT = 0.5
+	//Spatial with 200 spheres : built in 2ms rendering time 13 mins
+	public static void SAHNaiveTest() {
+		Shape[] ss = new Shape[200];
+		
+		for(int i = 0; i < ss.length; i++) {
+			ss[i] = new Sphere();
+			
+			Matrix m = Matrix.translation((Math.random() * 100) - 50, (Math.random() * 100) - 50, (Math.random() * 100) - 50);
+			
+			ss[i].setTransformation(m);
+		}
+		
+		//SpatialKDTree sakdt = SpatialKDTree.createRoot(ss);
+		SAHKDTree sakdt = SAHKDTree.createRoot(ss);
 		sakdt.buildTree();
 		
 		Shape[] objs = {sakdt};

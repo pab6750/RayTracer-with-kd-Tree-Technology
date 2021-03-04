@@ -56,6 +56,12 @@ public class AABB extends Shape{
 		this.owner = owner;
 	}
 	
+	public boolean isEqual(AABB b) {
+		return this.getMin().isEqual(b.getMin()) &&
+			   this.getMax().isEqual(b.getMax()) &&
+			   this.getOwner().isEqual(b.getOwner());
+	}
+	
 	public void showBox() {
 		Colour gray = new Colour(0.7, 0.7, 0.7);
 		this.material = new Material(0.1, 0, 0.9, 200, 0, 0.8, Material.VACUUM, gray);
