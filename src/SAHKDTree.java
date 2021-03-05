@@ -20,7 +20,8 @@ public class SAHKDTree extends KDTree{
 	@Override
 	public AABB[] findSplit(int k) {
 		
-		int numCandidates = this.shapes.length * 2;
+		int numShapes = this.shapes.length;
+		int numCandidates = numShapes * 2;
 		Coordinate[] allCandidates = new Coordinate[numCandidates];
 		
 		//collect all candidates
@@ -48,40 +49,28 @@ public class SAHKDTree extends KDTree{
 			leftShapes = new ArrayList<Shape>();
 			rightShapes = new ArrayList<Shape>();
 			
-			for(int j = 0; j < numCandidates; j++) {
+			for(int j = 0; j < numShapes; j++) {
 				
-				AABB currBox = this.shapes[j / 2].getAABB();
-				currBox = currBox.applyMatrix(this.shapes[j / 2].getTransformation());
+				AABB currBox = this.shapes[j].getAABB();
+				currBox = currBox.applyMatrix(this.shapes[j].getTransformation());
 				
 				if(k == KDTree.X_DIMENSION) {
 					if(currBox.getMin().getX() <= currCandidate.getX() || currBox.getMax().getX() <= currCandidate.getX()) {
-						if(!(leftShapes.contains(this.shapes[j / 2]))) {
-							leftShapes.add(this.shapes[j / 2]);
-						}
+						leftShapes.add(this.shapes[j]);
 					} else {
-						if(!(rightShapes.contains(this.shapes[j / 2]))) {
-							rightShapes.add(this.shapes[j / 2]);
-						}
+						rightShapes.add(this.shapes[j]);
 					}
 				} else if(k == KDTree.Y_DIMENSION) {
 					if(currBox.getMin().getY() <= currCandidate.getY() || currBox.getMax().getY() <= currCandidate.getY()) {
-						if(!(leftShapes.contains(this.shapes[j / 2]))) {
-							leftShapes.add(this.shapes[j / 2]);
-						}
+						leftShapes.add(this.shapes[j]);
 					} else {
-						if(!(rightShapes.contains(this.shapes[j / 2]))) {
-							rightShapes.add(this.shapes[j / 2]);
-						}
+						rightShapes.add(this.shapes[j]);
 					}
 				} else if(k == KDTree.Z_DIMENSION) {
 					if(currBox.getMin().getZ() <= currCandidate.getZ() || currBox.getMax().getZ() <= currCandidate.getZ()) {
-						if(!(leftShapes.contains(this.shapes[j / 2]))) {
-							leftShapes.add(this.shapes[j / 2]);
-						}
+						leftShapes.add(this.shapes[j]);
 					} else {
-						if(!(rightShapes.contains(this.shapes[j / 2]))) {
-							rightShapes.add(this.shapes[j / 2]);
-						}
+						rightShapes.add(this.shapes[j]);
 					}
 				}
 			}

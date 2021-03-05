@@ -166,12 +166,12 @@ public class Main {
 		//spatialTest2();
 		//lakeSimulation();
 		//kdTreeTest4();
-		//bunnyTest();
+		bunnyTest();
         //appendixImage2();
 		//halfTimeTest();
 		//boxCheck();
 		//SAHNaiveTest();
-		SAHInterceptionTimeTest();
+		//SAHInterceptionTimeTest();
 	}
 	
 	/*
@@ -236,14 +236,14 @@ public class Main {
 		Shape[] objects = {s1, s2, s3, s4, s5, s6, s7, s8, s9, sa, sb, sc, sd, se, sf, sg, sh};
 		
 		SAHKDTree kdt = SAHKDTree.createRoot(objects);
-		//kdt.split(0, 1);
-		kdt.buildTree();
+		kdt.split(0, 1);
+		//kdt.buildTree();
 		kdt.printTreeWithData();
 		
 		Shape[] kdts = {kdt};
 		
 		Scene scene = new Scene(512, 512);
-		//scene.setObjs(objects);
+		scene.setObjs(objects);
 		scene.setObjs(kdts);
 		scene.renderScene("HalfTimeSimulation");
 	}
@@ -530,7 +530,12 @@ public class Main {
 		scene.setObjs(sceneList);
 		scene.renderScene("medianResult3");
 	}
-
+	//building with SAH: 2 mins 30 secs
+	//rendering with SAH: 15 mins
+	//building with median: 0.5 secs
+	//rendering with median: 16 mins
+	//building with spatial: 0.2 secs
+	//rendering with median: 13 mins 30 secs
 	public static void bunnyTest() {
 		File file = new File("C:\\Users\\pablo\\OneDrive\\Desktop\\uni\\year 3\\Diss\\OBJFiles\\Bunny.obj");
 		OBJParser p = new OBJParser(file);
@@ -555,12 +560,9 @@ public class Main {
 		mkdt.buildTree();
 		Shape[] objs2 = {mkdt};
 		System.out.println("Building Process Ended");*/
-		
-		System.out.println("Building Process Started");
-		SAHKDTree sakdt = SAHKDTree.createRoot(shapesMinusNull);
+		SpatialKDTree sakdt = SpatialKDTree.createRoot(shapesMinusNull);
 		sakdt.buildTree();
 		Shape[] objs3 = {sakdt};
-		System.out.println("Building Process Ended");
 
 		Scene scene = new Scene(512, 512);
 		scene.setObjs(objs3);
