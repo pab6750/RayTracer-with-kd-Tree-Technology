@@ -166,17 +166,101 @@ public class Main {
 		//spatialTest2();
 		//lakeSimulation();
 		//kdTreeTest4();
-		bunnyTest();
+		//bunnyTest();
         //appendixImage2();
 		//halfTimeTest();
 		//boxCheck();
 		//SAHNaiveTest();
 		//SAHInterceptionTimeTest();
+		//bunnyDepthTest();
+		//uniformDistribution();
+		ununiformDistribution();
+	}
+	
+	public static void ununiformDistribution() {
+		Shape[] spheres = new Shape[100];
+		
+		for(int i = 0; i < spheres.length / 2; i++) {
+			spheres[i] = new Sphere();
+			Matrix m = Matrix.translation((i * 10) - 100, 0, 500);
+			spheres[i].setTransformation(m);
+		}
+		
+		for(int i = spheres.length / 2; i < spheres.length; i++) {
+			spheres[i] = new Sphere();
+			Matrix m = Matrix.translation((i * 10) + 100, 0, 500);
+			spheres[i].setTransformation(m);
+		}
+		
+		SAHKDTree skdt = SAHKDTree.createRoot(spheres);
+		skdt.buildTree();
+		
+		Scene scene = new Scene(512, 512);
+		scene.setObjs(spheres);
+		scene.renderScene("UnUniformSpace");
+		
+		System.out.println("Intersections per pixel: " + (Statistics.getSphereIntersectionCount() / (512 * 512)));
+	}
+	
+	//rendering time: 20 mins
+	//building time: 
+	//intersections per pixel: 100
+	public static void uniformDistribution() {
+		Shape[] spheres = new Shape[100];
+		
+		for(int i = 0; i < spheres.length; i++) {
+			spheres[i] = new Sphere();
+			Matrix m = Matrix.translation(i * 10, 0, 500);
+			spheres[i].setTransformation(m);
+		}
+		
+		SAHKDTree skdt = SAHKDTree.createRoot(spheres);
+		skdt.buildTree();
+		
+		Scene scene = new Scene(512, 512);
+		scene.setObjs(spheres);
+		scene.renderScene("UniformSpace");
+		
+		System.out.println("Intersections per pixel: " + (Statistics.getSphereIntersectionCount() / (512 * 512)));
+	}
+	
+	//SPATIAL: 55 intercepts per pixel
+	//MEDIAN: 74 intercepts per pixel
+	//SAH: 70
+	public static void bunnyDepthTest() {
+		File file = new File("C:\\Users\\pablo\\OneDrive\\Desktop\\uni\\Dissertation\\OBJFiles\\Bunny.obj");
+		OBJParser p = new OBJParser(file);
+		Shape[] shapes = p.getFaces();
+		Shape[] shapesMinusNull = new Shape[shapes.length - 1];
+		System.arraycopy(shapes, 1, shapesMinusNull, 0, shapes.length - 1);
+
+		Matrix m = Matrix.scaling(2, 2, 2);
+
+		for(int i = 0; i < shapesMinusNull.length; i++) {
+			shapesMinusNull[i].setTransformation(m);
+		}
+		
+		SAHKDTree skdt = SAHKDTree.createRoot(shapesMinusNull);
+		skdt.buildTree();
+		
+		Shape[] kdts = {skdt};
+		
+	    Scene scene = new Scene(512, 512);
+		scene.setObjs(kdts);
+		scene.renderScene("Bunny");
+				
+		System.out.println("Intersections per pixel: " + (Statistics.getTriangleIntersectionCount() / (512 * 512)));
+		
 	}
 	
 	/*
-	 * Without SAH = 6 mins 30 secs
-	 * With SAH    =
+	 * It looks like SAH may not be worth being used with small scenes even more so than Median
+	 * This is because median can use splitting points that arent bbox points, while SAH cant.
+	 * This means that with SAH, one side may be 
+	 * Without KDT  = 4 mins 05 secs
+	 * With SAH     = 2 mins 30 secs
+	 * With Median  = 1 mins 22 secs
+	 * With Spatial = 1 mins 30 secs
 	 */
 	public static void SAHInterceptionTimeTest() {
 		Sphere s1 = new Sphere();
@@ -197,23 +281,23 @@ public class Main {
 		Sphere sg = new Sphere();
 		Sphere sh = new Sphere();
 		
-		Matrix m1 = Matrix.translation(-20, 0, 0);
-		Matrix m2 = Matrix.translation(-18, 0, 0);
-		Matrix m3 = Matrix.translation(-16, 0, 0);
-		Matrix m4 = Matrix.translation(-14, 0, 0);
-		Matrix m5 = Matrix.translation(-12, 0, 0);
-		Matrix m6 = Matrix.translation(-10, 0, 0);
-		Matrix m7 = Matrix.translation(-8, 0, 0);
-		Matrix m8 = Matrix.translation(-6, 0, 0);
-		Matrix m9 = Matrix.translation(-4, 0, 0);
-		Matrix ma = Matrix.translation(-2, 0, 0);
+		Matrix m1 = Matrix.translation(-50, 0, 0);
+		Matrix m2 = Matrix.translation(-45, 0, 0);
+		Matrix m3 = Matrix.translation(-40, 0, 0);
+		Matrix m4 = Matrix.translation(-35, 0, 0);
+		Matrix m5 = Matrix.translation(-30, 0, 0);
+		Matrix m6 = Matrix.translation(-25, 0, 0);
+		Matrix m7 = Matrix.translation(-20, 0, 0);
+		Matrix m8 = Matrix.translation(-15, 0, 0);
+		Matrix m9 = Matrix.translation(-10, 0, 0);
+		Matrix ma = Matrix.translation(-5, 0, 0);
 		Matrix mb = Matrix.translation(0, 0, 0);
-		Matrix mc = Matrix.translation(2, 0, 0);
-		Matrix md = Matrix.translation(4, 0, 0);
-		Matrix me = Matrix.translation(6, 0, 0);
-		Matrix mf = Matrix.translation(8, 0, 0);
-		Matrix mg = Matrix.translation(10, 0, 0);
-		Matrix mh = Matrix.translation(12, 0, 0);
+		Matrix mc = Matrix.translation(5, 0, 0);
+		Matrix md = Matrix.translation(10, 0, 0);
+		Matrix me = Matrix.translation(15, 0, 0);
+		Matrix mf = Matrix.translation(20, 0, 0);
+		Matrix mg = Matrix.translation(25, 0, 0);
+		Matrix mh = Matrix.translation(30, 0, 0);
 		
 		s1.setTransformation(m1);
 		s2.setTransformation(m2);
@@ -235,17 +319,21 @@ public class Main {
 		
 		Shape[] objects = {s1, s2, s3, s4, s5, s6, s7, s8, s9, sa, sb, sc, sd, se, sf, sg, sh};
 		
-		SAHKDTree kdt = SAHKDTree.createRoot(objects);
-		kdt.split(0, 1);
-		//kdt.buildTree();
+		MedianKDTree kdt = MedianKDTree.createRoot(objects);
+		//kdt.split(0, 1);
+		//kdt.split(1, 2);
+		kdt.buildTree();
 		kdt.printTreeWithData();
 		
-		Shape[] kdts = {kdt};
+		//Shape[] kdts = {kdt};
 		
-		Scene scene = new Scene(512, 512);
-		scene.setObjs(objects);
-		scene.setObjs(kdts);
-		scene.renderScene("HalfTimeSimulation");
+		//Scene scene = new Scene(512, 512);
+		//scene.setObjs(objects);
+		//scene.setObjs(kdts);
+		//scene.renderScene("HalfTimeSimulation");
+		
+		//8
+		//System.out.println("Intersections per pixel: " + (Statistics.getSphereIntersectionCount() / (512 * 512)));
 	}
 	
 	//SAH with 200 spheres : built in 41s rendering time 1h KI = 1 and KT = 1
@@ -531,13 +619,13 @@ public class Main {
 		scene.renderScene("medianResult3");
 	}
 	//building with SAH: 2 mins 30 secs
-	//rendering with SAH: 15 mins
-	//building with median: 0.5 secs
-	//rendering with median: 16 mins
+	//rendering with SAH: 10 mins
+	//building with median: 1 secs
+	//rendering with median: 12 mins
 	//building with spatial: 0.2 secs
-	//rendering with median: 13 mins 30 secs
+	//rendering with median: 9 mins 30 secs
 	public static void bunnyTest() {
-		File file = new File("C:\\Users\\pablo\\OneDrive\\Desktop\\uni\\year 3\\Diss\\OBJFiles\\Bunny.obj");
+		File file = new File("C:\\Users\\pablo\\OneDrive\\Desktop\\uni\\Dissertation\\OBJFiles\\Bunny.obj");
 		OBJParser p = new OBJParser(file);
 		Shape[] shapes = p.getFaces();
 		Shape[] shapesMinusNull = new Shape[shapes.length - 1];
@@ -560,7 +648,8 @@ public class Main {
 		mkdt.buildTree();
 		Shape[] objs2 = {mkdt};
 		System.out.println("Building Process Ended");*/
-		SpatialKDTree sakdt = SpatialKDTree.createRoot(shapesMinusNull);
+		//
+		SAHKDTree sakdt = SAHKDTree.createRoot(shapesMinusNull);
 		sakdt.buildTree();
 		Shape[] objs3 = {sakdt};
 

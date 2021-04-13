@@ -17,6 +17,7 @@ public abstract class Shape {
 	private static int kdTreeId = 0;
 	private static int spatialKdTreeId = 0;
 	private static int medianKdTreeId = 0;
+	private static int sahKdTreeId = 0;
 	
 	protected String currentId;
 	protected Matrix transformation;
@@ -287,6 +288,9 @@ public abstract class Shape {
 		} else if(name.equals("MedianKDTree")) {
 			this.currentId = "MT" + medianKdTreeId;
 			medianKdTreeId++;
+		} else if(name.equals("SAHKDTree")) {
+			this.currentId = "SA" + sahKdTreeId;
+			sahKdTreeId++;
 		} else {
 			this.currentId = "SH" + id;
 			id++;

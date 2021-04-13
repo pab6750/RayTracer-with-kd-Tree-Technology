@@ -21,13 +21,17 @@ public class SpatialKDTree extends KDTree{
 	 */
 	@Override
 	public AABB[] findSplit(int k) {
-		if(k == 0) {
+		//if the dimension associated with this level is the X dimension
+		if(k == KDTree.X_DIMENSION) {
+			//split the box in the middle by X
 			double newX = (this.box.getMin().getX() + this.box.getMax().getX()) / 2;
 			return this.box.splitAtX(newX);
-		} else if(k == 1) {
+		} else if(k == KDTree.Y_DIMENSION) {
+			//split the box in the middle by Y
 			double newY = (this.box.getMin().getY() + this.box.getMax().getY()) / 2;
 			return this.box.splitAtY(newY);
-		} else if(k == 2) {
+		} else if(k == KDTree.Z_DIMENSION) {
+			//split the box in the middle by Z
 			double newZ = (this.box.getMin().getZ() + this.box.getMax().getZ()) / 2;
 			return this.box.splitAtZ(newZ);
 		}

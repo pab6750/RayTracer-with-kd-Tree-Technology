@@ -20,6 +20,8 @@ public class Cube extends Shape{
 	 */
 	@Override
 	public IntersectionPoint[] localIntersect(Ray r) {
+		Statistics.incrementCubeIntersectionCount();
+		
 		double[] xvalues = this.checkAxis(r.getOrigin().getX(), r.getDirection().getX());
 		double[] yvalues = this.checkAxis(r.getOrigin().getY(), r.getDirection().getY());
 		double[] zvalues = this.checkAxis(r.getOrigin().getZ(), r.getDirection().getZ());

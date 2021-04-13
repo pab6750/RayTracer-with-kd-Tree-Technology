@@ -100,7 +100,7 @@ public class ImageOutput {
 	 * @throws IOException
 	 */
 	public void saveFile() throws IOException{
-		String address = "C:\\Users\\pablo\\OneDrive\\Desktop\\uni\\year 3\\Diss\\renderResults\\" + this.name + ".ppm";
+		String address = "C:\\Users\\pablo\\OneDrive\\Desktop\\uni\\Dissertation\\RenderResults\\" + this.name + ".ppm";
 		
 		FileWriter fileWriter = new FileWriter(address);
 	    PrintWriter printWriter = new PrintWriter(fileWriter);

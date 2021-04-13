@@ -1,5 +1,6 @@
 
 public class Triangle extends Shape{
+	
 	private Coordinate v1;
 	private Coordinate v2;
 	private Coordinate v3;
@@ -65,6 +66,8 @@ public class Triangle extends Shape{
 	 */
 	@Override
 	public IntersectionPoint[] localIntersect(Ray r) {
+		Statistics.incrementTriangleIntersectionCount();
+		
 		Coordinate dirCrossE2 = r.getDirection().crossProduct(this.e2);
 		double determinant = this.e1.dotProduct(dirCrossE2);
 		

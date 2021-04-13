@@ -19,7 +19,6 @@ public class SAHKDTree extends KDTree{
 	//Naive O(N^2) algorithm described by Havran and Wald
 	@Override
 	public AABB[] findSplit(int k) {
-		
 		int numShapes = this.shapes.length;
 		int numCandidates = numShapes * 2;
 		Coordinate[] allCandidates = new Coordinate[numCandidates];
@@ -40,7 +39,7 @@ public class SAHKDTree extends KDTree{
 		ArrayList<Shape> leftShapes = null;
 		ArrayList<Shape> rightShapes = null;
 		
-		double maxSAH = Double.POSITIVE_INFINITY;
+		double minSAH = Double.POSITIVE_INFINITY;
 		Coordinate bestCandidate = allCandidates[0];
 		
 		for(int i = 0; i < numCandidates; i++) {
@@ -54,19 +53,19 @@ public class SAHKDTree extends KDTree{
 				AABB currBox = this.shapes[j].getAABB();
 				currBox = currBox.applyMatrix(this.shapes[j].getTransformation());
 				
-				if(k == KDTree.X_DIMENSION) {
+				if(this.k == KDTree.X_DIMENSION) {
 					if(currBox.getMin().getX() <= currCandidate.getX() || currBox.getMax().getX() <= currCandidate.getX()) {
 						leftShapes.add(this.shapes[j]);
 					} else {
 						rightShapes.add(this.shapes[j]);
 					}
-				} else if(k == KDTree.Y_DIMENSION) {
+				} else if(this.k == KDTree.Y_DIMENSION) {
 					if(currBox.getMin().getY() <= currCandidate.getY() || currBox.getMax().getY() <= currCandidate.getY()) {
 						leftShapes.add(this.shapes[j]);
 					} else {
 						rightShapes.add(this.shapes[j]);
 					}
-				} else if(k == KDTree.Z_DIMENSION) {
+				} else if(this.k == KDTree.Z_DIMENSION) {
 					if(currBox.getMin().getZ() <= currCandidate.getZ() || currBox.getMax().getZ() <= currCandidate.getZ()) {
 						leftShapes.add(this.shapes[j]);
 					} else {
@@ -91,20 +90,19 @@ public class SAHKDTree extends KDTree{
 			
 			double newSAH = this.SurfaceAreaHeuristic(leftArray, rightArray);
 			
-			if(maxSAH > newSAH) {
-				maxSAH = newSAH;
+			if(newSAH < minSAH) {
+				minSAH = newSAH;
 				bestCandidate = currCandidate;
 			}
 		}
 		
 		AABB[] childBoxes = null;
 		
-		if(k == KDTree.X_DIMENSION) {
+		if(this.k == KDTree.X_DIMENSION) {
 			childBoxes = this.getBox().splitAtX(bestCandidate.getX());
-		} else if(k == KDTree.Y_DIMENSION) {
-			//best candidate is null
+		} else if(this.k == KDTree.Y_DIMENSION) {
 			childBoxes = this.getBox().splitAtY(bestCandidate.getY());
-		} else if(k == KDTree.Z_DIMENSION) {
+		} else if(this.k == KDTree.Z_DIMENSION) {
 			childBoxes = this.getBox().splitAtZ(bestCandidate.getZ());
 		}
 		
@@ -209,28 +207,13 @@ public class SAHKDTree extends KDTree{
 			rightAABB.addAABB(currBox);
 		}
 		
-		//double leftSA = leftAABB.getSurfaceArea();
-		//double rightSA = rightAABB.getSurfaceArea();
-		
-		//should it be 0?
-		double leftSA = (numLeftShapes == 0) ? 0 : leftAABB.getSurfaceArea();
-		double rightSA = (numRightShapes == 0) ? 0 : rightAABB.getSurfaceArea();
+		double leftSA = leftAABB.getSurfaceArea();
+		double rightSA = rightAABB.getSurfaceArea();
 		
 		double leftSideCost = (leftSA / currentSA) * numLeftShapes;
 		double rightSideCost = (rightSA / currentSA) * numRightShapes;
 		
 		double finalCost = KT + KI * (leftSideCost + rightSideCost);
-		
-		/*System.out.println("leftShapes.length: " + leftShapes.length);
-		System.out.println("rightShapes.length: " + rightShapes.length);
-		System.out.println("leftSideCost: " + leftSideCost);
-		System.out.println("rightSideCost: " + rightSideCost);
-		System.out.println("currentSA: " + currentSA);
-		System.out.println("numRightShapes: " + numRightShapes);
-		System.out.println("leftSA: " + leftSA);
-		System.out.println("rightSA: " + rightSA);
-		System.out.println("finalCost: " + finalCost);
-		System.out.println("-------------------");*/
 		
 		return finalCost;
 	}

@@ -57,6 +57,8 @@ public class Sphere extends Shape{
 	 */
 	@Override
 	public IntersectionPoint[] localIntersect(Ray r) {
+		Statistics.incrementSphereIntersectionCount();
+		
 		AABB bbox = this.getAABB();
 		IntersectionPoint[] xs = bbox.intersect(r);
 		
