@@ -22,14 +22,12 @@ public abstract class Shape {
 	protected String currentId;
 	protected Matrix transformation;
 	protected Material material;
-	protected Group parent;
 	
 	public Shape() {
 		this.setId();
 		this.transformation = new Matrix(4);
 		this.transformation.setIdentityMatrix();
 		this.material = new Material();
-		this.parent = null;
 	}
 	
 	/**
@@ -87,9 +85,6 @@ public abstract class Shape {
 	 * @return
 	 */
 	public Coordinate sceneToObject(Coordinate point) {
-		if(this.parent != null) {
-			point = this.parent.sceneToObject(point);
-		}
 		
 		return this.transformation.invert().coordinateMultiplication(point);
 	}
@@ -103,10 +98,6 @@ public abstract class Shape {
 		normal = this.transformation.invert().transposition().coordinateMultiplication(normal);
 		normal.setType(Coordinate.VECTOR);
 		normal = normal.normalize();
-		
-		if(this.parent != null) {
-			normal = this.parent.normalToScene(normal);
-		}
 		
 		return normal;
 	}
@@ -127,14 +118,6 @@ public abstract class Shape {
 	 */
 	public void setDefaultRefractiveMaterial() {
 		this.material.setDefaultRefractive();
-	}
-	
-	public Group getParent() {
-		return parent;
-	}
-
-	public void setParent(Group parent) {
-		this.parent = parent;
 	}
 
 	/**
@@ -264,18 +247,12 @@ public abstract class Shape {
 		} else if(name.equals("Cube")) {
 			this.currentId = "CU" + cubeId;
 			cubeId++;
-		} else if(name.equals("Group")) {
-			this.currentId = "GR" + groupId;
-			groupId++;
 		} else if(name.equals("KDTree")) {
 			this.currentId = "KD" + kdTreeId;
 			kdTreeId++;
 		} else if(name.equals("Plane")) {
 			this.currentId = "PL" + planeId;
 			planeId++;
-		} else if(name.equals("SmoothTriangle")) {
-			this.currentId = "SM" + smoothTriangleId;
-			smoothTriangleId++;
 		} else if(name.equals("Sphere")) {
 			this.currentId = "SP" + sphereId;
 			sphereId++;

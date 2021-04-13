@@ -166,7 +166,7 @@ public class Main {
 		//spatialTest2();
 		//lakeSimulation();
 		//kdTreeTest4();
-		//bunnyTest();
+		bunnyTest();
         //appendixImage2();
 		//halfTimeTest();
 		//boxCheck();
@@ -174,7 +174,7 @@ public class Main {
 		//SAHInterceptionTimeTest();
 		//bunnyDepthTest();
 		//uniformDistribution();
-		ununiformDistribution();
+		//ununiformDistribution();
 	}
 	
 	public static void ununiformDistribution() {
@@ -947,164 +947,6 @@ public class Main {
 		System.out.println("Computation Finished");
 	}
 
-	public static void surfaceAreaHeuristicRender2() {
-		AABB sceneBox = new AABB(null);
-		Cube[] cubes = new Cube[100];
-
-		for(int i = 0; i < cubes.length; i++) {
-			cubes[i] = new Cube();
-
-			Matrix transformationMatrix;
-
-			double lowerBound = 0.3;
-			double upperBound = 1;
-
-			double index = i;
-			double total = cubes.length;
-
-			double scaling = ((upperBound - lowerBound) * (index / total)) + lowerBound;
-			Matrix scalingMatrix = Matrix.scaling(scaling, scaling, scaling);
-
-			double max = 10;
-			double min = -10;
-			double randomX = Math.random() * (max - min + 1) + min;
-			double randomY = Math.random() * (max - min + 1) + min;
-			double randomZ = Math.random() * (max - min + 1) + min;
-
-			Matrix translationMatrix = Matrix.translation(randomX, randomY, randomZ);
-
-			transformationMatrix = translationMatrix.matrixMultiplication(scalingMatrix);
-
-			double maxColour = 10;
-			double minColour = -10;
-			double randomR = Math.random() * (maxColour - minColour + 1) + minColour;
-			double randomG = Math.random() * (maxColour - minColour + 1) + minColour;
-			double randomB = Math.random() * (maxColour - minColour + 1) + minColour;
-
-			Colour randomColour = new Colour(randomR, randomG, randomB);
-
-			cubes[i].setColour(randomColour);
-
-			if(transformationMatrix.isInvertible()){
-				cubes[i].setTransformation(transformationMatrix);
-			} else {
-				cubes[i].setTransformation(translationMatrix);
-			}
-		}
-
-		Group g = new Group();
-		g.setShapes(cubes);
-		g.divide(2);
-
-		for(int i = 0; i < cubes.length; i++) {
-			sceneBox.addAABB(cubes[i].getAABB());
-		}
-
-		//Plane plane = new Plane();
-		//Matrix t = Matrix.translation(0, -1, 0);
-		//plane.setTransformation(t);
-
-		Shape[] shapes = {g/*, plane*/};
-
-		Scene scene = new Scene();
-		scene.setObjs(shapes);
-
-		Coordinate lightOrigin = new Coordinate(-10, 10, -10, Coordinate.POINT);
-		Colour white = new Colour(1, 1, 1);
-		scene.setLight(new PointLight(lightOrigin, white));
-
-		Camera camera = new Camera(512, 512, Math.PI / 3);
-		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -20, Coordinate.POINT),
-													  new Coordinate(0, 1, 0, Coordinate.POINT),
-													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
-
-		ImageOutput canvas = camera.render(scene);
-		try {
-			canvas.saveFile();
-		} catch (IOException e) {
-			System.out.println("File Error");
-		}
-
-		System.out.println("Computation Finished");
-	}
-
-	public static void surfaceAreaHeuristicRender() {
-		AABB sceneBox = new AABB(null);
-		Cube[] cubes = new Cube[100];
-		int[] values = new int[cubes.length];
-
-		int invertibles = 0;
-		int noninvertibles = 0;
-
-		//mapping[i]=((i2-i1)*(t[i]/Size))+i1
-		//range (-5,5)
-		for(int i = 0; i < cubes.length; i++) {
-			values[i] = 0;
-			cubes[i] = new Cube();
-			Matrix transformationMatrix;
-
-			double lowerBound = 0;
-			double upperBound = 10;
-
-			double index = i;
-			double total = cubes.length;
-
-			double scaling = ((upperBound - lowerBound) * (index / total)) + lowerBound;
-			Matrix scalingMatrix = Matrix.scaling(scaling, scaling, scaling);
-
-			double max = 10;
-			double min = -10;
-			double randomX = Math.random() * (max - min + 1) + min;
-			double randomY = Math.random() * (max - min + 1) + min;
-			double randomZ = 0;
-
-			Matrix translationMatrix = Matrix.translation(randomX, randomY, randomZ);
-
-			transformationMatrix = translationMatrix.matrixMultiplication(scalingMatrix);
-
-			if(transformationMatrix.isInvertible()){
-				cubes[i].setTransformation(transformationMatrix);
-				invertibles++;
-			} else {
-				cubes[i].setTransformation(translationMatrix);
-				noninvertibles++;
-			}
-
-		}
-
-		Group g = new Group();
-		g.setShapes(cubes);
-		g.divide(2);
-
-		for(int i = 0; i < cubes.length; i++) {
-			sceneBox.addAABB(cubes[i].getAABB());
-		}
-
-		Shape[] shapes = {g};
-
-		Scene scene = new Scene();
-		scene.setObjs(shapes);
-
-		Coordinate lightOrigin = new Coordinate(-20, 20, -20, Coordinate.POINT);
-		Colour white = new Colour(1, 1, 1);
-		scene.setLight(new PointLight(lightOrigin, white));
-
-		Camera camera = new Camera(200, 200, Math.PI / 3);
-		camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -20, Coordinate.POINT),
-													  new Coordinate(0, 1, 0, Coordinate.POINT),
-													  new Coordinate(0, 1, 0, Coordinate.VECTOR)));
-
-		ImageOutput canvas = camera.render(scene);
-		try {
-			canvas.saveFile();
-		} catch (IOException e) {
-			System.out.println("File Error");
-		}
-
-		System.out.println("Computation Finished");
-
-	}
-
 	public static void reflectionScene() {
 		Scene scene = new Scene();
 		Plane floor = new Plane();
@@ -1277,98 +1119,6 @@ public class Main {
 		System.out.println(s.getClass().getName());
 	}
 
-	public static void surfaceHeuristicValidationTest() {
-		AABB sceneBox = new AABB(null);
-		Cube[] cubes = new Cube[100];
-		int[] values = new int[cubes.length];
-
-		int invertibles = 0;
-		int noninvertibles = 0;
-
-		//mapping[i]=((i2-i1)*(t[i]/Size))+i1
-		//range (-5,5)
-		for(int i = 0; i < cubes.length; i++) {
-			values[i] = 0;
-			cubes[i] = new Cube();
-			Matrix transformationMatrix;
-
-			double lowerBound = 0;
-			double upperBound = 10;
-
-			double index = i;
-			double total = cubes.length;
-
-			double scaling = ((upperBound - lowerBound) * (index / total)) + lowerBound;
-			Matrix scalingMatrix = Matrix.scaling(scaling, scaling, scaling);
-
-			double max = 10;
-			double min = -10;
-			double randomX = Math.random() * (max - min + 1) + min;
-			double randomY = Math.random() * (max - min + 1) + min;
-			double randomZ = Math.random() * (max - min + 1) + min;
-
-			Matrix translationMatrix = Matrix.translation(randomX, randomY, randomZ);
-
-			transformationMatrix = translationMatrix.matrixMultiplication(scalingMatrix);
-
-			if(transformationMatrix.isInvertible()){
-				cubes[i].setTransformation(transformationMatrix);
-				invertibles++;
-			} else {
-				cubes[i].setTransformation(translationMatrix);
-				noninvertibles++;
-			}
-
-		}
-
-		Group g = new Group();
-		g.setShapes(cubes);
-		g.divide(2);
-
-		for(int i = 0; i < cubes.length; i++) {
-			sceneBox.addAABB(cubes[i].getAABB());
-		}
-
-		int missedCount = 0;
-
-		for(int i = 0; i < 100000; i++) {
-			//z = -20, x = - 15/15, y = -15/15
-
-			double max = 15;
-			double min = -15;
-
-			double randomOriginX = Math.random() * (max - min + 1) + min;
-			double randomOriginY = Math.random() * (max - min + 1) + min;
-
-			Coordinate rayOrigin = new Coordinate(randomOriginX, randomOriginY, -1);
-
-			double randomDirectionX = Math.random() * (max - min + 1) + min;
-			double randomDirectionY = Math.random() * (max - min + 1) + min;
-
-			Coordinate rayDirection = new Coordinate(randomDirectionX, randomDirectionY, 20);
-
-			Ray ray = new Ray(rayOrigin, rayDirection);
-
-			IntersectionPoint[] xs = g.intersect(ray);
-
-			/*if(xs != null) {
-				for(int k = 0; k < xs.length; k++) {
-					int id = xs[k].getObject().getId() - 1;
-					values[id]++;
-				}
-			} else {
-				missedCount++;
-			}*/
-
-			System.out.println(i + " rays are done");
-		}
-
-		System.out.println("invertibles: " + invertibles);
-		System.out.println("noninvertibles: " + noninvertibles);
-		System.out.println("missed: " + missedCount);
-
-	}
-
 	
 	public static void regexTest() {
 		File file = new File("C:\\Users\\pablo\\OneDrive\\Desktop\\uni\\year 3\\Diss\\OBJFiles\\regexTest.txt");
@@ -1386,76 +1136,6 @@ public class Main {
 		System.out.println(in.next());
 
 		in.close();
-	}
-
-	public static void smoothTriangleTest4() {
-		File file = new File("C:\\Users\\pablo\\OneDrive\\Desktop\\uni\\year 3\\Diss\\OBJFiles\\objTest6.obj");
-		OBJParser p = new OBJParser(file);
-
-		Group g = p.getMasterGroup();
-		Shape t1 = g.getShapes()[0];
-		Shape t2 = g.getShapes()[1];
-
-		t1.printData();
-		System.out.println("-------------");
-		t2.printData();
-	}
-
-	public static void smoothTriangleTest3() {
-		Coordinate p1 = new Coordinate(0, 1, 0, Coordinate.POINT);
-		Coordinate p2 = new Coordinate(-1, 0, 0, Coordinate.POINT);
-		Coordinate p3 = new Coordinate(1, 0, 0, Coordinate.POINT);
-		Coordinate n1 = new Coordinate(0, 1, 0, Coordinate.POINT);
-		Coordinate n2 = new Coordinate(-1, 0, 0, Coordinate.POINT);
-		Coordinate n3 = new Coordinate(1, 0, 0, Coordinate.POINT);
-
-		SmoothTriangle tri = new SmoothTriangle(p1, p2, p3, n1, n2, n3);
-
-		IntersectionPoint i = new IntersectionPoint(1, tri, 0.45, 0.25);
-
-		IntersectionPoint[] xs = {i};
-
-		Coordinate rayOrigin = new Coordinate(-0.2, 0.3, -2, Coordinate.POINT);
-		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
-
-		Ray ray = new Ray(rayOrigin, rayDirection);
-
-		Effect c = new Effect(i, ray, xs);
-
-		Coordinate n = c.getNormalVector();
-
-		n.printData();
-	}
-
-	public static void BVHTest2() {
-		Sphere s1 = new Sphere();
-		s1.setTransformation(Matrix.translation(-2, 0, 0));
-		System.out.println("s1: " + s1);
-
-		Sphere s2 = new Sphere();
-		s2.setTransformation(Matrix.translation(2, 0, 0));
-		System.out.println("s2: " + s2);
-
-		Sphere s3 = new Sphere();
-		System.out.println("s3: " + s3);
-
-		Group group = new Group();
-
-		group.addChild(s1);
-		group.addChild(s2);
-		group.addChild(s3);
-
-		Shape[][] partition = group.partitionChildren();
-
-		Shape[] p1 = partition[0];
-		Shape[] p2 = partition[1];
-
-		System.out.println("p1[0]: " + p1[0]);
-		System.out.println("p2[0]: " + p2[0]);
-
-		Shape[] remaining = group.getShapes();
-
-		System.out.println("remaining[0]: " + remaining[0]);
 	}
 
 	public static void zWideTest() {
@@ -1758,42 +1438,6 @@ public class Main {
 			normals[i].printData();
 			System.out.println("------------");
 		}
-	}
-
-	public static void normalInterpolationTest() {
-		Coordinate p1 = new Coordinate(0, 1, 0, Coordinate.POINT);
-		Coordinate p2 = new Coordinate(-1, 0, 0, Coordinate.POINT);
-		Coordinate p3 = new Coordinate(1, 0, 0, Coordinate.POINT);
-		Coordinate n1 = new Coordinate(0, 1, 0, Coordinate.POINT);
-		Coordinate n2 = new Coordinate(-1, 0, 0, Coordinate.POINT);
-		Coordinate n3 = new Coordinate(1, 0, 0, Coordinate.POINT);
-
-		SmoothTriangle tri = new SmoothTriangle(p1, p2, p3, n1, n2, n3);
-
-		IntersectionPoint i = new IntersectionPoint(1, tri, 0.45, 0.25);
-		Coordinate n = tri.normalAt(new Coordinate(0, 0, 0, Coordinate.POINT), i);
-
-		n.printData();
-	}
-
-	public static void smoothTriangleTest() {
-		Coordinate p1 = new Coordinate(0, 1, 0, Coordinate.POINT);
-		Coordinate p2 = new Coordinate(-1, 0, 0, Coordinate.POINT);
-		Coordinate p3 = new Coordinate(1, 0, 0, Coordinate.POINT);
-		Coordinate n1 = new Coordinate(0, 1, 0, Coordinate.POINT);
-		Coordinate n2 = new Coordinate(-1, 0, 0, Coordinate.POINT);
-		Coordinate n3 = new Coordinate(1, 0, 0, Coordinate.POINT);
-
-		SmoothTriangle tri = new SmoothTriangle(p1, p2, p3, n1, n2, n3);
-
-		Coordinate rayOrigin = new Coordinate(-0.2, 0.3, -2, Coordinate.POINT);
-		Coordinate rayDirection = new Coordinate(0, 0, 1, Coordinate.VECTOR);
-		Ray ray = new Ray(rayOrigin, rayDirection);
-
-		IntersectionPoint[] xs = tri.localIntersect(ray);
-
-		System.out.println("u: " + xs[0].getU());
-		System.out.println("v: " + xs[0].getV());
 	}
 
 	public static void triangleVisualTest() {
