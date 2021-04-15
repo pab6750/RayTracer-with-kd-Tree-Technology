@@ -42,6 +42,7 @@ public abstract class KDTree extends Shape{
 	}
 	
 	public abstract AABB[] findSplit(int k);
+	
 	public abstract void split(int k, int level);
 	
 	public void buildTree() {

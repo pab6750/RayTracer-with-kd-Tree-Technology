@@ -164,33 +164,6 @@ public class EventTests {
 	}
 	
 	@Test
-	public void generalSortTest() {
-		Shape.refreshIds();
-		Sphere s1 = new Sphere();
-		Sphere s2 = new Sphere();
-		Sphere s3 = new Sphere();
-		
-		Matrix m1 = Matrix.translation(0, 7, -3);
-		Matrix m2 = Matrix.translation(-5, 0, 0);
-		Matrix m3 = Matrix.translation(5, -5, 3);
-		
-		s1.setTransformation(m1);
-		s2.setTransformation(m2);
-		s3.setTransformation(m3);
-		
-		Shape[] shapes = {s1, s2, s3};
-		
-		Event[] sortedList = Event.sortAllEvents(shapes);
-		
-		System.out.println("sortedList.length: " + sortedList.length);
-		for(int i = 0; i < sortedList.length; i++) {
-			sortedList[i].printData();
-		}
-		
-		Assert.assertEquals(true, false);
-	}
-	
-	@Test
 	public void eventGenerationTest() {
 		Sphere s1 = new Sphere();
 		Sphere s2 = new Sphere();
@@ -250,5 +223,107 @@ public class EventTests {
 		Assert.assertEquals(true, zEvents[2].equals(resultZ3));
 		Assert.assertEquals(true, zEvents[3].equals(resultZ4));
 		Assert.assertEquals(true, zEvents[4].equals(resultZ5));
+	}
+	
+	@Test
+	public void recursiveSortXTest() {
+		Sphere s1 = new Sphere();
+		Sphere s2 = new Sphere();
+		Sphere s3 = new Sphere();
+		
+		Matrix m1 = Matrix.translation(-5, -2, -7);
+		Matrix m2 = Matrix.translation(0, 2, 0);
+		Matrix m3 = Matrix.translation(3, 5, 4);
+		
+		s1.setTransformation(m1);
+		s2.setTransformation(m2);
+		s3.setTransformation(m3);
+		
+		Event e1 = Event.createStartEvent(s1, KDTree.X_DIMENSION); //sp0
+		Event e2 = Event.createStartEvent(s2, KDTree.X_DIMENSION); //sp1
+		Event e3 = Event.createStartEvent(s3, KDTree.X_DIMENSION); //sp2
+		
+		Event e4 = Event.createEndEvent(s1, KDTree.X_DIMENSION); //sp0
+		Event e5 = Event.createEndEvent(s2, KDTree.X_DIMENSION); //sp1
+		Event e6 = Event.createEndEvent(s3, KDTree.X_DIMENSION); //sp2
+		
+		Event[] result = {e1, e2, e3, e4, e5, e6};
+		
+		result = Event.sortEventsByXRecursive(result);
+		
+		Event[] expectedResult = {e4, e1, e5, e2, e6, e3};
+		
+		for(int i = 0; i < result.length; i++) {
+			result[i].printData();
+			Assert.assertEquals(true, result[i].equals(expectedResult[i]));
+		}
+	}
+	
+	@Test
+	public void recursiveSortYTest() {
+		Sphere s1 = new Sphere();
+		Sphere s2 = new Sphere();
+		Sphere s3 = new Sphere();
+		
+		Matrix m1 = Matrix.translation(-5, -2, -7);
+		Matrix m2 = Matrix.translation(0, 2, 0);
+		Matrix m3 = Matrix.translation(3, 5, 4);
+		
+		s1.setTransformation(m1);
+		s2.setTransformation(m2);
+		s3.setTransformation(m3);
+		
+		Event e1 = Event.createStartEvent(s1, KDTree.Y_DIMENSION); //sp0
+		Event e2 = Event.createStartEvent(s2, KDTree.Y_DIMENSION); //sp1
+		Event e3 = Event.createStartEvent(s3, KDTree.Y_DIMENSION); //sp2
+		
+		Event e4 = Event.createEndEvent(s1, KDTree.Y_DIMENSION); //sp0
+		Event e5 = Event.createEndEvent(s2, KDTree.Y_DIMENSION); //sp1
+		Event e6 = Event.createEndEvent(s3, KDTree.Y_DIMENSION); //sp2
+		
+		Event[] result = {e1, e2, e3, e4, e5, e6};
+		
+		result = Event.sortEventsByYRecursive(result);
+		
+		Event[] expectedResult = {e4, e1, e5, e2, e6, e3};
+		
+		for(int i = 0; i < result.length; i++) {
+			result[i].printData();
+			Assert.assertEquals(true, result[i].equals(expectedResult[i]));
+		}
+	}
+	
+	@Test
+	public void recursiveSortZTest() {
+		Sphere s1 = new Sphere();
+		Sphere s2 = new Sphere();
+		Sphere s3 = new Sphere();
+		
+		Matrix m1 = Matrix.translation(-5, -2, -7);
+		Matrix m2 = Matrix.translation(0, 2, 0);
+		Matrix m3 = Matrix.translation(3, 5, 4);
+		
+		s1.setTransformation(m1);
+		s2.setTransformation(m2);
+		s3.setTransformation(m3);
+		
+		Event e1 = Event.createStartEvent(s1, KDTree.Z_DIMENSION); //sp0
+		Event e2 = Event.createStartEvent(s2, KDTree.Z_DIMENSION); //sp1
+		Event e3 = Event.createStartEvent(s3, KDTree.Z_DIMENSION); //sp2
+		
+		Event e4 = Event.createEndEvent(s1, KDTree.Z_DIMENSION); //sp0
+		Event e5 = Event.createEndEvent(s2, KDTree.Z_DIMENSION); //sp1
+		Event e6 = Event.createEndEvent(s3, KDTree.Z_DIMENSION); //sp2
+		
+		Event[] result = {e1, e2, e3, e4, e5, e6};
+		
+		result = Event.sortEventsByZRecursive(result);
+		
+		Event[] expectedResult = {e4, e1, e5, e2, e6, e3};
+		
+		for(int i = 0; i < result.length; i++) {
+			result[i].printData();
+			Assert.assertEquals(true, result[i].equals(expectedResult[i]));
+		}
 	}
 }

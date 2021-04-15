@@ -16,9 +16,16 @@ public class SAHKDTree extends KDTree{
 		return new SAHKDTree(true, shapes, 0);
 	}
 
-	//Naive O(N^2) algorithm described by Havran and Wald
+	
 	@Override
 	public AABB[] findSplit(int k) {
+		return this.naiveSplittingTechnique(k);
+	}
+	
+	/*
+	 * Naive O(n^2) implementation pointed out by Havran and Wald.
+	 */
+	public AABB[] naiveSplittingTechnique(int k) {
 		int numShapes = this.shapes.length;
 		int numCandidates = numShapes * 2;
 		Coordinate[] allCandidates = new Coordinate[numCandidates];
@@ -108,7 +115,22 @@ public class SAHKDTree extends KDTree{
 		
 		return childBoxes;
 	}
-
+	
+	public AABB[] EventBasedSplitting(int k) {
+		Event[] events = Event.generateEventsInSingleDimension(this.shapes, k);
+		
+		if(k == KDTree.X_DIMENSION) {
+			events = Event.sortEventsByXRecursive(events);
+		} else if(k == KDTree.Y_DIMENSION) {
+			events = Event.sortEventsByYRecursive(events);
+		} else if(k == KDTree.Z_DIMENSION) {
+			events = Event.sortEventsByZRecursive(events);
+		}
+		
+		//delete this
+		return null;
+	}
+	
 	/**
 	 * Splits the node according to the SAH and the k value.
 	 * @param k the current k value.

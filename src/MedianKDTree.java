@@ -38,7 +38,7 @@ public class MedianKDTree extends KDTree{
 		
 		return null;
 	}
-
+	
 	/**
 	 * Splits the node according to the median and the k value.
 	 * @param k the current k value.

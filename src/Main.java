@@ -166,14 +166,14 @@ public class Main {
 		//spatialTest2();
 		//lakeSimulation();
 		//kdTreeTest4();
-		//bunnyTest();
+		bunnyTest();
         //appendixImage2();
 		//halfTimeTest();
 		//boxCheck();
 		//SAHNaiveTest();
 		//SAHInterceptionTimeTest();
 		//bunnyDepthTest();
-		uniformDistribution();
+		//uniformDistribution();
 		//ununiformDistribution();
 	}
 	
@@ -666,13 +666,13 @@ public class Main {
 		Shape[] objs2 = {mkdt};
 		System.out.println("Building Process Ended");*/
 		//
-		MedianKDTree sakdt = MedianKDTree.createRoot(shapesMinusNull);
+		SAHKDTree sakdt = SAHKDTree.createRoot(shapesMinusNull);
 		sakdt.buildTree();
 		Shape[] objs3 = {sakdt};
 
 		Scene scene = new Scene(512, 512);
-		//scene.setObjs(objs3);
-		scene.setObjs(shapesMinusNull);
+		scene.setObjs(objs3);
+		//scene.setObjs(shapesMinusNull);
 
 		scene.renderScene("bunny");
 	}

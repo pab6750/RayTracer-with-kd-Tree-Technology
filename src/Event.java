@@ -206,6 +206,381 @@ public class Event {
 		return null;
 	}
 	
+	public static Event[] sortEventsByXRecursive(Event[] list) {
+		int l = list.length;
+		
+		if(l <= 1) {
+			return list;
+		} else if(l == 2) {
+			double firstX = list[0].getPlanePosition().getX();
+			double secondX = list[1].getPlanePosition().getX();
+			
+			int firstType = list[0].getType();
+			int secondType = list[1].getType();
+			
+			if(list[0].getReferencedShape().isEqual(list[1].getReferencedShape())) {
+				if(firstType > secondType) {
+					Event temp = list[0];
+					list[0] = list[1];
+					list[1] = temp;
+				}
+			} else if(firstX > secondX) {
+				Event temp = list[0];
+				list[0] = list[1];
+				list[1] = temp;
+			}
+			
+			return list;
+		} else {
+			Event[] left = new Event[l / 2];
+			Event[] right = new Event[list.length - left.length];
+			
+			int count = 0;
+			
+			for(int i = 0; i < left.length; i++) {
+				left[i] = list[count];
+				count++;
+			}
+			
+			for(int i = 0; i < right.length; i++) {
+				right[i] = list[count];
+				count++;
+			}
+			
+			left = sortEventsByXRecursive(left);
+			right = sortEventsByXRecursive(right);
+			
+			Event[] sortedArray = new Event[l];
+			
+			int leftCount = 0;
+			int rightCount = 0;
+			
+			for(int i = 0; i < l; i++) {
+				double currLeft = Double.POSITIVE_INFINITY;
+				double currRight = Double.POSITIVE_INFINITY;
+				
+				int currLeftType = Integer.MAX_VALUE;
+				int currRightType = Integer.MAX_VALUE;
+				
+				Shape currLeftShape = null;
+				Shape currRightShape = null;
+				
+				if(leftCount < left.length) {
+					currLeft = left[leftCount].getPlanePosition().getX();
+					currLeftType = left[leftCount].getType();
+					currLeftShape = left[leftCount].getReferencedShape();
+				}
+				
+				if(rightCount < right.length) {
+					currRight = right[rightCount].getPlanePosition().getX();
+					currRightType = right[rightCount].getType();
+					currRightShape = right[rightCount].getReferencedShape();
+				}
+				
+				boolean sameShapeReferenced = false;
+				
+				if(currLeftShape != null && currRightShape != null) {
+					if(currLeftShape.isEqual(currRightShape)) {
+						
+						sameShapeReferenced = true;
+						
+						if(currLeftType > currRightType) {
+							sortedArray[i] = right[rightCount];
+							rightCount++;
+						} else if(currLeftType <= currRightType) {
+							sortedArray[i] = left[leftCount];
+							leftCount++;
+						}
+					}
+				}
+				
+				//finish this part
+				if(!sameShapeReferenced) {
+					if(currLeft <= currRight) {
+						sortedArray[i] = left[leftCount];
+						leftCount++;
+					} else {
+						sortedArray[i] = right[rightCount];
+						rightCount++;
+					}
+				}
+			}
+			
+			return sortedArray;
+		}
+	}
+	
+	public static Event[] sortEventsByYRecursive(Event[] list) {
+		int l = list.length;
+		
+		if(l <= 1) {
+			return list;
+		} else if(l == 2) {
+			double firstY = list[0].getPlanePosition().getY();
+			double secondY = list[1].getPlanePosition().getY();
+			
+			int firstType = list[0].getType();
+			int secondType = list[1].getType();
+			
+			if(list[0].getReferencedShape().isEqual(list[1].getReferencedShape())) {
+				if(firstType > secondType) {
+					Event temp = list[0];
+					list[0] = list[1];
+					list[1] = temp;
+				}
+			} else if(firstY > secondY) {
+				Event temp = list[0];
+				list[0] = list[1];
+				list[1] = temp;
+			}
+			
+			return list;
+		} else {
+			Event[] left = new Event[l / 2];
+			Event[] right = new Event[list.length - left.length];
+			
+			int count = 0;
+			
+			for(int i = 0; i < left.length; i++) {
+				left[i] = list[count];
+				count++;
+			}
+			
+			for(int i = 0; i < right.length; i++) {
+				right[i] = list[count];
+				count++;
+			}
+			
+			left = sortEventsByYRecursive(left);
+			right = sortEventsByYRecursive(right);
+			
+			Event[] sortedArray = new Event[l];
+			
+			int leftCount = 0;
+			int rightCount = 0;
+			
+			for(int i = 0; i < l; i++) {
+				double currLeft = Double.POSITIVE_INFINITY;
+				double currRight = Double.POSITIVE_INFINITY;
+				
+				int currLeftType = Integer.MAX_VALUE;
+				int currRightType = Integer.MAX_VALUE;
+				
+				Shape currLeftShape = null;
+				Shape currRightShape = null;
+				
+				if(leftCount < left.length) {
+					currLeft = left[leftCount].getPlanePosition().getY();
+					currLeftType = left[leftCount].getType();
+					currLeftShape = left[leftCount].getReferencedShape();
+				}
+				
+				if(rightCount < right.length) {
+					currRight = right[rightCount].getPlanePosition().getY();
+					currRightType = right[rightCount].getType();
+					currRightShape = right[rightCount].getReferencedShape();
+				}
+				
+				boolean sameShapeReferenced = false;
+				
+				if(currLeftShape != null && currRightShape != null) {
+					if(currLeftShape.isEqual(currRightShape)) {
+						
+						sameShapeReferenced = true;
+						
+						if(currLeftType > currRightType) {
+							sortedArray[i] = right[rightCount];
+							rightCount++;
+						} else if(currLeftType <= currRightType) {
+							sortedArray[i] = left[leftCount];
+							leftCount++;
+						}
+					}
+				}
+				
+				//finish this part
+				if(!sameShapeReferenced) {
+					if(currLeft <= currRight) {
+						sortedArray[i] = left[leftCount];
+						leftCount++;
+					} else {
+						sortedArray[i] = right[rightCount];
+						rightCount++;
+					}
+				}
+			}
+			
+			return sortedArray;
+		}
+	}
+	
+	public static Event[] sortEventsByZRecursive(Event[] list) {
+		int l = list.length;
+		
+		if(l <= 1) {
+			return list;
+		} else if(l == 2) {
+			double firstZ = list[0].getPlanePosition().getZ();
+			double secondZ = list[1].getPlanePosition().getZ();
+			
+			int firstType = list[0].getType();
+			int secondType = list[1].getType();
+			
+			if(list[0].getReferencedShape().isEqual(list[1].getReferencedShape())) {
+				if(firstType > secondType) {
+					Event temp = list[0];
+					list[0] = list[1];
+					list[1] = temp;
+				}
+			} else if(firstZ > secondZ) {
+				Event temp = list[0];
+				list[0] = list[1];
+				list[1] = temp;
+			}
+			
+			return list;
+		} else {
+			Event[] left = new Event[l / 2];
+			Event[] right = new Event[list.length - left.length];
+			
+			int count = 0;
+			
+			for(int i = 0; i < left.length; i++) {
+				left[i] = list[count];
+				count++;
+			}
+			
+			for(int i = 0; i < right.length; i++) {
+				right[i] = list[count];
+				count++;
+			}
+			
+			left = sortEventsByZRecursive(left);
+			right = sortEventsByZRecursive(right);
+			
+			Event[] sortedArray = new Event[l];
+			
+			int leftCount = 0;
+			int rightCount = 0;
+			
+			for(int i = 0; i < l; i++) {
+				double currLeft = Double.POSITIVE_INFINITY;
+				double currRight = Double.POSITIVE_INFINITY;
+				
+				int currLeftType = Integer.MAX_VALUE;
+				int currRightType = Integer.MAX_VALUE;
+				
+				Shape currLeftShape = null;
+				Shape currRightShape = null;
+				
+				if(leftCount < left.length) {
+					currLeft = left[leftCount].getPlanePosition().getZ();
+					currLeftType = left[leftCount].getType();
+					currLeftShape = left[leftCount].getReferencedShape();
+				}
+				
+				if(rightCount < right.length) {
+					currRight = right[rightCount].getPlanePosition().getZ();
+					currRightType = right[rightCount].getType();
+					currRightShape = right[rightCount].getReferencedShape();
+				}
+				
+				boolean sameShapeReferenced = false;
+				
+				if(currLeftShape != null && currRightShape != null) {
+					if(currLeftShape.isEqual(currRightShape)) {
+						
+						sameShapeReferenced = true;
+						
+						if(currLeftType > currRightType) {
+							sortedArray[i] = right[rightCount];
+							rightCount++;
+						} else if(currLeftType <= currRightType) {
+							sortedArray[i] = left[leftCount];
+							leftCount++;
+						}
+					}
+				}
+				
+				//finish this part
+				if(!sameShapeReferenced) {
+					if(currLeft <= currRight) {
+						sortedArray[i] = left[leftCount];
+						leftCount++;
+					} else {
+						sortedArray[i] = right[rightCount];
+						rightCount++;
+					}
+				}
+			}
+			
+			return sortedArray;
+		}
+	}
+	
+	public static Event[] sortEventsByX(Event[] list) {
+		boolean sorted = false;
+		
+		while(!sorted) {
+			sorted = true;
+			for(int i = 0; i < list.length - 1; i++) {
+				Event current = list[i];
+				Event next = list[i + 1];
+				
+				if(current.getPlanePosition().getX() > next.getPlanePosition().getX()) {
+					sorted = false;
+					Event temp = current;
+					list[i] = next;
+					list[i + 1] = temp;
+				}
+			}
+		}
+		
+		return list;
+	}
+	
+	public static Event[] sortEventsByY(Event[] list) {
+		boolean sorted = false;
+		
+		while(!sorted) {
+			sorted = true;
+			for(int i = 0; i < list.length - 1; i++) {
+				Event current = list[i];
+				Event next = list[i + 1];
+				
+				if(current.getPlanePosition().getY() > next.getPlanePosition().getY()) {
+					sorted = false;
+					Event temp = current;
+					list[i] = next;
+					list[i + 1] = temp;
+				}
+			}
+		}
+		
+		return list;
+	}
+	
+	public static Event[] sortEventsByZ(Event[] list) {
+		boolean sorted = false;
+		
+		while(!sorted) {
+			sorted = true;
+			for(int i = 0; i < list.length - 1; i++) {
+				Event current = list[i];
+				Event next = list[i + 1];
+				
+				if(current.getPlanePosition().getZ() > next.getPlanePosition().getZ()) {
+					sorted = false;
+					Event temp = current;
+					list[i] = next;
+					list[i + 1] = temp;
+				}
+			}
+		}
+		
+		return list;
+	}
+	
 	public boolean equals(Event e) {
 		return this.referencedShape.getId().equals(e.getReferencedShape().getId()) &&
 			   this.planePosition.equals(e.getPlanePosition()) &&
@@ -316,69 +691,6 @@ public class Event {
 						list[i] = next;
 						list[i + 1] = temp;
 					}
-				}
-			}
-		}
-		
-		return list;
-	}
-	
-	private static Event[] sortEventsByX(Event[] list) {
-		boolean sorted = false;
-		
-		while(!sorted) {
-			sorted = true;
-			for(int i = 0; i < list.length - 1; i++) {
-				Event current = list[i];
-				Event next = list[i + 1];
-				
-				if(current.getPlanePosition().getX() > next.getPlanePosition().getX()) {
-					sorted = false;
-					Event temp = current;
-					list[i] = next;
-					list[i + 1] = temp;
-				}
-			}
-		}
-		
-		return list;
-	}
-	
-	private static Event[] sortEventsByY(Event[] list) {
-		boolean sorted = false;
-		
-		while(!sorted) {
-			sorted = true;
-			for(int i = 0; i < list.length - 1; i++) {
-				Event current = list[i];
-				Event next = list[i + 1];
-				
-				if(current.getPlanePosition().getY() > next.getPlanePosition().getY()) {
-					sorted = false;
-					Event temp = current;
-					list[i] = next;
-					list[i + 1] = temp;
-				}
-			}
-		}
-		
-		return list;
-	}
-	
-	private static Event[] sortEventsByZ(Event[] list) {
-		boolean sorted = false;
-		
-		while(!sorted) {
-			sorted = true;
-			for(int i = 0; i < list.length - 1; i++) {
-				Event current = list[i];
-				Event next = list[i + 1];
-				
-				if(current.getPlanePosition().getZ() > next.getPlanePosition().getZ()) {
-					sorted = false;
-					Event temp = current;
-					list[i] = next;
-					list[i + 1] = temp;
 				}
 			}
 		}
