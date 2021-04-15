@@ -166,14 +166,14 @@ public class Main {
 		//spatialTest2();
 		//lakeSimulation();
 		//kdTreeTest4();
-		bunnyTest();
+		//bunnyTest();
         //appendixImage2();
 		//halfTimeTest();
 		//boxCheck();
 		//SAHNaiveTest();
 		//SAHInterceptionTimeTest();
 		//bunnyDepthTest();
-		//uniformDistribution();
+		uniformDistribution();
 		//ununiformDistribution();
 	}
 	
@@ -202,23 +202,40 @@ public class Main {
 		System.out.println("Intersections per pixel: " + (Statistics.getSphereIntersectionCount() / (512 * 512)));
 	}
 	
-	//rendering time: 20 mins
-	//building time: 
-	//intersections per pixel: 100
+	//30 secs
 	public static void uniformDistribution() {
-		Shape[] spheres = new Shape[100];
+		Shape[][][] spheres = new Shape[40][40][40];
 		
-		for(int i = 0; i < spheres.length; i++) {
-			spheres[i] = new Sphere();
-			Matrix m = Matrix.translation(i * 10, 0, 500);
-			spheres[i].setTransformation(m);
+		for(int i = 0; i < 40; i++) {
+			for(int j = 0; j < 40; j++) {
+				for(int k = 0; k < 40; k++) {
+					spheres[i][j][k] = new Sphere();
+					Matrix m = Matrix.translation((i + 5) - 100, (j + 5) - 100, (k + 5) - 100);
+					spheres[i][j][k].setTransformation(m);
+				}
+			}
 		}
 		
-		SAHKDTree skdt = SAHKDTree.createRoot(spheres);
-		skdt.buildTree();
+		Shape[] flatArray = new Shape[40 * 40 * 40];
+		
+		int count = 0;
+		
+		for(int i = 0; i < 40; i++) {
+			for(int j = 0; j < 40; j++) {
+				for(int k = 0; k < 40; k++) {
+					flatArray[count] = spheres[i][j][k];
+					count++;
+				}
+			}
+		}
+		
+		MedianKDTree kdt = MedianKDTree.createRoot(flatArray);
+		kdt.buildTree();
+		
+		Shape[] akdt = {kdt};
 		
 		Scene scene = new Scene(512, 512);
-		scene.setObjs(spheres);
+		scene.setObjs(akdt);
 		scene.renderScene("UniformSpace");
 		
 		System.out.println("Intersections per pixel: " + (Statistics.getSphereIntersectionCount() / (512 * 512)));
@@ -623,7 +640,7 @@ public class Main {
 	//building with median: 1 secs
 	//rendering with median: 12 mins
 	//building with spatial: 0.2 secs
-	//rendering with median: 9 mins 30 secs
+	//rendering with spatial: 9 mins 30 secs
 	public static void bunnyTest() {
 		File file = new File("C:\\Users\\pablo\\OneDrive\\Desktop\\uni\\Dissertation\\OBJFiles\\Bunny.obj");
 		OBJParser p = new OBJParser(file);
@@ -649,12 +666,13 @@ public class Main {
 		Shape[] objs2 = {mkdt};
 		System.out.println("Building Process Ended");*/
 		//
-		SAHKDTree sakdt = SAHKDTree.createRoot(shapesMinusNull);
+		MedianKDTree sakdt = MedianKDTree.createRoot(shapesMinusNull);
 		sakdt.buildTree();
 		Shape[] objs3 = {sakdt};
 
 		Scene scene = new Scene(512, 512);
-		scene.setObjs(objs3);
+		//scene.setObjs(objs3);
+		scene.setObjs(shapesMinusNull);
 
 		scene.renderScene("bunny");
 	}

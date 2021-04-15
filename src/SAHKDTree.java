@@ -167,7 +167,6 @@ public class SAHKDTree extends KDTree{
 			}
 		}
 		
-		//this.shapes = null;
 		this.leftChild.setShapes(leftArray);
 		this.rightChild.setShapes(rightArray);
 		
