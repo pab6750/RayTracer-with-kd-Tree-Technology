@@ -166,14 +166,14 @@ public class Main {
 		//spatialTest2();
 		//lakeSimulation();
 		//kdTreeTest4();
-		//bunnyTest();
+		bunnyTest();
         //appendixImage2();
 		//halfTimeTest();
 		//boxCheck();
 		//SAHNaiveTest();
 		//SAHInterceptionTimeTest();
 		//bunnyDepthTest();
-		uniformDistribution();
+		//uniformDistribution();
 		//ununiformDistribution();
 	}
 	
@@ -668,7 +668,7 @@ public class Main {
 		Shape[] objs2 = {mkdt};
 		System.out.println("Building Process Ended");*/
 		//
-		ImprovedSAHKDTree sakdt = ImprovedSAHKDTree.createRoot(shapesMinusNull);
+		SpatialKDTree sakdt = SpatialKDTree.createRoot(shapesMinusNull);
 		sakdt.buildTree();
 		Shape[] objs3 = {sakdt};
 
