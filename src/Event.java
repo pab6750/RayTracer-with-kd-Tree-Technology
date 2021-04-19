@@ -17,28 +17,17 @@ public class Event {
 		this.k = k;
 	}
 	
-	public static Event createStartEvent(Shape referencedShape, int k) {
-		Coordinate planePos = referencedShape.getAABB()
-				              .applyMatrix(referencedShape.getTransformation())
-				              .getMin();
+	public static Event createStartEvent(Shape referencedShape, Coordinate planePosition, int k) {
 		
-		return new Event(referencedShape, planePos, START_EVENT_FLAG, k);
+		return new Event(referencedShape, planePosition, START_EVENT_FLAG, k);
 	}
 	
-	public static Event createPlanarEvent(Shape referencedShape, int k) {
-		Coordinate planePos = referencedShape.getAABB()
-				              .applyMatrix(referencedShape.getTransformation())
-				              .getMin();
-		
-		return new Event(referencedShape, planePos, PLANAR_EVENT_FLAG, k);
+	public static Event createPlanarEvent(Shape referencedShape, Coordinate planePosition, int k) {
+		return new Event(referencedShape, planePosition, PLANAR_EVENT_FLAG, k);
 	}
 	
-	public static Event createEndEvent(Shape referencedShape, int k) {
-		Coordinate planePos = referencedShape.getAABB()
-				              .applyMatrix(referencedShape.getTransformation())
-				              .getMax();
-		
-		return new Event(referencedShape, planePos, END_EVENT_FLAG, k);
+	public static Event createEndEvent(Shape referencedShape, Coordinate planePosition, int k) {
+		return new Event(referencedShape, planePosition, END_EVENT_FLAG, k);
 	}
 	
 	public static Event[] sortAllEvents(Shape[] shapes) {
@@ -100,111 +89,64 @@ public class Event {
 			counter += 2;
 		}
 		
-		ArrayList<Event> planarEvents = new ArrayList<Event>();
+		ArrayList<Event> events = new ArrayList<Event>();
 		
 		for(int i = 0; i < numberOfCandidates; i++) {
-			
-			Coordinate currentCandidate = candidateSplitList[i];
-			Coordinate nextCandidate = candidateSplitList[i + 1];
-			
-			double min = 0;
-			double max = 0;
-			
-			if(dimension == KDTree.X_DIMENSION) {
-				min = currentCandidate.getX();
-				max = nextCandidate.getX();
-			} else if(dimension == KDTree.Y_DIMENSION) {
-				min = currentCandidate.getY();
-				max = nextCandidate.getY();
-			} else if(dimension == KDTree.Z_DIMENSION) {
-				min = currentCandidate.getZ();
-				max = nextCandidate.getZ();
-			}
-			
-			boolean isPlanar = Effect.compareDouble(min, max);
-			
-			if(isPlanar) {
-				Event currEvent = Event.createPlanarEvent(shapes[(int) (i / 2)], dimension);
-				planarEvents.add(currEvent);
-			}
-			
-			i++;
-		}
-		
-		//start and end events for x dimension
-		Event[] startEndEvents = new Event[numberOfCandidates - (planarEvents.size() * 2)];
-		
-		int nonPlanarEventsCounter = 0;
-		
-		for(int i = 0; i < numberOfShapes; i++) {
-			
-			boolean isPlanar = false;
-			int planarEventCounter = 0;
-			
-			while(!isPlanar && planarEventCounter < planarEvents.size()) {
-				String planarShape = planarEvents.get(planarEventCounter).getReferencedShape().getId();
+			for(int j = 0; j < numberOfShapes; j++) {
+				AABB currentAABB = shapes[j].getAABB();
+				currentAABB = currentAABB.applyMatrix(shapes[j].getTransformation());
 				
-				if(shapes[i].getId().equals(planarShape)) {
-					isPlanar = true;
-				}
-				
-				planarEventCounter++;
-			}
-			
-			if(!isPlanar) {
-				
-				Event currStartEvent = null;
-				Event currEndEvent = null;
+				double currentCandidate = 0;
+				double min = 0;
+				double max = 0;
 				
 				if(dimension == KDTree.X_DIMENSION) {
-					currStartEvent = Event.createStartEvent(shapes[i], KDTree.X_DIMENSION);
-					currEndEvent = Event.createEndEvent(shapes[i], KDTree.X_DIMENSION);
+					currentCandidate = candidateSplitList[i].getX();
+					min = currentAABB.getMin().getX();
+					max = currentAABB.getMax().getX();
 				} else if(dimension == KDTree.Y_DIMENSION) {
-					currStartEvent = Event.createStartEvent(shapes[i], KDTree.Y_DIMENSION);
-					currEndEvent = Event.createEndEvent(shapes[i], KDTree.Y_DIMENSION);
+					currentCandidate = candidateSplitList[i].getY();
+					min = currentAABB.getMin().getY();
+					max = currentAABB.getMax().getY();
 				} else if(dimension == KDTree.Z_DIMENSION) {
-					currStartEvent = Event.createStartEvent(shapes[i], KDTree.Z_DIMENSION);
-					currEndEvent = Event.createEndEvent(shapes[i], KDTree.Z_DIMENSION);
+					currentCandidate = candidateSplitList[i].getZ();
+					min = currentAABB.getMin().getZ();
+					max = currentAABB.getMax().getZ();
 				}
 				
-				startEndEvents[nonPlanarEventsCounter] = currStartEvent;
-				startEndEvents[nonPlanarEventsCounter + 1] = currEndEvent;
+				boolean isPlanar = Effect.compareDouble(min, currentCandidate) && Effect.compareDouble(max, currentCandidate);
 				
-				nonPlanarEventsCounter += 2;
+				if(isPlanar) {
+					Event planarEvent = Event.createPlanarEvent(shapes[j], candidateSplitList[i], dimension);
+					events.add(planarEvent);
+				} else {
+					
+					if(max < currentCandidate) {
+						Event startEvent = Event.createStartEvent(shapes[j], candidateSplitList[i], dimension);
+						events.add(startEvent);
+					} else if(min > currentCandidate) {
+						Event endEvent = Event.createEndEvent(shapes[j], candidateSplitList[i], dimension);
+						events.add(endEvent);
+					} else if(min < currentCandidate && max > currentCandidate) {
+						Event startEvent = Event.createStartEvent(shapes[j], candidateSplitList[i], dimension);
+						Event endEvent = Event.createEndEvent(shapes[j], candidateSplitList[i], dimension);
+						events.add(startEvent);
+						events.add(endEvent);
+					}
+				}
 			}
 		}
 		
-		//merging planar and non-planar events
-		Event[] events = new Event[planarEvents.size() + startEndEvents.length];
+		//turn ArrayList into array
+		Event[] eventsArray = new Event[events.size()];
 		
-		int numberOfPlanarEvents = planarEvents.size();
-		nonPlanarEventsCounter = 0;
-		
-		for(int i = 0; i < events.length; i++) {
-			if(i < numberOfPlanarEvents) {
-				events[i] = planarEvents.get(i);
-			} else {
-				events[i] = startEndEvents[nonPlanarEventsCounter];
-				nonPlanarEventsCounter++;
-			}
+		for(int i = 0; i < eventsArray.length; i++) {
+			eventsArray[i] = events.get(i);
 		}
 		
-		return events;
+		return eventsArray;
 	}
 	
-	/**
-	 * This methods classifies a list of triangles based on the position of a splitting plane.
-	 * This algorithm is based on the ClassifyLeftRightBoth algorithm proposed by Havran and Wald.
-	 * Reference at: Wald, I. and Havran, V. (2006) ‘On Building Fast kd-trees for Ray Tracing, and on Doing that in O(N log N)’, Symposium on Interactive Ray Tracing, 0, pp. 61–69. doi: 10.1109/RT.2006.280216.
-	 * @param shapes The list of shapes to be classified.
-	 * @param events The list of events.
-	 * @param planePosition The position of the splitting plane.
-	 * @param planeDimension The dimension associated with the splitting plane.
-	 */
-	public static Shape[][] classify(Shape[] shapes, Event[] events, Coordinate planePosition, int planeDimension) {
-		//TODO finish this
-		return null;
-	}
 	
 	public static Event[] sortEventsByXRecursive(Event[] list) {
 		int l = list.length;

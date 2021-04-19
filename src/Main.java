@@ -166,14 +166,14 @@ public class Main {
 		//spatialTest2();
 		//lakeSimulation();
 		//kdTreeTest4();
-		bunnyTest();
+		//bunnyTest();
         //appendixImage2();
 		//halfTimeTest();
 		//boxCheck();
 		//SAHNaiveTest();
 		//SAHInterceptionTimeTest();
 		//bunnyDepthTest();
-		//uniformDistribution();
+		uniformDistribution();
 		//ununiformDistribution();
 	}
 	
@@ -204,32 +204,34 @@ public class Main {
 	
 	//30 secs
 	public static void uniformDistribution() {
-		Shape[][][] spheres = new Shape[40][40][40];
+		int n = 10;
 		
-		for(int i = 0; i < 40; i++) {
-			for(int j = 0; j < 40; j++) {
-				for(int k = 0; k < 40; k++) {
+		Shape[][][] spheres = new Shape[n][n][n];
+		
+		for(int i = 0; i < n; i++) {
+			for(int j = 0; j < n; j++) {
+				for(int k = 0; k < n; k++) {
 					spheres[i][j][k] = new Sphere();
-					Matrix m = Matrix.translation((i + 5) - 100, (j + 5) - 100, (k + 5) - 100);
+					Matrix m = Matrix.translation((i + 5), (j + 5), (k + 5));
 					spheres[i][j][k].setTransformation(m);
 				}
 			}
 		}
 		
-		Shape[] flatArray = new Shape[40 * 40 * 40];
+		Shape[] flatArray = new Shape[n * n * n];
 		
 		int count = 0;
 		
-		for(int i = 0; i < 40; i++) {
-			for(int j = 0; j < 40; j++) {
-				for(int k = 0; k < 40; k++) {
+		for(int i = 0; i < n; i++) {
+			for(int j = 0; j < n; j++) {
+				for(int k = 0; k < n; k++) {
 					flatArray[count] = spheres[i][j][k];
 					count++;
 				}
 			}
 		}
 		
-		MedianKDTree kdt = MedianKDTree.createRoot(flatArray);
+		ImprovedSAHKDTree kdt = ImprovedSAHKDTree.createRoot(flatArray);
 		kdt.buildTree();
 		
 		Shape[] akdt = {kdt};
@@ -666,7 +668,7 @@ public class Main {
 		Shape[] objs2 = {mkdt};
 		System.out.println("Building Process Ended");*/
 		//
-		SAHKDTree sakdt = SAHKDTree.createRoot(shapesMinusNull);
+		ImprovedSAHKDTree sakdt = ImprovedSAHKDTree.createRoot(shapesMinusNull);
 		sakdt.buildTree();
 		Shape[] objs3 = {sakdt};
 

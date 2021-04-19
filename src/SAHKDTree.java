@@ -19,13 +19,6 @@ public class SAHKDTree extends KDTree{
 	
 	@Override
 	public AABB[] findSplit(int k) {
-		return this.naiveSplittingTechnique(k);
-	}
-	
-	/*
-	 * Naive O(n^2) implementation pointed out by Havran and Wald.
-	 */
-	public AABB[] naiveSplittingTechnique(int k) {
 		int numShapes = this.shapes.length;
 		int numCandidates = numShapes * 2;
 		Coordinate[] allCandidates = new Coordinate[numCandidates];
@@ -126,6 +119,8 @@ public class SAHKDTree extends KDTree{
 		} else if(k == KDTree.Z_DIMENSION) {
 			events = Event.sortEventsByZRecursive(events);
 		}
+		
+		
 		
 		//delete this
 		return null;

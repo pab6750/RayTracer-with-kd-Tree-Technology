@@ -4,7 +4,7 @@ import org.junit.Assert;
 public class EventTests {
 	private static final double DELTA = 0.1;
 	
-	@Test
+	/*@Test
 	public void configurationTest() {
 		Sphere sphere = new Sphere();
 		
@@ -325,5 +325,5 @@ public class EventTests {
 			result[i].printData();
 			Assert.assertEquals(true, result[i].equals(expectedResult[i]));
 		}
-	}
+	}*/
 }
