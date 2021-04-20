@@ -1,3 +1,10 @@
+/*
+ * This class was inspired by the architecture proposed by Jamis Buck in his book: The Ray Tracer Challenge.
+ * 
+ * Reference at : ‘The Ray Tracer Challenge’. https://pragprog.com/titles/jbtracer/the-ray-tracer-challenge (accessed Apr. 15, 2021).
+ * Additional information also found at: https://www.scratchapixel.com/lessons/mathematics-physics-for-computer-graphics/geometry/points-vectors-and-normals
+ */
+
 import java.lang.Math;
 
 /**

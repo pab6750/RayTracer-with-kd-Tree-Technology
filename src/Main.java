@@ -644,7 +644,7 @@ public class Main {
 	//building with spatial: 0.2 secs
 	//rendering with spatial: 9 mins 30 secs
 	public static void bunnyTest() {
-		File file = new File("C:\\Users\\pablo\\OneDrive\\Desktop\\uni\\Dissertation\\OBJFiles\\Bunny.obj");
+		File file = new File("src\\Bunny.obj");
 		OBJParser p = new OBJParser(file);
 		Shape[] shapes = p.getFaces();
 		Shape[] shapesMinusNull = new Shape[shapes.length - 1];
@@ -1156,62 +1156,6 @@ public class Main {
 		System.out.println(in.next());
 
 		in.close();
-	}
-
-	public static void zWideTest() {
-		Coordinate min = new Coordinate(-1, -2, -3, Coordinate.POINT);
-		Coordinate max = new Coordinate(5, 3, 7, Coordinate.POINT);
-
-		AABB box = new AABB(min, max, null);
-
-		AABB[] boxes = box.split();
-
-		boxes[0].getMin().printData();
-		boxes[0].getMax().printData();
-		boxes[1].getMin().printData();
-		boxes[1].getMax().printData();
-	}
-
-	public static void yWideTest() {
-		Coordinate min = new Coordinate(-1, -2, -3, Coordinate.POINT);
-		Coordinate max = new Coordinate(5, 8, 3, Coordinate.POINT);
-
-		AABB box = new AABB(min, max, null);
-
-		AABB[] boxes = box.split();
-
-		boxes[0].getMin().printData();
-		boxes[0].getMax().printData();
-		boxes[1].getMin().printData();
-		boxes[1].getMax().printData();
-	}
-
-	public static void xWideTest() {
-		Coordinate min = new Coordinate(-1, -2, -3, Coordinate.POINT);
-		Coordinate max = new Coordinate(9, 5.5, 3, Coordinate.POINT);
-
-		AABB box = new AABB(min, max, null);
-
-		AABB[] boxes = box.split();
-
-		boxes[0].getMin().printData();
-		boxes[0].getMax().printData();
-		boxes[1].getMin().printData();
-		boxes[1].getMax().printData();
-	}
-
-	public static void BVHTest() {
-		Coordinate min = new Coordinate(-1, -4, -5, Coordinate.POINT);
-		Coordinate max = new Coordinate(9, 6, 5, Coordinate.POINT);
-
-		AABB box = new AABB(min, max, null);
-
-		AABB[] boxes = box.split();
-
-		boxes[0].getMin().printData();
-		boxes[0].getMax().printData();
-		boxes[1].getMin().printData();
-		boxes[1].getMax().printData();
 	}
 
 	public static void boundingVolumesTest6() {

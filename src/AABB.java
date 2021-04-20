@@ -1,3 +1,12 @@
+/*
+ * This class was inspired by the architecture proposed by Jamis Buck in his book: The Ray Tracer Challenge.
+ * 
+ * Reference at : ‘The Ray Tracer Challenge’. https://pragprog.com/titles/jbtracer/the-ray-tracer-challenge (accessed Apr. 15, 2021).
+ */
+
+/**
+ * This class encapsulates the functionality necessary for Axis-Aligned Bounding Boxes (AABB).
+ */
 import java.util.ArrayList;
 
 public class AABB extends Shape{
@@ -56,17 +65,31 @@ public class AABB extends Shape{
 		this.owner = owner;
 	}
 	
+	/**
+	 * This method checks if two AABBs are equal.
+	 * @param b another AABB instance.
+	 * @return True if they are equal, false otherwise.
+	 */
 	public boolean isEqual(AABB b) {
 		return this.getMin().isEqual(b.getMin()) &&
 			   this.getMax().isEqual(b.getMax()) &&
 			   this.getOwner().isEqual(b.getOwner());
 	}
 	
+	/**
+	 * This method sets the material of the AABB so that it's visible on screen.
+	 * This is usually only used for demonstration purposes.
+	 */
 	public void showBox() {
 		Colour gray = new Colour(0.7, 0.7, 0.7);
 		this.material = new Material(0.1, 0, 0.9, 200, 0, 0.8, Material.VACUUM, gray);
 	}
 	
+	/**
+	 * This method applies a matrix to the AABB.
+	 * @param matrix - some matrix.
+	 * @return the transformed AABB.
+	 */
 	public AABB applyMatrix(Matrix matrix) {
 		AABB box = new AABB(this.owner);
 	    
@@ -88,21 +111,39 @@ public class AABB extends Shape{
 		return box;
 	}
 	
+	/**
+	 * This method checks whether a box is contained within another.
+	 * @param box
+	 * @return
+	 */
 	public boolean containsBox(AABB box) {
 		return this.containsPoint(box.getMin()) && this.containsPoint(box.getMax());
 	}
 	
+	/**
+	 * This method checks whter a point is contained within a box.
+	 * @param point
+	 * @return
+	 */
 	public boolean containsPoint(Coordinate point) {
 		return point.getX() >= this.min.getX() && point.getX() <= this.max.getX() &&
 			   point.getY() >= this.min.getY() && point.getY() <= this.max.getY() &&
 			   point.getZ() >= this.min.getZ() && point.getZ() <= this.max.getZ();
 	}
 	
+	/**
+	 * This method enlarges the size of the current box by adding another box to it.
+	 * @param box
+	 */
 	public void addAABB(AABB box) {
 		this.addPoint(box.getMin());
 		this.addPoint(box.getMax());
 	}
 	
+	/**
+	 * This method enlarges the size of the current box by adding a point to it.
+	 * @param point
+	 */
 	public void addPoint(Coordinate point) {
 		if(point.getX() > this.max.getX()) {
 			this.max.setX(point.getX());
@@ -129,6 +170,10 @@ public class AABB extends Shape{
 		}
 	}
 	
+	/**
+	 * This method calculates the surface area of the box.
+	 * @return
+	 */
 	public double getSurfaceArea() {
 		
 		Coordinate min;
@@ -172,49 +217,17 @@ public class AABB extends Shape{
 		return this.owner;
 	}
 	
-	public AABB[] split() {
-		double sizeX = Math.abs(this.max.getX() - this.min.getX());
-		double sizeY = Math.abs(this.max.getY() - this.min.getY());
-		double sizeZ = Math.abs(this.max.getZ() - this.min.getZ());
-		
-		double temp = Math.max(sizeX, sizeY);
-		double maxDimension = Math.max(temp, sizeZ);
-		
-		double x0 = this.min.getX();
-		double y0 = this.min.getY();
-		double z0 = this.min.getZ();
-		double x1 = this.max.getX();
-		double y1 = this.max.getY();
-		double z1 = this.max.getZ();
-		
-		if(maxDimension == sizeX) {
-			x1 = x0 + sizeX / 2;
-			x0 = x0 + sizeX / 2;
-		} else if(maxDimension == sizeY) {
-			y1 = y0 + sizeY / 2;
-			y0 = y0 + sizeY / 2;
-		} else {
-			z1 = z0 + sizeZ / 2;
-			z0 = z0 + sizeZ / 2;
-		}
-		
-		Coordinate midMin = new Coordinate(x0, y0, z0, Coordinate.POINT);
-		Coordinate midMax = new Coordinate(x1, y1, z1, Coordinate.POINT);
-		
-		AABB box1 = new AABB(this.min, midMax, null);
-		AABB box2 = new AABB(midMin, this.max, null);
-		
-		AABB[] boxes = {box1, box2};
-		
-		return boxes;
-	}
+	
 	
 	//does nothing
 	@Override
 	public void divide(int threshold) {
 		
 	}
-
+	
+	/**
+	 * Intersects the box.
+	 */
 	@Override
 	public IntersectionPoint[] localIntersect(Ray r) {
 		//x values
@@ -303,7 +316,10 @@ public class AABB extends Shape{
 		
 		return xs;
 	}
-
+	
+	/**
+	 * Determines the normal at a certain intersection point.
+	 */
 	@Override
 	public Coordinate localNormalAt(Coordinate p, IntersectionPoint hit) {
 		double temp = Math.max(Math.abs(p.getX()), Math.abs(p.getY()));

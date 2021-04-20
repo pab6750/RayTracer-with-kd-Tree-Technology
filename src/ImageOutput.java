@@ -1,3 +1,9 @@
+/*
+ * This class was inspired by the architecture proposed by Jamis Buck in his book: The Ray Tracer Challenge.
+ * 
+ * Reference at : ‘The Ray Tracer Challenge’. https://pragprog.com/titles/jbtracer/the-ray-tracer-challenge (accessed Apr. 15, 2021).
+ */
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -100,7 +106,7 @@ public class ImageOutput {
 	 * @throws IOException
 	 */
 	public void saveFile() throws IOException{
-		String address = "C:\\Users\\pablo\\OneDrive\\Desktop\\uni\\Dissertation\\RenderResults\\" + this.name + ".ppm";
+		String address = this.name + ".ppm";
 		
 		FileWriter fileWriter = new FileWriter(address);
 	    PrintWriter printWriter = new PrintWriter(fileWriter);

@@ -1,4 +1,8 @@
-
+/*
+ * This class was inspired by the architecture proposed by Jamis Buck in his book: The Ray Tracer Challenge.
+ * 
+ * Reference at : ‘The Ray Tracer Challenge’. https://pragprog.com/titles/jbtracer/the-ray-tracer-challenge (accessed Apr. 15, 2021).
+ */
 
 public class IntersectionPoint {
 	private double t;

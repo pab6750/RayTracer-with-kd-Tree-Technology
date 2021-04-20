@@ -1,3 +1,10 @@
+/*
+ * This class was inspired by the architecture proposed by Jamis Buck in his book: The Ray Tracer Challenge.
+ * 
+ * Reference at : ‘The Ray Tracer Challenge’. https://pragprog.com/titles/jbtracer/the-ray-tracer-challenge (accessed Apr. 15, 2021).
+ */
+
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
