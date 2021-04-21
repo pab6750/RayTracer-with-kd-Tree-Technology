@@ -166,7 +166,7 @@ public class Main {
 		//spatialTest2();
 		//lakeSimulation();
 		//kdTreeTest4();
-		bunnyTest();
+		//bunnyTest();
         //appendixImage2();
 		//halfTimeTest();
 		//boxCheck();
@@ -175,6 +175,62 @@ public class Main {
 		//bunnyDepthTest();
 		//uniformDistribution();
 		//ununiformDistribution();
+		bunnyFrontTest();
+	}
+	
+	public static void bunnyFrontTest() {
+		File file = new File("src\\Bunny.obj");
+		OBJParser p = new OBJParser(file);
+		Shape[] shapes = p.getFaces();
+		Shape[] shapesMinusNull = new Shape[shapes.length - 1];
+		System.arraycopy(shapes, 1, shapesMinusNull, 0, shapes.length - 1);
+
+		Matrix m = Matrix.scaling(2, 2, 2);
+
+		for(int i = 0; i < shapesMinusNull.length; i++) {
+			shapesMinusNull[i].setTransformation(m);
+		}
+		
+		/*System.out.println("Building Process Started");
+		SpatialKDTree skdt = SpatialKDTree.createRoot(shapesMinusNull);
+		skdt.buildTree();
+		Shape[] objs = {skdt};
+		System.out.println("Building Process Ended");
+		*/
+		/*System.out.println("Building Process Started");
+		MedianKDTree mkdt = MedianKDTree.createRoot(shapesMinusNull);
+		mkdt.buildTree();
+		Shape[] objs2 = {mkdt};
+		System.out.println("Building Process Ended");*/
+		//
+		SpatialKDTree sakdt = SpatialKDTree.createRoot(shapesMinusNull);
+		sakdt.buildTree();
+		Shape[] objs3 = {sakdt};
+		
+		/*this.camera.setTransform(Matrix.cameraTransformation(new Coordinate(0, 3, -10, Coordinate.POINT),
+			       new Coordinate(0, 1, 0, Coordinate.POINT),
+			       new Coordinate(0, 1, 0, Coordinate.VECTOR)));*/
+		
+		Coordinate cameraPosition = new Coordinate(0, 3, 10, Coordinate.POINT);
+		Coordinate cameraDirection = new Coordinate(0, 1, 0, Coordinate.POINT);
+		Coordinate up = new Coordinate(0, 1, 0, Coordinate.VECTOR);
+		
+		Coordinate lightPosition = new Coordinate(0, 5, 13);
+		Colour intensity = new Colour(1, 1, 1);
+		
+		PointLight pl = new PointLight(lightPosition, intensity);
+		
+		Matrix transform = Matrix.cameraTransformation(cameraPosition, cameraDirection, up);
+		
+		Camera c = new Camera(512, 512, Math.PI / 3, transform);
+
+		Scene scene = new Scene(512, 512);
+		scene.setCamera(c);
+		scene.setLight(pl);
+		scene.setObjs(objs3);
+		//scene.setObjs(shapesMinusNull);
+
+		scene.renderScene("front_bunny");
 	}
 	
 	public static void ununiformDistribution() {

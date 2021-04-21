@@ -142,4 +142,8 @@ public class Scene {
 	public void setObjs(Shape[] objs) {
 		this.objs = objs;
 	}
+	
+	public void setCamera(Camera c) {
+		this.camera = c;
+	}
 }
