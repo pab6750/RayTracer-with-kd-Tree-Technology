@@ -165,6 +165,18 @@ public abstract class KDTree extends Shape{
 		
 		return false;
 	}
+	
+	public void printSplittingPoints() {
+		if(this.leftChild != null) {
+			this.leftChild.box.getMax().printData();
+			this.leftChild.printSplittingPoints();
+		}
+		
+		if(this.rightChild != null) {
+			this.rightChild.box.getMin().printData();
+			this.rightChild.printSplittingPoints();
+		}
+	}
 
 	//getters and setters
 	public boolean isRoot() {

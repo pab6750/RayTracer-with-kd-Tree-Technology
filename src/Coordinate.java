@@ -207,13 +207,10 @@ public class Coordinate {
 	 * prints data relative to this object.
 	 */
 	public void printData() {
-		System.out.println("x: " + this.x);
-		System.out.println("y: " + this.y);
-		System.out.println("z: " + this.z);
 		
 		String messageType = (this.type == VECTOR) ? "type: VECTOR" : "type: POINT";
 		
-		System.out.println(messageType);
+		System.out.println("(" + this.x + ", " + this.y + ", " + this.z + ", " + messageType + ")");
 	}
 	
 	public double getX() {

@@ -175,7 +175,251 @@ public class Main {
 		//bunnyDepthTest();
 		//uniformDistribution();
 		//ununiformDistribution();
-		bunnyFrontTest();
+		//bunnyFrontTest();
+		//printLevelsTest();
+		//printLevelsTest2();
+		//twoBunnies();
+		threeBunnies();
+	}
+	
+	//building with spatial: 0.4 seconds
+	//building with median: 2 seconds
+	//building with SAH: 16 minutes
+	//rendering with spatial: 34 minutes
+	//rendering with median: 54 minutes
+	//rendering with SAH: 38 minutes
+	public static void threeBunnies() {
+		File file1 = new File("src\\Bunny.obj");
+		OBJParser p1 = new OBJParser(file1);
+		Shape[] faces1 = p1.getFaces();
+		Shape[] shapes1 = new Shape[faces1.length - 1];
+		System.arraycopy(faces1, 1, shapes1, 0, faces1.length - 1);
+
+		Matrix s1 = Matrix.scaling(2, 2, 2);
+		Matrix t1 = Matrix.translation(-2, 0, 0);
+		Matrix m1 = s1.matrixMultiplication(t1);
+
+		for(int i = 0; i < shapes1.length; i++) {
+			shapes1[i].setTransformation(m1);
+		}
+		
+		File file2 = new File("src\\Bunny.obj");
+		OBJParser p2 = new OBJParser(file2);
+		Shape[] faces2 = p2.getFaces();
+		Shape[] shapes2 = new Shape[faces2.length - 1];
+		System.arraycopy(faces2, 1, shapes2, 0, faces2.length - 1);
+		
+		Matrix s2 = Matrix.scaling(2, 2, 2);
+		Matrix t2 = Matrix.translation(2, 0, 0);
+		Matrix m2 = s2.matrixMultiplication(t2);
+		
+		for(int i = 0; i < shapes2.length; i++) {
+			shapes2[i].setTransformation(m2);
+		}
+		
+		File file3 = new File("src\\Bunny.obj");
+		OBJParser p3 = new OBJParser(file3);
+		Shape[] faces3 = p3.getFaces();
+		Shape[] shapes3 = new Shape[faces3.length - 1];
+		System.arraycopy(faces3, 1, shapes3, 0, faces3.length - 1);
+		
+		Matrix s3 = Matrix.scaling(2, 2, 2);
+		Matrix t3 = Matrix.translation(2, 2, 0);
+		Matrix m3 = s3.matrixMultiplication(t3);
+		
+		for(int i = 0; i < shapes3.length; i++) {
+			shapes3[i].setTransformation(m3);
+		}
+		
+		Shape[] total = new Shape[shapes1.length + shapes2.length + shapes3.length];
+		
+		for(int i = 0; i < shapes1.length; i++) {
+			total[i] = shapes1[i];
+		}
+		
+		int count = 0;
+		for(int i = shapes1.length; i < shapes1.length + shapes2.length; i++) {
+			//System.out.println(count);
+			total[i] = shapes2[count];
+			count++;
+		}
+		
+		count = 0;
+		
+		for(int i = shapes1.length + shapes2.length; i < total.length; i++) {
+			total[i] = shapes3[count];
+			count++;
+		}
+		
+		SAHKDTree sakdt = SAHKDTree.createRoot(total);
+		sakdt.buildTree();
+		Shape[] objs3 = {sakdt};
+		
+		Scene scene = new Scene(512, 512);
+		scene.setObjs(objs3);
+
+		scene.renderScene("threeBunnies");
+	}
+	
+	public static void twoBunnies() {
+		File file = new File("src\\Bunny.obj");
+		OBJParser p = new OBJParser(file);
+		Shape[] shapes = p.getFaces();
+		Shape[] shapesMinusNull = new Shape[shapes.length - 1];
+		System.arraycopy(shapes, 1, shapesMinusNull, 0, shapes.length - 1);
+
+		Matrix m = Matrix.scaling(2, 2, 2);
+
+		for(int i = 0; i < shapesMinusNull.length; i++) {
+			shapesMinusNull[i].setTransformation(m);
+		}
+		
+		File file2 = new File("src\\Bunny.obj");
+		OBJParser p2 = new OBJParser(file2);
+		Shape[] faces = p2.getFaces();
+		Shape[] shapesMinusNull2 = new Shape[shapes.length - 1];
+		System.arraycopy(faces, 1, shapesMinusNull2, 0, shapes.length - 1);
+		
+		Shape[] shapes2 = new Shape[shapesMinusNull2.length];
+		
+		for(int i = 0; i < shapes2.length; i++) {
+			shapes2[i] = shapesMinusNull2[i];
+		}
+		
+		Matrix s = Matrix.scaling(2, 2, 2);
+		Matrix t = Matrix.translation(1, 0, 0);
+		Matrix m2 = s.matrixMultiplication(t);
+		
+		for(int i = 0; i < shapes2.length; i++) {
+			shapes2[i].setTransformation(m2);
+		}
+		
+		Shape[] total = new Shape[shapesMinusNull.length + shapes2.length];
+		
+		for(int i = 0; i < shapesMinusNull.length; i++) {
+			total[i] = shapesMinusNull[i];
+		}
+		
+		int count = 0;
+		
+		for(int i = shapesMinusNull.length; i < total.length; i++) {
+			total[i] = shapes2[count];
+			count++;
+		}
+		
+		SpatialKDTree sakdt = SpatialKDTree.createRoot(total);
+		sakdt.buildTree();
+		Shape[] objs3 = {sakdt};
+		
+		Scene scene = new Scene(512, 512);
+		scene.setObjs(objs3);
+
+		scene.renderScene("twoBunnies");
+	}
+	
+	public static void printLevelsTest2() {
+		int n = 3;
+		
+		Shape[][][] spheres = new Shape[n][n][n];
+		
+		for(int i = 0; i < n; i++) {
+			for(int j = 0; j < n; j++) {
+				for(int k = 0; k < n; k++) {
+					spheres[i][j][k] = new Sphere();
+					Matrix m = Matrix.translation((i * 5), (j * 5), (k * 5));
+					spheres[i][j][k].setTransformation(m);
+				}
+			}
+		}
+		
+		Shape[] flatArray = new Shape[n * n * n];
+		
+		int count = 0;
+		
+		for(int i = 0; i < n; i++) {
+			for(int j = 0; j < n; j++) {
+				for(int k = 0; k < n; k++) {
+					flatArray[count] = spheres[i][j][k];
+					count++;
+				}
+			}
+		}
+		
+		SAHKDTree kdt1 = SAHKDTree.createRoot(flatArray);
+		kdt1.buildTree();
+		//kdt1.printSplittingPoints();
+		/*MedianKDTree kdt2 = MedianKDTree.createRoot(flatArray);
+		kdt2.buildTree();
+		kdt2.printSplittingPoints();
+		SAHKDTree kdt3 = SAHKDTree.createRoot(flatArray);
+		kdt3.buildTree();
+		kdt3.printSplittingPoints();*/
+		kdt1.printTreeWithData();
+	}
+	
+	public static void printLevelsTest() {
+		Sphere s1 = new Sphere();
+		Sphere s2 = new Sphere();
+		Sphere s3 = new Sphere();
+		Sphere s4 = new Sphere();
+		Sphere s5 = new Sphere();
+		Sphere s6 = new Sphere();
+		Sphere s7 = new Sphere();
+		Sphere s8 = new Sphere();
+		Sphere s9 = new Sphere();
+		Sphere s10 = new Sphere();
+		Sphere s11 = new Sphere();
+		Sphere s12 = new Sphere();
+		Sphere s13 = new Sphere();
+		Sphere s14 = new Sphere();
+		Sphere s15 = new Sphere();
+		Sphere s16 = new Sphere();
+		Sphere s17 = new Sphere();
+		Sphere s18 = new Sphere();
+		Sphere s19 = new Sphere();
+		Sphere s20 = new Sphere();
+		Sphere s21 = new Sphere();
+		Sphere s22 = new Sphere();
+		Sphere s23 = new Sphere();
+		Sphere s24 = new Sphere();
+		Sphere s25 = new Sphere();
+
+		s1.setTransformation(Matrix.translation(-5, 5, 0));
+		s2.setTransformation(Matrix.translation(-3, 5, 0));
+		s3.setTransformation(Matrix.translation(-1, 5, 0));
+		s4.setTransformation(Matrix.translation(1, 5, 0));
+		s5.setTransformation(Matrix.translation(3, 5, 0));
+		s6.setTransformation(Matrix.translation(-5, 3, 0));
+		s7.setTransformation(Matrix.translation(-3, 3, 0));
+		s8.setTransformation(Matrix.translation(-1, 3, 0));
+		s9.setTransformation(Matrix.translation(1, 3, 0));
+		s10.setTransformation(Matrix.translation(3, 3, 0));
+		s11.setTransformation(Matrix.translation(-5, 1, 0));
+		s12.setTransformation(Matrix.translation(-3, 1, 0));
+		s13.setTransformation(Matrix.translation(-1, 1, 0));
+		s14.setTransformation(Matrix.translation(1, 1, 0));
+		s15.setTransformation(Matrix.translation(3, 1, 0));
+		s16.setTransformation(Matrix.translation(-5, -1, 0));
+		s17.setTransformation(Matrix.translation(-3, -1, 0));
+		s18.setTransformation(Matrix.translation(-1, -1, 0));
+		s19.setTransformation(Matrix.translation(1, -1, 0));
+		s20.setTransformation(Matrix.translation(3, -1, 0));
+		s21.setTransformation(Matrix.translation(-5, -3, 0));
+		s22.setTransformation(Matrix.translation(-3, -3, 0));
+		s23.setTransformation(Matrix.translation(-1, -3, 0));
+		s24.setTransformation(Matrix.translation(1, -3, 0));
+		s25.setTransformation(Matrix.translation(3, -3, 0));
+
+		Shape[] shapes = {s1, s2, s3, s4, s5,
+						  s6, s7, s8, s9, s10,
+						  s11, s12, s13, s14, s15,
+						  s16, s17, s18, s19, s20,
+						  s21, s22, s23, s24, s25};
+
+		SpatialKDTree kdt = SpatialKDTree.createRoot(shapes);
+		kdt.buildTree();
+		
+		kdt.printSplittingPoints();
 	}
 	
 	public static void bunnyFrontTest() {
@@ -712,18 +956,6 @@ public class Main {
 			shapesMinusNull[i].setTransformation(m);
 		}
 		
-		/*System.out.println("Building Process Started");
-		SpatialKDTree skdt = SpatialKDTree.createRoot(shapesMinusNull);
-		skdt.buildTree();
-		Shape[] objs = {skdt};
-		System.out.println("Building Process Ended");
-		*/
-		/*System.out.println("Building Process Started");
-		MedianKDTree mkdt = MedianKDTree.createRoot(shapesMinusNull);
-		mkdt.buildTree();
-		Shape[] objs2 = {mkdt};
-		System.out.println("Building Process Ended");*/
-		//
 		SpatialKDTree sakdt = SpatialKDTree.createRoot(shapesMinusNull);
 		sakdt.buildTree();
 		Shape[] objs3 = {sakdt};
@@ -733,23 +965,6 @@ public class Main {
 		//scene.setObjs(shapesMinusNull);
 
 		scene.renderScene("bunny");
-	}
-
-	public static void trumpetTest() {
-		File file = new File("C:\\Users\\pablo\\OneDrive\\Desktop\\uni\\year 3\\Diss\\OBJFiles\\Trumpet.obj");
-		OBJParser p = new OBJParser(file);
-		Shape[] shapes = p.getFaces();
-		Shape[] shapesMinusNull = new Shape[shapes.length - 1];
-		System.arraycopy(shapes, 1, shapesMinusNull, 0, shapes.length - 1);
-
-		//KDTree kdt = new KDTree(true, shapesMinusNull, 0);
-		//kdt.buildWithMedian();
-		//Shape[] objs = {kdt};
-
-		Scene scene = new Scene(200, 200);
-		scene.setObjs(shapesMinusNull);
-
-		scene.renderScene("trumpet");
 	}
 
 	public static void spatialTest() {
