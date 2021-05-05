@@ -166,7 +166,7 @@ public class Main {
 		//spatialTest2();
 		//lakeSimulation();
 		//kdTreeTest4();
-		//bunnyTest();
+		bunnyTest();
         //appendixImage2();
 		//halfTimeTest();
 		//boxCheck();
@@ -179,7 +179,7 @@ public class Main {
 		//printLevelsTest();
 		//printLevelsTest2();
 		//twoBunnies();
-		threeBunnies();
+		//threeBunnies();
 	}
 	
 	//building with spatial: 0.4 seconds
